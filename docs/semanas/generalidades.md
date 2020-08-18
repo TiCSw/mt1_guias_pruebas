@@ -1,7 +1,8 @@
 
-##Proyecto Pruebas automatizadas
+# Proyecto Pruebas automatizadas
 
-##Bienvenido a The Software Design Company 
+
+## Bienvenido a The Software Design Company
 
 Usted ha sido contratado por la empresa **The Software Design Company (TSDC)** para iniciar el proceso de automatización de pruebas de su aplicación GHOST. Para esto, recibirá una serie de capacitaciones en pruebas automatizadas de software; nuestro interés en TSDC es ayudar a formar su perfil como ingeniero automatizador junior.  GHOST es el producto abanderado de la compañía para el cual tienen prevista la liberación de 3-4 versiones diferentes de la app. Sin embargo, hay varios retos que usted deberá enfrentar:
 * Esta es la primera vez que se realizará un proceso de automatización de pruebas en TSDC.
