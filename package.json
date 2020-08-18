@@ -1,0 +1,26 @@
+{
+  "name": "mt1_guias_pruebas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TiCSw/mt1_guias_pruebas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TiCSw/mt1_guias_pruebas/issues"
+  },
+  "homepage": "https://github.com/TiCSw/mt1_guias_pruebas#readme",
+  "dependencies": {
+    "showdown": "^1.9.1"
+  }
+}
