@@ -34,21 +34,21 @@ Se debe entregar un archivo.zip que incluya el reporte de resultados, el listado
 
 ### Criterios de evaluación
 
-- Sistema para registro de incidencias en línea y que puede ser accedido. Se debe crear un usuario que pueda ser usado por los tutores del curso para acceder al sistema. El usuario y password debe ser informado como parte de la entrega.
+- Sistema para registro de incidencias en línea y que puede ser accedido. Se debe crear un usuario que pueda ser usado por los tutores del curso para acceder al sistema. El usuario y password debe ser informado como parte de la entrega. **[5 puntos]**
 
-- Listado de funcionalidades identificadas. Se debe incluir una descripción breve en lenguaje natural de cada funcionalidad identificada. El listado debe incluir mínimo 15 funcionalidades
+- Listado de funcionalidades identificadas. Se debe incluir una descripción breve en lenguaje natural de cada funcionalidad identificada. El listado debe incluir mínimo 15 funcionalidades **[15 puntos]**
 
-- Inventario de pruebas en el formato proporcionado. Mínimo 3 escenarios,  por funcionalidad descrita, con toda la información del formato.
+- Inventario de pruebas en el formato proporcionado. Mínimo 2 escenarios,  por funcionalidad descrita, con toda la información del formato. **[30 puntos]**
 
-- Cada prueba exploratoria debe estar documentada con un video. Los videos debe estar alojados en algún gestor de contenido como Google drive, Youtube, Vimeo, etc. Los enlaces a los videos deben estar en el inventario de pruebas
+- Cada prueba exploratoria debe estar documentada con un video. Los videos debe estar alojados en algún gestor de contenido como Google drive, Youtube, Vimeo, etc. Los enlaces a los videos deben estar en el inventario de pruebas **[15 puntos]**
 
-- 5 defectos reportados en el sistema de registro de incidencias
+- 5 defectos reportados en el sistema de registro de incidencias **[5 puntos]**
 
-- Modelo de GUI del sistema (interfaces y transiciones)
+- Modelo de GUI del sistema (interfaces y transiciones). **[10 puntos]**
 
-- Modelo de dominio (tipos de datos, entidades)
+- Modelo de dominio (tipos de datos, entidades).  **[10 puntos]**
 
-- Reporte
+- Reporte en formato PDF que incluye toda la información anterior o tiene enlaces al respectivo archivo. **[10 puntos]**
 
 
 
