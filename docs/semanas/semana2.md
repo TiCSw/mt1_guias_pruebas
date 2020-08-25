@@ -27,18 +27,21 @@ Luego de recolectar los datos usted y su par deben realizar un video que resuma 
 
 
 ### Detalles de la entrega
-Se debe entregar el enlace a la encuesta o guion de la entrevista realizada, un archivo Excel con los resultados crudos de la encuesta, el enlace al video con el análisis, y un reporte breve que describa el proceso.  La entrega se debe realizar a través de Coursera en las fechas indicadas.
+Se debe entregar un archivo zip con todos los artefactos solicitados: el enlace a la encuesta o guion de la entrevista realizada, un archivo Excel con los resultados crudos de la encuesta, el enlace al video con el análisis, y un reporte breve que describa el proceso.  La entrega se debe realizar a través de Coursera en las fechas indicadas.
 
 
 ### Criterios de evaluación
 
-- Descripción de la estrategia usada para contactar a los participantes, y el formato usado para recolectar la información (ejemplo, encuesta en línea, entrevista individual, etc.) **[10]**
 
-- Archivo excel con las respuestas dadas por los 30 participantes **[10]**
+- Descripción de la estrategia usada para contactar a los participantes. **[5 puntos]**
 
-- Video en el que se resumen los resultados del análisis (cuantitativo y cualitativo) de los datos recolectados. **[60 puntos]**
+- Descripción del formato usado para recolectar la información (ejemplo, encuesta en línea, entrevista individual, etc.) **[5 puntos]**
 
-- Reporte en formato PDF que describa/indexe la información atención, y que incluya una descripción del proceso realizado para el análisis  de los datos. **[15 puntos]**
+- Archivo Excel con las respuestas dadas por los 30 participantes. **[10 puntos]**
+
+- Video en el que se resumen los resultados del análisis (cuantitativo y cualitativo) de los datos recolectados. Ambos miembros del equipo deben aparecer en el video. **[60 puntos]**
+
+- Reporte en formato PDF que describa/indexe la información solicitada, y que incluya una descripción del proceso realizado para el análisis  de los datos. **[15 puntos]**
 
 
 **La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y la calidad de cada uno de acuerdo con la rúbrica establecida.**
