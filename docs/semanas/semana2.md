@@ -7,7 +7,7 @@ Nuestro líder de producto le envía un gran agradecimiento por su dedicación d
 
 ### Resumen de las actividades
 
-Su misión es encuestar / entrevistar a 30 profesionales involucrados en procesos de desarrollo de software (ejemplo, arquitectos, testers, líderes de proyecto, analistas, desarrolladores, etc.). La encuesta/entrevista debe preguntar lo siguiente:
+Su misión es encuestar/entrevistar a 30 profesionales involucrados en procesos de desarrollo de software (ejemplo, arquitectos, testers, líderes de proyecto, analistas, desarrolladores, etc.). En cada encuesta/entrevista debe preguntar lo siguiente:
 
 
 1. ¿Cuál es su preferencia como estrategia de distribución de cantidad de pruebas automatizadas: cono de helado o pirámide de automatización?
@@ -16,15 +16,29 @@ Su misión es encuestar / entrevistar a 30 profesionales involucrados en proceso
 
 3. ¿Qué distribución de pruebas manuales y automatizadas usan en su empresa o de forma personal?
 
+No olviden recolectar información demográfica (ejemplo, país, años de experiencia, etc. )
+
 Luego de recolectar los datos usted y su par deben realizar un video que resuma de forma cuantitativa y cualitativa los resultados del ejercicio de investigación.  
 
 
 
-**Recomendaciones:** debe encargarse, de alguna forma, de explicar a los encuestados/entrevistados los dos esquemas de distribución de pruebas. Puede usar las imágenes de cada estrategia, sin embargo, una descripción adicional o una nota de voz puede ayudar a que los encuestados/entrevistados entiendan mejor las dos estrategias.  Hemos preparado un breve documento que explica un conjunto de recomendaciones mínimas para manejo de información y confidencialidad a la hora de hacer encuestas y entrevistas. Adicionalmente, hemos preparado una guía breve de como hacer su video de presentación de resultados.
+**Recomendaciones:** usted y su par deben encargarse, de alguna forma, de explicar a los encuestados/entrevistados los dos esquemas de distribución de pruebas (es decir cono de helado y pirámide). Pueden usar las imágenes de cada estrategia, sin embargo, una descripción adicional o una nota de voz puede ayudar a que los encuestados/entrevistados entiendan mejor las dos estrategias.  No olvide que  para encuesta debe contar con un consentimiento informado donde se le informe a cada participante el próposito de la encuesta, si va a ser anómima o no, cómo se van a tratar los datos recolectados, etc.
 
 
-### Hitos de la semana
-Detalles de la entrega:  La fecha límite para entrega de resultados es el día XX/XX/XXX a las XX:XX hora Colombia. Se debe entregar el enlace a la encuesta o guion de la entrevista realizada, un archivo Excel con los resultados crudos de la encuesta y el enlace al video con el análisis.
+
+### Detalles de la entrega
+Se debe entregar el enlace a la encuesta o guion de la entrevista realizada, un archivo Excel con los resultados crudos de la encuesta, el enlace al video con el análisis, y un reporte breve que describa el proceso.  La entrega se debe realizar a través de Coursera en las fechas indicadas.
+
+
+### Criterios de evaluación
+
+- Descripción de la estrategia usada para contactar a los participantes, y el formato usado para recolectar la información (ejemplo, encuesta en línea, entrevista individual, etc.) [10]
+
+- Archivo excel con las respuestas dadas por los 30 participantes [10]
+
+- Video en el que se resumen los resultados del análisis (cuantitativo y cualitativo) de los datos recolectados. [60 puntos]
+
+- Reporte en formato PDF que describa/indexe la información atención, y que incluya una descripción del proceso realizado para el análisis  de los datos. [15 puntos]
 
 
 **La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y la calidad de cada uno de acuerdo con la rúbrica establecida.**
