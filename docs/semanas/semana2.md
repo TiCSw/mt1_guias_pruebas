@@ -32,13 +32,13 @@ Se debe entregar el enlace a la encuesta o guion de la entrevista realizada, un 
 
 ### Criterios de evaluación
 
-- Descripción de la estrategia usada para contactar a los participantes, y el formato usado para recolectar la información (ejemplo, encuesta en línea, entrevista individual, etc.) [10]
+- Descripción de la estrategia usada para contactar a los participantes, y el formato usado para recolectar la información (ejemplo, encuesta en línea, entrevista individual, etc.) **[10]**
 
-- Archivo excel con las respuestas dadas por los 30 participantes [10]
+- Archivo excel con las respuestas dadas por los 30 participantes **[10]**
 
-- Video en el que se resumen los resultados del análisis (cuantitativo y cualitativo) de los datos recolectados. [60 puntos]
+- Video en el que se resumen los resultados del análisis (cuantitativo y cualitativo) de los datos recolectados. **[60 puntos]**
 
-- Reporte en formato PDF que describa/indexe la información atención, y que incluya una descripción del proceso realizado para el análisis  de los datos. [15 puntos]
+- Reporte en formato PDF que describa/indexe la información atención, y que incluya una descripción del proceso realizado para el análisis  de los datos. **[15 puntos]**
 
 
 **La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y la calidad de cada uno de acuerdo con la rúbrica establecida.**

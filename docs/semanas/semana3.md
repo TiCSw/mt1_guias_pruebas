@@ -19,25 +19,25 @@ Elaboren una estrategia de pruebas para cada uno de los presupuestos. Para esto 
 
 ### Detalles de la entrega
 
-Se debe entregar un archivo .zip con las dos estrategias de pruebas. Los videos deben estar alojados en algún repositorio de contenido como Google Drive, YouTube, Dropbox, etc.
+Se debe entregar un archivo .zip con las dos estrategias de pruebas. Los videos deben estar alojados en algún repositorio de contenido como Google Drive, YouTube, Dropbox, etc. La entrega se debe realizar a través de Coursera en las fechas indicadas.
 
 ### Criterios de evaluación
 
-- Se reporta la estrategia de pruebas para el presupuesto uno en el formato dado. El formato se encuentra diligenciado de forma completa. [10 puntos]
+- Se reporta la estrategia de pruebas para el presupuesto uno en el formato dado. El formato se encuentra diligenciado de forma completa. **[10 puntos]**
 
-- Se reporta la estrategia de pruebas para el presupuesto dos en el formato dado. El formato se encuentra diligenciado de forma completa.[10 puntos]
+- Se reporta la estrategia de pruebas para el presupuesto dos en el formato dado. El formato se encuentra diligenciado de forma completa.**[10 puntos]**
 
-- El enlace al video explicando las justificaciones de la estrategia uno se encuentra en el archivo que describe la estrategia y el video es coherente con la estrategia. [10 puntos]
+- El enlace al video explicando las justificaciones de la estrategia uno se encuentra en el archivo que describe la estrategia y el video es coherente con la estrategia. **[10 puntos]**
 
-- El enlace al video explicando las justificaciones de la estrategia dos se encuentra en el archivo que describe la estrategia y el video es coherente con la estrategia. [10 puntos]
+- El enlace al video explicando las justificaciones de la estrategia dos se encuentra en el archivo que describe la estrategia y el video es coherente con la estrategia. **[10 puntos]**
 
-- La estrategia de pruebas número uno es coherente con el presupuesto uno. [20 puntos]
+- La estrategia de pruebas número uno es coherente con el presupuesto uno. **[20 puntos]**
 
-- La estrategia de pruebas número dos es coherente con el presupuesto dos. [20 puntos]
+- La estrategia de pruebas número dos es coherente con el presupuesto dos. **[20 puntos]**
 
-- Las decisiones de la estrategia uno están bien soportados con datos adicionales, o con la explicación en el video, o en la plantilla de la estrategia. [10 puntos]
+- Las decisiones de la estrategia uno están bien soportados con datos adicionales, o con la explicación en el video, o en la plantilla de la estrategia. **[10 puntos]**
 
-- Las decisiones de la estrategia dos están bien soportados con datos adicionales, o con la explicación en el video, o en la plantilla de la estrategia. [10 puntos]
+- Las decisiones de la estrategia dos están bien soportados con datos adicionales, o con la explicación en el video, o en la plantilla de la estrategia. **[10 puntos]**
 
 
 **La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y la calidad de cada uno de acuerdo con la rúbrica establecida.**
