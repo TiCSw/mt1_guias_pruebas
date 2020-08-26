@@ -20,7 +20,6 @@ Se debe entregar el enlace al repositorio que debe incluir (i) código de los 10
 
 - El readme del repositorio describe los 10 escenarios de pruebas. **[3 puntos]**
 
-
 - En la wiki del repo se decriben los pros y contras de las dos herramientas utilizadas.  Los pros/contras deben ser coherentes con las características de las heerramientas. **[15 puntos]**
 
 
