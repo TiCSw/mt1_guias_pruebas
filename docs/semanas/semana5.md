@@ -20,17 +20,16 @@ Se debe entregar el enlace al repositorio que debe incluir (i) código de los 10
 
 - El readme del repositorio describe los 10 escenarios de pruebas. **[3 puntos]**
 
-- En la wiki del repo se decriben los pros y contras de las dos herramientas utilizadas.  Los pros/contras deben ser coherentes con las características de las heerramientas. **[15 puntos]**
 
+- El repositorio tiene el código de los 10 casos/escenarios de pruebas creados con la primera herramienta seleccionada. Los escenarios son funcionales y en el readme del repo se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la ejecución de los escenarios. De lo contrario no se darán los puntos.  **[30 puntos]**
 
-- El repositorio tiene el código de los 10 escenarios de pruebas. Los escenarios son funcionales y en el readme del repo se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la ejecución de los escenarios. De lo contrario no se darán los puntos.  **[30 puntos]**
+- Los casos de prueba y escenarios construidos con la primera herramienta deben usar los patrones vistos.  **[10 puntos]**
 
-- Los casos de prueba y escenarios construidos  con la primera herramienta deben usar los patrones vistos.  **[10 puntos]**
-
-- El repositorio tiene el código para ejecutar los 10 escenarios creados con la segunda herramienta seleccionada. Los escenarios son funcionales y en el readme del repo se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la ejecución de los escenarios. De lo contrario no se darán los puntos.  **[10 puntos]**
+- El repositorio tiene el código para ejecutar los 10 casos/escenarios creados con la segunda herramienta seleccionada. Los escenarios son funcionales y en el readme del repo se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la ejecución de los escenarios. De lo contrario no se darán los puntos.  **[10 puntos]**
 
 - Los casos de prueba y escenarios construidos con la segunda herramienta  deben usar los patrones vistos.  **[10 puntos]**
 
 
+- En la wiki del repo se decriben los pros y contras de las dos herramientas utilizadas.  Los pros/contras deben ser coherentes con las características de las herramientas. **[15 puntos]**
 
  **La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y la calidad de cada uno de acuerdo con la rúbrica establecida.**
