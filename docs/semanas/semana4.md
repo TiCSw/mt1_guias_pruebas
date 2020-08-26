@@ -35,6 +35,6 @@ Se debe entregar un archivo .zip con el reporte de experiencia de las dos herram
 
 -  Las justificaciones de la estrategia dos son coherentes con la estrategia. **[10 puntos]**
 
-- El video incluye el análisis de los pros y contras de las herramientas usadas es coherente con la características de las herramientas.  **[10 puntos]**
+- El video incluye el análisis de los pros y contras de las herramientas usadas; y el video es coherente con la características de las herramientas. **[10 puntos]**
 
 **La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y la calidad de cada uno de acuerdo con la rúbrica establecida.**
