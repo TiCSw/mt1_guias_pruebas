@@ -36,9 +36,9 @@ Se debe entregar un archivo .zip con las dos estrategias de pruebas. Los videos 
 
 - La estrategia de pruebas número dos es coherente con el presupuesto dos. **[18 puntos]**
 
-- Las decisiones de la estrategia uno están bien soportadas con datos adicionales que deben estar descritos o referencidos en la plantilla de la estrategia. **[10 puntos]**
+- Las decisiones de la estrategia uno están bien soportadas con datos adicionales que deben estar descritos o referenciados en la plantilla de la estrategia. **[10 puntos]**
 
-- Las decisiones de la estrategia dos están bien soportadas con datos adicionales que deben estar descritos o referencidos en la plantilla de la estrategia. **[10 puntos]**
+- Las decisiones de la estrategia dos están bien soportadas con datos adicionales que deben estar descritos o referenciados en la plantilla de la estrategia. **[10 puntos]**
 
 - El enlace al video explicando las justificaciones de la estrategia uno se encuentra en el archivo que describe la estrategia y el video es coherente con la estrategia. **[10 puntos]**
 
