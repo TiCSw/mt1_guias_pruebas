@@ -26,7 +26,7 @@ Se debe entregar el enlace al repositorio que debe incluir (i) código de los 10
 - En la wiki del repo se decriben los pros y contras de las dos herramientas utilizadas.  **[15 puntos]**
 
 
-- El repositorio tiene el código para ejecutar los 10 escenarios creados con Kraken. Los escenarios son funcionales y en el readme del repo se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la ejecución de los escenarios. De lo contrario no se darán los puntos.  **[40 puntos]**
+- El repositorio tiene el código de los 10 escenarios de pruebas. Los escenarios son funcionales y en el readme del repo se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la ejecución de los escenarios. De lo contrario no se darán los puntos.  **[40 puntos]**
 
 
 
