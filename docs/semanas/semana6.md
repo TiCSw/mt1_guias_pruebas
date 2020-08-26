@@ -19,6 +19,8 @@ Su equipo debe entonces:
 
 5. Si encuentra diferencias por favor repórtelas en el sistema de registro de incidencias (una incidencia por diferencia encontrada).
 
+ No olviden hacer un resumen de los pros y los contras de cada herramienta. Este resumen lo deben dejar visible como una página en la wiki del repositorio.
+
 ### Detalles de la entrega
 Se deben entregar en el repositorio (i) los artefactos de código para las 30 pruebas, incluyendo los cambios  a las pruebas E2E de la semana anterior para soportar pruebas de regresión visual; (ii) el reporte de regresión visual;  (iii) las incidencias reportadas. Solo se calificará el último commit hecho antes de la fecha/hora de entrega. La hora de actualización de las incidencias debe ser antes de la fecha/hora de entrega; de lo contrario esta parte no será calificada.
 
@@ -26,13 +28,15 @@ Se deben entregar en el repositorio (i) los artefactos de código para las 30 pr
 
 - Descripción de las 5 funcionalidades de GHOST que se incluyen en las pruebas de esta semana. **[1 punto]**
 
-- El repositorio tiene el código de los 20 escenarios de prueba nuevos. Los escenarios son funcionales y en el readme del repo se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la ejecución de los escenarios. De lo contrario no se darán los puntos. **[60  puntos]**
+- El repositorio tiene el código de los 20 escenarios de prueba nuevos. Los escenarios son funcionales y en el readme del repo se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la ejecución de los escenarios. De lo contrario no se darán los puntos. **[45  puntos]**
 
 - El repositorio tiene el código de los 10 escenarios de prueba en modo de regresión visual. Los escenarios son funcionales y en el readme del repo se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la ejecución de los escenarios. De lo contrario no se darán los puntos.  **[20  puntos]**
 
 - El código tiene un script para ejecución de los  10 escenarios habilitados para regresión visual. El script permite ejecutar los escenarios en las dos versiones de GHOST. Como resultado de la ejecución, se presenta un reporte HTML generado automáticamente, con los resultados de la comparación visual. La comparación visual se debe hacer al nivel de cada paso de los escenarios. **[9  puntos]**
 
 - Se reportan por lo menos 10  diferencias  visuales en el sistema de registro de incidencia del grupo, siguiente el formato solicitado. **[10  puntos]**
+
+- En la wiki del repo se decriben los pros y contras de las dos herramientas utilizadas.  Los pros/contras deben ser coherentes con las características de las herramientas. **[15 puntos]**
 
 
  **La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y la calidad de cada uno de acuerdo con la rúbrica establecida.**
