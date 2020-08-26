@@ -18,22 +18,23 @@ Se debe entregar un archivo .zip con el reporte de experiencia de las dos herram
 
 - En el caso de encontrar defectos con las herramientas estos se deben reportar en el sistema de registo de incidentes y se deben mencionar en el informe. **[5 puntos]**
 
-
 - Se actualiza la estrategia de pruebas para el presupuesto uno en el formato dado, incluyendo el uso de pruebas de reconocimiento y la retroalimentación recibida de la estrategia anterior. El formato se encuentra diligenciado de forma completa. **[10 puntos]**
 
-- Se actualiza la estrategia de pruebas para el presupuesto dos en el formato dado, incluyendo el uso de pruebas de reconocimiento y la retroalimentación recibida de la estrategia anterior. El formato se encuentra diligenciado de forma completa.**[10 puntos]**
-
-- El enlace al video explicando las justificaciones de la estrategia uno se encuentra en el archivo que describe la estrategia y el video es coherente con la estrategia. **[10 puntos]**
-
-- El enlace al video explicando las justificaciones de la estrategia dos se encuentra en el archivo que describe la estrategia y el video es coherente con la estrategia. **[10 puntos]**
+- Se actualiza la estrategia de pruebas para el presupuesto dos en el formato dado, incluyendo el uso de pruebas de reconocimiento y la retroalimentación recibida de la estrategia anterior. El formato se encuentra diligenciado de forma completa. **[10 puntos]**
 
 - La estrategia de pruebas número uno es coherente con el presupuesto uno. **[10 puntos]**
 
 - La estrategia de pruebas número dos es coherente con el presupuesto dos. **[10 puntos]**
 
-- Las decisiones de la estrategia uno están bien soportados con datos adicionales, o con la explicación en el video, o en la plantilla de la estrategia. **[10 puntos]**
 
-- Las decisiones de la estrategia dos están bien soportados con datos adicionales, o con la explicación en el video, o en la plantilla de la estrategia. **[10 puntos]**
+- Las decisiones de la estrategia uno están bien soportados con datos adicionales que deben estar descritos o referenciados en la plantilla de la estrategia.. **[10 puntos]**
+
+- Las decisiones de la estrategia dos están bien soportados con datos adicionales que deben estar descritos o referenciados en la plantilla de la estrategia. **[10 puntos]**
+
+- El enlace al video explicando las justificaciones de la estrategia uno se encuentra en el archivo que describe la estrategia y el video es coherente con la estrategia. **[10 puntos]**
+
+- El enlace al video explicando las justificaciones de la estrategia dos se encuentra en el archivo que describe la estrategia y el video es coherente con la estrategia. **[10 puntos]**
+
 
 - El video incluye el análisis de los pros y contras de las herramientas usadas.  **[10 puntos]**
 
