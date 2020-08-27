@@ -16,3 +16,7 @@ Bienvenidos a la página con las guías para talleres y el desarrollo del proyec
 ## Talleres
 
 1. [Random testing](https://ticsw.github.io/mt1_guias_pruebas/talleres/monkey)
+
+2. [BDD con Gherking y Cucumber](https://ticsw.github.io/mt1_guias_pruebas/talleres/bdt)
+
+2. [Visual Regression Testing](https://ticsw.github.io/mt1_guias_pruebas/talleres/vrt)
