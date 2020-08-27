@@ -14,19 +14,19 @@ Se debe entregar un release en el repositorio que incluya (i) artefactos de cód
 
 ### Criterios de evaluación:
 
-- Las estrategias de pruebas siguen el formato dado: [Plantilla estrategia de pruebas](https://thesoftwaredesignlab.github.io/AutTestingCourseraBook/templates/estrategia-pruebas.docx). **[5 puntos]**
+- Las estrategias de pruebas siguen el formato dado: [Plantilla estrategia de pruebas](https://thesoftwaredesignlab.github.io/AutTestingCourseraBook/templates/estrategia-pruebas.docx). **[Se califica como cero toda la actividad si la estrategias no tiene el formato dado]**
 
 - Las estrategias de pruebas son coherentes con el presupuesto de pruebas dado. **[10 puntos]**
 
-- Las estrategias de pruebas incluyen el uso de pruebas manualas, pruebas de reconocimiento, pruebas E2E, VRT, y escenarios de validación de datos. **[10 puntos]**
+- Las estrategias de pruebas incluyen el uso de pruebas manuales, pruebas de reconocimiento, pruebas E2E, VRT y escenarios de validación de datos. **[10 puntos]**
 
-- El respositorio incluye el inventario de pruebas manuales. **[10 puntos]**
+- El repositorio incluye el inventario de pruebas manuales:  [Inventario de pruebas exploratorias](https://thesoftwaredesignlab.github.io/AutTestingCourseraBook/templates/inventario-pruebas-exploratorias.xlsx). **[10 puntos]**
 
-- El repositorio incluye el código que soporta la ejecución de la estrategia de pruebas.  **[10 puntos]**
+- El repositorio incluye el código que soporta la ejecución de las estrategias de pruebas.  **[10 puntos]**
 
 - El código que soporta la ejecución de la estrategia de pruebas es funcional y en el readme del repo se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la ejecución de los escenarios. De lo contrario no se darán los puntos.  **[35 puntos]**
 
-- Se entrega el video que describe las estrategias de pruebas, los resultados, y los pros/contras de las herramientas usadas. El video es coherente con las estrategias. **[10 puntos]**
+- Se entrega el video que describe las estrategias de pruebas, los resultados, y los pros/contras de las herramientas usadas. El video es coherente con las estrategias. **[15 puntos]**
 
 - Se reportan, en el sistema de registro de incidencias, por lo menos 20 defectos para cada una de las versiones de GHOST bajo pruebas. **[10 puntos]**
 
