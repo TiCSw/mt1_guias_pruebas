@@ -56,7 +56,7 @@ Ahora que conoce las funcionalidades de ResembleJS haremos nuestras primeras pru
 
 En este parte del taller usted debera crear una solución en el lenguaje que desee en la cual proporcione un mecanismo de ejecución de pruebas de regresión visual automaticamente para la aplicación que hizo en la primera fase. Se espera que su solución presente un resultado similar a la siguiente imagen:
 
-![Diagrama](assets/DiagramaTaller6.png)
+![Diagrama](../assets/images/diagrama_vrt.png)
 
 En la cual cada vez que el usuario haga click en el boton, su solución ingrese al sitio que desplego en la primer fase, genere una paleta de colores, tome un screenshot, genere una segunda paleta de colores, tome otro screenshot, realice una comparación haciendo uso de ResembleJS y genere una nueva fila al principio donde se muestren los resultados de la prueba junto con información adicional que usted crea útil.
 
