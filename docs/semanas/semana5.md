@@ -30,6 +30,6 @@ Se debe entregar el enlace al repositorio que debe incluir (i) código de los 10
 - Los casos de prueba y escenarios construidos con la segunda herramienta  deben usar los patrones vistos.  **[10 puntos]**
 
 
-- En la wiki del repo se decriben los pros y contras de las dos herramientas utilizadas.  Los pros/contras deben ser coherentes con las características de las herramientas. **[15 puntos]**
+- En la wiki del repo se describen los pros y contras de las dos herramientas utilizadas.  Los pros/contras deben ser coherentes con las características de las herramientas. **[15 puntos]**
 
  **La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y la calidad de cada uno de acuerdo con la rúbrica establecida.**

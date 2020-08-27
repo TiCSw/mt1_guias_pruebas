@@ -36,7 +36,7 @@ Se deben entregar en el repositorio (i) los artefactos de código para las 30 pr
 
 - Se reportan por lo menos 10  diferencias  visuales en el sistema de registro de incidencia del grupo, siguiente el formato solicitado. **[10 puntos]**
 
-- En la wiki del repo se decriben los pros y contras de las dos herramientas utilizadas.  Los pros/contras deben ser coherentes con las características de las herramientas. **[15 puntos]**
+- En la wiki del repo se describen los pros y contras de las dos herramientas utilizadas. Los pros/contras deben ser coherentes con las características de las herramientas. **[15 puntos]**
 
 
  **La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y la calidad de cada uno de acuerdo con la rúbrica establecida.**

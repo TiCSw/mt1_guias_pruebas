@@ -10,7 +10,7 @@ En particular, queremos que usen las siguientes estrategias: (i) pool de datos a
 
 Para esto, usen el modelo de dominio creado cuando realizaron las pruebas exploratorias. Con base en la información del modelo, creen 300 escenarios diferentes de validación que usen las estrategias de generación de datos mencionadas anteriormente. Noten que pueden reusar escenarios existentes, siempre y cuando estos puedan ser adaptados a las estrategias de generación de datos.
 
-Su equipo tiene libertad para construir los escenarios usando cualquiera de las herramientas para pruebas  E2E que han utilizado, y cualquiera de las herramientas existentes para generación de datos. No olviden generar un documento que describa las estrategias de generación de datos usadas para la automatización de los 300 escenarios
+Su equipo tiene libertad para construir los escenarios usando cualquiera de las herramientas para pruebas  E2E que han utilizado y cualquiera de las herramientas existentes para generación de datos. No olviden generar un documento que describa las estrategias de generación de datos usadas para la automatización de los 300 escenarios.
 
 
 ### Detalles de la entrega:
@@ -18,7 +18,7 @@ Se deben entregar en el repositorio (i) los artefactos de código que generan lo
 
 ## Criterios de evaluación:
 
-- Código de los escenarios de prueba que usan las estrategias de generación y de datos y permiten generar 300 escenarios diferentes. Los escenarios son funcionales y en el readme del repo se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la ejecución de los escenarios. De lo contrario no se darán los puntos. **[60 puntos]**
+- Código de los escenarios de prueba que usan las tres estrategias de generación de datos y permiten generar 300 escenarios diferentes. Los escenarios son funcionales y en el readme del repo se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la ejecución de los escenarios. De lo contrario no se darán los puntos. **[60 puntos]**
 
 - Descripción de las estrategias usadas y cómo se integran estas estrategias en los escenarios de pruebas. Se debe evidenciar en la descripción que  se usan las tres estrategias solicitadas: pool de datos a-priori, pool de datos (pseudo) aleatorio dinámico y escenario aleatorio. **[20 puntos]**
 
