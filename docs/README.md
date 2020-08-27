@@ -1,8 +1,8 @@
-Bienvenidos a la página con las guías para el desarrollo del proyecto del curso. A continuación encontrarás la descripción de las **actividades del proyecto**, semana a semana.
+Bienvenidos a la página con las guías para talleres y el desarrollo del proyecto del curso. A continuación encontrarás la descripción de las **actividades del proyecto**, semana a semana.
 
 
 
-## Contenido
+## Guías de Proyecto
 1. [Generalidades](https://ticsw.github.io/mt1_guias_pruebas/semanas/generalidades)
 2. [Semana 1](https://ticsw.github.io/mt1_guias_pruebas/semanas/semana1)
 3. [Semana 2](https://ticsw.github.io/mt1_guias_pruebas/semanas/semana2)
@@ -12,3 +12,7 @@ Bienvenidos a la página con las guías para el desarrollo del proyecto del curs
 7. [Semana 6](https://ticsw.github.io/mt1_guias_pruebas/semanas/semana6)
 8. [Semana 7](https://ticsw.github.io/mt1_guias_pruebas/semanas/semana7)
 9. [Semana 8](https://ticsw.github.io/mt1_guias_pruebas/semanas/semana8)
+
+## Talleres
+
+1. [Random testing](https://ticsw.github.io/mt1_guias_pruebas/talleres/monkey)
