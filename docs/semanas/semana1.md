@@ -22,7 +22,7 @@ En resumen, las actividades que debe realizar durante esta semana como parte de 
 
 4. Explorar rápidamente la aplicación con el objetivo de identificar la estrategia de navegación usada (menús, pestañas, botones, enlaces, etc.) y las funcionalidades de la ABP. Dedique no más de 10 minutos a esto.
 
-5. Ejecutar, para cada una de las funcionalidades, varios escenarios de pruebas positivas y negativas, y registrarlos en el formato proporcionado [Inventario de pruebas exploratorias](https://thesoftwaredesignlab.github.io/AutTestingCourseraBook/templates/inventario-pruebas-exploratorias.xlsx). No olvide que las pruebas exploratorias (PE) deben quedar documentadas a través de un video que muestre los pasos realizados. Si se encuentra un defecto en alguna PE no olvide reportarlo en el sistema de incidencias. Se espera que como resultado de la sesión de PE se reporten mínimo 5 defectos.
+5. Ejecutar, para cada una de las funcionalidades, varios escenarios de pruebas positivas y negativas, y registrarlos en el formato proporcionado en este enlace: [inventario de pruebas exploratorias](https://thesoftwaredesignlab.github.io/AutTestingCourseraBook/templates/inventario-pruebas-exploratorias.xlsx). Si al hacer clic en el enlace no se abre el archivo, hágalo con las opciones del menú que aparece al usar CTRL+click derecho. No olvide que las pruebas exploratorias (PE) deben quedar documentadas a través de un video que muestre los pasos realizados. Si se encuentra un defecto en alguna PE no olvide reportarlo en el sistema de incidencias. Se espera que como resultado de la sesión de PE se reporten mínimo 5 defectos.
 
 6. A medida que va explorando la aplicación, no olvide documentar su conocimiento a través de los siguientes artefactos: (i) listado de funcionalidades, (ii) modelo de GUI (Graphic User Interface), y (iii) modelo de dominio.  
 
@@ -30,7 +30,7 @@ En resumen, las actividades que debe realizar durante esta semana como parte de 
 
 
 ### Detalles de la entrega
-Se debe entregar un archivo.zip que incluya el reporte de resultados, el listado de funcionalidades identificadas, el inventario de pruebas, las imágenes (buena resolución) de los modelos construidos, así como el enlace y el usuario para acceder al sistema de registro de incidencias.  La entrega se debe realizar a través de Coursera en las fechas indicadas.
+Se debe entregar un archivo.zip que incluya el reporte de resultados, el listado de funcionalidades identificadas, el inventario de pruebas, las imágenes (buena resolución) de los modelos construidos, así como el enlace y el usuario para acceder al sistema de registro de incidencias.  La entrega se debe realizar a través de Coursera en las fechas indicadas y  debe incluir todos los elmentos mencionados en la siguiente sección.
 
 
 ### Criterios de evaluación
