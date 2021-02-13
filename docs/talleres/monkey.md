@@ -14,7 +14,6 @@ Comencemos por crear nuestro archivo de pruebas Cypress.io. Cree un nuevo direct
 describe('Los estudiantes under monkeys', function() {
     it('visits los estudiantes and survives monkeys', function() {
         cy.visit('https://losestudiantes.co');
-        cy.contains('Cerrar').click();
         cy.wait(1000);
         randomClick(10);
     })
@@ -32,7 +31,7 @@ function randomClick(monkeysLeft) {
         cy.get('a').then($links => {
             var randomLink = $links.get(getRandomInt(0, $links.length));
             if(!Cypress.dom.isHidden(randomLink)) {
-                cy.wrap(randomLink).click({force: true});
+                cy.wrap(randomLink).rclick({force: true});
                 monkeysLeft = monkeysLeft - 1;
             }
             cy.wait(1000);
