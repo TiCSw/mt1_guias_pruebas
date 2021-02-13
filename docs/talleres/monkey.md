@@ -49,7 +49,7 @@ En el bloque ``describe`` al inicio del archivo es donde definimos nuestra prueb
 
 Guarde el archivo ``monkey_testing.spec.js``, y desde la interfaz de Cypress.io, láncelo haciendo click en él. Usted verá la prueba correr de una manera similar a esta:
 
-![Cypress monkey](../assets/images/cypress_reaper.gif)
+![Cypress monkey](../assets/images/gif-taller-monkeys.gif)
 
 Si hay un error al ejecutar la prueba, no se alarme. Habrá veces en la que Cypress no logrará hacer click en un elemento seleccionado al azar. Esto es normal, ya que el elemento pudo haber desaparecido de la página.
 
