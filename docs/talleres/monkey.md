@@ -14,7 +14,6 @@ Comencemos por crear nuestro archivo de pruebas Cypress.io. Cree un nuevo direct
 describe('Los estudiantes under monkeys', function() {
     it('visits los estudiantes and survives monkeys', function() {
         cy.visit('https://losestudiantes.co');
-        cy.contains('Cerrar').click();
         cy.wait(1000);
         randomClick(10);
     })
@@ -32,7 +31,7 @@ function randomClick(monkeysLeft) {
         cy.get('a').then($links => {
             var randomLink = $links.get(getRandomInt(0, $links.length));
             if(!Cypress.dom.isHidden(randomLink)) {
-                cy.wrap(randomLink).click({force: true});
+                cy.wrap(randomLink).rclick({force: true});
                 monkeysLeft = monkeysLeft - 1;
             }
             cy.wait(1000);
@@ -50,7 +49,7 @@ En el bloque ``describe`` al inicio del archivo es donde definimos nuestra prueb
 
 Guarde el archivo ``monkey_testing.spec.js``, y desde la interfaz de Cypress.io, láncelo haciendo click en él. Usted verá la prueba correr de una manera similar a esta:
 
-![Cypress monkey](../assets/images/cypress_reaper.gif)
+![Cypress monkey](../assets/images/gif-taller-monkeys.gif)
 
 Si hay un error al ejecutar la prueba, no se alarme. Habrá veces en la que Cypress no logrará hacer click en un elemento seleccionado al azar. Esto es normal, ya que el elemento pudo haber desaparecido de la página.
 
