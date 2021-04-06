@@ -16,8 +16,6 @@ En resumen, las actividades que debe realizar durante esta semana como parte de 
 
 1. Instalar la versión 3.3.0 de la aplicación bajo pruebas "Ghost" en su ambiente local de pruebas. Para esto consulte el CodeLab _"Desplegar Ghost de forma local"_ y el siguiente [link](https://ghost.org/docs/ghost-cli/#ghost-install)
 
-> ghost install 3.3.0 --local
-
 2. Configurar un sistema de registro de incidencias. Puede hacer uso de cualquier sistema que se encuentre disponible de forma pública en línea o puede instalar alguno de forma local, pero debe asegurar que este se pueda acceder de forma remota. Si tiene dudas acerca de cómo reportar incidencias hemos preparado para usted un video que muestra ¿Cómo reportar incidencias en JIRA, Bugzilla, Mantis y GH?.
 
 3. Revisar el código fuente de la aplicación con el objetivo de identificar: lenguajes usados en la aplicación, estructura de directorios, patrones arquitectónicos y de diseño usados en la ABP.
