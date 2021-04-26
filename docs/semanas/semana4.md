@@ -6,7 +6,9 @@
 Con nuestro CTO ya estamos revisando sus estrategias de pruebas propuestas. Gracias de nuevo por toda su ayuda. Nuestros asesores de The Software Design Lab nos han sugerido que una buena forma de iniciar con automatización de pruebas es hacer pruebas de reconocimiento, dado que estas no requieren intervención humana.  
 
 ### Resumen de las actividades
+
 No entendimos muy bien las diferencias entre los monkeys y los rippers, por lo tanto, nos gustaría que con su par de pruebas ejecuten pruebas de reconocimiento en GHOST con esos dos tipos de herramientas y, a partir de su experiencia con estas, actualice las dos estrategias de pruebas que entregaron la semana pasada. Junto con las estrategias nos gustaría que incluyan un análisis de los pros y contras de estas herramientas. La entrega se debe realizar a través de Coursera en las fechas indicadas. Nuestros amigos de The Software Design Lab nos sugieren usar las herramientas [monkey-cypress](https://github.com/TheSoftwareDesignLab/monkey-cypress) y [RIPuppet](https://github.com/TheSoftwareDesignLab/RIPuppetCoursera/).
+
 
 ### Detalles de la entrega
 Se debe entregar un archivo .zip con el reporte de experiencia de las dos herramientas, las dos estrategias de pruebas actualizadas y el enlace a un video justificando las dos estrategias y el análisis solicitado.
