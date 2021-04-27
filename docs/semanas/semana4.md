@@ -14,7 +14,7 @@ Se debe entregar un archivo .zip con el reporte de experiencia de las dos herram
 
 ### Criterios de evaluación
 
-- Reporte con descripción de resultados obtenidos luego de ejecutar [monkey-cypress](https://github.com/TheSoftwareDesignLab/monkey-cypress) y [RIPuppet](https://github.com/TheSoftwareDesignLab/RIPuppetCoursera)  y el enlace al video donde se justifican las estrategias y se describen los pros y contras de las herramientas. **[5 puntos]**
+- Reporte con descripción de resultados obtenidos luego de ejecutar [monkey-cypress](https://github.com/TheSoftwareDesignLab/monkey-cypress) y [RIPuppet](https://github.com/TheSoftwareDesignLab/RIPuppetCoursera)  y el enlace al video donde se justifican las estrategias y se describen los pros y contras de las herramientas; este video es el mismo que se describe más adelante en los criterios de evaluación. **[5 puntos]**
 
 - En el caso de encontrar defectos con las herramientas estos se deben reportar en el sistema de registo de incidentes y se deben mencionar en el informe. **[5 puntos]**
 
