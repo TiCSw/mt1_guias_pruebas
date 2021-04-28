@@ -31,7 +31,7 @@ function randomClick(monkeysLeft) {
         cy.get('a').then($links => {
             var randomLink = $links.get(getRandomInt(0, $links.length));
             if(!Cypress.dom.isHidden(randomLink)) {
-                cy.wrap(randomLink).rclick({force: true});
+                cy.wrap(randomLink).click({force: true});
                 monkeysLeft = monkeysLeft - 1;
             }
             cy.wait(1000);
