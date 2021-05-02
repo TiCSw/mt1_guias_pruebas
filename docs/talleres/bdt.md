@@ -58,37 +58,36 @@ var {Then} = require('cucumber');
 var {expect} = require('chai');
 
 Given('I go to losestudiantes home screen', () => {
-  browser.url('/');
+  browser.url('/uniandes/');
   if($('button=Cerrar').isDisplayed()) {
     $('button=Cerrar').click();
   }
 });
 
 When('I open the login screen', () => {
-  $('button=Ingresar').waitForExist(5000);
-  $('button=Ingresar').waitForDisplayed(5000);
-  $('button=Ingresar').click();
+  $('button.loginButton').waitForExist(5000);
+  $('button.loginButton').waitForDisplayed(5000);
+  $('button.loginButton').click();
 });
 
 When('I fill a wrong email and password', () => {
   var cajaLogIn = $('.cajaLogIn');
 
-  var mailInput = cajaLogIn.$('input[name="correo"]');
+  var mailInput = $('input[name="email"]');
   mailInput.click();
   mailInput.setValue('wrongemail@example.com');
 
-  var passwordInput = cajaLogIn.$('input[name="password"]');
+  var passwordInput = $('input[name="password"]');
   passwordInput.click();
   passwordInput.setValue('123467891');
 });
 
 When('I try to login', () => {
-  var cajaLogIn = $('.cajaLogIn');
-  cajaLogIn.$('button=Ingresar').click();
+  $('button=Ingresar').click();
 });
 
 Then('I expect to not be able to login', () => {
-  $('.aviso.alert.alert-danger').waitForDisplayed(5000);
+  $('.notice.alert.alert-danger').waitForDisplayed(5000);
 });
 ```
 
@@ -128,7 +127,7 @@ Scenario Outline: Login failed with wrong inputs
     Examples:
       | email            | password | error                    |
       |                  |          | "Ingresa una contraseña"   |
-      | miso@gmail.com   |    1234  | "Upss! El correo y"      |
+      | miso@gmail.com   |    1234  | "Oops! Revisa tu contraseña"      |
 ```
 
 Note que ahora estamos usando un *Scenario Outline* porque en este mismo vamos a hacer uso de ejemplos.
@@ -137,21 +136,21 @@ Como puede ver, en este caso definimos dos ejemplos distintos (login sin llenar 
 
 ```javascript
 When(/^I fill with (.*) and (.*)$/ , (email, password) => {
-  var cajaLogIn = $('.cajaLogIn');
-
- var mailInput = cajaLogIn.$('input[name="correo"]');
- mailInput.click();
- mailInput.keys(email);
-
- var passwordInput = cajaLogIn.$('input[name="password"]');
- passwordInput.click();
- passwordInput.keys(password)
+    
+  
+   var mailInput = $('input[name="email"]');
+   mailInput.click();
+   mailInput.keys(email);
+  
+   var passwordInput = $('input[name="password"]');
+   passwordInput.click();
+   passwordInput.keys(password)
 });
-
+  
 Then('I expect to see {string}', error => {
- $('.aviso.alert.alert-danger').waitForDisplayed(5000);
- var alertText = browser.$('.aviso.alert.alert-danger').getText();
- expect(alertText).to.include(error);
+   $('.notice.alert.alert-danger').waitForDisplayed(5000);
+   var alertText = browser.$('.notice.alert.alert-danger').getText();
+   expect(alertText).to.include(error);
 });
 
 ```
