@@ -45,7 +45,7 @@ Scenario: Login failed
     Then I expect to not be able to login
 ```
 
-La sintaxis es muy clara y hace uso de un lenguaje llamado **Gherkin**. [Aquí](https://cucumber.io/docs/reference) puede obtener más información sobre este.
+La sintaxis es muy clara y hace uso de un lenguaje llamado **Gherkin**. [Aquí](https://cucumber.io/docs/gherkin/) puede obtener más información sobre este.
 
 ## 1.2 Step Definitions
 
@@ -136,17 +136,17 @@ Como puede ver, en este caso definimos dos ejemplos distintos (login sin llenar 
 
 ```javascript
 When(/^I fill with (.*) and (.*)$/ , (email, password) => {
-    
-  
+
+
    var mailInput = $('input[name="email"]');
    mailInput.click();
    mailInput.keys(email);
-  
+
    var passwordInput = $('input[name="password"]');
    passwordInput.click();
    passwordInput.keys(password)
 });
-  
+
 Then('I expect to see {string}', error => {
    $('.notice.alert.alert-danger').waitForDisplayed(5000);
    var alertText = browser.$('.notice.alert.alert-danger').getText();
