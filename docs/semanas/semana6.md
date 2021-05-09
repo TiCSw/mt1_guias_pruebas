@@ -3,11 +3,13 @@
 
 ## Semana  6: Pruebas de regresión visual
 
-Estimado equipo de pruebas. Tenemos una nueva versión de GHOST. Para esto usted debe instalar la versión 3.42.5 de Ghost. Esta versión tiene algunos cambios tanto de interfaz como de funcionamiento, sin embargo, la persona que diseño estos cambios no realizo ninguna documentación y ahora no sabemos como se veran impactadas las pruebas. Por lo tanto, necesitamos que:
- 1) Modifique sus scripts de pruebas para la toma de screenshots durante su ejecución. 
- 2) Ejecutar las pruebas sobre la nueva versión y medir el impacto en terminos de pruebas fallidas y exitosas. 
- 3) Generar la versión de los scripts de pruebas para su ejecución en la nueva versión de GHOST 
- 4) Realizar pruebas VRT sobre los screenshots tomados en ambas versiones.
+Estimado equipo de pruebas. Tenemos una nueva versión de GHOST. Para esto usted debe instalar la versión 3.42.5 de Ghost. Esta versión tiene algunos cambios tanto de interfaz como de funcionamiento, sin embargo, la persona que diseño estos cambios no realizo ninguna documentación y ahora no sabemos como se veran impactadas las pruebas. Por lo tanto, necesitamos que:  
+ 1. Modifique sus scripts de pruebas para la toma de screenshots durante su ejecución. 
+ 2. Ejecutar las pruebas sobre la nueva versión y medir el impacto en terminos de pruebas fallidas y exitosas. 
+ 3. Generar la versión de los scripts de pruebas para su ejecución en la nueva versión de GHOST 
+ 4. Realizar pruebas VRT sobre los screenshots tomados en ambas versiones.
+
+ ## Nota: Esta entrega se debe realizar en grupos de 4 personas.
 
 ### Resumen de las actividades
 
