@@ -3,20 +3,20 @@
 
 ## Semana 8: Versión final de la estrategia de pruebas
 
-Estimado equipo de pruebas... Estamos en la recta final de este proyecto, por lo tanto vamos a dedicarle los mejores recursos de pruebas a este proyecto. Nuestro CTO necesita la versión final de la estrategía de pruebas. Por lo tanto, usted junto con su compañera o compañero deben generar la versión final de dicha estrategía.
+Estimado equipo de pruebas... Estamos en la recta final de este proyecto, por lo tanto vamos a dedicarle los mejores recursos de pruebas a este proyecto. Nuestro CTO necesita la versión final de la estrategía de pruebas. Por lo tanto, usted junto con Sus compañeras y/o compañeros deben generar la versión final de dicha estrategía.
 
-Sin embargo, vamos a aprovechar el esfuerzo que ustedes le ha dedicado a este proyecto. Por lo tanto, su presupuesto de pruebas para esta nueva estrategía son dos testers senior (su compañero y usted), durante 8 semanas, en una dedicación de 8 horas por persona semanalmente. La idea es que la estrategia incluyan pruebas manuales, pruebas de reconocimiento, pruebas de extremo a extremo, pruebas de regresión visual y escenarios de validación de datos. En lo concerniente a recursos computaciones ustedes tienen libertar para decidir el presupuesto a usar.
+Sin embargo, vamos a aprovechar el esfuerzo que ustedes le han dedicado a este proyecto. Por lo tanto, su presupuesto de pruebas para esta nueva estrategía son cuatro testers senior (sus compañeras(os) y usted), durante 8 semanas, en una dedicación de 8 horas por persona semanalmente. La idea es que la estrategia incluyan pruebas manuales, pruebas de reconocimiento, pruebas de extremo a extremo, pruebas de regresión visual y escenarios de validación de datos. En lo concerniente a recursos computaciones ustedes tienen libertar para decidir el presupuesto a usar.
 
 > Nota: No contamos con recursos monetarios para contratar servicios externos, por lo tanto, cualquier servicio externo corre por su cuenta. No es requerido que usted haga uso de servicios externos, si usted cuenta con algún recurso técnologico y le gustaría usarlo, tiene toda la libertad de usarlo.
 
-Usted quizas este pensando que 8 horas para diseñar la estrategía de pruebas es demasiado tiempo, es por esto que está semana usted tiene la libertad para decidir la técnica, nivel y tipo de pruebas a realizar. Dado su conocimiento previo de Ghost, se espera que usted encuentre la mayor cantidad de bugs que pueda.
+Usted quizas este pensando que 8 horas para diseñar la estrategía de pruebas es demasiado tiempo, es por esto que está semana usted tiene la libertad para decidir la técnica, nivel y tipo de pruebas necesarias para complementar los recursos con los que cuenta actualmente. Dado su conocimiento previo de Ghost, se espera que usted encuentre la mayor cantidad de bugs que pueda.
 
 ## Resumen de las actividades
 Nos gustaría que su aprendizaje de estas semanas en TSDC sea usado para el beneficio de la compañía. Por lo tanto, queremos que su equipo de pruebas diseñe y ejecute la estrategia, de acuerdo con el presupuesto dado. Con base en los resultados de esta última semana decidiremos si abrimos la división de pruebas automatizadas en TSDC. De esa manera, también les solicitamos que elaboren un video para el CTO que incluya la descripción de la estrategia, los resultados obtenidos, y un análisis de los pros y contras de las herramientas usadas.
 
 
 ## Detalles de la entrega
-Se debe entregar un release en el repositorio que incluya (i) artefactos de código, (ii) estrategia de pruebas de cada versión, (iii) listado de incidencias encontradas con la estrategia y reportadas en el repositorio, (iv) video de 15 minutos máximo con presentación a la gerencia describiendo la estrategia y resultados. Solo se calificará el último commit hecho antes de la fecha/hora de entrega. La hora de actualización de las incidencias y la entrada en la wiki deben ser antes de la fecha/hora de entrega; de lo contrario esta parte no será calificada.
+Se debe entregar un release en el repositorio que incluya (i) artefactos de código, (ii) estrategia de pruebas, (iii) listado de incidencias encontradas con la estrategia y reportadas en el repositorio, (iv) video de 15 minutos máximo con presentación a la gerencia describiendo la estrategia y resultados. Solo se calificará el último commit hecho antes de la fecha/hora de entrega. La hora de actualización de las incidencias y la entrada en la wiki deben ser antes de la fecha/hora de entrega; de lo contrario esta parte no será calificada.
 
 ### Criterios de evaluación:
 
@@ -31,6 +31,7 @@ Se debe entregar un release en el repositorio que incluya (i) artefactos de cód
 - El repositorio incluye el código que soporta la ejecución de la estrategia de pruebas.  **[10 puntos]**
 
 - El código que soporta la ejecución de la estrategia de pruebas es funcional y en el readme del repo se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la ejecución de los escenarios. De lo contrario no se darán los puntos.  **[35 puntos]**
+
 
 - Se entrega el video que describe: (i) la estrategias de pruebas; (ii) los resultados de la estrategia para la semana 1; (iii) análisis de los pros/contras de las herramientas usadas; (iv) limitaciones, costos adicionales al presupuesto, ventajas, y desventajas del proceso de pruebas propuesto para las 8 semanas. El video es coherente con la estrategia propuesta. **[25 puntos]**
 
