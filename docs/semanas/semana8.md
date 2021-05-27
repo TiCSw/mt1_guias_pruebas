@@ -32,11 +32,9 @@ Se debe entregar un release en el repositorio que incluya (i) artefactos de cód
 
 - El código que soporta la ejecución de la estrategia de pruebas es funcional y en el readme del repo se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la ejecución de los escenarios. De lo contrario no se darán los puntos.  **[35 puntos]**
 
-- Se entrega el video que describe las estrategias de pruebas, los resultados, y los pros/contras de las herramientas usadas. El video es coherente con las estrategias. Los pros y contras son coherentes con las características de las herramientas. **[15 puntos]**
+- Se entrega el video que describe: (i) la estrategias de pruebas; (ii) los resultados de la estrategia para la semana 1; (iii) análisis de los pros/contras de las herramientas usadas; (iv) limitaciones, costos adicionales al presupuesto, ventajas, y desventajas del proceso de pruebas propuesto para las 8 semanas. El video es coherente con la estrategia propuesta. **[25 puntos]**
 
-- Se entrega el video que describe las estrategias de pruebas, los resultados y el análisis del proceso de construcción de pruebas automatizadas: limitaciones, ventajas, desventajas, costos. El video es coherente con las estrategias propuestas. **[15 puntos]**
-
-- Se reportan, en el sistema de registro de incidencias, por lo menos 20 issues. **[10 puntos]**
+- Se reportan, en el sistema de registro de incidencias, por lo menos 20 issues para la versión bajo pruebas. **[10 puntos]**
 
 
 **La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y la calidad de cada uno de acuerdo con la rúbrica establecida.**
