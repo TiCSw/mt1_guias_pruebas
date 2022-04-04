@@ -3,7 +3,7 @@
 
 ## Semana 2: Queremos saber qué están haciendo en el sector
 
-Nuestro líder de producto le envía un gran agradecimiento por su dedicación durante la semana 1 y por el ejercicio de PE que nos permitió encontrar un primer conjunto de defectos a mejorar. Los defectos ya fueron reportados al equipo de desarrollo de GHOST. Sabemos que ha sido un inicio difícil para usted en TSDC. Por lo tanto, podrá trabajar de forma conjunta con otro miembro del equipo de automatizadores junior de TSDC. Usted tiene libertad para seleccionar quién será su par para automatizar las pruebas de GHOST. Mientras el equipo de desarrollo avanza en una nueva versión, queremos que usted y su par de pruebas nos ayuden con una tarea de investigación de las prácticas de automatización que otras compañías y profesionales del sector están llevando a cabo.  
+Nuestro líder de producto le envía un gran agradecimiento por su dedicación durante la semana 1 y por el ejercicio de PE que nos permitió encontrar un primer conjunto de defectos a mejorar. Los defectos ya fueron reportados al equipo de desarrollo de GHOST. Sabemos que ha sido un inicio difícil para usted en TSDC. Por lo tanto, podrá trabajar de forma conjunta con otros miembros del equipo de automatizadores junior de TSDC. Usted tiene libertad para seleccionar quién serán sus pares para automatizar las pruebas de GHOST. Mientras el equipo de desarrollo avanza en una nueva versión, queremos que usted y sus compañeros automatizadores nos ayuden con una tarea de investigación de las prácticas de automatización que otras compañías y profesionales del sector están llevando a cabo.  
 
 ### Resumen de las actividades
 
@@ -22,7 +22,7 @@ Luego de recolectar los datos usted y su par deben realizar un video que resuma 
 
 
 
-**Recomendaciones:** usted y su par deben encargarse, de alguna forma, de explicar a los encuestados/entrevistados los dos esquemas de distribución de pruebas (es decir cono de helado y pirámide). Pueden usar las imágenes de cada estrategia, sin embargo, una descripción adicional o una nota de voz puede ayudar a que los encuestados/entrevistados entiendan mejor las dos estrategias.  No olvide que en la encuesta debe contar con un consentimiento informado donde se le informe a cada participante el próposito de la encuesta, si va a ser anómima o no, cómo se van a tratar los datos recolectados, etc.
+**Recomendaciones:** usted y su equipo deben encargarse, de alguna forma, de explicar a los encuestados/entrevistados los dos esquemas de distribución de pruebas (es decir cono de helado y pirámide). Pueden usar las imágenes de cada estrategia, sin embargo, una descripción adicional o una nota de voz puede ayudar a que los encuestados/entrevistados entiendan mejor las dos estrategias.  No olvide que en la encuesta debe contar con un consentimiento informado donde se le informe a cada participante el propósito de la encuesta, si va a ser anónima o no, cómo se van a tratar los datos recolectados, etc.
 
 
 
