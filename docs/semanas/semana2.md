@@ -39,7 +39,7 @@ Se debe entregar un archivo zip con todos los artefactos solicitados: el enlace 
 
 - Archivo Excel con las respuestas dadas por los 30 participantes. **[10 puntos]**
 
-- Video en el que se resumen los resultados del análisis (cuantitativo y cualitativo) de los datos recolectados. Ambos miembros del equipo deben aparecer en el video. **[60 puntos]**
+- Video en el que se resumen los resultados del análisis (cuantitativo y cualitativo) de los datos recolectados. Los 4 miembros del equipo deben aparecer en el video (voz o en persona). **[60 puntos]**
 
 - Reporte en formato PDF que describa/indexe la información solicitada, y que incluya una descripción del proceso realizado para el análisis  de los datos. **[15 puntos]**
 
