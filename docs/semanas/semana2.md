@@ -3,7 +3,7 @@
 
 ## Semana 2: Queremos saber qué están haciendo en el sector
 
-Nuestro líder de producto le envía un gran agradecimiento por su dedicación durante la semana 1 y por el ejercicio de PE que nos permitió encontrar un primer conjunto de defectos a mejorar. Los defectos ya fueron reportados al equipo de desarrollo de GHOST. Sabemos que ha sido un inicio difícil para usted en TSDC. Por lo tanto, podrá trabajar de forma conjunta con otros miembros del equipo de automatizadores junior de TSDC. Usted tiene libertad para seleccionar quién serán sus pares para automatizar las pruebas de GHOST. Mientras el equipo de desarrollo avanza en una nueva versión, queremos que usted y sus compañeros automatizadores nos ayuden con una tarea de investigación de las prácticas de automatización que otras compañías y profesionales del sector están llevando a cabo.  
+Nuestro líder de producto le envía un gran agradecimiento por su dedicación durante la semana 1 y por el ejercicio de PE que nos permitió encontrar un primer conjunto de defectos a mejorar. Los defectos ya fueron reportados al equipo de desarrollo de GHOST. Sabemos que ha sido un inicio difícil para usted en TSDC. Por lo tanto, podrá trabajar de forma conjunta con otros miembros del equipo de automatizadores junior de TSDC. Usted tiene libertad para seleccionar quiénes serán sus pares para automatizar las pruebas de GHOST. Mientras el equipo de desarrollo avanza en una nueva versión, queremos que usted y sus compañeros automatizadores nos ayuden con una tarea de investigación de las prácticas de automatización que otras compañías y profesionales del sector están llevando a cabo.  
 
 ### Resumen de las actividades
 
