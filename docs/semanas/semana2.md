@@ -37,7 +37,7 @@ Se debe entregar un archivo zip con todos los artefactos solicitados: el enlace 
 
 - Descripción del formato usado para recolectar la información (ejemplo, encuesta en línea, entrevista individual, etc.) **[5 puntos]**
 
-- Archivo Excel con las respuestas dadas por los 30 participantes. **[10 puntos]**
+- Archivo Excel con las respuestas dadas por mínimo 30 participantes. **[10 puntos]**
 
 - Video en el que se resumen los resultados del análisis (cuantitativo y cualitativo) de los datos recolectados. Los 4 miembros del equipo deben aparecer en el video (voz o en persona). **[60 puntos]**
 
