@@ -15,6 +15,7 @@ docker run -d -e url=http://localhost:3001 -p 3001:2368 --name ghost_3.42 ghost:
 //Ghost 3.42
 http://localhost:3001/ghost
 ```
+
 2. Si junto con su grupo estan haciendo uso de una versión de ghost menor a la 4.0.0, deberan instalar la versión 4.44. Esto se puede realizar mediante los comandos de docker:
 ```
 docker run -d -e url=http://localhost:3002 -p 3002:2368 --name ghost_4.44.0 ghost:4.44.0
