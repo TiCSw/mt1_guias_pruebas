@@ -15,11 +15,11 @@ Recuerde que las pruebas exploratorias también tienen como objetivo encontrar d
 En resumen, las actividades que debe realizar durante esta semana como parte de su proyecto de automatización son la siguientes. **Para los puntos 2 en adelante usted cuenta con un presupuesto de pruebas que incluye máximo 6 horas de dedicación hora/persona:**
 
 
-1. Instalar la versión 3.41.1 de la aplicación bajo pruebas "Ghost" en su ambiente local de pruebas. Para esto consulte el CodeLab _"Desplegar Ghost de forma local"_ y el siguiente [link](https://ghost.org/docs/ghost-cli/#ghost-install)
+1. Instalar la versión **3.41.1** de la aplicación bajo pruebas "Ghost" en su ambiente local de pruebas. Para esto consulte el CodeLab [_"Desplegar Ghost de forma local"_](https://misovirtual.virtual.uniandes.edu.co/codelabs/ghost-local-deployment/index.html#0) y el siguiente [link](https://ghost.org/docs/ghost-cli/#ghost-install)
 
-2. Configurar un sistema de registro de incidencias. Puede hacer uso de cualquier sistema que se encuentre disponible de forma pública en línea o puede instalar alguno de forma local, pero debe asegurar que este se pueda acceder de forma remota. Si tiene dudas acerca de cómo reportar incidencias hemos preparado para usted un video que muestra ¿Cómo reportar incidencias en JIRA, Bugzilla, Mantis y GH?.
+2. Configurar un sistema de registro de incidencias. Puede hacer uso de cualquier sistema que se encuentre disponible de forma pública en línea o puede instalar alguno de forma local, pero debe asegurar que este se pueda acceder de forma remota. Si tiene dudas acerca de cómo reportar incidencias hemos preparado para usted una guia que muestra [¿Cómo reportar incidencias en JIRA, Bugzilla, Mantis y GH?](https://www.coursera.org/learn/pruebas-automatizadas-software/supplement/i1b1t/como-reportar-incidencias-en-gh-jira-y-mantis).
 
-3. Revisar el código fuente de la aplicación con el objetivo de identificar: lenguajes usados en la aplicación, estructura de directorios, patrones arquitectónicos y de diseño usados en la ABP.
+3. Revisar el código fuente de la aplicación con el objetivo de identificar: lenguajes usados en la aplicación, estructura de directorios, patrones arquitectónicos y de diseño usados en la Aplicación Bajo Prueba (ABP).
 
 4. Explorar rápidamente la aplicación con el objetivo de identificar la estrategia de navegación usada (menús, pestañas, botones, enlaces, etc.) y las funcionalidades de la ABP. Dedique no más de 10 minutos a esto.
 
@@ -36,7 +36,7 @@ Se debe entregar un archivo.zip que incluya el reporte de resultados, el listado
 
 ### Criterios de evaluación
 
-- Sistema para registro de incidencias en línea. Se debe crear un usuario que pueda ser usado por los tutores del curso para acceder al sistema. El usuario y password debe ser informado como parte de la entrega. **[5 puntos]**
+- Sistema para registro de incidencias en línea. En caso de ser necesario, se debe crear un usuario que pueda ser usado por los tutores del curso para acceder al sistema. El usuario y password debe ser informado como parte de la entrega. **[5 puntos]**
 
 - Listado de funcionalidades identificadas. Se debe incluir una descripción breve en lenguaje natural de cada funcionalidad identificada. El listado debe incluir mínimo 10 funcionalidades. **[10 puntos]**
 
