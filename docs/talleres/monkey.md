@@ -47,7 +47,7 @@ En el bloque ``describe`` al inicio del archivo es donde definimos nuestra prueb
 
 ### 1.2 Ejecutar la prueba
 
-Guarde el archivo ``monkey_testing.spec.js``, y desde la interfaz de Cypress.io, láncelo haciendo click en él. Usted verá la prueba correr de una manera similar a esta:
+Guarde el archivo ``monkey_testing.cy.js``, y desde la interfaz de Cypress.io, láncelo haciendo click en él. Usted verá la prueba correr de una manera similar a esta:
 
 ![Cypress monkey](../assets/images/gif-taller-monkeys.gif)
 
