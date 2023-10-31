@@ -8,7 +8,7 @@ En esta parte desarrollaremos nuestro propio *Monkey* que visitará la página d
 
 ### 1.1 Haciendo click en un link al azar de la página
 
-Comencemos por crear nuestro archivo de pruebas Cypress.io. Cree un nuevo directorio vacío, abra Cypress.io, haga click en Add Project y seleccione el directorio creado. Ahora, desde la interfaz de Cypress, abra el nuevo proyecto y verá un modal diciéndole que los archivos de configuración y una prueba de ejemplo han sido creados. Desde el directorio del proyecto en su explorador de archivos, diríjase a la carpeta ``cypress/e2e`` creada por Cypress.io (en caso de no encontrar la carpeta, deberá crearla manualmente), y proceda a crear un nuevo archivo llamado ``monkey_testing.cy.js`` (borre todos demás archivos ``cypress/e2e/*.cy.js``). El contenido del archivo ``monkey_testing.spec.js`` es el siguiente:
+Comencemos por crear nuestro archivo de pruebas Cypress.io. Cree un nuevo directorio vacío, abra Cypress.io, haga click en Add Project y seleccione el directorio creado. Ahora, desde la interfaz de Cypress, abra el nuevo proyecto y verá un modal diciéndole que los archivos de configuración y una prueba de ejemplo han sido creados. Desde el directorio del proyecto en su explorador de archivos, diríjase a la carpeta ``cypress/e2e`` creada por Cypress.io (en caso de no encontrar la carpeta, deberá crearla manualmente), y proceda a crear un nuevo archivo llamado ``monkey_testing.cy.js`` (borre todos demás archivos ``cypress/e2e/*.cy.js``). El contenido del archivo ``monkey_testing.cy.js`` es el siguiente:
 
 ```javascript
 describe('Los estudiantes under monkeys', function() {
