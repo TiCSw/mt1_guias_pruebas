@@ -9,27 +9,35 @@ Por ejemplo, para GHOST hacemos pruebas manuales funcionales con un enfoque de E
 
 ### Resumen de las actividades
 
-Creemos entonces que una buena forma de empezar, es implementar algunos de los escenarios de pruebas exploratorias que crearon para la semana 1, usando Kraken y algunas de las otras tres herramienta ([Cypress](https://www.cypress.io), [Puppeteer](https://pptr.dev) y [Playwright](https://playwright.dev)). En particular, les solicitamos que seleccionen mínimo 5 funcionalidades e implementen  por lo menos 20 de los escenarios probados, tanto con Kraken como con la otra herramienta de su elección. Para tal efecto creen un repositorio público en GitHub donde van a almacenar los artefactos generados de las pruebas.  Los escenarios de pruebas deben ser ejecutados en la app, con el fin de asegurar que están bien construidos. En el readme del repositorio detallen las funcionalidades y escenarios probados. No olviden hacer un resumen de los pros y los contras de cada herramienta. Este resumen lo deben dejar visible como una página en la wiki del repositorio.
+Creemos entonces que una buena forma de empezar sería implementando algunos de los escenarios de pruebas exploratorias que crearon para la primera semana. Para ello, les  solicitamos que seleccionen mínimo 5 funcionalidades e implementen por lo menos 20 de los escenarios probados utilizando Kraken y algunas de las otras tres herramientas ([Cypress](https://www.cypress.io), [Puppeteer](https://pptr.dev) y [Playwright](https://playwright.dev)). En otras palabras, los 20 escenarios de prueba deben ser implementados identicamente tanto con Kraken como con la otra herramienta de su elección. Los escenario deben utilizar los patrones vistos.
+
+Para tal efecto, creen un repositorio público en GitHub donde van a almacenar los artefactos generados de las pruebas. Los escenarios de pruebas deben ser ejecutados en la app, con el fin de asegurar que están bien construidos. En la Wiki del repositorio detallen las funcionalidades y escenarios probados (utilicen identificadores para los escenarios en la Wiki, al igual que en el la implementación de Kraken y la otra herramienta). Adicionalmente, la Wiki debe tener un resumen de los pros y los contras de cada herramienta.
 
 ### Detalles de la entrega
-Se debe entregar el enlace al repositorio que debe incluir (i) código de los 20 escenarios de prueba hechos tanto con Kraken como con la herramienta  de su elección y siguiendo los patrones vistos, (ii) listado de funcionalidades y escenarios seleccionados para pruebas, (iii) resumen de pros y contras de las herramientas en la wiki del repo. Solo se calificará el último commit hecho antes de la fecha/hora de entrega. La hora de actualización de la entrada en la wiki debe ser antes de la fecha/hora de entrega. El readme del repo debe tener los nombres y correos uniandes de los estudiantes.
+Al finalizar la implementación en la ABP, se debe entregar el enlace al repositorio público en GitHub. Este debe contener:
+
+1. Un Release con el código de los 20 escenarios de prueba hechos tanto con Kraken como con la herramienta  de su elección y siguiendo los patrones vistos.
+2. Un README dentro del Release en donde se encuentran (i) el nombre y correos uniandes de los estudiantes que participaron en la entrega, (ii) el paso a paso para la instalación y ejecución de las pruebas en Kraken, y (iii) el paso a paso para la instalación y ejecución de las pruebas en la otra herramienta de su elección.
+3. El listado de funcionalidades y escenarios seleccionados para pruebas en la Wiki del repo
+4. El resumen de pros y contras de las herramientas en la Wiki del repo.
+
+Solo se calificará el último Release hecho antes de la fecha/hora de entrega. Del mismo modo, la hora de actualización de la entrada en la wiki debe ser antes de la fecha/hora de entrega. El readme del repo debe tener los nombres y correos uniandes de los estudiantes.
 
 
 ### Criterios de evaluación
 
 
-- El readme del repositorio detalla las 5 funcionalidades bajo pruebas. **[2 puntos]**  NOTA: si quieren definir escenarios para más de 5 funcionalidades lo pueden hacer. El mínimo de funcionalides es 5.
+- En la wiki del repositorio se detallan las 5 funcionalidades bajo pruebas. **[2 puntos]**  NOTA: si quieren definir escenarios para más de 5 funcionalidades lo pueden hacer. El mínimo de funcionalides es 5.
 
-
-- El readme del repositorio describe los 20 escenarios de pruebas. **[3 puntos]**
+- En la wiki del repositorio se describen los 20 escenarios de pruebas. **[3 puntos]**
 
 - En la wiki del repo se describen los pros y contras de las dos herramientas utilizadas.  Los pros/contras deben ser coherentes con las características de las herramientas. **[15 puntos]**
 
 > Pruebas con la primer herramienta (Cypress/Puppeteer/Playwright):
 
-- El repositorio contiene el código de los 20 casos/escenarios de pruebas creados con la primera herramienta seleccionada. **[3 puntos]**
+- El Release del repositorio cuenta con el código de los 20 casos/escenarios de pruebas creados con la primera herramienta seleccionada. **[3 puntos]**
 
-- El readme del repo detalla las instrucciones para ejecutar los escenarios. **Estas instrucciones deben llevar a la ejecución de los escenarios. De lo contrario no se darán los puntos en el siguiente criterio**. **[2 puntos]**
+- El readme del repo detalla las instrucciones para ejecutar los escenarios. **Estas instrucciones deben llevar el paso a paso para la instalación y ejecución de los escenarios. De lo contrario no se darán los puntos en el siguiente criterio**. **[2 puntos]**
 
 - Los escenarios se ejecutan exitosamente. **[20 puntos]**
 
@@ -37,9 +45,9 @@ Se debe entregar el enlace al repositorio que debe incluir (i) código de los 20
 
 > Pruebas con Kraken:
 
-- El repositorio tiene el código para ejecutar los 20 casos/escenarios creados con Kraken. **[3 puntos]**
+- El Release del repositorio cuenta con el código para ejecutar los 20 casos/escenarios creados con Kraken. **[3 puntos]**
 
-- El readme del repo se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la ejecución de los escenarios. De lo contrario no se darán los puntos.  **[2 puntos]**
+- El readme del repo detalla las instrucciones para ejecutar los escenarios. **Estas instrucciones deben llevar el paso a paso para la instalación y ejecución de los escenarios. De lo contrario no se darán los puntos en el siguiente criterio**. **[2 puntos]**
 
 - Los escenarios son funcionales. **[20 puntos]**
 
