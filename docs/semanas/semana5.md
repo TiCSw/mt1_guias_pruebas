@@ -14,7 +14,7 @@ Creemos entonces que una buena forma de empezar sería implementando algunos de 
 Para tal efecto, creen un repositorio público en GitHub donde van a almacenar los artefactos generados de las pruebas. Los escenarios de pruebas deben ser ejecutados en la app, con el fin de asegurar que están bien construidos. En la Wiki del repositorio detallen las funcionalidades y escenarios probados (utilicen identificadores para los escenarios en la Wiki, al igual que en el la implementación de Kraken y la otra herramienta). Adicionalmente, la Wiki debe tener un resumen de los pros y los contras de cada herramienta.
 
 ### Detalles de la entrega
-Al finalizar la implementación en la ABP, se debe entregar el enlace al repositorio público en GitHub. Este debe contener:
+Al finalizar la implementación de pruebas E2E en la ABP, se debe entregar el enlace al repositorio público en GitHub. Este debe contener:
 
 1. Un Release con el código de los 20 escenarios de prueba hechos tanto con Kraken como con la herramienta  de su elección y siguiendo los patrones vistos.
 2. Un README dentro del Release en donde se encuentran (i) el nombre y correos uniandes de los estudiantes que participaron en la entrega, (ii) el paso a paso para la instalación y ejecución de las pruebas en Kraken, y (iii) el paso a paso para la instalación y ejecución de las pruebas en la otra herramienta de su elección.
