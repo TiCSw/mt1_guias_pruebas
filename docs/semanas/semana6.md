@@ -32,7 +32,7 @@ Estas versiones tienen algunos cambios tanto de interfaz como de funcionamiento,
  1. Modifique sus scripts de pruebas para la toma de screenshots durante su ejecución.
  2. Ejecute las pruebas sobre la nueva versión y realice mediciones sobre el impacto en terminos de pruebas fallidas y exitosas.
  3. Implemente la versión de scripts de pruebas para la ejecución de la nueva versión de GHOST
- 4. Realice pruebas VRT sobre los screenshots tomados en ambas versiones utilizando alguna de las siguientes herramientas: `ResembleJS`, `BackstopJS`.
+ 4. Realice pruebas VRT sobre los screenshots tomados en ambas versiones utilizando las siguientes herramientas `ResembleJS` y `BackstopJS`.
 
  ## Nota: Esta entrega se debe realizar en grupos de 4 personas.
 
