@@ -28,11 +28,11 @@ docker run -d -e url=http://localhost:3002 -p 3002:2368 --name ghost_4.44.0 ghos
 http://localhost:3002/ghost
 ```
 
-EstaS versiones tiene algunos cambios tanto de interfaz como de funcionamiento, sin embargo, la persona que diseño estos cambios no realizo ninguna documentación y ahora no sabemos como se veran impactadas las pruebas. Por lo tanto, necesitamos que:  
+Estas versiones tienen algunos cambios tanto de interfaz como de funcionamiento, sin embargo, la persona que diseño estos cambios no realizo ninguna documentación y ahora no sabemos como se veran impactadas las pruebas. Por lo tanto, necesitamos que:  
  1. Modifique sus scripts de pruebas para la toma de screenshots durante su ejecución.
- 2. Ejecutar las pruebas sobre la nueva versión y medir el impacto en terminos de pruebas fallidas y exitosas.
- 3. Generar la versión de los scripts de pruebas para su ejecución en la nueva versión de GHOST
- 4. Realizar pruebas VRT sobre los screenshots tomados en ambas versiones usando las herramientas ResembleJS  y BackstopJS.
+ 2. Ejecute las pruebas sobre la nueva versión y realice mediciones sobre el impacto en terminos de pruebas fallidas y exitosas.
+ 3. Implemente la versión de scripts de pruebas para la ejecución de la nueva versión de GHOST
+ 4. Realice pruebas VRT sobre los screenshots tomados en ambas versiones utilizando alguna de las siguientes herramientas: `ResembleJS`, `BackstopJS`.
 
  ## Nota: Esta entrega se debe realizar en grupos de 4 personas.
 
@@ -44,31 +44,46 @@ Su equipo debe entonces:
 
 2. Ejecutar los 40 escenarios modificados en la versión de Ghost actual.
 
-3. Seleccionar 10 escenarios y ejecutelos en la nueva versión instalada preferiblemente pertenecientes a funcionalidades diferentes, para que sean ejecutados en modo de regresión visual a nivel de paso ejecutado.
+3. Seleccionar 10 escenarios y ejecutarlos en la nueva versión instalada. Preferiblemente, los escenarios deben pertenecer a funcionalidades diferentes, para que sean ejecutados en modo de regresión visual a nivel de paso ejecutado.
 
-4. Construir un reporte HTML mediante un script en el lenguaje de su preferencia, que de forma automática, dadas dos carpetas de ejecución de pruebas, analice los resultados de cada paso y presente: los pasos, los screenshots en ambas versiones y las diferencias visuales.
+4. Construir un reporte HTML mediante un script en el lenguaje de su preferencia. Este script, dadas dos carpetas de ejecución de pruebas, debe analizar de forma automática los resultados de cada paso y presentar un reporte con: los pasos, los screenshots en ambas versiones y las diferencias visuales.
 
-5. Si encuentran diferencias visuales,repórtenlas en el sistema de registro de incidencias (una incidencia por diferencia encontrada).
+5. Si encuentran diferencias visuales, estas deben ser reportadas en el sistema de registro de incidencias (una incidencia por diferencia encontrada).
 
- No olviden hacer un resumen de los pros y los contras de cada herramienta. Este resumen lo deben dejar visible como una página en la wiki del repositorio.
+6. Redactar un resumen de los pros y los contras de cada herramienta. Este resumen lo debe ser visible como una página en la wiki del repositorio.
+
+
 
 ### Detalles de la entrega
-Se deben entregar en el repositorio (i) los artefactos de código para los 40 escenarios de pruebas implementando los cambios para soportar pruebas de regresión visual; (ii) los artefactos de código para los 40 escenarios de pruebas implementando los cambios para soportar su correcta ejecución en la nueva versión de ghost; (iii) el reporte HTML de regresión visual;  (iv) las incidencias reportadas en el sistema de registro de incidencias; (v) link a un video explicando el procedimiento realizado para la toma de screenshots, las decisiones tomadas respecto al reporte generado y los resultados del proceso de VRT. Solo se calificará el último commit hecho antes de la fecha/hora de entrega. La hora de actualización de las incidencias debe ser antes de la fecha/hora de entrega; de lo contrario esta parte no será calificada.
+Se deben entregar en el repositorio los siguientes elementos
+
+1. Un Release con (i) los artefactos de código para los 40 escenarios de pruebas implementando los cambios para soportar pruebas de regresión visual, (ii) los artefactos de código para los 40 escenarios de pruebas implementando los cambios para soportar su correcta ejecución en la nueva versión de ghost, y (iii) el reporte HTML de regresión visual. Lo anterior debe estar completamente documentado, debe contar con por lo menos un archivo README donde se detallen las versiones, al igual que los pasos de instalación y ejecución de los artefactos y el script del reporte.
+
+2. Las incidencias reportadas en el sistema de registro de incidencias. En caso de que el sistema utilizado esté por fuera del repositorio, se debe incluir el link dentro del README.
+
+3. Una wiki con (i) el resumen de los pros y los contras de cada herramienta, (ii) descripción de las funcionalidades de la ABP que se incluyen esta semana.
+
+4. El link al video explicando el procedimiento realizado para la toma de screenshots, las decisiones tomadas respecto al reporte generado y los resultados del proceso de VRT.
+
+Solo se calificará el último Release hecho antes de la fecha/hora de entrega. Del mismo modo, la hora de actualización de la entrada en la wiki y de las incidencias debe ser antes de la fecha/hora de entrega. El readme del repo debe tener los nombres y correos uniandes de los estudiantes.
+
+
+
 
 ### Criterios de evaluación:
 
-- Descripción de las funcionalidades de GHOST que se incluyen en las pruebas de esta semana. **[1 punto]**
+- En la wiki se encuentra la descripción de las funcionalidades de GHOST que se incluyen en las pruebas de esta semana. **[1 punto]**
 
-- El repositorio tiene el código de los 40 escenarios de prueba de la semana pasada modificados para la toma de screenshots. Los escenarios son funcionales y en el readme del repo se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la ejecución de los escenarios. De lo contrario no se darán los puntos. **[45 puntos]**
+- El Release del repositorio tiene el código de los 40 escenarios de prueba de la semana pasada modificados para la toma de screenshots. Los escenarios son funcionales y en el readme del repo se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la ejecución de los escenarios. De lo contrario no se darán los puntos. **[45 puntos]**
 
-- El repositorio tiene el código de los 10 escenarios de prueba modificados para su correcta ejecución en la nueva versión de GHOST. Los escenarios son funcionales y en el readme del repo se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la ejecución de los escenarios. De lo contrario no se darán los puntos.  **[20 puntos]**
+- El Release del repositorio tiene el código de los 10 escenarios de prueba modificados para su correcta ejecución en la nueva versión de GHOST. Los escenarios son funcionales y en el readme del repo se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la ejecución de los escenarios. De lo contrario no se darán los puntos.  **[20 puntos]**
 
-- El código del reporte HTML, que realiza automaticamente la comparación de dos carpetas de resultados de ejecución de pruebas. La comparación visual se debe hacer al nivel de cada paso de los escenarios. **[9 puntos]**
+- El Release del repositorio tiene el código del reporte HTML, que realiza automáticamente la comparación de dos carpetas de resultados de ejecución de pruebas. La comparación visual se debe hacer al nivel de cada paso de los escenarios. **[9 puntos]**
 
 - Se reportan por lo menos 5 diferencias visuales en el sistema de registro de incidencia del grupo, siguiendo el formato establecido por el grupo. **[10 puntos]**
 
 - En la wiki del repo se describen los pros y contras de las dos herramientas utilizadas. Los pros/contras deben ser coherentes con las características de las herramientas. **[15 puntos]**
 
-- Link a video de explicación de procedimiento realizado en la semana para habilitar la toma de pantallazos, las decisiones tomadas respecto a la construcción del reporte y breve explicación de los resultados obtenidos en la semana. **[10 puntos]**
+- Link a video de explicación de procedimiento realizado en la semana para habilitar la toma de capturas de pantalla, las decisiones tomadas respecto a la construcción del reporte y breve explicación de los resultados obtenidos en la semana. **[10 puntos]**
 
  **La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y la calidad de cada uno de acuerdo con la rúbrica establecida.**
