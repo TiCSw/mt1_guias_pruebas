@@ -3,6 +3,8 @@
 
 ## Semana  5: Pruebas E2E
 
+
+
 Ya tenemos más claro cómo funcionan las pruebas de reconocimiento. Nos parece que son una herramienta súper útil para detectar “crashes”, excepciones y errores inesperados sin intervención humana. Entendemos que este tipo de pruebas requieren la disponibilidad de máquinas para su ejecución por varias horas y que se espera que se usen como complemento a pruebas funcionales. Sin embargo, consideramos que esto no es suficiente para evaluar la calidad de GHOST.  
 
 Por ejemplo, para GHOST hacemos pruebas manuales funcionales con un enfoque de E2E, es decir de “extremo a extremo”. Sin embargo, re-ejecutar los escenarios de pruebas de forma manual puede llevar a errores en la ejecución de la prueba y, lamentablemente, nuestros ingenieros suelen no documentarlos. Por lo tanto, como parte de su labor queremos que automatice las pruebas E2E de GHOST. Con base en una revisión de blogs hemos encontrado que [Cypress](https://www.cypress.io) es una herramienta ampliamente usada para hacer pruebas E2E basadas en scripts. Por otro lado, nuestros amigos de The Software Design Lab nos recomendaron usar su herramienta [Kraken](https://thesoftwaredesignlab.github.io/KrakenMobile/) que permite hacer pruebas E2E, pero usando escenarios escritos en un estilo BDT (es decir, Behavior Driven Testing). También nos hablaron de [Puppeteer](https://pptr.dev) y [Playwright](https://playwright.dev).
@@ -12,6 +14,10 @@ Por ejemplo, para GHOST hacemos pruebas manuales funcionales con un enfoque de E
 Creemos entonces que una buena forma de empezar sería implementando algunos de los escenarios de pruebas exploratorias que crearon para la primera semana. Para ello, les  solicitamos que seleccionen mínimo 5 funcionalidades e implementen por lo menos 20 de los escenarios probados utilizando Kraken y algunas de las otras tres herramientas ([Cypress](https://www.cypress.io), [Puppeteer](https://pptr.dev) y [Playwright](https://playwright.dev)). En otras palabras, los 20 escenarios de prueba deben ser implementados identicamente tanto con Kraken como con la otra herramienta de su elección. Los escenario deben utilizar los patrones vistos.
 
 Para tal efecto, creen un repositorio público en GitHub donde van a almacenar los artefactos generados de las pruebas. Los escenarios de pruebas deben ser ejecutados en la app, con el fin de asegurar que están bien construidos. En la Wiki del repositorio detallen las funcionalidades y escenarios probados (utilicen identificadores para los escenarios en la Wiki, al igual que en el la implementación de Kraken y la otra herramienta). Adicionalmente, la Wiki debe tener un resumen de los pros y los contras de cada herramienta.
+
+Es primordial que usted despliegue por su parte una instancía de Ghost que los tutores puedan utilizar de forma pública. Le recomendamos usar plataformas como OnRender para realizar este despliegue.
+
+### Toda entrega que no cuente con el despliegue de acceso público se calificara con una nota de 0.
 
 ### Detalles de la entrega
 Al finalizar la implementación de pruebas E2E en la ABP, se debe entregar el enlace al repositorio público en GitHub. Este debe contener:
