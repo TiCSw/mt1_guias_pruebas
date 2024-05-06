@@ -6,27 +6,9 @@
 Estimado equipo de pruebas. Tenemos una nueva versión de GHOST. Usted junto con su grupo deben instalar una versión diferente a la que está usando con el fin de ayudarnos a garantizar la calidad de la aplicación a lo largo del tiempo.
 
 Para esto existen dos casos:
-1. Si junto con su grupo estan haciendo uso de una versión de ghost mayor a la 4.0.0, deberan instalar la versión 3.42. Esto se puede realizar mediante los comandos de docker:
+1. Si junto con su grupo estan haciendo uso de una versión de ghost mayor a la 4.0.0, deberan instalar la versión 3.42.
 
-```
-docker run -d -e url=http://localhost:3001 -p 3001:2368 --name ghost_3.42 ghost:3.42
-
-//Esto desplegará en la siguiente dirección la versión de Ghost Admin:
-
-//Ghost 3.42
-http://localhost:3001/ghost
-```
-
-2. Si junto con su grupo estan haciendo uso de una versión de ghost menor a la 4.0.0, deberan instalar la versión 4.44. Esto se puede realizar mediante los comandos de docker:
-
-```
-docker run -d -e url=http://localhost:3002 -p 3002:2368 --name ghost_4.44.0 ghost:4.44.0
-
-//Esto desplegará en la siguiente dirección la versión de Ghost Admin:
-
-//Ghost 4.44.0
-http://localhost:3002/ghost
-```
+2. Si junto con su grupo estan haciendo uso de una versión de ghost menor a la 4.0.0, deberan instalar la versión 5.82.
 
 Estas versiones tienen algunos cambios tanto de interfaz como de funcionamiento, sin embargo, la persona que diseño estos cambios no realizo ninguna documentación y ahora no sabemos como se veran impactadas las pruebas. Por lo tanto, necesitamos que:  
  1. Modifique sus scripts de pruebas para la toma de screenshots durante su ejecución.
@@ -34,7 +16,9 @@ Estas versiones tienen algunos cambios tanto de interfaz como de funcionamiento,
  3. Implemente la versión de scripts de pruebas para la ejecución de la nueva versión de GHOST
  4. Realice pruebas VRT sobre los screenshots tomados en ambas versiones utilizando las siguientes herramientas `ResembleJS` y `BackstopJS`.
 
- ## Nota: Esta entrega se debe realizar en grupos de 4 personas.
+## Nota: Esta entrega se debe realizar en grupos de 4 personas.  
+
+## Las dos versiones deben estar desplegadas.
 
 ### Resumen de las actividades
 
