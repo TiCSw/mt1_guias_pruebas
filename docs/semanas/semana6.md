@@ -41,7 +41,7 @@ Su equipo debe entonces:
 ### Detalles de la entrega
 Se deben entregar en el repositorio los siguientes elementos
 
-1. Un Release con (i) los artefactos de código para los 40 escenarios de pruebas implementando los cambios para soportar pruebas de regresión visual, (ii) los artefactos de código para los 40 escenarios de pruebas implementando los cambios para soportar su correcta ejecución en la nueva versión de ghost, y (iii) el reporte HTML de regresión visual. Lo anterior debe estar completamente documentado, debe contar con por lo menos un archivo README donde se detallen las versiones, al igual que los pasos de instalación y ejecución de los artefactos y el script del reporte.
+1. Un Release con (i) los artefactos de código para los 40 escenarios de pruebas implementando los cambios para soportar pruebas de regresión visual, (ii) los artefactos de código para los 10 escenarios de pruebas implementando los cambios para soportar su correcta ejecución en la nueva versión de ghost, y (iii) el reporte HTML de regresión visual. Lo anterior debe estar completamente documentado, debe contar con por lo menos un archivo README donde se detallen las versiones, al igual que los pasos de instalación y ejecución de los artefactos y el script del reporte.
 
 2. Las incidencias reportadas en el sistema de registro de incidencias. En caso de que el sistema utilizado esté por fuera del repositorio, se debe incluir el link dentro del README.
 
