@@ -44,7 +44,7 @@ Al finalizar la implementación de pruebas E2E en la ABP, se debe entregar el en
 
 - En la wiki del repo se describen los pros y contras de las dos herramientas utilizadas. Estos deben ser coherentes con las características de las herramientas. **[15 puntos]**
 
-### Pruebas con la primer herramienta (Cypress/Puppeteer/Playwright):
+#### Pruebas con la primer herramienta (Cypress/Puppeteer/Playwright):
 
 - El Release del repositorio cuenta con el código para ejecutar los 20 escenarios de prueba utilizando la primera herramienta seleccionada. **[3 puntos]**
 
@@ -54,7 +54,7 @@ Al finalizar la implementación de pruebas E2E en la ABP, se debe entregar el en
 
 - Los escenarios de prueba construidos con la primer herramienta deben usar todos los patrones vistos.  **[15 puntos]**
 
-### Pruebas con Kraken:
+#### Pruebas con Kraken:
 
 - El Release del repositorio cuenta con el código para ejecutar los 20 escenarios de prueba creados con Kraken. **[3 puntos]**
 
