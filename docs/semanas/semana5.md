@@ -7,7 +7,7 @@
 
 Ya tenemos más claro cómo funcionan las pruebas de reconocimiento. Nos parece que son una herramienta súper útil para detectar “crashes”, excepciones y errores inesperados sin intervención humana. Entendemos que este tipo de pruebas requieren la disponibilidad de máquinas para su ejecución por varias horas y que se espera que se usen como complemento a pruebas funcionales. Sin embargo, consideramos que esto no es suficiente para evaluar la calidad de GHOST.  
 
-Por ejemplo, para GHOST hacemos pruebas manuales funcionales con un enfoque de E2E, es decir de “extremo a extremo”. Sin embargo, re-ejecutar los escenarios de pruebas de forma manual puede llevar a errores en la ejecución de la prueba y, lamentablemente, nuestros ingenieros suelen no documentarlos. Por lo tanto, como parte de su labor queremos que automatice las pruebas E2E de GHOST. Con base en una revisión de blogs hemos encontrado que [Cypress](https://www.cypress.io) es una herramienta ampliamente usada para hacer pruebas E2E basadas en scripts. Por otro lado, nuestros amigos de The Software Design Lab nos recomendaron usar su herramienta [Kraken](https://thesoftwaredesignlab.github.io/KrakenMobile/) que permite hacer pruebas E2E, pero usando escenarios escritos en un estilo BDT (es decir, Behavior Driven Testing). También nos hablaron de [Puppeteer](https://pptr.dev) y [Playwright](https://playwright.dev).
+Por ejemplo, para GHOST hacemos pruebas manuales funcionales con un enfoque de E2E, es decir de “extremo a extremo”. Sin embargo, re-ejecutar los escenarios de pruebas de forma manual puede llevar a errores en la ejecución de la prueba y, lamentablemente, nuestros ingenieros suelen no documentarlos. Por lo tanto, como parte de su labor queremos que automatice las pruebas E2E de GHOST. Con base en una revisión de blogs hemos encontrado que [Cypress](https://www.cypress.io) es una herramienta ampliamente usada para hacer pruebas E2E basadas en scripts. Por otro lado, nuestros amigos de The Software Design Lab nos recomendaron usar su herramienta [Kraken](https://thesoftwaredesignlab.github.io/Kraken/) que permite hacer pruebas E2E, pero usando escenarios escritos en un estilo BDT (es decir, Behavior Driven Testing). También nos hablaron de [Puppeteer](https://pptr.dev) y [Playwright](https://playwright.dev).
 
 ### Resumen de las actividades
 
@@ -44,7 +44,7 @@ Al finalizar la implementación de pruebas E2E en la ABP, se debe entregar el en
 
 - En la wiki del repo se describen los pros y contras de las dos herramientas utilizadas. Estos deben ser coherentes con las características de las herramientas. **[15 puntos]**
 
-#### Pruebas con la primer herramienta (Cypress/Puppeteer/Playwright):
+#### Pruebas con la primera herramienta (Cypress/Puppeteer/Playwright):
 
 - El Release del repositorio cuenta con el código para ejecutar los 20 escenarios de prueba utilizando la primera herramienta seleccionada. **[3 puntos]**
 
@@ -52,7 +52,7 @@ Al finalizar la implementación de pruebas E2E en la ABP, se debe entregar el en
 
 - Los escenarios de prueba se ejecutan exitosamente. Cada prueba debe contar con el identificador asociado al escenario de prueba **[20 puntos]**
 
-- Los escenarios de prueba construidos con la primer herramienta deben usar todos los patrones vistos.  **[15 puntos]**
+- Los escenarios de prueba construidos con la primera herramienta deben usar los dos patrones vistos.  **[15 puntos]**
 
 #### Pruebas con Kraken:
 
@@ -62,6 +62,6 @@ Al finalizar la implementación de pruebas E2E en la ABP, se debe entregar el en
 
 - Los escenarios de prueba se ejecutan exitosamente. Cada prueba debe contar con el identificador asociado al escenario de prueba **[20 puntos]**
 
-- Los escenarios de prueba construidos con Kraken deben usar todos los patrones vistos.  **[15 puntos]**
+- Los escenarios de prueba construidos con Kraken deben usar los dos patrones vistos.  **[15 puntos]**
 
  **La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y la calidad de cada uno de acuerdo con la rúbrica establecida.**
