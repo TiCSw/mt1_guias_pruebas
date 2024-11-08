@@ -25,7 +25,7 @@ Al finalizar la implementación de pruebas E2E en la ABP, se debe entregar el en
     - El nombre y correos uniandes de los estudiantes que participaron en la entrega.
     - El paso a paso para la instalación y ejecución de las pruebas en Kraken.
     - El paso a paso para la instalación y ejecución de las pruebas en la otra herramienta de su elección.
-4. Una Wiki con la siguiente información:
+3. Una Wiki con la siguiente información:
     - Listado de funcionalidades: Cada funcionalidad debe tener, como mínimo, una descripción.
     - Escenarios seleccionados para pruebas: Cada escenario debe tener, por lo menos, un identificador único, una descripción, y la funcionalidad asociada.
     - Resumen de pros y contras de cada herramienta.
