@@ -62,7 +62,7 @@ Al finalizar la implementación de pruebas en la ABP, se debe entregar el enlace
 
 - El **Release** del repositorio tiene el código de los 40 escenarios de prueba de la semana pasada (_versión **rc**_) modificados para la toma de screenshots. Los escenarios son funcionales y en el README se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la instalación y ejecución de los escenarios. **De lo contrario no se darán los puntos**. **[40 puntos]**
 
-- El **Release** del repositorio tiene el código de los 10 escenarios de prueba modificados para la versión **base**_ de la ABP. Las pruebas se implementan tanto en Kraken como la herramienta de su elección. Los escenarios son funcionales y en el readme del repo se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la ejecución de los escenarios. **De lo contrario no se darán los puntos**. **[20 puntos]**
+- El **Release** del repositorio tiene el código de los 10 escenarios de prueba modificados para la _versión **base**_ de la ABP. Las pruebas se implementan tanto en Kraken como la herramienta de su elección. Los escenarios son funcionales y en el readme del repo se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la ejecución de los escenarios. **De lo contrario no se darán los puntos**. **[20 puntos]**
 
 - El **Release** del repositorio tiene el código de los 2 scripts para reportes HTML, (uno por cada herramienta de automatización), los cuales realizan automáticamente la comparación de dos carpetas de resultados de ejecución de pruebas. La comparación visual se debe hacer al nivel de cada paso de los escenarios. Se debe utilizar `ResembleJS` **y** `BackstopJS`. **[15 puntos]**
 
