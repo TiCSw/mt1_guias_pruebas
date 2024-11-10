@@ -23,7 +23,7 @@ Debido a las preocupaciones sobre los cambios de la _versión **rc**_, usted jun
 
 5. Construir scripts para las pruebas de regresión visual; Dadas dos carpetas de ejecución de pruebas (screenshots), el script debe analizar de forma automática los resultados de cada paso y presentar un reporte HTML con: los pasos, los screenshots en ambas versiones y las diferencias visuales.
    * Deben haber 2 scripts, uno por herramienta de automatización (Kraken y herramienta de su elección).
-   * Deben utilizar `ResembleJS` **y** `BackstopJS` (por ejemplo `ResembleJS` para Kraken y `BackstopJS` para la herramienta de su elección).
+   * Deben utilizar _ResembleJS_ **y** _BackstopJS_ (por ejemplo _ResembleJS_ para Kraken y _BackstopJS_ para la herramienta de su elección).
 
 6. Si encuentran diferencias visuales, estas deben ser reportadas en el sistema de registro de incidencias (una incidencia por diferencia encontrada).
 
@@ -37,7 +37,7 @@ Al finalizar la implementación de pruebas en la ABP, se debe entregar el enlace
 1. Un **Release** con los siguientes artefactos
     * Los artefactos de código para los 40 escenarios de pruebas previamente implementados (_versión **rc**_). Cada prueba debe ser modificada para soportar pruebas de regresión visual
     * Los artefactos de código para los 10 escenarios de pruebas implementandos para la _versión **base**_, tanto en Kraken como la herramienta de su elección. Cada prueba debe ser ejecutada exitosamente, y debe soportar pruebas de regresión visual.
-    * Dos scripts para reportes HTML de regresión visual. Cada script debe estar completamente documentado, debe contar con por lo menos un archivo README donde se detallen las versiones, al igual que los pasos de instalación y ejecución de los artefactos y el script del reporte. Se debe utilizar `ResembleJS` **y** `BackstopJS`
+    * Dos scripts para reportes HTML de regresión visual. Cada script debe estar completamente documentado, debe contar con por lo menos un archivo README donde se detallen las versiones, al igual que los pasos de instalación y ejecución de los artefactos y el script del reporte. Se debe utilizar _ResembleJS_ **y** _BackstopJS_
 
 2. Las incidencias reportadas en el sistema de registro de incidencias del equipo. En caso de que el sistema utilizado esté por fuera del repositorio, se debe incluir el link dentro de la Wiki.
 
@@ -47,7 +47,7 @@ Al finalizar la implementación de pruebas en la ABP, se debe entregar el enlace
    * Los nombres y correos uniandes de los estudiantes que participaron en la entrega.
    * Detalle de las funcionalidades de la ABP que se incluyen esta semana.
    * Detalle de los escenarios que fueron incluidos en ambas versiones para las pruebas de regresión visual
-   * El resumen de los pros y los contras de cada herramienta (`ResembleJS` **y** `BackstopJS`).
+   * El resumen de los pros y los contras de cada herramienta (_ResembleJS_ **y** _BackstopJS_).
    * Enlace al sistema de registro de incidencias
    * Enlace al video.
 
@@ -64,7 +64,7 @@ Al finalizar la implementación de pruebas en la ABP, se debe entregar el enlace
 
 - El **Release** del repositorio tiene el código de los 10 escenarios de prueba modificados para la _versión **base**_ de la ABP. Las pruebas se implementan tanto en Kraken como la herramienta de su elección. Los escenarios son funcionales y en el readme del repo se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la ejecución de los escenarios. **De lo contrario no se darán los puntos**. **[20 puntos]**
 
-- El **Release** del repositorio tiene el código de los 2 scripts para reportes HTML, (uno por cada herramienta de automatización), los cuales realizan automáticamente la comparación de dos carpetas de resultados de ejecución de pruebas. La comparación visual se debe hacer al nivel de cada paso de los escenarios. Se debe utilizar `ResembleJS` **y** `BackstopJS`. **[15 puntos]**
+- El **Release** del repositorio tiene el código de los 2 scripts para reportes HTML, (uno por cada herramienta de automatización), los cuales realizan automáticamente la comparación de dos carpetas de resultados de ejecución de pruebas. La comparación visual se debe hacer al nivel de cada paso de los escenarios. Se debe utilizar _ResembleJS_ **y** _BackstopJS_. **[15 puntos]**
 
 - Se reportan por lo menos 5 diferencias visuales en el sistema de registro de incidencia del grupo, siguiendo el formato establecido por el grupo. **[10 puntos]**
 
