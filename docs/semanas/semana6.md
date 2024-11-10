@@ -58,7 +58,7 @@ Al finalizar la implementación de pruebas en la ABP, se debe entregar el enlace
 
 ### Criterios de evaluación:
 
-- En la wiki del repositorio se detallan los 10 escenarios, y las funcionalidades asociadas, que se incluyen en las pruebas de esta semana. Se debe especificar los escenarios en cada herramienta (Kraken, y laherramienta de su elección)**[5 puntos]**
+- En la wiki del repositorio se detallan los 10 escenarios, y las funcionalidades asociadas, que se incluyen en las pruebas de esta semana. Se debe especificar los escenarios en cada herramienta (Kraken, y la herramienta de su elección). **[5 puntos]**
 
 - El **Release** del repositorio tiene el código de los 40 escenarios de prueba de la semana pasada (_versión **rc**_) modificados para la toma de screenshots. Los escenarios son funcionales y en el README se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la instalación y ejecución de los escenarios. **De lo contrario no se darán los puntos**. **[40 puntos]**
 
