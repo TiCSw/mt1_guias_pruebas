@@ -29,6 +29,8 @@ Debido a las preocupaciones sobre los cambios de la _versión **rc**_, usted jun
 
 7. Redactar un resumen de los pros y los contras de cada herramienta. Este resumen debe ser visible como una página en la wiki del repositorio.
 
+8. Actualizar las estrategias de prueba uno y dos para incluir pruebas de regresión visual.
+
 
 ### Detalles de la entrega
 
@@ -43,12 +45,15 @@ Al finalizar la implementación de pruebas en la ABP, se debe entregar el enlace
 
 3. Video explicando el procedimiento realizado para la toma de screenshots, las decisiones tomadas respecto al reporte generado y los resultados del proceso de VRT
   
-4. Una **Wiki** con la siguiente información
+4. Estrategias de prueba actualizadas para incluir el uso de pruebas de regresión visual.
+
+5. Una **Wiki** con la siguiente información
    * Los nombres y correos uniandes de los estudiantes que participaron en la entrega.
    * Detalle de las funcionalidades de la ABP que se incluyen esta semana.
-   * Detalle de los escenarios que fueron incluidos en ambas versiones para las pruebas de regresión visual
+   * Detalle de los escenarios que fueron incluidos en ambas versiones para las pruebas de regresión visual.
    * El resumen de los pros y los contras de cada herramienta (_ResembleJS_ **y** _BackstopJS_).
-   * Enlace al sistema de registro de incidencias
+   * Enlace a las estrategias de prueba.
+   * Enlace al sistema de registro de incidencias.
    * Enlace al video.
 
 
@@ -60,7 +65,7 @@ Al finalizar la implementación de pruebas en la ABP, se debe entregar el enlace
 
 - En la wiki del repositorio se detallan los 10 escenarios, y las funcionalidades asociadas, que se incluyen en las pruebas de esta semana. Se debe especificar los escenarios en cada herramienta (Kraken, y la herramienta de su elección). **[5 puntos]**
 
-- El **Release** del repositorio tiene el código de los 40 escenarios de prueba de la semana pasada (_versión **rc**_) modificados para la toma de screenshots. Los escenarios son funcionales y en el README se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la instalación y ejecución de los escenarios. **De lo contrario no se darán los puntos**. **[40 puntos]**
+- El **Release** del repositorio tiene el código de los 40 escenarios de prueba de la semana pasada (_versión **rc**_) modificados para la toma de screenshots. Los escenarios son funcionales y en el README se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la instalación y ejecución de los escenarios. **De lo contrario no se darán los puntos**. **[30 puntos]**
 
 - El **Release** del repositorio tiene el código de los 10 escenarios de prueba modificados para la _versión **base**_ de la ABP. Las pruebas se implementan tanto en Kraken como la herramienta de su elección. Los escenarios son funcionales y en el readme del repo se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la ejecución de los escenarios. **De lo contrario no se darán los puntos**. **[20 puntos]**
 
@@ -70,7 +75,9 @@ Al finalizar la implementación de pruebas en la ABP, se debe entregar el enlace
 
 - En la wiki del repo se describen los pros y contras de las dos herramientas utilizadas para las pruebas de regresión visual. Los pros/contras deben ser coherentes con las características de las herramientas. **[10 puntos]**
 
-- Link al video de explicación de procedimiento realizado en la semana para habilitar la toma de capturas de pantalla, las decisiones tomadas respecto a la construcción del reporte y una breve explicación de los resultados obtenidos en la semana. El video debe estar alojado en algún gestor de contenido (OneDrive, Youtube, etc), debe ser público o debe permitir el acceso a cuentas de la Universidad de Los Andes.  **[10 puntos]**
+- En la wiki del repo se encuentra el enlace al video de explicación de procedimiento realizado en la semana para habilitar la toma de capturas de pantalla, las decisiones tomadas respecto a la construcción del reporte y una breve explicación de los resultados obtenidos en la semana. El video debe estar alojado en algún gestor de contenido (OneDrive, Youtube, etc), debe ser público o debe permitir el acceso a cuentas de la Universidad de Los Andes.  **[10 puntos]**
+
+- En la wiki del repo se encuentran los enlaces a las estrategias de prueba actualizadas para incluir pruebas de regresión visual. Cada estrategia es coherentes con el presupuesto y las decisiones están bien soportados con datos adicionales que deben estar descritos o referenciados en la plantilla de la estrategia. Las estrategias deben estar alojadas en algún gestor de contenido (OneDrive, Google Drive, etc.), debe ser público o debe permitir el acceso a cuentas de la Universidad de Los Andes.  **[10 puntos]**
 
 
 **La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y la calidad de cada uno de acuerdo con la rúbrica establecida.**
