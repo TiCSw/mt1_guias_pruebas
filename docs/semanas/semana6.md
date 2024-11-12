@@ -51,7 +51,7 @@ Al finalizar la implementación de pruebas en la ABP, se debe entregar el enlace
    * Los nombres y correos uniandes de los estudiantes que participaron en la entrega.
    * Detalle de las funcionalidades de la ABP que se incluyen esta semana.
    * Detalle de los escenarios que fueron incluidos en ambas versiones para las pruebas de regresión visual.
-   * El resumen de los pros y los contras de cada herramienta (_ResembleJS_ **y** _BackstopJS_).
+   * El resumen de los pros y los contras de las herramientas para regresión visual utilizadas ( _ResembleJS_, _PixelMatch_, _BackstopJS_).
    * Enlace a las estrategias de prueba.
    * Enlace al sistema de registro de incidencias.
    * Enlace al video.
@@ -65,13 +65,13 @@ Al finalizar la implementación de pruebas en la ABP, se debe entregar el enlace
 
 - En la wiki del repositorio se detallan los 10 escenarios, y las funcionalidades asociadas, que se incluyen en las pruebas de esta semana. Se debe especificar los escenarios en cada herramienta (Kraken, y la herramienta de su elección). **[5 puntos]**
 
-- El **Release** del repositorio tiene el código de los 40 escenarios de prueba de la semana pasada (_versión **rc**_) modificados para la toma de screenshots. Los escenarios son funcionales y en el README se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la instalación y ejecución de los escenarios. **De lo contrario no se darán los puntos**. **[30 puntos]**
+- El **Release** del repositorio tiene el código de los 40 escenarios de prueba de la semana pasada (_versión **rc**_) modificados para la toma de screenshots. Los escenarios son funcionales y en el README se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la instalación y ejecución de los escenarios. **De lo contrario no se darán los puntos**. **[40 puntos]**
 
-- El **Release** del repositorio tiene el código de los 10 escenarios de prueba modificados para la _versión **base**_ de la ABP. Las pruebas se implementan tanto en Kraken como la herramienta de su elección. Los escenarios son funcionales y en el readme del repo se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la ejecución de los escenarios. **De lo contrario no se darán los puntos**. **[20 puntos]**
+- El **Release** del repositorio tiene el código de los 10 escenarios de prueba modificados para la _versión **base**_ de la ABP. Las pruebas se implementan tanto en Kraken como la herramienta de su elección. Los escenarios son funcionales y en el readme del repo se detallan las instrucciones para ejecutarlos. Estas instrucciones deben llevar a la ejecución de los escenarios. **De lo contrario no se darán los puntos**. **[15 puntos]**
 
 - El **Release** del repositorio tiene el código de los 2 scripts para reportes HTML, (uno por cada herramienta de automatización), los cuales realizan automáticamente la comparación de dos carpetas de resultados de ejecución de pruebas. La comparación visual se debe hacer al nivel de cada paso de los escenarios. Se debe utilizar 2 herramientas de comparación de imágenes (_ResembleJS_, _PixelMatch_, o _BackstopJS_). **[15 puntos]**
 
-- Se reportan por lo menos 5 diferencias visuales en el sistema de registro de incidencia del grupo, siguiendo el formato establecido por el grupo. **[10 puntos]**
+- Se reportan por lo menos 5 diferencias visuales en el sistema de registro de incidencia del grupo, siguiendo el formato establecido por el grupo. **[5 puntos]**
 
 - En la wiki del repo se describen los pros y contras de las dos herramientas utilizadas para las pruebas de regresión visual. Los pros/contras deben ser coherentes con las características de las herramientas. **[10 puntos]**
 
