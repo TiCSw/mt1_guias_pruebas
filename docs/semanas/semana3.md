@@ -33,15 +33,15 @@ Se debe entregar **un archivo .pdf** con la estrategia de pruebas. El video debe
 
 2. Contexto de la estrategia de pruebas. **[65 puntos]**
     - Se establecen los objetivos que se esperan alcanzar durante el periodo de pruebas. Cada objetivo debe ser especifico, medible, y realizable. **[10 puntos]**
-    - Se define la duración e iteraciónes de la estrategia de pruebas. **[5 puntos]**
-    - El presupuesto de pruebas describe los recursos humanos, computaciónales, y de contrataciones de servicios requeridos para la estrategia. **[10 puntos]**
+    - Se define la duración e iteraciones de la estrategia de pruebas. **[5 puntos]**
+    - El presupuesto de pruebas describe los recursos humanos, computacionales, y de contrataciones de servicios requeridos para la estrategia. **[10 puntos]**
     - El presupuesto incluye los costos y consumos de cada tipo de recurso, los cuales deben ser coherentes con la estrategia. Estos están soportados con datos adicionales que deben estar descritos o referenciados. **[10 puntos]**
     - Se especifican las técnicas, niveles y tipos (TNT) de cada prueba a utilizar en la estrategia de pruebas. **[10 puntos]**
     - El TNT es coherente con la estrategia; El TNT debe especificar y describir la relación entre las pruebas y los objetivos de la estrategia. **[10 puntos]**
     - Se presenta la distribucion de esfuerzo para la ejecucion de la estrategia. Se debe describir la asignacion de recursos del presupuesto, al igual que su relaciónal con las actividades del TNT, durante el transcurso de la duración de la estrategia. **[10 puntos]**
 
 3. Video. **[10 puntos]**
-    - El enlace al video explicando las justificaciones de la estrategia dos se encuentra en el archivo que describe la estrategia y el video es coherente con la estrategia. **[ puntos]**. **[10 puntos]**
+    - El enlace al video explicando las justificaciones de la estrategia dos se encuentra en el archivo que describe la estrategia y el video es coherente con la estrategia. **[10 puntos]**
 
 
 **La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y la calidad de cada uno de acuerdo con la rúbrica establecida.**
