@@ -14,7 +14,7 @@ Queremos solicitarles, a usted y su equipo de pruebas, que elaboren una primera 
 
 ### Resumen de las actividades
 
-- Elaboren una estrategia de pruebas utilizando las restricciones mencionadas anteriormente. Para esto debenla plantilla de estrategia que se encuentra disponible aquí: [Plantilla estrategia de pruebas](https://thesoftwaredesignlab.github.io/AutTestingCourseraBook/templates/estrategia-pruebas.docx)
+- Elaboren una estrategia de pruebas utilizando las restricciones mencionadas anteriormente. Para esto deben utilizar la plantilla de estrategia que se encuentra disponible aquí: [Plantilla estrategia de pruebas](https://thesoftwaredesignlab.github.io/AutTestingCourseraBook/templates/estrategia-pruebas.docx)
 - Adicionalmente, incluyan dentro de la plantilla el enlace a un video en el cual brevemente (no más de 15 minutos) se explican las decisiones tomadas para la estrategia.
 
 ### Detalles de la entrega
