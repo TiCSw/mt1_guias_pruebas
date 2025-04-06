@@ -7,7 +7,7 @@ Gracias de nuevo por su trabajo. El análisis de datos recolectado con la encues
 
 Queremos solicitarles, a usted y su equipo de pruebas, que elaboren una primera versión para la estrategia de pruebas de GHOST, teniendo en cuenta las siguientes restricciones y condiciones por parte de TSDC:
 
-* La estrategia debe contemplar una duración de 8 semanas de trabajo. Estas incluyen tanto la planeación como la ejecucion de la estrategia.
+* La estrategia debe contemplar una duración de 8 semanas de trabajo. Estas incluyen tanto la planeación como la ejecución de la estrategia.
 * Cada uno de los ingenieros automatizadores junior cuenta con 12 horas semanales de trabajo.
 * Su equipo puede utilizar recursos computacionales externos (e.g. recursos computacionales de _Amazon Web Services_).
 * La estrategia puede utilizar 500 USD para contratación de servicios de outsourcing de pruebas. No obstante, se deben detallar las actividades de outsourcing con el mismo rigor que las del equipo de ingenieros automatizadores junior.
@@ -29,7 +29,7 @@ Se debe entregar **un archivo .pdf** con la estrategia de pruebas. El video debe
     - Se describen las _funcionalidades core_ incluida dentro de la estrategia. Cada funcionalidad debe ser específica e incluir, por lo menos, un título y una descripción. **[15 puntos]**
     - El diagrama de contexto representa todas las entidades externas que podrían interactuar con la ABP. **[2 puntos]**
     - El modelo de datos representan todas las entidades y relaciones de la ABP. **[3 puntos]**
-    - El modelo GUI expone el flujo de navegacion navegación y las interacciones entre pantallas dentro de la ABP. **[5 puntos]**
+    - El modelo GUI expone el flujo de navegación y las interacciones entre pantallas dentro de la ABP. **[5 puntos]**
 
 2. Contexto de la estrategia de pruebas. **[65 puntos]**
     - Se establecen los objetivos que se esperan alcanzar durante el periodo de pruebas. Cada objetivo debe ser _SMART_ (especifico, medible, y realizable, relevante, y acotado en el tiempo). **[10 puntos]**
@@ -38,7 +38,7 @@ Se debe entregar **un archivo .pdf** con la estrategia de pruebas. El video debe
     - El presupuesto incluye los costos y consumos de cada tipo de recurso, los cuales deben ser coherentes con la estrategia. Estos están soportados con datos adicionales que deben estar descritos o referenciados. **[10 puntos]**
     - Se especifican las técnicas, niveles y tipos (TNT) de cada prueba a utilizar en la estrategia de pruebas. **[10 puntos]**
     - El TNT es coherente con la estrategia; El TNT debe especificar y describir la relación entre las pruebas y los objetivos de la estrategia. **[10 puntos]**
-    - Se presenta la distribucion de esfuerzo para la ejecucion de la estrategia. Se debe describir la asignacion de recursos del presupuesto, al igual que su relación con las actividades del TNT, durante el transcurso de la duración de la estrategia. **[10 puntos]**
+    - Se presenta la distribución de esfuerzo para la ejecución de la estrategia. Se debe describir la asignación de recursos del presupuesto, al igual que su relación con las actividades del TNT, durante el transcurso de la duración de la estrategia. **[10 puntos]**
 
 3. Video. **[10 puntos]**
     - El enlace al video explicando las justificaciones de la estrategia dos se encuentra en el archivo que describe la estrategia y el video es coherente con la estrategia. **[10 puntos]**
