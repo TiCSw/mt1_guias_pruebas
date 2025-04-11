@@ -3,47 +3,61 @@
 
 ## Semana 4: ¿Monkeys? ¿Rippers?
 
-Con nuestro CTO ya estamos revisando sus estrategias de pruebas propuestas. Gracias de nuevo por toda su ayuda. Nuestros asesores de The Software Design Lab nos han sugerido que una buena forma de iniciar con automatización de pruebas es hacer pruebas de reconocimiento, dado que estas no requieren intervención humana.  
+Con nuestro CTO ya estamos revisando su estrategia de pruebas propuesta. Gracias de nuevo por toda su ayuda. Nuestros asesores de The Software Design Lab nos han sugerido que una buena forma de iniciar con automatización de pruebas es hacer pruebas de reconocimiento, dado que estas no requieren intervención humana.  
 
 ### Resumen de las actividades
 
-No entendimos muy bien las diferencias entre los monkeys y los rippers, por lo tanto, nos gustaría que con su par de pruebas ejecuten pruebas de reconocimiento en GHOST con esos dos tipos de herramientas y, a partir de su experiencia con estas, actualice las dos estrategias de pruebas que entregaron la semana pasada. Junto con las estrategias nos gustaría que incluyan un análisis de los pros y contras de estas herramientas. La entrega se debe realizar a través de Coursera en las fechas indicadas. Nuestros amigos de The Software Design Lab nos sugieren usar las herramientas [monkey-cypress](https://github.com/TheSoftwareDesignLab/monkey-cypress) y [RIPuppet](https://github.com/TheSoftwareDesignLab/RIPuppetCoursera/).
 
+No entendimos muy bien las diferencias entre los _Monkeys_ y los _Rippers_, por lo tanto, nos gustaría que ejecuten pruebas de reconocimiento en la _Aplicación Bajo Pruebas_ (_ABP_) con esos dos tipos de herramientas. Del mismo modo, a partir de su experiencia, nos gustaría que actualice la estrategia que entregaron la semana pasada, y que incluyan un análisis de los pros y contras de estas herramientas. La entrega se debe realizar a través de Coursera en las fechas indicadas. Nuestros amigos de The Software Design Lab nos sugieren usar las herramientas [monkey-cypress](https://github.com/TheSoftwareDesignLab/monkey-cypress) y [RIPuppet](https://github.com/TheSoftwareDesignLab/RIPuppetCoursera/) (ver detalles de la entrega).
 
 ### Detalles de la entrega
-Se debe entregar **un archivo .zip** con los siguientes documentos: 
-- El reporte de experiencia de las dos herramientas, y el enlace a un video justificando las dos estrategias y el análisis solicitado.
-- La estrategia de pruebas número uno (presupuesto 1).
-- La estrategia de pruebas número dos (presupuesto 2)
 
-Recuerde revisar la descripción de toda la actividad.
+La entrega debe ser realizada utilizando el repositorio de trabajo dado por el equipo docente (en caso de no poder acceder a la organización del curso, [Uniandes-MISW4103](https://github.com/orgs/Uniandes-MISW4103/), contacten al equipo docente). Su equipo debe crear un _release_ en el repositorio (ver [cómo crear un release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release)) con los siguientes elementos:
+
+- La carpeta `./reconocimiento` con el código fuente _Monkeys_ y los _Rippers_ (leer el README de la carpeta para entender cómo configurar las herramientas).
+    - Las pruebas realizadas con estas herramientas deben ser reproducibles por el equipo docente.
+    - En caso de modificar el código fuente, los cambios deben estar incluidos en el _release_, y los README de `./reconocimiento/misw-4103-monkey` y `./reconocimiento/misw-4103-ripper` deben ser actualizados.
+
+- El archivo `./actividades/actividad-semana-4` debe tener tener como mínimo:
+    - Información de los integrantes que participaron en la actividad.
+    - Resultados de ejecución de las herramientas. Debe incluir, como mínimo, las semillas (seeds) de ejecución, enlaces a las incidencias, y enlaces a evidencias (videos, reportes, etc.).
+    - El resumen de los pros y los contras de las herramientas para pruebas de reconocimiento.
+    - Enlace a la estrategia de pruebas _(*)_, la cual debe incluir el uso de pruebas de reconocimiento y las mejoras a partir de la retroalimentación recibida de la estrategia anterior.
+    - Enlace al video _(*)_, el cual debe incluir los ajustes a la estrategia de pruebas, al igual que el análisis de los pros y contras de las herramientas usadas.
+
+> _(*)_ Los videos y documentos que incluyan en su entrega deben estar alojado en algún gestor de contenido (Google drive, OneDrive, Youtube, etc), deben ser públicos o deben permitir el acceso a cuentas de la Universidad de Los Andes (`@uniandes.edu.co`). Para el caso de documentos, estos deben estar en formato `.pdf`.
 
 
 ### Criterios de evaluación
 
-- Reporte con descripción de resultados obtenidos luego de ejecutar [monkey-cypress](https://github.com/TheSoftwareDesignLab/monkey-cypress) y [RIPuppet](https://github.com/TheSoftwareDesignLab/RIPuppetCoursera), y el enlace al video donde se justifican las estrategias y se describen los pros y contras de las herramientas; este video es el mismo que se describe más adelante en los criterios de evaluación; El reporte se encuentra dentro del archivo `.zip` **[5 puntos]**
+0. _"Fatalities"_.
 
-- En el caso de encontrar defectos con las herramientas estos se deben reportar en el sistema de registo de incidentes y se deben mencionar en el informe. **[5 puntos]**
+    _Nota: el incumplimiento de cualquiera de los aspectos mencionados a continuación puede incurrir en una penalización sobre la calificación de la actividad_.
+    
+    - El repositorio del equipo (org [Uniandes-MISW4103](https://github.com/orgs/Uniandes-MISW4103/)) **NO** cuenta con un release, creado dentro del plazo establecido, en donde se incluyen todos los entregables de la actividad. **[-15 puntos]**
+    - El enlace a la estrategia de pruebas **NO** se encuentra en el repositorio del equipo (`./actividades/actividad-semana-4`), **NO** es púlico, o **NO** permite el acceso a cuentas de la universidad. **[-30 puntos]**
+    - Uno o más documentos realizados por el equipo se encuentran en formatos distintos a `.pdf`. **[-5 puntos]**
+    - El enlace al video **NO** se encuentra en el repositorio del equipo (`./actividades/actividad-semana-4`), **NO** es púlico, o **NO** permite el acceso a cuentas de la universidad. **[-10 puntos]**
 
+1. Estrategia de Pruebas. **[30 puntos]**
+    - Se actualiza la estrategia de pruebas con la retroalimentación de la entrega anterior. La estrategia utiliza el formato indicado. **[15 puntos]**
+    - La estrategia de pruebas incluye el uso de pruebas de reconocimiento. La estrategia es coherente respecto al presupuesto, el TNT, y la distribución de esfuerzo. **[15 puntos]**
+  
+2. Pruebas de Reconocimiento con _Monkey_. **[30 puntos]**
+    - El código fuente se encuentra en el repositorio del equipo (`./reconocimiento/misw-4103-monkey`), y se indican los cambios realizados por el equipo en el archivo README de la herramienta. **[5 puntos]**
+    - Los resultados de ejecución se encuentran en el repositorio del equipo (`./actividades/actividad-semana-4`), e incluyen las semillas (seeds) de ejecución, enlaces a las incidencias, y enlaces a evidencias. **[10 puntos]**
+    - El código entregado permite la ejecución y reproducción de los resultados obtenidos. El README de la herramienta es actualizado (de ser necesario) para explicar la ejecución de la herrameinta. **[10 puntos]**
+    - El resumen de los pros y los contras se encuentran en el repositorio del equipo (`./actividades/actividad-semana-4`), y es coherente con la herramienta. **[5 puntos]**
+  
+3. Pruebas de Reconocimiento con _Ripper_. **[30 puntos]**
+    - El código fuente se encuentra en el repositorio del equipo (`./reconocimiento/misw-4103-ripper`), y se indican los cambios realizados por el equipo en el archivo README de la herramienta. **[5 puntos]**
+    - Los resultados de ejecución se encuentran en el repositorio del equipo (`./actividades/actividad-semana-4`), e incluyen las semillas (seeds) de ejecución, enlaces a las incidencias, y enlaces a evidencias. **[10 puntos]**
+    - El código entregado permite la ejecución y reproducción de los resultados obtenidos. El README de la herramienta es actualizado (de ser necesario) para explicar la ejecución de la herrameinta. **[10 puntos]**
+    - El resumen de los pros y los contras se encuentran en el repositorio del equipo (`./actividades/actividad-semana-4`), y es coherente con la herramienta. **[5 puntos]**
+  
+4. Video. **[10 puntos]**
+    - El video incluye los ajustes a la estrategia de pruebas. La explicación de la estrategia es coherente. **[5 puntos]**
+    - El video incluye análisis de los pros y contras de las herramientas de pruebas de reconocimiento, y es coherente con la características de las herramientas. **[5 puntos]**
 
-- Se actualiza la estrategia de pruebas para el presupuesto uno en el formato dado, incluyendo el uso de pruebas de reconocimiento y la retroalimentación recibida de la estrategia anterior, y se encuentra dentro del archivo `.zip`. El formato se encuentra diligenciado de forma completa. **[10 puntos]**
-
-- La estrategia de pruebas número uno es coherente con el presupuesto uno. **[10 puntos]**
-
-- Las decisiones de la estrategia uno están bien soportados con datos adicionales que deben estar descritos o referenciados en la plantilla de la estrategia.. **[10 puntos]**
-
-- Las justificaciones de la estrategia uno son coherentes con la estrategia. **[10 puntos]**
-
-
-- Se actualiza la estrategia de pruebas para el presupuesto dos en el formato dado, incluyendo el uso de pruebas de reconocimiento y la retroalimentación recibida de la estrategia anterior, y se encuentra dentro del archivo `.zip`. El formato se encuentra diligenciado de forma completa. **[10 puntos]**
-
-- La estrategia de pruebas número dos es coherente con el presupuesto dos. **[10 puntos]**
-
-- Las decisiones de la estrategia dos están bien soportados con datos adicionales que deben estar descritos o referenciados en la plantilla de la estrategia. **[10 puntos]**
-
-- Las justificaciones de la estrategia dos son coherentes con la estrategia. **[10 puntos]**
-
-
-- El video incluye el análisis de los pros y contras de las herramientas usadas; El video es coherente con la características de las herramientas; El video debe estar alojado en algún gestor de contenido (Google drive, OneDrive, Youtube, etc), debe ser público o debe permitir el acceso a cuentas de la Universidad de Los Andes (user@uniandes.edu.co)  **[10 puntos]**
 
 **La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y la calidad de cada uno de acuerdo con la rúbrica establecida.**
