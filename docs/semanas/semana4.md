@@ -35,9 +35,9 @@ La entrega debe ser realizada utilizando el repositorio de trabajo dado por el e
     _Nota: el incumplimiento de cualquiera de los aspectos mencionados a continuación puede incurrir en una penalización sobre la calificación de la actividad_.
     
     - El repositorio del equipo (org [Uniandes-MISW4103](https://github.com/orgs/Uniandes-MISW4103/)) **NO** cuenta con un release, creado dentro del plazo establecido, en donde se incluyen todos los entregables de la actividad. **[-15 puntos]**
-    - El enlace a la estrategia de pruebas **NO** se encuentra en el repositorio del equipo (`./actividades/actividad-semana-4`), **NO** es púlico, o **NO** permite el acceso a cuentas de la universidad. **[-30 puntos]**
+    - El enlace a la estrategia de pruebas **NO** se encuentra en el repositorio del equipo (`./actividades/actividad-semana-4`), **NO** es público, o **NO** permite el acceso a cuentas de la universidad. **[-30 puntos]**
     - Uno o más documentos realizados por el equipo se encuentran en formatos distintos a `.pdf`. **[-5 puntos]**
-    - El enlace al video **NO** se encuentra en el repositorio del equipo (`./actividades/actividad-semana-4`), **NO** es púlico, o **NO** permite el acceso a cuentas de la universidad. **[-10 puntos]**
+    - El enlace al video **NO** se encuentra en el repositorio del equipo (`./actividades/actividad-semana-4`), **NO** es público, o **NO** permite el acceso a cuentas de la universidad. **[-10 puntos]**
 
 1. Estrategia de Pruebas. **[30 puntos]**
     - Se actualiza la estrategia de pruebas con la retroalimentación de la entrega anterior. La estrategia utiliza el formato indicado. **[15 puntos]**
