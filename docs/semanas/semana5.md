@@ -8,7 +8,7 @@ Por ejemplo, hemos utilizado pruebas manuales funcionales con un enfoque de E2E,
 
 ### Resumen de las actividades
 
-Creemos entonces que una buena forma de empezar sería implementando escenarios de prueba de las funcionalidades que su equipo seleccionó en su estrategia de pruebas. Para ello, les solicitamos que seleccionen mínimo 5 funcionalidades e implementen por lo menos 20 de los escenarios utilizando Kraken y algunas de las otras tres herramientas ([Cypress](https://www.cypress.io), [Puppeteer](https://pptr.dev) y [Playwright](https://playwright.dev)). En otras palabras, los 20 escenarios de prueba deben ser implementados identicamente tanto con Kraken como con la otra herramienta de su elección. Los escenario deben utilizar **todos** los patrones vistos, independientemente de la herramieta.
+Creemos entonces que una buena forma de empezar sería implementando escenarios de prueba de las funcionalidades que su equipo seleccionó en su estrategia de pruebas. Para ello, les solicitamos que seleccionen mínimo 5 funcionalidades e implementen por lo menos 20 de los escenarios utilizando Kraken y algunas de las otras tres herramientas ([Cypress](https://www.cypress.io), [Puppeteer](https://pptr.dev) y [Playwright](https://playwright.dev)). En otras palabras, los 20 escenarios de prueba deben ser implementados idénticamente tanto con Kraken como con la otra herramienta de su elección. Los escenarios deben utilizar **todos** los patrones vistos (_Page Object_, _Given-When-Then_), independientemente de la herramieta.
 
 Para tal efecto, utilicen su repositorio de equipo (org [Uniandes-MISW4103](https://github.com/orgs/Uniandes-MISW4103/)) para configurar las herramientas de automatización e implementar los escenarios de prueba. Los escenarios deben ser ejecutados en la ABP, utilizando la versión definida para el proyecto, con el fin de asegurar que las pruebas estén bien construidas.
 
@@ -18,7 +18,7 @@ La entrega debe ser realizada utilizando el repositorio de trabajo dado por el e
 
 - La carpeta `./e2e` con los escenarios de prueba de la herramienta de automatización seleccionada (Cypress, Playwright, Puppeteer) y Kraken (leer el README de la carpeta para entender cómo configurar las herramientas).
     - Las pruebas en ambas herramientas deben contar con el identificador del escenario correspondiente.
-    - Deben utilizar todos los patrones vistos en ambas herramientas.
+    - Deben utilizar todos los patrones vistos para E2E en ambas herramientas (_Page Object_, _Given-When-Then_).
     - Los README de cada herramienta deben ser actualizados para garantizar que el equipo docente pueda instalar y ejecutar las pruebas.
 
 - El archivo `./actividades/actividad-semana-5` debe tener tener como mínimo:
