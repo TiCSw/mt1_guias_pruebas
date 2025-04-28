@@ -54,7 +54,7 @@ La entrega debe ser realizada utilizando el repositorio de trabajo dado por el e
 
 3. Reporte de la Actividad. **[20 puntos]**
 
-    El reporte de la actividad de su repositorio de equipo (`./actividades/actividad-semana-4`):
+    El reporte de la actividad de su repositorio de equipo (`./actividades/actividad-semana-5`):
    
     - Se listan las funcionalidades seleccionadas para las pruebas E2E. Cada funcionalidad cuenta con un identificador único, un nombre, y una descripción. **[5 puntos]**
     - Se listan los escenarios pruebas E2E. Cada escenario cuenta con un identificador único, una descripción, y la funcionalidad asociada. **[5 puntos]**
