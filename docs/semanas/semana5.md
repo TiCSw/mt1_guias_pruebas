@@ -39,6 +39,7 @@ La entrega debe ser realizada utilizando el repositorio de trabajo dado por el e
     
     - El repositorio del equipo (org [Uniandes-MISW4103](https://github.com/orgs/Uniandes-MISW4103/)) **NO** cuenta con un release, creado dentro del plazo establecido, en donde se incluyen todos los entregables de la actividad. **[-15 puntos]**
     - Los archivos README de las herramientas de automatización **NO** describen los pasos para la instalación y ejecución de los escenarios de prueba. **[-20 puntos x herramienta]**
+    - Se incluyen archivos multimedia (videos, logs, imágenes, etc.), documentos no-planos (.pdf, .xlsx) o dependencias/librerías (node_modules) dentro del repositorio. **[-20 puntos]**
 
 1. Pruebas con la herramienta de automatización de su elección. **[40 puntos]**
 
