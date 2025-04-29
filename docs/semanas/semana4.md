@@ -8,7 +8,7 @@ Con nuestro CTO ya estamos revisando su estrategia de pruebas propuesta. Gracias
 ### Resumen de las actividades
 
 
-No entendimos muy bien las diferencias entre los _Monkeys_ y los _Rippers_, por lo tanto, nos gustaría que ejecuten pruebas de reconocimiento en la _Aplicación Bajo Pruebas_ (_ABP_) con esos dos tipos de herramientas. Del mismo modo, a partir de su experiencia, nos gustaría que actualice la estrategia que entregaron la semana pasada, y que incluyan un análisis de los pros y contras de estas herramientas. La entrega se debe realizar a través de Coursera en las fechas indicadas. Nuestros amigos de The Software Design Lab nos sugieren usar las herramientas [monkey-cypress](https://github.com/TheSoftwareDesignLab/monkey-cypress) y [RIPuppet](https://github.com/TheSoftwareDesignLab/RIPuppetCoursera/) (ver detalles de la entrega).
+No entendimos muy bien las diferencias entre los _Monkeys_ y los _Rippers_, por lo tanto, nos gustaría que ejecuten pruebas de reconocimiento en la _Aplicación Bajo Pruebas_ (_ABP_) con esos dos tipos de herramientas. Del mismo modo, a partir de su experiencia, nos gustaría que actualice la estrategia que entregaron la semana pasada, y que incluyan un análisis de los pros y contras de estas herramientas. La entrega se debe realizar a través de Coursera en las fechas indicadas. Nuestros amigos de The Software Design Lab nos sugieren usar las herramientas [monkey-cypress](https://github.com/Uniandes-MISW4103/proyecto-monkey-base) y [RIPuppet](https://github.com/Uniandes-MISW4103/proyecto-ripper-base) (ver detalles de la entrega).
 
 ### Detalles de la entrega
 
