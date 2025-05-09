@@ -27,7 +27,7 @@ Debido a las preocupaciones sobre los cambios de la _versión **rc**_, usted jun
 
 6. Si encuentran diferencias visuales, estas deben ser reportadas en el sistema de registro de incidencias (una incidencia por diferencia encontrada).
 
-7. Redactar un resumen de los pros y los contras de cada herramienta. Este resumen debe ser visible como una página en la wiki del repositorio.
+7. Redactar un resumen de los pros y los contras de cada herramienta. Este resumen debe estar en el reporte de la actividad
 
 8. Actualizar la estrategias de pruebas para incluir pruebas de regresión visual, al igual que la retroalimentación de las semanas anteriores.
 
