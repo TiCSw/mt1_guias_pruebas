@@ -51,7 +51,7 @@ Respecto al código fuente desarrollado para la primera estrategia de pruebas (E
 2. Reporte de Resultados de la Estrategia (EP1). **[15 puntos]**
     - Se describen la relación entre los escenarios de prueba con el TNT de la estrategia. **[5 puntos]**
     - El documento incluye los enlaces a las evidencias de ejecución de los escenarios. **[5 puntos]**
-    - El documento incluye las incidencias identificadas como resulatdo de la ejecucion de la estrategia. **[5 puntos]**
+    - El documento incluye las incidencias identificadas como resultado de la ejecución de la estrategia. **[5 puntos]**
 
 3. Código Fuente de la Estrategia (EP1). **[15 puntos]**
     - El código de prueba se encuentra en el repositorio del equipo (`./e2e/*`, `./reconocimiento/*`, `./vrt/*`) y permite la ejecución de todos los escenarios de la estrategia de pruebas. **[15 puntos]**
@@ -63,7 +63,7 @@ Respecto al código fuente desarrollado para la primera estrategia de pruebas (E
     - Se presenta la distribución de esfuerzo para la ejecución de la estrategia. Se debe describir la asignación de recursos del presupuesto, al igual que su relación con las actividades del TNT, durante el transcurso de la duración de la estrategia. **[10 puntos]**
 
 5. Video. **[10 puntos]**
-    - El video presenta los resultados obtenidos de la estrategia de pruebas EP1.
-    - El video presenta las decisiones tomadas para la nueva estrategia de pruebas EP2.
+    - El video presenta los resultados obtenidos de la estrategia de pruebas EP1. **[5 puntos]**
+    - El video presenta las decisiones tomadas para la nueva estrategia de pruebas EP2. **[5 puntos]**
 
 **La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y la calidad de cada uno de acuerdo con la rúbrica establecida.**
