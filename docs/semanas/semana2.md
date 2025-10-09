@@ -9,7 +9,6 @@ Nuestro líder de producto le envía un gran agradecimiento por su dedicación d
 
 Su misión es encuestar/entrevistar a 30 profesionales involucrados en procesos de desarrollo de software (ejemplo, arquitectos, testers, líderes de proyecto, analistas, desarrolladores, etc.). En cada encuesta/entrevista debe preguntar lo siguiente:
 
-
 1. ¿Cuál es su preferencia como estrategia de distribución de cantidad de pruebas automatizadas: cono de helado o pirámide de automatización?
 
 2. La justificación para la selección de patrón de distribución de pruebas, es decir, la justificación para la respuesta a la pregunta anterior.
@@ -18,30 +17,44 @@ Su misión es encuestar/entrevistar a 30 profesionales involucrados en procesos 
 
 No olviden recolectar información demográfica (ejemplo, país, años de experiencia, etc. )
 
-Luego de recolectar los datos usted y su par deben realizar un video que resuma de forma cuantitativa y cualitativa los resultados del ejercicio de investigación.  
-
-
+Luego de recolectar los datos, su equipo debe realizar un video que resuma de forma cuantitativa y cualitativa los resultados del ejercicio de investigación.  
 
 **Recomendaciones:** usted y su equipo deben encargarse, de alguna forma, de explicar a los encuestados/entrevistados los dos esquemas de distribución de pruebas (es decir cono de helado y pirámide). Pueden usar las imágenes de cada estrategia, sin embargo, una descripción adicional o una nota de voz puede ayudar a que los encuestados/entrevistados entiendan mejor las dos estrategias.  No olvide que en la encuesta debe contar con un consentimiento informado donde se le informe a cada participante el propósito de la encuesta, si va a ser anónima o no, cómo se van a tratar los datos recolectados, etc.
 
 
-
 ### Detalles de la entrega
-Se debe entregar un archivo zip con todos los artefactos solicitados: el enlace a la encuesta o guion de la entrevista realizada, un archivo Excel con los resultados crudos de la encuesta, el enlace al video con el análisis, y un reporte breve que describa el proceso.  La entrega se debe realizar a través de Coursera en las fechas indicadas.
+
+Se debe entregar los siguientes artefactos:
+
+- El enlace a la encuesta o guion de la entrevista realizada.
+- El reporte de resulatdos (`.pdf`). Este debe incluir los resultados crudos de la encuesta, la descripción del proceso de creación de la encuesta y las estrategias para contactar a los participantes
+- El enlace al video con el análisis cuali.
 
 
 ### Criterios de evaluación
 
+0. _"Fatalities"_.
 
-- Descripción de la estrategia usada para contactar a los participantes. **[5 puntos]**
+    _Nota: el incumplimiento de cualquiera de los aspectos mencionados a continuación puede incurrir en una penalización sobre la calificación de la actividad_.
 
-- Descripción del formato usado para recolectar la información (ejemplo, encuesta en línea, entrevista individual, etc.) **[5 puntos]**
+   - El enlace a la encuesta, entrevista, etc., **NO** es público, o **NO** permite el acceso a cuentas de la universidad. **[-5 puntos]**
+   - Uno o más documentos realizados por el equipo se encuentran en formatos distintos a `.pdf`. [-5 puntos]
+   - El enlace al video **NO** es público, o **NO** permite el acceso a cuentas de la universidad. **[-60 puntos]**
 
-- Archivo Excel con las respuestas dadas por mínimo 30 participantes. **[10 puntos]**
+2. Encuesta/Entrevista Realizada. **[5 puntos]**
+    - Se incluyen preguntas para recolectar información demográfica de los participantes. **[2 puntos]**
+    - Se incluyen preguntas para identificar la preferencias sobre las estrategias de distribución de pruebas, al igual que su justificación. **[3 puntos]**
 
-- Video en el que se resumen los resultados del análisis cuantitativo (15 puntos) y cualitativo (15 puntos) de los datos recolectados, y una reflexión sobre posibles mejoras en la estrategia utilizada para la actividad (5 puntos). El análisis debe enfocarse en responder las 3 preguntas mencionadas anteriormente en el _Resumen de las actividades_ (25 puntos). Los 4 miembros del equipo deben aparecer en el video (voz o en persona). **[60 puntos]**
+3. Reporte de Resulatdos. **[35 puntos]**
+    - Se incluyen los resultados crudos, es decir, la respuestas dadas por mínimo 30 participantes. **[5 puntos]**
+    - Se describen las deciciones tomadas para la definición del formato usado para recolectar la información (e.g. encuesta, entrevista, etc.). **[15 puntos]**
+    - Se explican las estrategias utilizadas para contactar a los participantes. **[15 puntos]**
 
-- Reporte en formato PDF que describa/indexe la información solicitada, y que incluya una descripción del proceso realizado para el análisis  de los datos. **[15 puntos]**
+2. Video. **[60 puntos]**
+    - Presentan los resultados del análisis cuantitativo de los datos recolectados. **[15 puntos]**
+    - Resumen los resultados del análisis cualitativo de los datos recolectados. **[15 puntos]**
+    - El análisis cuantitativo y cualitativo responden las 3 preguntas mencionadas anteriormente en el _Resumen de las actividades_ **[25 puntos]**
+    - Reflexión sobre posibles mejoras en la estrategia utilizada para la actividad. **[5 puntos]**
 
 
 **La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y la calidad de cada uno de acuerdo con la rúbrica establecida.**
