@@ -28,7 +28,7 @@ Se debe entregar los siguientes artefactos:
 
 - El enlace a la encuesta o guion de la entrevista realizada.
 - El reporte de resulatdos (`.pdf`). Este debe incluir los resultados crudos de la encuesta, la descripción del proceso de creación de la encuesta y las estrategias para contactar a los participantes
-- El enlace al video con el análisis cuali.
+- El enlace al video con el análisis cuantitativo, cualitativo, y reflexión sobre posibles mejoras en las estrategias utilizadas para la actividad. El análisis cuantitativo y cualitativo responden las 3 preguntas mencionadas anteriormente en el _Resumen de las actividades_.
 
 
 ### Criterios de evaluación
