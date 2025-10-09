@@ -16,7 +16,7 @@ Para tal efecto, utilicen su repositorio de equipo (org [Uniandes-MISW4103](http
 
 La entrega debe ser realizada utilizando el repositorio de trabajo dado por el equipo docente (en caso de no poder acceder a la organización del curso, [Uniandes-MISW4103](https://github.com/orgs/Uniandes-MISW4103/), contacten al equipo docente). Su equipo debe crear un _release_ en el repositorio (ver [cómo crear un release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release)) con los siguientes elementos:
 
-- La carpeta `./e2e` con los escenarios de prueba de la herramienta de automatización seleccionada (Cypress, Playwright, Puppeteer) y Kraken (leer el README de la carpeta para entender cómo configurar las herramientas).
+- La carpeta `./e2e` con los escenarios de prueba de la herramienta de automatización seleccionada (Cypress, Playwright, Puppeteer) y Kraken (leer el archivo `./e2e/README.md` para entender cómo configurar las herramientas).
     - Las pruebas en ambas herramientas deben contar con el identificador del escenario correspondiente.
     - Deben utilizar todos los patrones vistos para E2E en ambas herramientas (_Page Object_, _Given-When-Then_).
     - Los README de cada herramienta deben ser actualizados para garantizar que el equipo docente pueda instalar y ejecutar las pruebas.
@@ -38,6 +38,7 @@ La entrega debe ser realizada utilizando el repositorio de trabajo dado por el e
     _Nota: el incumplimiento de cualquiera de los aspectos mencionados a continuación puede incurrir en una penalización sobre la calificación de la actividad_.
     
     - El repositorio del equipo (org [Uniandes-MISW4103](https://github.com/orgs/Uniandes-MISW4103/)) **NO** cuenta con un release, creado dentro del plazo establecido, en donde se incluyen todos los entregables de la actividad. **[-15 puntos]**
+    - Las herramienta de automatización **NO** utiliza el código fuente indicado en el archivo ./reconocimiento/README.md. **[-20 puntos x herramienta]**
     - Los archivos README de las herramientas de automatización **NO** describen los pasos para la instalación y ejecución de los escenarios de prueba. **[-20 puntos x herramienta]**
     - Se incluyen archivos multimedia (videos, logs, imágenes, etc.), documentos no-planos (.pdf, .xlsx) o dependencias/librerías (node_modules) dentro del repositorio. **[-20 puntos]**
 
