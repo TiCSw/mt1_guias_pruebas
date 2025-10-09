@@ -48,7 +48,7 @@ Se debe entregar **un archivo .pdf** con la estrategia de pruebas. El video debe
     - Se presenta la distribución de esfuerzo para la ejecución de la estrategia. Se debe describir la asignación de recursos del presupuesto, al igual que su relación con las actividades del TNT, durante el transcurso de la duración de la estrategia. **[10 puntos]**
 
 3. Video. **[10 puntos]**
-    - El enlace al video explicando las justificaciones de la estrategia se encuentra en el archivo que describe la estrategia y el video es coherente con la estrategia. **[10 puntos]**
+    - El video presenta la estrategia de pruebas, explicando las decisiones tomadas para su desarrollo. El video es coherente con la estrategia. **[10 puntos]**
 
 
 **La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y la calidad de cada uno de acuerdo con la rúbrica establecida.**
