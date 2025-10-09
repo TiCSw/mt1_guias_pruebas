@@ -38,14 +38,14 @@ Se debe entregar los siguientes artefactos:
     _Nota: el incumplimiento de cualquiera de los aspectos mencionados a continuación puede incurrir en una penalización sobre la calificación de la actividad_.
 
    - El enlace a la encuesta, entrevista, etc., **NO** es público, o **NO** permite el acceso a cuentas de la universidad. **[-5 puntos]**
-   - Uno o más documentos realizados por el equipo se encuentran en formatos distintos a `.pdf`. [-5 puntos]
+   - Uno o más documentos realizados por el equipo se encuentran en formatos distintos a `.pdf`. **[-5 puntos]**
    - El enlace al video **NO** es público, o **NO** permite el acceso a cuentas de la universidad. **[-60 puntos]**
 
 2. Encuesta/Entrevista Realizada. **[5 puntos]**
     - Se incluyen preguntas para recolectar información demográfica de los participantes. **[2 puntos]**
     - Se incluyen preguntas para identificar la preferencias sobre las estrategias de distribución de pruebas, al igual que su justificación. **[3 puntos]**
 
-3. Reporte de Resulatdos. **[35 puntos]**
+3. Reporte de Resultados. **[35 puntos]**
     - Se incluyen los resultados crudos, es decir, la respuestas dadas por mínimo 30 participantes. **[5 puntos]**
     - Se describen las deciciones tomadas para la definición del formato usado para recolectar la información (e.g. encuesta, entrevista, etc.). **[15 puntos]**
     - Se explican las estrategias utilizadas para contactar a los participantes. **[15 puntos]**
