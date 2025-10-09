@@ -34,16 +34,16 @@ Debido a las preocupaciones sobre los cambios de la _versión **rc**_, usted jun
 
 ### Detalles de la entrega
 
-a entrega debe ser realizada utilizando el repositorio de trabajo dado por el equipo docente (en caso de no poder acceder a la organización del curso, [Uniandes-MISW4103](https://github.com/orgs/Uniandes-MISW4103/), contacten al equipo docente). Su equipo debe crear un _release_ en el repositorio (ver [cómo crear un release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release)) con los siguientes elementos:
+La entrega debe ser realizada utilizando el repositorio de trabajo dado por el equipo docente (en caso de no poder acceder a la organización del curso, [Uniandes-MISW4103](https://github.com/orgs/Uniandes-MISW4103/), contacten al equipo docente). Su equipo debe crear un _release_ en el repositorio (ver [cómo crear un release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release)) con los siguientes elementos:
 
 - La carpeta `./e2e`
     - Los 40 escenarios de prueba modificados (versión `rc`) para la captura de imágenes.
     - Los 10 escenarios de prueba en la versión `base`.
     - Los README de cada herramienta deben ser actualizados para garantizar que el equipo docente pueda instalar, ejecutar y ver los resultados (imágenes) de las pruebas.
     - _Nota_: Deben utilizar todos los patrones vistos para E2E en ambas herramientas (_Page Object_, _Given-When-Then_).
-    - _Nota_: Debe ser clara la distinción entre el codigo fuente para la versi´øn `rc` y `base`.
+    - _Nota_: Debe ser clara la distinción entre el código fuente para la versión `rc` y `base`.
 
-- La carpera `./vrt` con los dos scripts para ejecutar las regresiones visuales (leer el README de la carpeta para entender cómo configurar las herramientas).
+- La carpeta `./vrt` con los dos scripts para ejecutar las regresiones visuales (leer el README de la carpeta para entender cómo configurar las herramientas).
     - Los README de cada herramienta deben ser actualizados para garantizar que el equipo docente pueda instalar, ejecutar las regresiones.
     - Deben utilizar 2 de las siguientes herramientas para la comparación de imágenes: _ResembleJS_, _PixelMatch_, o _BackstopJS_.
 
