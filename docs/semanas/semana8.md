@@ -19,9 +19,9 @@ Con el objetivo de continuar con los esfuerzos de automatización sobre la ABP, 
 ## Resumen de las actividades
 
 1. Su equipo deberá entregar la version final de la estrategia de pruebas (EP1) que han diseñado durante las últimas semanas. Particularmente, su estrategia debe incluir todas las actividades realizadas (pruebas de exploración, reconocimiento, extremo a extremo, regresión visual, y generación de datos), al igual que la correcciónes y mejoras a partir de la retroalimentacion recibida en entregas pasadas.
-2. Escriban un reporte con resultados de ejecución de la estrategia (EP1), los cuales deben estar respaldados con el código fuente que implementaron para ejecutar las pruebas. Como mínimo, se espera que este documento describa la relación entre sus escenarios de prueba con el TNT de la estrategia, se incluyan enlaces con las evidencias de ejecución, y se reporten las incidencias identificadas.
-3. Elaboren una nueva estrategia de pruebas (EP2) utilizando las restricciones mencionadas anteriormente. Para esto deben utilizar la plantilla de estrategia ([enlace](https://thesoftwaredesignlab.github.io/AutTestingCourseraBook/templates/estrategia-pruebas.docx))
-4. Adicionalmente, graben un video para presentar los resultados obtenidos de la estrategia de pruebas EP1, y en donde expliquen las decisiones tomadas para la nueva estrategia de pruebas EP2.
+2. Escriban un reporte con resultados de ejecución de la estrategia (EP1), los cuales deben estar respaldados con el código fuente que implementaron para ejecutar las pruebas. Como mínimo, se espera que este documento liste los escenarios de la estrategia (ID, nombre, descripción, tipo, nivel, y técnica), incluya enlaces con las evidencias de ejecución de **todas** las técnicas utilizadas, y la relación entre los escenario y las incidencias identificadas.
+4. Elaboren una nueva estrategia de pruebas (EP2) utilizando las restricciones mencionadas anteriormente. Para esto deben utilizar la plantilla de estrategia ([enlace](https://thesoftwaredesignlab.github.io/AutTestingCourseraBook/templates/estrategia-pruebas.docx))
+5. Adicionalmente, graben un video para presentar los resultados obtenidos de la estrategia de pruebas EP1, y en donde expliquen las decisiones tomadas para la nueva estrategia de pruebas EP2.
 
 
 ## Detalles de la entrega
@@ -49,9 +49,9 @@ Respecto al código fuente desarrollado para la primera estrategia de pruebas (E
     - La distribución describe la asignación de recursos (humanos, computaciónales, outsourcing), y es coherente con el TNT y la duracion de la estrategia. **[10 puntos]**
 
 2. Reporte de Resultados de la Estrategia (EP1). **[15 puntos]**
-    - Se describen la relación entre los escenarios de prueba con el TNT de la estrategia. **[5 puntos]**
-    - El documento incluye los enlaces a las evidencias de ejecución de los escenarios. **[5 puntos]**
-    - El documento incluye las incidencias identificadas como resultado de la ejecución de la estrategia. **[5 puntos]**
+    - El documento lista todos los escenarios de prueba de la estrategia. Cada escenario tiene, como mínimo, un identificador, un nombre, una descripción, y el TNT (tipo, nivel, y técnica utilizada). **[5 puntos]**
+    - El documento incluye los enlaces a las evidencias de ejecución de todas las técnicas (`./e2e/*`, `./reconocimiento/*`, `./vrt/*`). **[5 puntos]**
+    - El documento incluye las incidencias identificadas como resultado de la ejecución de la estrategia. Se indican los escenarios asociados a cada incidencia. **[5 puntos]**
 
 3. Código Fuente de la Estrategia (EP1). **[15 puntos]**
     - El código de prueba se encuentra en el repositorio del equipo (`./e2e/*`, `./reconocimiento/*`, `./vrt/*`) y permite la ejecución de todos los escenarios de la estrategia de pruebas. **[15 puntos]**
