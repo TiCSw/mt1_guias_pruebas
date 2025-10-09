@@ -7,10 +7,10 @@ Gracias de nuevo por su trabajo. El análisis de datos recolectado con la encues
 
 Queremos solicitarles, a usted y su equipo de pruebas, que elaboren una primera versión para la estrategia de pruebas de GHOST, teniendo en cuenta las siguientes restricciones y condiciones por parte de TSDC:
 
-* La estrategia debe contemplar una duración de 8 semanas de trabajo. Estas incluyen tanto la planeación como la ejecución de la estrategia.
-* Cada uno de los ingenieros automatizadores junior cuenta con 12 horas semanales de trabajo.
-* Su equipo puede utilizar recursos computacionales externos (e.g. recursos computacionales de _Amazon Web Services_).
-* La estrategia puede utilizar 500 USD para contratación de servicios de outsourcing de pruebas. No obstante, se deben detallar las actividades de outsourcing con el mismo rigor que las del equipo de ingenieros automatizadores junior.
+* **Duración de la Iteración de Pruebas**: La estrategia debe contemplar una duración de 8 semanas de trabajo. Estas incluyen tanto la planeación como la ejecución de la estrategia.
+* **Recursos Humanos**: Cada uno de los ingenieros automatizadores junior (su equipo) cuenta con 12 horas semanales de trabajo.
+* **Recursos Computacionales**: Adicionalmente a sus equipos propios (computadores, smartphone, etc.), pueden utilizar recursos computacionales externos (e.g. servicios de _Amazon Web Services_). No hay restricciones presupuestarias, pero deben deben reportar los costos en caso de utilizar este tipo de recursos.
+* **Contratación de Servicios/Personal**: Tienen un presupuesto de 500 USD para contratación de servicios de outsourcing de pruebas (no confundir con los literales anterior!). En caso de haecr uso de este, deben detallar las actividades de outsourcing con el mismo rigor que las del equipo de ingenieros automatizadores junior.
 
 ### Resumen de las actividades
 
@@ -24,6 +24,13 @@ Se debe entregar **un archivo .pdf** con la estrategia de pruebas. El video debe
 > _Nota: el incumplimiento de cualquiera de los aspectos mencionados puede incurrir en una penalización sobre la calificación de la actividad_.
 
 ### Criterios de evaluación
+
+0. _"Fatalities"_.
+
+    _Nota: el incumplimiento de cualquiera de los aspectos mencionados a continuación puede incurrir en una penalización sobre la calificación de la actividad_.
+
+   - Uno o más documentos realizados por el equipo se encuentran en formatos distintos a `.pdf`. **[-15 puntos]**
+   - El enlace al video **NO** es público, o **NO** permite el acceso a cuentas de la universidad. **[-10 puntos]**
 
 1. Aplicación Bajo Pruebas (ABP). **[25 puntos]**
     - Se describen las _funcionalidades core_ incluida dentro de la estrategia. Cada funcionalidad debe ser específica e incluir, por lo menos, un título y una descripción. **[15 puntos]**
