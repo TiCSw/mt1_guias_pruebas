@@ -40,6 +40,7 @@ Por otra parte, en la actividad de Coursera deberán enviar:
     - El repositorio del equipo (org [Uniandes-MISW4103](https://github.com/orgs/Uniandes-MISW4103/)) **NO** cuenta con un release, creado dentro del plazo establecido, en donde se incluyen todos los entregables de la actividad. **[-15 puntos]**
     - Las pruebas de reconocimiento con _Monkey_ **NO** utilizan el código fuente indicado en el archivo `./reconocimiento/README.md`. **[-30 puntos]**
     - Las pruebas de reconocimiento con _Ripper_ **NO** utilizan el código fuente indicado en el archivo `./reconocimiento/README.md`. **[-30 puntos]**
+    - Se incluyen archivos multimedia (videos, logs, imágenes, etc.), documentos no-planos (.pdf, .xlsx) o dependencias/librerías (node_modules) dentro del repositorio. **[-20 puntos]**
     - Uno o más documentos realizados por el equipo se encuentran en formatos distintos a `.pdf`. **[-10 puntos]**
     - El enlace al video **NO** es público, o **NO** permite el acceso a cuentas de la universidad. [-10 puntos]
   
