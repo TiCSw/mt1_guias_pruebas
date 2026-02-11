@@ -12,7 +12,7 @@ Con el objetivo de continuar con los esfuerzos de automatización sobre la ABP, 
 - Respecto a los recursos humanos, su división necesita contratar 2 _automatizadores junior_ por _automatizador senior_ (e.g. si su equipo es de 4 personas, su estrategia debe incluir 8 _automatizadores junior_).
 - Su equipo no tiene ninguna restricción monetaria para la contratacion del personal y tiene la libertad de definir el perfil de los nuevos empleados. Asuma que cada empleado de la división trabaja 8 horas/día.
 - Respecto a los recursos computacionales, todas las pruebas deben ser ejecutadas utilizando algun proveedor de servicios en la nube. Cuentan con un presupuesto de 1000 USD.
-- **No** es posible contratar servicios de outsourcing para la definisión, implementación, ni ejecución de pruebas. En otras palabras, la estrategia de pruebas no puede apalancarse en servicios de pruebas de terceros.
+- **No** es posible contratar servicios de outsourcing para la definición, implementación, ni ejecución de pruebas. En otras palabras, la estrategia de pruebas no puede apalancarse en servicios de pruebas de terceros.
 - Debido a que en TSDC cuenta con otras divisiones de ingeniería con mayor conocimiento técnico sobre los sistemas y componentes de la ABP, su estrategia debe contemplar únicamente la implementacion y ejecución de pruebas funcionales. Del mismo modo, se espera que la estrategia se enfoque solamente en los niveles de prueba de sistema y aceptación.
 
 
