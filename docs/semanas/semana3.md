@@ -87,8 +87,8 @@ El incumplimiento de cualquiera de las siguientes condiciones genera penalizacio
 - Los **recursos humanos** incluyen costo por hora referenciado al mercado y cálculo del costo total, con soporte explícito. **[8 puntos]**  
 - Los **recursos computacionales** incluyen costos estimados, modelo de consumo y supuestos documentados. **[6 puntos]**  
 - El **outsourcing** describe actividades específicas, costos detallados y cumplimiento del límite de 500 USD. **[5 puntos]**  
-- Se definen técnicas, niveles y tipos de pruebas (TNT) indicando su propósito y alcance. **[12 puntos]**  
-- Se establece una relación explícita y verificable entre TNT y objetivos de pruebas (por ejemplo, matriz de trazabilidad). **[8 puntos]**  
+- Se definen técnicas, niveles y tipos de pruebas (TNT) indicando su propósito y alcance. **[15 puntos]**  
+- Se establece una relación explícita y verificable entre TNT y objetivos de pruebas (por ejemplo, matriz de trazabilidad). **[5 puntos]**  
 - Se presenta una distribución del esfuerzo en formato tabular o cronograma semanal, alineada con recursos, presupuesto y TNT. **[10 puntos]**
 
 
