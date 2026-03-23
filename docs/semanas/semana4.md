@@ -1,66 +1,120 @@
-
 # Proyecto Pruebas automatizadas
 
-## Semana 4: ¿Monkeys? ¿Rippers?
+## Semana 4: Pruebas de reconocimiento con Monkeys y Rippers
 
-Con nuestro CTO ya estamos revisando su estrategia de pruebas propuesta. Gracias de nuevo por toda su ayuda. Nuestros asesores de The Software Design Lab nos han sugerido que una buena forma de iniciar con automatización de pruebas es hacer pruebas de reconocimiento, dado que estas no requieren intervención humana.  
+## Descripción de la semana
 
-### Resumen de las actividades
+En esta semana del proyecto *TSDC*, el equipo aplicará técnicas de **pruebas de reconocimiento (exploración automática)** utilizando herramientas basadas en _Monkeys_ y _Rippers_ sobre la Aplicación Bajo Pruebas (ABP). El propósito es que el equipo:
 
+- Ejecute pruebas automatizadas sin intervención humana para identificar comportamientos inesperados.
+- Compare dos enfoques de exploración automática: generación aleatoria de eventos (_Monkey_) y exploración estructurada del DOM (_Ripper_).
+- Analice el valor práctico de estas herramientas dentro de una estrategia de pruebas.
+- Integre los hallazgos y aprendizajes en la estrategia de pruebas definida en semanas anteriores.
 
-No entendimos muy bien las diferencias entre los _Monkeys_ y los _Rippers_, por lo tanto, nos gustaría que ejecuten pruebas de reconocimiento en la _Aplicación Bajo Pruebas_ (_ABP_) con esos dos tipos de herramientas. Del mismo modo, a partir de su experiencia, nos gustaría que actualice la estrategia que entregaron la semana pasada, y que incluyan un análisis de los pros y contras de estas herramientas. La entrega se debe realizar a través de Coursera en las fechas indicadas. Nuestros amigos de The Software Design Lab nos sugieren usar las herramientas [monkey-cypress](https://github.com/Uniandes-MISW4103/proyecto-monkey-base) y [RIPuppet](https://github.com/Uniandes-MISW4103/proyecto-ripper-base) (ver detalles de la entrega).
-
-### Detalles de la entrega
-
-La entrega debe ser realizada utilizando el repositorio de trabajo dado por el equipo docente (en caso de no poder acceder a la organización del curso, [Uniandes-MISW4103](https://github.com/orgs/Uniandes-MISW4103/), contacten al equipo docente). Su equipo debe crear un _release_ en el repositorio (ver [cómo crear un release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release)) con los siguientes elementos:
-
-- La carpeta `./reconocimiento` con el código fuente _Monkeys_ y los _Rippers_ (leer el archivo `./reconocimiento/README.md` de la carpeta para entender cómo configurar las herramientas).
-    - Las pruebas realizadas con estas herramientas deben ser reproducibles por el equipo docente, es decir, deben utilizar semillas (seeds) de ejecución.
-    - En caso de modificar el código fuente, los cambios deben estar incluidos en el _release_, y los README de `./reconocimiento/misw-4103-monkey` y `./reconocimiento/misw-4103-ripper` deben ser actualizados de ser necesario.
-
-- El archivo `./actividades/actividad-semana-4` debe tener tener como mínimo:
-    - Información de los integrantes que participaron en la actividad.
-    - Resultados de ejecución de cada una de las herramientas. Debe incluir, como mínimo, las semillas (seeds) de ejecución,enlaces a evidencias (videos, reportes, etc.), y enlaces a las nuevas incidencias identificadas.
-    - El resumen de los pros y los contras de cada una de las herramientas para pruebas de reconocimiento.
-    
-
-Por otra parte, en la actividad de Coursera deberán enviar:
-- La estrategia de pruebas _(*)_, la cual debe incluir el uso de pruebas de reconocimiento y las mejoras a partir de la retroalimentación recibida de la estrategia anterior.
-- Enlace al video _(*)_, el cual debe incluir los ajustes a la estrategia de pruebas, al igual que el análisis de los pros y contras de las herramientas usadas.
-
-> _(*)_ Los videos y documentos que incluyan en su entrega deben estar alojado en algún gestor de contenido (Google drive, OneDrive, Youtube, etc), deben ser públicos o deben permitir el acceso a cuentas de la Universidad de Los Andes (`@uniandes.edu.co`). Para el caso de documentos, estos deben estar en formato `.pdf`.
+Al finalizar la semana, el equipo debe haber ejecutado ambos tipos de pruebas, documentado sus resultados de manera reproducible y actualizado su estrategia de pruebas con base en evidencia.
 
 
-### Criterios de evaluación
+## Resumen de las actividades
 
-0. _"Fatalities"_.
+> [!NOTE]
+> Todas las pruebas deben ejecutarse sobre la misma versión de la ABP utilizada en semanas anteriores.
 
-    _Nota: el incumplimiento de cualquiera de los aspectos mencionados a continuación puede incurrir en una penalización sobre la calificación de la actividad_.
-    
-    - El repositorio del equipo (org [Uniandes-MISW4103](https://github.com/orgs/Uniandes-MISW4103/)) **NO** cuenta con un release, creado dentro del plazo establecido, en donde se incluyen todos los entregables de la actividad. **[-15 puntos]**
-    - Las pruebas de reconocimiento con _Monkey_ **NO** utilizan el código fuente indicado en el archivo `./reconocimiento/README.md`. **[-30 puntos]**
-    - Las pruebas de reconocimiento con _Ripper_ **NO** utilizan el código fuente indicado en el archivo `./reconocimiento/README.md`. **[-30 puntos]**
-    - Se incluyen archivos multimedia (videos, logs, imágenes, etc.), documentos no-planos (.pdf, .xlsx) o dependencias/librerías (node_modules) dentro del repositorio. **[-20 puntos]**
-    - Uno o más documentos realizados por el equipo se encuentran en formatos distintos a `.pdf`. **[-10 puntos]**
-    - El enlace al video **NO** es público, o **NO** permite el acceso a cuentas de la universidad. [-10 puntos]
-  
-1. Pruebas de Reconocimiento con _Monkey_. **[30 puntos]**
-    - El código entregado (`./reconocimiento/misw-4103-monkey`) permite la ejecución y reproducción de los resultados obtenidos. El README de la herramienta es actualizado para indicar los cambios realizados por el equipo, y se explican los pasos para la ejecución de la herramienta. **[15 puntos]**
-    - El reporte de resultados de ejecución se encuentran en el repositorio del equipo (`./actividades/actividad-semana-4`), e incluyen las semillas (seeds) de ejecución, enlaces a las incidencias, y enlaces a evidencias. **[10 puntos]**
-    - El resumen de los pros y los contras se encuentran en el repositorio del equipo (`./actividades/actividad-semana-4`), y es coherente con la herramienta. **[5 puntos]**
-  
-2. Pruebas de Reconocimiento con _Ripper_. **[30 puntos]**
-    - El código entregado (`./reconocimiento/misw-4103-ripper`) permite la ejecución y reproducción de los resultados obtenidos. El README de la herramienta es actualizado para indicar los cambios realizados por el equipo, y se explican los pasos para la ejecución de la herramienta. **[15 puntos]**
-    - Los resultados de ejecución se encuentran en el repositorio del equipo (`./actividades/actividad-semana-4`), e incluyen las semillas (seeds) de ejecución, enlaces a las incidencias, y enlaces a evidencias. **[10 puntos]**
-    - El resumen de los pros y los contras se encuentran en el repositorio del equipo (`./actividades/actividad-semana-4`), y es coherente con la herramienta. **[5 puntos]**
+> [!NOTE]
+> Los resultados reportados deben ser reproducibles. Para esto, es obligatorio el uso de semillas (_seeds_) en todas las ejecuciones.
 
-3. Estrategia de Pruebas. **[30 puntos]**
-    - Se actualiza la estrategia de pruebas con la retroalimentación de la entrega anterior. **[15 puntos]**
-    - La estrategia de pruebas incluye el uso de pruebas de reconocimiento. La estrategia es coherente respecto a los objetivos, el presupuesto, el TNT, y la distribución de esfuerzo. **[15 puntos]**
+1. Configure y ejecute pruebas de reconocimiento utilizando la herramienta [monkey-cypress](https://github.com/Uniandes-MISW4103/proyecto-monkey-base). Asegúrese de seguir las instrucciones del archivo `README.md` provisto, utilizar semillas para garantizar reproducibilidad y, en caso de realizar modificaciones al código base, documentarlas explícitamente.
 
-4. Video. **[10 puntos]**
-    - El video incluye los ajustes a la estrategia de pruebas. La explicación de la estrategia es coherente. **[5 puntos]**
-    - El video incluye análisis de los pros y contras de las herramientas de pruebas de reconocimiento, y es coherente con la características de las herramientas. **[5 puntos]**
+2. Configure y ejecute pruebas de reconocimiento utilizando la herramienta [RIPuppet](https://github.com/Uniandes-MISW4103/proyecto-ripper-base). Debe garantizar la correcta configuración, ejecución reproducible mediante semillas y la documentación de cualquier cambio realizado sobre el código base.
+
+3. Recolecte y documente los resultados de ejecución de ambas herramientas. Para cada herramienta, registre como mínimo: semillas utilizadas, evidencia de ejecución (videos o reportes), y enlaces a las incidencias nuevas identificadas en la ABP.
+
+4. Analice comparativamente las herramientas _Monkey_ y _Ripper_, identificando ventajas y desventajas de cada una en el contexto de pruebas de reconocimiento. El análisis debe basarse en la experiencia obtenida durante la ejecución.
+
+5. Actualice la estrategia de pruebas definida en la semana anterior, incorporando:
+   - El uso de pruebas de reconocimiento.
+   - Ajustes derivados de la retroalimentación recibida.
+   - Justificación del uso (o no uso) de estas herramientas dentro de la estrategia.
+
+6. Elabore un video en el que se expliquen los cambios realizados a la estrategia de pruebas y el análisis comparativo entre las herramientas utilizadas.
 
 
-**La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y la calidad de cada uno de acuerdo con la rúbrica establecida.**
+## Detalles de la entrega
+
+La entrega debe realizarse mediante el repositorio asignado por el equipo docente en la organización [Uniandes-MISW4103](https://github.com/orgs/Uniandes-MISW4103/). El equipo debe crear un _release_ siguiendo la guía oficial: [Crear un release en GitHub](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release).
+
+El _release_ debe incluir obligatoriamente los siguientes elementos:
+
+- Carpeta `./reconocimiento`:
+  - Código fuente funcional de las herramientas _Monkey_ (`misw-4103-monkey`) y _Ripper_ (`misw-4103-ripper`).
+  - Configuración necesaria para ejecutar las pruebas.
+  - Uso explícito de semillas (_seeds_) para permitir la reproducción de resultados.
+  - Archivos `README.md` actualizados cuando se hayan realizado modificaciones, incluyendo instrucciones claras de ejecución paso a paso.
+
+- Carpeta `./actividades/actividad-semana-4`:
+  - Documento en formato `.pdf` que incluya:
+    - Integrantes que participaron en la actividad.
+    - Resultados de ejecución por cada herramienta, incluyendo:
+      - Semillas utilizadas.
+      - Enlaces a evidencias (videos, reportes, logs externos).
+      - Enlaces a incidencias nuevas registradas.
+    - Análisis comparativo de pros y contras entre _Monkey_ y _Ripper_.
+
+Adicionalmente, en la plataforma del curso se debe entregar:
+
+- Estrategia de pruebas actualizada en formato `.pdf`, que incluya:
+  - Incorporación de pruebas de reconocimiento.
+  - Ajustes derivados de retroalimentación previa.
+  - Coherencia con objetivos, presupuesto, TNT y distribución de esfuerzo.
+
+- Enlace a un video donde:
+  - Se expliquen los cambios realizados a la estrategia.
+  - Se presente el análisis comparativo de las herramientas.
+
+> Todos los archivos deben estar alojados en plataformas externas (e.g. OneDrive o YouTube) y deben ser públicos o accesibles para cuentas institucionales (`@uniandes.edu.co`).
+
+---
+
+## Criterios de evaluación
+
+### 0. Fatalities
+
+El incumplimiento de cualquiera de las siguientes condiciones genera penalizaciones automáticas:
+
+- No se crea un _release_ en el repositorio dentro del plazo establecido con todos los entregables requeridos. **[-15 puntos]**
+- La implementación de _Monkey_ no utiliza el código base indicado en `./reconocimiento/README.md`. **[-30 puntos]**
+- La implementación de _Ripper_ no utiliza el código base indicado en `./reconocimiento/README.md`. **[-30 puntos]**
+- Se incluyen archivos multimedia, dependencias o documentos no permitidos dentro del repositorio (por ejemplo: videos, `.pdf`, `node_modules`). **[-20 puntos]**
+- Algún documento entregado no está en formato `.pdf`. **[-10 puntos]**
+- El video no es accesible públicamente o no permite acceso institucional. **[-10 puntos]**
+
+
+### 1. Pruebas de reconocimiento con Monkey **[30 puntos]**
+
+- El código en `./reconocimiento/misw-4103-monkey` ejecuta correctamente y permite reproducir resultados mediante semillas documentadas. **[10 puntos]**
+- El archivo `README.md` describe de forma completa los pasos de configuración, ejecución y cambios realizados (si aplica). **[5 puntos]**
+- Se reportan resultados de ejecución que incluyen semillas, evidencias y enlaces a incidencias nuevas. **[10 puntos]**
+- El análisis de pros y contras es consistente con los resultados obtenidos en la ejecución. **[5 puntos]**
+
+
+### 2. Pruebas de reconocimiento con Ripper **[30 puntos]**
+
+- El código en `./reconocimiento/misw-4103-ripper` ejecuta correctamente y permite reproducir resultados mediante semillas documentadas. **[10 puntos]**
+- El archivo `README.md` describe de forma completa los pasos de configuración, ejecución y cambios realizados (si aplica). **[5 puntos]**
+- Se reportan resultados de ejecución que incluyen semillas, evidencias y enlaces a incidencias nuevas. **[10 puntos]**
+- El análisis de pros y contras es consistente con los resultados obtenidos en la ejecución. **[5 puntos]**
+
+
+### 3. Estrategia de pruebas **[30 puntos]**
+
+- La estrategia incorpora explícitamente pruebas de reconocimiento, indicando objetivo, alcance y tipo de herramientas utilizadas. **[10 puntos]**
+- Se evidencia la incorporación de la retroalimentación de la semana anterior mediante cambios concretos y trazables. **[10 puntos]**
+- La estrategia mantiene coherencia interna entre objetivos, presupuesto, TNT y distribución de esfuerzo. **[10 puntos]**
+
+
+### 4. Video **[10 puntos]**
+
+- El video explica de forma clara y estructurada los cambios realizados a la estrategia de pruebas. **[5 puntos]**
+- El video presenta un análisis comparativo entre _Monkey_ y _Ripper_ basado en evidencia obtenida durante la ejecución. **[5 puntos]**
+
+
+**La evaluación se realizará verificando la completitud, trazabilidad y reproducibilidad de los artefactos entregados, así como la coherencia entre ejecución, análisis y estrategia de pruebas.**
