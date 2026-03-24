@@ -16,12 +16,6 @@ El propósito es que el equipo:
 
 ## Resumen de las actividades
 
-> [!NOTE]
-> Todas las pruebas deben ejecutarse sobre la misma versión de la ABP utilizada en semanas anteriores.
-
-> [!NOTE]
-> Todas las ejecuciones deben ser reproducibles mediante el uso de semillas (_seeds_).
-
 1. Configure y ejecute pruebas de reconocimiento utilizando la herramienta [monkey-cypress](https://github.com/Uniandes-MISW4103/proyecto-monkey-base). Debe seguir las instrucciones del repositorio, garantizar la reproducibilidad mediante el uso de semillas y documentar la configuración y parámetros utilizados en cada ejecución. En caso de realizar modificaciones al código base, estas deben quedar registradas.
 
 2. Configure y ejecute pruebas de reconocimiento utilizando la herramienta [RIPuppet](https://github.com/Uniandes-MISW4103/proyecto-ripper-base). Debe garantizar la correcta configuración, ejecución reproducible mediante semillas y la documentación de cualquier modificación realizada sobre el código base.
@@ -36,6 +30,9 @@ El propósito es que el equipo:
 
 
 ## Detalles de la entrega
+
+> [!NOTE]  
+> Los videos y documentos que incluyan en su entrega deben estar alojado en algún gestor de contenido (OneDrive Uniandes, Youtube), deben ser públicos o deben permitir el acceso a cuentas de la Universidad de Los Andes (`@uniandes.edu.co`). Para el caso de documentos, estos deben estar en formato `.pdf`.
 
 La entrega debe realizarse mediante un _release_ en el repositorio asignado por el equipo docente en la organización [Uniandes-MISW4103](https://github.com/orgs/Uniandes-MISW4103/), siguiendo la guía [Crear un release en GitHub](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release).
 
@@ -52,6 +49,10 @@ Por otra parte, en la plataforma del curso se debe entregar la estrategia de pru
 ---
 
 ## Criterios de evaluación
+
+> [!NOTE]
+> La evaluación se realizará con base en la completitud, coherencia interna, trazabilidad explícita y evidencia verificable de cada uno de los criterios definidos en esta rúbrica.
+> Entregas por fuera del horario establecido puede incurrir en una penalización sobre la calificación final de la actividad.
 
 ### 0. Fatalities
 
@@ -90,6 +91,3 @@ Por otra parte, en la plataforma del curso se debe entregar la estrategia de pru
 
 - El video presenta de forma estructurada los cambios realizados a la estrategia de pruebas. **[5 puntos]**
 - El video incluye el análisis comparativo entre _Monkey_ y _Ripper_ alineado con los resultados obtenidos. **[5 puntos]**
-
-
-**La evaluación se realizará verificando la reproducibilidad de las ejecuciones, la evidencia presentada y la coherencia entre los resultados obtenidos y las decisiones reflejadas en la estrategia de pruebas.**
