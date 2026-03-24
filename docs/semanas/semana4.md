@@ -4,7 +4,9 @@
 
 ## Descripción de la semana
 
-En esta semana del proyecto *TSDC*, el equipo aplicará técnicas de **pruebas de reconocimiento (exploración automática)** utilizando herramientas basadas en _Monkeys_ y _Rippers_ sobre la Aplicación Bajo Pruebas (ABP). El propósito es que el equipo:
+En esta semana del proyecto *TSDC*, el equipo aplicará técnicas de **pruebas de reconocimiento (exploración automática)** utilizando herramientas basadas en _Monkeys_ y _Rippers_ sobre la Aplicación Bajo Pruebas (ABP).
+
+El propósito es que el equipo:
 
 - Ejecute pruebas automatizadas sin intervención humana para identificar comportamientos inesperados.
 - Compare dos enfoques de exploración automática: generación aleatoria de eventos (_Monkey_) y exploración estructurada del DOM (_Ripper_).
@@ -35,9 +37,15 @@ En esta semana del proyecto *TSDC*, el equipo aplicará técnicas de **pruebas d
 
 ## Detalles de la entrega
 
-La entrega debe realizarse mediante un _release_ en el repositorio asignado por el equipo docente en la organización [Uniandes-MISW4103](https://github.com/orgs/Uniandes-MISW4103/), siguiendo la guía [Crear un release en GitHub](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release). El _release_ debe incluir la carpeta `./reconocimiento` con el código fuente funcional de las herramientas _Monkey_ y _Ripper_, asegurando que las ejecuciones sean reproducibles mediante el uso de semillas, así como los archivos `README.md` actualizados cuando se hayan realizado modificaciones, incluyendo instrucciones claras de instalación, configuración y ejecución.
+La entrega debe realizarse mediante un _release_ en el repositorio asignado por el equipo docente en la organización [Uniandes-MISW4103](https://github.com/orgs/Uniandes-MISW4103/), siguiendo la guía [Crear un release en GitHub](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release).
 
-Adicionalmente, el _release_ debe incluir la carpeta `./actividades/actividad-semana-4`, la cual debe contener un documento en formato `.pdf` en el que se especifiquen los integrantes que participaron en la actividad, los resultados de ejecución para cada herramienta (incluyendo semillas utilizadas, enlaces a evidencias y enlaces a incidencias nuevas identificadas), así como el análisis comparativo de las herramientas basado en la experiencia obtenida.
+El _release_ debe incluir la carpeta `./reconocimiento` con el código fuente funcional de las herramientas _Monkey_ y _Ripper_, asegurando que las ejecuciones sean reproducibles mediante el uso de semillas, así como los archivos `README.md` actualizados cuando se hayan realizado modificaciones, incluyendo instrucciones claras de instalación, configuración y ejecución.
+
+Adicionalmente, el _release_ debe incluir **dos documentos en formato `.pdf`**, uno para cada herramienta (`reporte-monkey.pdf` y `reporte-ripper.pdf`). Cada uno de estos documentos debe incluir la siguiente información:
+
+- Resultados de ejecución de la herramienta correspondiente, incluyendo semillas utilizadas
+- Enlaces a evidencias y enlaces a incidencias nuevas identificadas o su respectiva justificación.
+- Análisis de ventajas y desventajas de la herramienta, basado en la experiencia obtenida durante la ejecución.
 
 Por otra parte, en la plataforma del curso se debe entregar la estrategia de pruebas actualizada en formato `.pdf`, la cual debe reflejar la incorporación de pruebas de reconocimiento, los ajustes derivados de la retroalimentación previa y la coherencia con los objetivos, el presupuesto, el TNT y la distribución de esfuerzo. También se debe entregar el enlace al video, el cual debe estar alojado en una plataforma externa y ser accesible públicamente o mediante cuentas institucionales.
 
@@ -54,22 +62,25 @@ Por otra parte, en la plataforma del curso se debe entregar la estrategia de pru
 - Algún documento entregado no está en formato `.pdf`. **[-10 puntos]**
 - El video no es accesible públicamente o no permite acceso institucional. **[-10 puntos]**
 
+---
 
 ### 1. Pruebas de reconocimiento con Monkey **[30 puntos]**
 
 - El código en `./reconocimiento/misw-4103-monkey` permite la ejecución correcta y la reproducción de resultados mediante semillas documentadas. **[10 puntos]**
 - El archivo `README.md` describe de forma completa los pasos de instalación, configuración, ejecución y los parámetros utilizados. **[5 puntos]**
-- Se reportan resultados de ejecución que incluyen semillas, evidencias y enlaces a incidencias o su justificación. **[10 puntos]**
-- El análisis de ventajas y desventajas es coherente con los resultados obtenidos durante la ejecución. **[5 puntos]**
+- El documento `reporte-monkey.pdf` incluye resultados de ejecución con semillas, evidencias y enlaces a incidencias o su justificación. **[10 puntos]**
+- El análisis de ventajas y desventajas en `reporte-monkey.pdf` es coherente con los resultados obtenidos durante la ejecución. **[5 puntos]**
 
+---
 
 ### 2. Pruebas de reconocimiento con Ripper **[30 puntos]**
 
 - El código en `./reconocimiento/misw-4103-ripper` permite la ejecución correcta y la reproducción de resultados mediante semillas documentadas. **[10 puntos]**
 - El archivo `README.md` describe de forma completa los pasos de instalación, configuración, ejecución y los parámetros utilizados. **[5 puntos]**
-- Se reportan resultados de ejecución que incluyen semillas, evidencias y enlaces a incidencias o su justificación. **[10 puntos]**
-- El análisis de ventajas y desventajas es coherente con los resultados obtenidos durante la ejecución. **[5 puntos]**
+- El documento `reporte-ripper.pdf` incluye resultados de ejecución con semillas, evidencias y enlaces a incidencias o su justificación. **[10 puntos]**
+- El análisis de ventajas y desventajas en `reporte-ripper.pdf` es coherente con los resultados obtenidos durante la ejecución. **[5 puntos]**
 
+---
 
 ### 3. Estrategia de pruebas **[30 puntos]**
 
@@ -77,10 +88,13 @@ Por otra parte, en la plataforma del curso se debe entregar la estrategia de pru
 - Se evidencia la incorporación de la retroalimentación de la semana anterior mediante cambios explícitos y trazables. **[10 puntos]**
 - Las decisiones incluidas en la estrategia están justificadas con base en los resultados obtenidos durante la ejecución. **[10 puntos]**
 
+---
 
 ### 4. Video **[10 puntos]**
 
 - El video presenta de forma estructurada los cambios realizados a la estrategia de pruebas. **[5 puntos]**
 - El video incluye el análisis comparativo entre _Monkey_ y _Ripper_ alineado con los resultados obtenidos. **[5 puntos]**
 
-**La evaluación se realizará con base en la completitud, coherencia interna, trazabilidad explícita y evidencia verificable de cada uno de los criterios definidos en esta rúbrica.**
+---
+
+**La evaluación se realizará verificando la reproducibilidad de las ejecuciones, la evidencia presentada y la coherencia entre los resultados obtenidos y las decisiones reflejadas en la estrategia de pruebas.**
