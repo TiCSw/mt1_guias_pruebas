@@ -62,7 +62,6 @@ Por otra parte, en la plataforma del curso se debe entregar la estrategia de pru
 - Algún documento entregado no está en formato `.pdf`. **[-10 puntos]**
 - El video no es accesible públicamente o no permite acceso institucional. **[-10 puntos]**
 
----
 
 ### 1. Pruebas de reconocimiento con Monkey **[30 puntos]**
 
@@ -71,7 +70,6 @@ Por otra parte, en la plataforma del curso se debe entregar la estrategia de pru
 - El documento `reporte-monkey.pdf` incluye resultados de ejecución con semillas, evidencias y enlaces a incidencias o su justificación. **[10 puntos]**
 - El análisis de ventajas y desventajas en `reporte-monkey.pdf` es coherente con los resultados obtenidos durante la ejecución. **[5 puntos]**
 
----
 
 ### 2. Pruebas de reconocimiento con Ripper **[30 puntos]**
 
@@ -80,7 +78,6 @@ Por otra parte, en la plataforma del curso se debe entregar la estrategia de pru
 - El documento `reporte-ripper.pdf` incluye resultados de ejecución con semillas, evidencias y enlaces a incidencias o su justificación. **[10 puntos]**
 - El análisis de ventajas y desventajas en `reporte-ripper.pdf` es coherente con los resultados obtenidos durante la ejecución. **[5 puntos]**
 
----
 
 ### 3. Estrategia de pruebas **[30 puntos]**
 
@@ -88,13 +85,11 @@ Por otra parte, en la plataforma del curso se debe entregar la estrategia de pru
 - Se evidencia la incorporación de la retroalimentación de la semana anterior mediante cambios explícitos y trazables. **[10 puntos]**
 - Las decisiones incluidas en la estrategia están justificadas con base en los resultados obtenidos durante la ejecución. **[10 puntos]**
 
----
 
 ### 4. Video **[10 puntos]**
 
 - El video presenta de forma estructurada los cambios realizados a la estrategia de pruebas. **[5 puntos]**
 - El video incluye el análisis comparativo entre _Monkey_ y _Ripper_ alineado con los resultados obtenidos. **[5 puntos]**
 
----
 
 **La evaluación se realizará verificando la reproducibilidad de las ejecuciones, la evidencia presentada y la coherencia entre los resultados obtenidos y las decisiones reflejadas en la estrategia de pruebas.**
