@@ -74,18 +74,16 @@ Adicionalmente, debe incluir un reporte de resultados en formato `.pdf` (por eje
 
 #### 1. Implementación en herramienta basada en scripts **[40 puntos]**
 
-- Se implementan y ejecutan correctamente veinte (20) escenarios E2E, cada uno sin errores y validando su resultado esperado. (1 punto por escenario) **[20 puntos]**
-- Cada escenario tiene identificador único y consistente con el reporte. (0.5 puntos por escenario) **[10 puntos]**
-- Uso correcto del patrón _Page Object_, evidenciado en la separación entre lógica de interfaz y lógica de prueba. **[5 puntos]**
-- Uso correcto del patrón _Given-When-Then_, evidenciado en la estructura de los escenarios. **[5 puntos]**
+- Se implementan y ejecutan correctamente veinte (20) escenarios E2E, cada uno sin errores y validando su resultado esperado. Cada escenario tiene identificador único y consistente con el reporte (1 punto por escenario) **[20 puntos]**
+- Uso correcto del patrón _Page Object_, evidenciado en la separación entre lógica de interfaz y lógica de prueba. **[10 puntos]**
+- Uso correcto del patrón _Given-When-Then_, evidenciado en la estructura de los escenarios. **[10 puntos]**
 
 
 #### 2. Implementación en Kraken **[40 puntos]**
 
-- Se implementan y ejecutan correctamente veinte (20) escenarios equivalentes a los de la otra herramienta. (1 punto por escenario) **[20 puntos]**
-- Cada escenario tiene identificador único y consistente con el reporte. (0.5 puntos por escenario) **[10 puntos]**
-- Uso correcto del patrón _Page Object_, evidenciado en la separación entre lógica de interfaz y lógica de prueba. **[5 puntos]**
-- Uso correcto del patrón _Given-When-Then_, evidenciado en la estructura de los escenarios. **[5 puntos]**
+- Se implementan y ejecutan correctamente veinte (20) escenarios equivalentes a los de la otra herramienta. Cada escenario tiene identificador único y consistente con el reporte (1 punto por escenario) **[20 puntos]**
+- Uso correcto del patrón _Page Object_, evidenciado en la separación entre lógica de interfaz y lógica de prueba. **[10 puntos]**
+- Uso correcto del patrón _Given-When-Then_, evidenciado en la estructura de los escenarios. **[10 puntos]**
 
 
 #### 3. Reporte de resultados **[20 puntos]**
@@ -93,4 +91,4 @@ Adicionalmente, debe incluir un reporte de resultados en formato `.pdf` (por eje
 - Lista de mínimo cinco (5) funcionalidades completas. (1 punto por funcionalidad) **[5 puntos]**
 - Tabla de veinte (20) escenarios completa y consistente con las implementaciones. (0.25 puntos por escenario) **[5 puntos]**
 - Resultados de ejecución documentados para cada escenario en ambas herramientas, con evidencia verificable. **[5 puntos]**
-- Análisis comparativo basado en los resultados obtenidos. **[5 puntos]**
+- Análisis comparativo de ambas herramientas (pros y contras) basado en los resultados obtenidos. **[5 puntos]**
