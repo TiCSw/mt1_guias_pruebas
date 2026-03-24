@@ -17,9 +17,6 @@ El resultado esperado es un conjunto de escenarios E2E implementados de forma eq
 ### Resumen de las actividades
 
 > [!NOTE]
-> Si el equipo realiza cambios en las funcionalidades seleccionadas, estos deben reflejarse de manera consistente en los escenarios de prueba, implementaciones y reporte final.
-
-> [!NOTE]
 > Los valores de configuración (por ejemplo: URL base, puertos, credenciales de prueba) deben estar centralizados en un único punto de configuración (variables de entorno, archivos `.env`, `.yml` o configuración propia de las herramientas). No se permite la duplicación de estos valores en múltiples archivos.
 
 1. Seleccione un mínimo de cinco (5) funcionalidades y defina al menos veinte (20) escenarios de prueba E2E. Cada escenario debe tener identificador único, estar asociado a una funcionalidad y describir claramente el comportamiento esperado mediante un resultado verificable.
@@ -36,6 +33,9 @@ El resultado esperado es un conjunto de escenarios E2E implementados de forma eq
 
 
 ### Detalles de la entrega
+
+> [!NOTE]  
+> Los videos y documentos que incluyan en su entrega deben estar alojado en algún gestor de contenido (OneDrive Uniandes, Youtube), deben ser públicos o deben permitir el acceso a cuentas de la Universidad de Los Andes (`@uniandes.edu.co`). Para el caso de documentos, estos deben estar en formato `.pdf`.
 
 La entrega debe realizarse mediante un _release_ en el repositorio del equipo (ver [cómo crear un release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release)), el cual debe permitir la ejecución completa de los escenarios y la validación de todos los artefactos sin requerir modificaciones manuales adicionales.
 
@@ -54,11 +54,14 @@ Adicionalmente, debe incluir un reporte de resultados en formato `.pdf` (por eje
 - Resultados de ejecución, incluyendo evidencia verificable (logs, capturas o enlaces externos) y un resumen cuantitativo (número de escenarios exitosos y fallidos por herramienta).
 - Un análisis comparativo entre la herramienta seleccionada y Kraken, incluyendo ventajas, desventajas y conclusiones basadas en los resultados obtenidos.
 
-> _Nota_: Los recursos externos (videos, logs, capturas o documentos adicionales) deben estar alojados en plataformas como Google Drive, OneDrive o YouTube, y deben ser públicos o permitir acceso a cuentas `@uniandes.edu.co`. Para el caso de documentos, estos deben estar en formato `.pdf`.
-
 ---
 
 ### Criterios de evaluación
+
+> [!NOTE]
+> La evaluación se realizará con base en la completitud, coherencia interna, trazabilidad explícita y evidencia verificable de cada uno de los criterios definidos en esta rúbrica.
+> Entregas por fuera del horario establecido puede incurrir en una penalización sobre la calificación final de la actividad.
+
 
 #### 0. Fatalities
 
