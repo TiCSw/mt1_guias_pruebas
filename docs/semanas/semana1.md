@@ -29,16 +29,13 @@ Recuerde que durante las pruebas exploratorias es de vital importancia documenta
 7. A medida que se explora la aplicación, el equipo debe documentar el conocimiento adquirido mediante un listado de funcionalidades, un modelo de GUI (interfaces y transiciones) y un modelo de dominio (entidades y relaciones). Puede apoyarse en los siguientes recursos:  
 [Tips de la semana](https://www.coursera.org/learn/pruebas-automatizadas-software/supplement/xjgTI/para-tener-en-cuenta-esta-semana)
 
-> [!NOTE]  
-> Para los puntos 2 en adelante usted cuenta con un presupuesto de pruebas que incluye máximo 6 horas de dedicación hora/persona. 
-> Si al hacer clic en un enlace no se abre el archivo, utilice las opciones del menú que aparece al usar CTRL+click derecho.
-
 
 ## Detalles de la entrega
 
-La entrega se debe realizar a través de Coursera en las fechas indicadas. El objetivo es consolidar la evidencia del proceso de exploración, pruebas y modelado realizado por el equipo durante la semana.
+> [!NOTE]  
+> Los videos y documentos que incluyan en su entrega deben estar alojado en algún gestor de contenido (OneDrive Uniandes, Youtube), deben ser públicos o deben permitir el acceso a cuentas de la Universidad de Los Andes (`@uniandes.edu.co`). Para el caso de documentos, estos deben estar en formato `.pdf`.
 
-Se deben entregar los siguientes archivos:
+La entrega se debe realizar a través de Coursera en las fechas indicadas. El objetivo es consolidar la evidencia del proceso de exploración, pruebas y modelado realizado por el equipo durante la semana. Se deben entregar los siguientes archivos:
 
 - **1 PDF** con el listado de funcionalidades identificadas.  
 - **1 PDF** con el inventario de pruebas exploratorias (incluyendo los enlaces a los videos de cada prueba).  
@@ -52,7 +49,7 @@ Adicionalmente, el inventario de pruebas debe permitir identificar claramente la
 ## Criterios de evaluación
 
 > [!NOTE]
-> La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y el cumplimiento exacto de los criterios definidos.
+> La evaluación se realizará con base en la completitud, coherencia interna, trazabilidad explícita y evidencia verificable de cada uno de los criterios definidos en esta rúbrica.
 > Entregas por fuera del horario establecido puede incurrir en una penalización sobre la calificación final de la actividad.
 
 ### 1. Listado de funcionalidades [15 puntos]
