@@ -19,9 +19,6 @@ Este ejercicio busca desarrollar habilidades de investigación aplicada, anális
 ## Resumen de las actividades
 
 > [!NOTE]  
-> El trabajo debe realizarse en equipos. Cada equipo es responsable de coordinar la recolección de datos y garantizar el cumplimiento del número mínimo de participantes.
-
-> [!NOTE]  
 > Antes de aplicar la encuesta o entrevista, es obligatorio explicar a los participantes las diferencias entre las estrategias de pirámide de automatización y cono de helado, asegurando que comprendan las preguntas.
 
 1. Diseñar un instrumento de recolección de información (encuesta o guion de entrevista) que incluya preguntas sobre: preferencia entre pirámide de automatización y cono de helado, justificación de dicha preferencia, proporción de pruebas manuales y automatizadas utilizadas, e información demográfica relevante (por ejemplo, país, rol y años de experiencia). El instrumento debe incluir un consentimiento informado claro sobre el uso de los datos.
@@ -35,6 +32,9 @@ Este ejercicio busca desarrollar habilidades de investigación aplicada, anális
 
 ## Detalles de la entrega
 
+> [!NOTE]  
+> Los videos y documentos que incluyan en su entrega deben estar alojado en algún gestor de contenido (OneDrive Uniandes, Youtube), deben ser públicos o deben permitir el acceso a cuentas de la Universidad de Los Andes (`@uniandes.edu.co`). Para el caso de documentos, estos deben estar en formato `.pdf`.
+
 El equipo debe entregar un conjunto completo de artefactos que evidencien el diseño, ejecución y análisis del proceso de investigación realizado.Particularmente, los entregables de esta actividad son:
 
 - **Instrumento de recolección**: enlace a la encuesta (por ejemplo, Google Forms) o documento con el guion de entrevista utilizado. Debe incluir todas las preguntas aplicadas.
@@ -46,6 +46,10 @@ El equipo debe entregar un conjunto completo de artefactos que evidencien el dis
 ---
 
 ## Criterios de evaluación
+
+> [!NOTE]
+> La evaluación se realizará con base en la completitud, coherencia interna, trazabilidad explícita y evidencia verificable de cada uno de los criterios definidos en esta rúbrica.
+> Entregas por fuera del horario establecido puede incurrir en una penalización sobre la calificación final de la actividad.
 
 ### 0. Fatalities
 
