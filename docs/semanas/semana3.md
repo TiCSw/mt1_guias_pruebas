@@ -22,12 +22,6 @@ La estrategia debe ser coherente, justificable y trazable, alineando: Funcionali
 
 ### Resumen de las actividades
 
-> [!NOTE]
-> Todas las decisiones incluidas en la estrategia deben estar justificadas y ser coherentes con las restricciones y condiciones definidas en esta semana.
-
-> [!NOTE]
-> Todos los recursos definidos en la estrategia deben incluir una estimación de costo explícita, verificable y soportada.
-
 1. Elaborar la estrategia de pruebas para la ABP utilizando la plantilla oficial disponible en el siguiente enlace:  
    [Plantilla estrategia de pruebas](https://thesoftwaredesignlab.github.io/AutTestingCourseraBook/templates/estrategia-pruebas.docx), cubriendo las 8 semanas de planeación y ejecución.
 
@@ -50,18 +44,21 @@ La estrategia debe ser coherente, justificable y trazable, alineando: Funcionali
 
 ### Detalles de la entrega
 
-La entrega debe reflejar de manera completa la estrategia de pruebas diseñada, incluyendo la estimación presupuestaria de todos los recursos involucrados y la evidencia de trazabilidad entre sus componentes. Todos los elementos deben estar integrados en un documento formal y acompañados de un recurso audiovisual.
+> [!NOTE]  
+> Los videos y documentos que incluyan en su entrega deben estar alojado en algún gestor de contenido (OneDrive Uniandes, Youtube), deben ser públicos o deben permitir el acceso a cuentas de la Universidad de Los Andes (`@uniandes.edu.co`). Para el caso de documentos, estos deben estar en formato `.pdf`.
 
-Se debe entregar:
+La entrega debe reflejar de manera completa la estrategia de pruebas diseñada, incluyendo la estimación presupuestaria de todos los recursos involucrados y la evidencia de trazabilidad entre sus componentes. Todos los elementos deben estar integrados en un documento formal y acompañados de un recurso audiovisual. Se debe entregar:
 
 - Un archivo en formato **.pdf** que contenga la estrategia de pruebas completa, desarrollada sobre la plantilla oficial.
 - Un enlace a un video (máximo 15 minutos) alojado en una plataforma accesible (Google Drive, YouTube, Dropbox u otra equivalente), con permisos de visualización habilitados.
 
-La entrega se realiza a través de Coursera en las fechas establecidas.
-
 ---
 
 ### Criterios de evaluación
+
+> [!NOTE]
+> La evaluación se realizará con base en la completitud, coherencia interna, trazabilidad explícita y evidencia verificable de cada uno de los criterios definidos en esta rúbrica.
+> Entregas por fuera del horario establecido puede incurrir en una penalización sobre la calificación final de la actividad.
 
 #### 0. Fatalities
 
