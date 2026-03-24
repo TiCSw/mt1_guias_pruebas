@@ -2,8 +2,6 @@
 
 ## Semana 6: Pruebas de regresión visual en *TSDC*
 
----
-
 ### Descripción de la Semana
 
 En esta semana, el equipo de *TSDC* incorpora pruebas de regresión visual (_Visual Regression Testing - VRT_) como una extensión del trabajo previamente realizado en automatización de pruebas E2E.
@@ -12,7 +10,6 @@ El propósito de la actividad es fortalecer la capacidad del equipo para identif
 
 Al finalizar la actividad, se espera que el equipo cuente con una suite de pruebas E2E completamente funcional en la versión **rc**, instrumentada con captura de evidencia visual y acompañada de un proceso automatizado de regresión visual que permita comparar ambas versiones de manera reproducible, trazable y analizable.
 
----
 
 ### Resumen de las actividades
 
@@ -35,7 +32,6 @@ Al finalizar la actividad, se espera que el equipo cuente con una suite de prueb
 
 8. Finalmente, se debe actualizar la estrategia de pruebas para incorporar explícitamente el uso de regresión visual,  los ajustes derivados de la retroalimentación recibida y decisiones explícitas sustentadas en los resultados obtenidos durante la ejecución.
 
----
 
 ### Detalles de la entrega
 
@@ -99,7 +95,6 @@ Finalmente, se debe entregar la estrategia de pruebas actualizada en formato PDF
 - El script de regresión visual permite comparar de forma automatizada los screenshots de la versión **latest** y **rc** a nivel de escenario y paso. **[15 puntos]**
 - El reporte HTML generado presenta resultados de forma clara, estructurada y comprensible, facilitando el análisis técnico de las diferencias. Parae cada paso de ejecución, se muestran los screenshots de la versión **latest**, la versión **rc**, y la comparación visual. **[15 puntos]**
 
----
 
 #### 3. Reporte de resultados **[20 puntos]**
 
@@ -108,7 +103,6 @@ Finalmente, se debe entregar la estrategia de pruebas actualizada en formato PDF
 - Resultados de ejecución documentados para cada escenario en ambas herramientas, con evidencia verificable. **[2 puntos]**
 - Análisis del proceso de regresión visual, incluyendo ventajas, desventajas y conclusiones,  basado en los resultados obtenidos. **[3 puntos]**
 
----
 
 #### 4. Estrategia de pruebas **[10 puntos]**
 
