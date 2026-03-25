@@ -58,7 +58,7 @@ Adicionalmente, se debe entregar un **reporte de resultados en formato PDF**, el
 - Resultados de ejecución, incluyendo evidencia verificable (logs, capturas o enlaces externos) y un resumen cuantitativo (número de escenarios exitosos y fallidos por herramienta).
 - Análisis del proceso de regresión visual, incluyendo ventajas, desventajas y conclusiones.
 
-Finalmente, se debe entregar la estrategia de pruebas actualizada en formato PDF y un video explicativo que evidencie el proceso seguido y los resultados obtenidos.
+Finalmente, se debe entregar la estrategia de pruebas actualizada en formato PDF.
 
 ---
 
@@ -79,7 +79,6 @@ Finalmente, se debe entregar la estrategia de pruebas actualizada en formato PDF
 - El repositorio incluye archivos no permitidos (binarios, imágenes, videos o reportes). **[-20 puntos]**
 - Se incluyen archivos innecesarios en el repositorio (por ejemplo: `node_modules`, binarios, documentos distintos al `.pdf`). **[-20 puntos]**
 - El reporte no se entrega en formato `.pdf`. **[-5 puntos]**
-- El video no es accesible. **[-10 puntos]**
 
 
 #### 1. Pruebas E2E para regresión visual **[40 puntos]**
