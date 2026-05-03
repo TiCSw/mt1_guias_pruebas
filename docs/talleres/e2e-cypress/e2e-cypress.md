@@ -18,25 +18,67 @@ En esta parte prepararemos el entorno para poder realizar pruebas E2E sobre Ever
 
 Para poder hacer uso de EverShop, utilizaremos docker-compose el cual permite crear contenedores para ejecutar aplicaciones de manera sencilla.
 
-Para empezar, cree un directorio para EverShop y descargue el archivo de configuración:
-
+Para empezar, cree un directorio para EverShop
 ```bash
 mkdir evershop-app
 cd evershop-app
-curl -sSL https://raw.githubusercontent.com/evershopcommerce/evershop/main/docker-compose.yml > docker-compose.yml
-docker compose up -d
 ```
 
-Por medio de estos comandos usted descargo el archivo `docker-compose.yml` y levanto dos contenedores: uno con la aplicación EverShop y otro con una base de datos PostgreSQL.
+Cree el archivo `docker-compose.yml` con el siguiente contenido:
 
-Luego de ello, verifique que los contenedores estén activos:
+> **Nota:** Se utiliza la versión `2.1.1` de la imagen en lugar de `latest`.
+
+```yaml
+version: '3.8'
+
+services:
+  app:
+    image: evershop/evershop:2.1.1
+    restart: always
+    environment:
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_PASSWORD: postgres
+      DB_USER: postgres
+      DB_NAME: postgres
+    networks:
+      - myevershop
+    depends_on:
+      - database
+    ports:
+      - 3000:3000
+
+  database:
+    image: postgres:16
+    restart: unless-stopped
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - myevershop
+
+networks:
+  myevershop:
+    driver: bridge
+
+volumes:
+  postgres-data:
+```
+
+Una vez creado el archivo, levante los contenedores:
 
 ```bash
-docker ps
+docker compose up
 ```
-Si todo salió bien debería observar algo como lo siguiente:
 
-![alt text](img/image.png)
+Al finalizar la inicialización, debería observar algo como lo siguiente:
+
+![alt text](img/Resultado_EverShop.jpg)
 
 Como se puede apreciar en la imagen, la aplicación se levanta por defecto en el puerto 3000, y su base de datos en el puerto 5432. La aplicación estará disponible en:
 
