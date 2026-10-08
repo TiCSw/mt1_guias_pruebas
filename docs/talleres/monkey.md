@@ -1,126 +1,271 @@
-# Monkey Testing para Aplicaciones Web
+# Taller: Monkey testing con Playwright
 
-Este taller está diseñada para explorar técnicas avanzadas de pruebas automatizadas. El objetivo es desarrollar un _monkey tester_ que simule interacciones aleatorias de usuarios en una aplicación web, lo cual es una técnica valiosa para descubrir errores inesperados y problemas de robustez en las interfaces de usuario.
+Un _monkey_ ejecuta eventos aleatorios sobre una aplicación (clics, texto, teclas, navegación) para
+encontrar fallos que las pruebas guiadas por casos no encuentran. En este taller construirán un
+monkey sobre [Playwright](https://playwright.dev) para la tienda EverShop.
 
-A través de esta actividad:
+A través de este taller:
 
-- Aprenderás a implementar pruebas de tipo _monkey testing_ utilizando Playwright
-- Desarrollarás un bot que realiza acciones aleatorias pero controladas en una interfaz web
-- Practicarás el manejo de eventos asíncronos y errores en pruebas automatizadas
-- Explorarás diferentes tipos de interacciones con elementos web (clicks, inputs, selects)
+- Implementarán un monkey reproducible: la misma semilla genera la misma secuencia de eventos.
+- Diseñarán eventos sobre distintos tipos de elementos (enlaces, botones, campos de texto, listas).
+- Definirán oráculos que decidan automáticamente qué es un fallo.
+- Medirán y compararán estrategias de exploración con datos de sus propias ejecuciones.
+- Reducirán una secuencia de eventos que produce un fallo a la mínima que lo reproduce.
 
-## 1. (Base) Monkey con Playwright
+## 1. Preparación
 
-En esta parte desarrollaremos nuestro propio _Monkey_ que visitará la página de [losestudiantes](https://losestudiantes.co), buscará todos los links y hará click en uno de ellos al azar. Esto se repetirá hasta que un cierto número de links hayan sido clickeados.
+Requisito: el [Taller 0](evershop) (repositorio de talleres y EverShop en ejecución).
 
-### 1.1 Implementación inicial del Monkey
+El taller vive en `talleres/monkey/` de su repositorio de talleres. Cree estos archivos:
 
-Comencemos por crear nuestro archivo de pruebas con Playwright. Primero, cree un nuevo directorio vacío e inicialice un proyecto de Node.js:
+**`talleres/monkey/package.json`**
 
-```bash
-mkdir monkey-testing
-cd monkey-testing
-npm init -y
-```
-
-Luego, instale Playwright y sus dependencias:
-
-```bash
-npm init playwright@latest
-```
-
-Durante la instalación, seleccione Javascript como el lenguaje de programación, y para las demás opciones pueden utilizar los valoes por defecto cuando se le pregunte. Una vez instalado, cree un nuevo archivo llamado `monkey.spec.js` en la carpeta `./tests` del proyecto. El contenido del archivo es el siguiente:
-
-```javascript
-const { test, expect } = require("@playwright/test");
-
-test.describe("Los estudiantes under monkeys", () => {
-  test("visits los estudiantes and survives monkeys", async ({ page }) => {
-    await page.goto("https://losestudiantes.com");
-    await page.waitForTimeout(1000);
-    await randomClick(page, 10);
-  });
-});
-
-async function randomClick(page, monkeysLeft) {
-  function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
-  }
-
-  if (monkeysLeft > 0) {
-    const links = await page.$$("a");
-    if (links.length > 0) {
-      const randomLink = links[getRandomInt(0, links.length)];
-      const isVisible = await randomLink.isVisible();
-
-      if (isVisible) {
-        try {
-          await randomLink.click();
-          monkeysLeft = monkeysLeft - 1;
-        } catch (error) {
-          console.log("Could not click on element:", error);
-        }
-      }
-
-      await page.waitForTimeout(1000);
-      await randomClick(page, monkeysLeft);
-    }
+```json
+{
+  "name": "taller-monkey",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "setup": "playwright install chromium",
+    "monkey": "node src/monkey.js",
+    "evaluate": "node src/monkey.js --seed 4103 --events 30"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "~10.6.0",
+    "playwright": "~1.63.0"
   }
 }
 ```
 
-En el método `randomClick` es donde hacemos click en un link al azar. Comenzamos por buscar todos los links de la página actual usando el método [`page.$$`](https://playwright.dev/docs/api/class-page#page-locator) de Playwright, que nos devuelve un array con todos los elementos que coinciden con el selector 'a'. Con este array de elementos, seleccionamos uno al azar usando `getRandomInt`. Luego, verificamos si el elemento está visible usando el método [`isVisible()`](https://playwright.dev/docs/api/class-locator#locator-is-visible) del ElementHandle. Si el elemento está visible, intentamos hacer click en él usando el método [`click()`](https://playwright.dev/docs/api/class-locator#locator-click). Utilizamos un bloque try-catch para manejar posibles errores durante el click, ya que el elemento podría volverse no interactuable entre la verificación de visibilidad y el intento de click. Después de cada intento de click (exitoso o no), esperamos 1 segundo usando [`page.waitForTimeout()`](https://playwright.dev/docs/api/class-page#page-wait-for-timeout) y luego hacemos un llamado recursivo a la misma función con el número de monkeys actualizado.
-
-En el bloque `describe` al inicio del archivo es donde definimos nuestra prueba. Lo que hacemos es quitar el modal inicial haciendo click en el botón Cerrar y luego llamamos a nuestro método `randomClick` con 10 monkeys.
-
-### 1.2 Ejecución de la Prueba
-
-Para ejecutar la prueba, abra una terminal en el directorio del proyecto y ejecute el siguiente comando:
+Instale las dependencias y el navegador desde `talleres/monkey/`:
 
 ```bash
-npx playwright test monkey.spec.js
+npm install
+npm run setup
 ```
 
-Playwright ejecutará la prueba en un navegador Chromium por defecto. Si desea ver la ejecución de la prueba en tiempo real, puede agregar la bandera `--headed`:
+`npm install` genera `package-lock.json`; inclúyalo en el repositorio.
+
+## 2. Implementación base
+
+El monkey base solo hace clic en enlaces visibles de la tienda, elegidos al azar con
+[Faker](https://fakerjs.dev) inicializado con una semilla.
+
+**`talleres/monkey/src/monkey.js`**
+
+```javascript
+import { mkdir, writeFile } from "node:fs/promises";
+import { parseArgs } from "node:util";
+import { faker } from "@faker-js/faker";
+import { chromium } from "playwright";
+
+const { values: options } = parseArgs({
+  options: {
+    seed: { type: "string", default: "4103" },
+    events: { type: "string", default: "30" },
+    delay: { type: "string", default: "500" },
+    headed: { type: "boolean", default: false },
+  },
+});
+const baseUrl = process.env.BASE_URL ?? "http://localhost:3000";
+const origin = new URL(baseUrl).origin;
+const seed = Number(options.seed);
+const totalEvents = Number(options.events);
+const delay = Number(options.delay);
+
+// Same seed and same application state => same sequence of events.
+faker.seed(seed);
+
+// Each action performs one random interaction and returns what it did.
+const actions = {
+  async clickLink(page) {
+    const links = await page.locator("a[href]").evaluateAll(
+      (anchors, appOrigin) =>
+        anchors
+          .map((anchor, index) => ({ index, href: anchor.href, visible: anchor.checkVisibility() }))
+          .filter((link) => link.visible && new URL(link.href).origin === appOrigin),
+      origin,
+    );
+    if (links.length === 0) return { skipped: "no hay enlaces visibles" };
+    const link = faker.helpers.arrayElement(links);
+    await page.locator("a[href]").nth(link.index).click();
+    return { target: link.href };
+  },
+};
+
+const browser = await chromium.launch({ headless: !options.headed });
+const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+page.setDefaultTimeout(5000);
+
+let current = 0;
+const failures = [];
+page.on("pageerror", (error) => {
+  failures.push({ event: current, oracle: "pageerror", message: error.message, url: page.url() });
+});
+
+// Keep the monkey inside the application under test.
+await page.route("**/*", (route) => {
+  const request = route.request();
+  const leavesApp = request.isNavigationRequest() && new URL(request.url()).origin !== origin;
+  return leavesApp ? route.abort() : route.continue();
+});
+
+await mkdir("results", { recursive: true });
+await page.goto(baseUrl);
+
+const events = [];
+for (current = 1; current <= totalEvents; current++) {
+  const action = faker.helpers.arrayElement(Object.keys(actions));
+  const from = page.url();
+  try {
+    const detail = await actions[action](page);
+    await page.waitForLoadState("load");
+    await page.waitForTimeout(delay);
+    events.push({ event: current, action, from, ...detail, to: page.url() });
+  } catch (error) {
+    events.push({ event: current, action, from, error: error.message.split("\n")[0] });
+  }
+}
+
+await browser.close();
+
+const summary = {
+  seed,
+  baseUrl,
+  events: events.length,
+  visitedUrls: new Set(events.map((event) => event.to).filter(Boolean)).size,
+  failures,
+};
+await writeFile("results/events.json", `${JSON.stringify(events, null, 2)}\n`);
+await writeFile("results/summary.json", `${JSON.stringify(summary, null, 2)}\n`);
+console.log(`Semilla ${seed}: ${events.length} eventos, ${summary.visitedUrls} URL distintas, ${failures.length} fallos.`);
+```
+
+Puntos clave:
+
+- `faker.seed(seed)` hace que todas las elecciones aleatorias dependan solo de la semilla. Con la
+  misma semilla y la misma tienda (después de `npm run app:reset`), el monkey repite exactamente la
+  misma secuencia. No use `Math.random()`.
+- Cada acción de `actions` recibe la página, ejecuta una interacción y devuelve qué hizo. El monkey
+  elige una acción por evento.
+- `page.route` cancela las navegaciones hacia otros sitios: el monkey solo explora EverShop.
+- El único oráculo es `pageerror`: una excepción de JavaScript no capturada en la página.
+- Al terminar escribe `results/events.json` (la secuencia de eventos) y `results/summary.json`.
+
+Ejecútelo con la tienda en ejecución:
 
 ```bash
-npx playwright test monkey.spec.js --headed
+npm run monkey -- --seed 7 --events 20 --headed
+npm run evaluate
 ```
 
-Si hay un error al ejecutar la prueba, no se alarme. Habrá veces en las que Playwright no logrará hacer click en un elemento seleccionado al azar. Esto es normal, ya que el elemento pudo haber desaparecido de la página o estar en un estado no interactuable. El código incluye manejo de errores para estos casos.
+Ejecute dos veces la misma semilla y compare los `events.json`: deben ser idénticos.
 
-## 2. Actividad
+## 3. Actividad
 
-Ahora usted deberá crear una nueva función `randomEvent()` que toma por parámetro la cantidad de eventos que se desean lanzar secuencialmente al igual que en el método `randomClick`. Para cada evento, la función `randomEvent()` deberá ejecutar los siguientes pasos:
+Extienda el monkey base. Conserve la reproducibilidad en todo lo que agregue: si dos ejecuciones con
+la misma semilla producen secuencias distintas, explique la causa en el README y corríjala.
 
-1. Seleccionar aleatoriamente uno de los eventos indicados a continuación:
-   - Hacer click en un link al azar
-   - Llenar un campo de texto al azar
-   - Seleccionar un combo al azar
-   - Hacer click en un botón al azar
-2. Ejecutar el evento. En caso de que se genere algún error, este no debe detener la prueba
-3. Hacer un llamado recursivo a esta misma función hasta que no queden más eventos por realizar.
+### 3.1 Eventos
 
-**Aclaración:** El evento al azar es seleccionado por la **función**, no por usted.
+Agregue al menos cuatro acciones nuevas, por ejemplo: clic en un botón, escribir en un campo de
+texto con datos de Faker acordes con su tipo (correo, número, texto), elegir una opción de una lista,
+presionar una tecla (`Enter`, `Tab`, `Escape`) y navegar (atrás, recargar). Cada acción tiene un
+**peso** configurable por línea de comandos (por ejemplo, `--weights clickLink=3,fillInput=2`) y el
+monkey elige las acciones según esos pesos.
 
-### 3. Detalles de la entrega
+### 3.2 Oráculos
 
-Se debe entregar un archivo **.zip** con los siguientes archivos.
+Agregue oráculos que detecten, como mínimo:
 
-- La carpeta `./test` con el archivo de prueba `monkey.spec.js`
-- El archivo de configuración `playwright.config.js`
-- El archivo `package.json` con las dependencias necesarias. NO deben incluir el `package-lock.json` ni el directorio `./node_modules`
-- Un archivo `README.md` con:
-  - Los pasos de instalación de Playwright y sus dependencias
-  - Las instrucciones para ejecutar las pruebas
-  - Cualquier consideración adicional necesaria
+- mensajes `console.error`;
+- respuestas HTTP con estado 400 o mayor, tanto de páginas como de recursos (imágenes, scripts,
+  llamadas a la API);
+- un oráculo propio, justificado en el README.
 
-### 4. Criterios de evaluación:
+Cada fallo registra el evento en el que ocurrió, el oráculo, la URL, el detalle y una captura de
+pantalla. Defina una **firma** para cada fallo (por ejemplo, oráculo + recurso normalizado) de modo
+que el mismo defecto encontrado varias veces cuente una sola vez.
 
-- El zip tiene un archivo README completo y el código solicitado está correctamente estructurado. **[5 puntos]**
-- El método `randomEvent()` funciona de acuerdo con la especificación dada y utiliza correctamente la API de Playwright. **[45 puntos]**
-- El monkey es funcional, maneja los errores apropiadamente y sigue las mejores prácticas de Playwright. **[50 puntos]**
+### 3.3 Experimento
 
-**La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y la calidad de cada uno de acuerdo con la rúbrica establecida.**
+Compare dos estrategias: la base (solo `clickLink`) y su configuración de pesos. Ejecute cada una con
+10 semillas y 100 eventos por ejecución, reiniciando la tienda entre ejecuciones
+(`npm run app:reset`). Agregue `npm run experiment`, que ejecuta el experimento y guarda los datos en
+`results/experiment.json`.
+
+En el README presente una tabla por estrategia con URL distintas visitadas, firmas de fallo
+distintas y tiempo de ejecución (media y rango), y responda con sus datos:
+
+- ¿Qué estrategia explora más de la tienda y cuál encuentra más fallos? ¿Coinciden?
+- ¿Qué fallos encontró solo una de las estrategias y por qué?
+- ¿A partir de cuántos eventos dejan de aparecer fallos nuevos?
+
+### 3.4 Minimización
+
+Para cada firma de fallo encontrada, obtenga la **secuencia mínima** de eventos que lo reproduce a
+partir del `events.json` de la ejecución que lo encontró. Implemente:
+
+- `npm run replay -- <archivo>`: reproduce una secuencia de eventos guardada (no una semilla) y
+  reporta los fallos.
+- `npm run minimize -- <archivo> <firma>`: reduce la secuencia, por ejemplo con _delta debugging_
+  (ddmin) o eliminando eventos uno por uno, verificando con `replay` que el fallo se mantiene.
+
+Guarde las secuencias mínimas en `talleres/monkey/minimized/` (versionadas) e indique en el README la
+longitud original y la mínima de cada una.
+
+### 3.5 Análisis
+
+En el README, para cada firma de fallo: ¿es un defecto de EverShop, de los datos de ejemplo o del
+entorno, o un falso positivo de su monkey? Sustente cada respuesta con la evidencia de sus
+ejecuciones (capturas, eventos, respuestas HTTP). Indique cuáles habría encontrado una prueba E2E
+escrita a mano y cuáles no.
+
+## 4. Entrega
+
+Entregue el enlace a su repositorio de talleres y un _tag_ `taller-monkey` sobre el _commit_ que se
+debe evaluar. El repositorio debe contener en `talleres/monkey/`:
+
+- El código fuente del monkey, `package.json` y `package-lock.json`.
+- `npm run evaluate`: ejecuta su monkey con su configuración de pesos, una semilla fija y al menos 100
+  eventos, y escribe `results/summary.json` con este formato:
+
+  ```json
+  {
+    "seed": 4103,
+    "events": 100,
+    "visitedUrls": 12,
+    "failures": [
+      { "event": 7, "oracle": "http", "signature": "...", "url": "...", "detail": "..." }
+    ],
+    "signatures": ["..."]
+  }
+  ```
+
+- `npm run experiment`, `npm run replay` y `npm run minimize`, y la carpeta `minimized/`.
+- `README.md` con:
+  - cómo ejecutar cada script y qué parámetros acepta;
+  - los resultados del experimento y las respuestas de las secciones 3.3 y 3.5;
+  - **Uso de IA**: qué partes generó o sugirió un asistente de IA, qué errores tenía lo generado y
+    cómo verificó el resultado.
+
+El equipo docente ejecutará `npm run evaluate -- monkey` desde la raíz del repositorio, ejecutará
+`replay` sobre sus secuencias mínimas y evaluará su monkey contra una versión de EverShop con fallos
+inyectados que ustedes no conocen.
+
+## 5. Criterios de evaluación
+
+| Criterio | Puntos |
+|---|---|
+| `npm run evaluate -- monkey` termina sin intervención y dos ejecuciones con la misma semilla producen la misma secuencia de eventos. | 10 |
+| Las acciones nuevas son correctas, usan datos acordes con cada elemento y respetan los pesos configurados. | 15 |
+| Los oráculos detectan los fallos pedidos y las firmas agrupan correctamente los fallos repetidos. | 15 |
+| Fallos inyectados por el equipo docente que su monkey detecta (proporcional). | 15 |
+| El experimento es reproducible con `npm run experiment` y las respuestas se sustentan en sus datos. | 15 |
+| Las secuencias mínimas reproducen su fallo con `replay` y son significativamente más cortas que las originales. | 20 |
+| El README permite ejecutar todo sin ambigüedad, el análisis de la sección 3.5 se sustenta en evidencia y la sección de uso de IA es concreta. | 10 |
+
+Los números del README que no se puedan reproducir con sus scripts no suman puntos.
