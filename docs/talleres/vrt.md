@@ -1,78 +1,283 @@
-# Taller: Visual Regression Testing utilizando Resemble JS
+# Taller: Pruebas de regresión visual con ResembleJS
 
-_Visual Regression Testing_ es una rama de pruebas de regresión en la cual el sujeto de estudio es la interfaz grafica. Esto permite realizar estudios de los efectos que tienen los cambios en interfaz con respecto a versiones anteriores. En este taller exploraremos este tipo de pruebas haciendo uso de [ResembleJS](http://rsmbl.github.io/Resemble.js/).
+Las pruebas de regresión visual (VRT) comparan capturas de pantalla de dos versiones de una interfaz
+para detectar cambios visuales. El reto no es comparar imágenes sino decidir qué diferencias
+importan: cambios intencionales, regresiones o ruido. En este taller construirán un proceso de VRT
+con [Playwright](https://playwright.dev) y [ResembleJS](https://github.com/rsmbl/Resemble.js) para
+comparar dos versiones de la tienda EverShop.
 
-Para este taller usted debe:
+A través de este taller:
 
-1. Crear la aplicación a probar.
-2. Manejar Cypress para tomar _screenshots_
-3. Usar [ResembleJS](https://github.com/rsmbl/Resemble.js) para comparar los _screenshots_ tomados.
-4. Generar un script que automaticamente realice el proceso realizado en los puntos 2 y 3, con tal de generar un reporte.
+- Capturarán de forma automática y estable páginas, tamaños de pantalla y estados de una aplicación.
+- Compararán capturas con ResembleJS e interpretarán sus resultados.
+- Identificarán y eliminarán fuentes de ruido en las capturas.
+- Clasificarán las diferencias encontradas contrastándolas con las notas de versión.
 
-## Entregable
+## 1. Preparación
 
-Este taller se divide en 4 fases que le llevaran a poder completar una solución de pruebas automaticas que le podría ser util para su proyecto. Al finalizar el taller usted debe entregar un documento donde se evidencie:
+Requisito: el [Taller 0](evershop) (repositorio de talleres y EverShop en ejecución).
 
-1. Link al repositorio del código de la primera fase del taller
-2. Link a la página publicada de su aplicación de la primera fase funcionando. Esto lo puede hacer en github pages o gitlab pages ya que la aplicación solo tiene HTML, CSS y JS.
-3. Los pantallazos obtenidos haciendo uso de Cypress.
-4. Las respuestas a las preguntas planteadas en la tercer fase del taller.
-5. Link al repositorio de su aplicación de automatización.
-6. Reporte del funcionamiento de su aplicación desplegada.
+Comparará dos versiones de la tienda:
 
-## Crear la aplicación a probar.
+| Versión | URL | Variable de entorno |
+|---|---|---|
+| Base | <http://localhost:3000> | `BASE_URL` |
+| Release | <http://localhost:3001> | `RELEASE_URL` |
 
-Usted debe implementar una página HTML que genere paletas de colores aleatorias usando una armonía con 5 colores complementarios/equidistantes. Una estrategia para generar N colores complementarios es cambiar la tonalidad (hue) en la escala HSB/HSV de tal forma que la totalidad de la escala se divide en las mismas proporciones. Es decir, la tonalidad en HSB/HSV varía de 0 a 359 grados (escala entera), con 0 = rojo, 120 = verde, 240 = azul. Por ejemplo, una armonía equidistante con 20 colores tendrá una diferencia de tono de 360/20 entre cada color, manteniendo la misma saturación (S) y brillo (B); **Para este taller usted no debe modificar la saturación y el brillo salvo que tenga tiempo y quiera implementar un segundo esquema de generación de paleta (BONO)**. Ahora, para generación aleatoria de paletas se puede escoger un punto de inicio (e.j., 40 grados) y seleccionar los colores usando la diferencia tonal a partir de ese punto de inicio.
+Notas de la versión release:
 
-**Nota:** Tenga cuidado por que la escala de tonalidad va de 0 a 359.
+1. El precio en la página de detalle de producto usa el color de la marca y un tamaño mayor.
+2. Los nombres de los productos en los listados aparecen en mayúsculas.
+3. Nuevo color de fondo del pie de página.
+4. Nuevo banner de promoción con cuenta regresiva en la parte superior de todas las páginas.
 
-Para efectos del taller se le proporcionara un [proyecto base](https://gitlab.com/miso-4208-labs/VRT_colorPallete) con lo siguiente:
-- palette.html: página HTML que sirve como vista. Puede cambiar la apariencia visual si tiene tiempo. Note que el archivo ya tiene enlazado el archivo JS remoto de JQuery
-- styles.css: hoja de estilos de palette.html
-- color.js: librería JS para transformación entre escala de colores. Para generar armonías en HSB/HSV, es necesario contar con métodos de transformación en las esclas de RGB y hacia RGB. Estos le son proporcionados en este archivo.
-- Script.js: archivo JS en el cual usted debe agregar sus funciones para generación de las paletas y manipulación de palette.html
+El taller vive en `talleres/vrt/` de su repositorio de talleres. Cree estos archivos:
 
-En resumen, usted debe tener una página HTML que genera paletas aleatorias con 5 colores. Los colores se deben ver visualmente en la página, y se deben generar las reglas css para los colores ( se deben mostrar en el textarea ). Adicionalmente, el usuarió podrá limpiar la paleta cuando desee.
+**`talleres/vrt/package.json`**
 
-Una vez finalizada, suba su resultado a un repositorio y publique el resultado en la solución propuesta por su herramienta de trabajo colaborativo (Github Pages, Gitlab Pages, Bitbucket Pages)
+```json
+{
+  "name": "taller-vrt",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "setup": "playwright install chromium",
+    "evaluate": "node src/vrt.js"
+  },
+  "devDependencies": {
+    "canvas": "~3.2.3",
+    "playwright": "~1.63.0",
+    "resemblejs": "~5.0.0"
+  },
+  "allowScripts": {
+    "canvas": true
+  }
+}
+```
 
-## Manejar Cypress para tomar _screenshots_
+`allowScripts` autoriza el script de instalación de `canvas`, la librería de imágenes que usa
+ResembleJS. ResembleJS pide además una versión antigua de `canvas` que npm intenta compilar; si su
+equipo no tiene herramientas de compilación, npm la omite y ResembleJS usa la incluida aquí.
 
-Como parte de las amplias posibilidades de interacción con las que cuenta Cypress, podemos encontrar el comando ```cy.screenshot()``` este comando nos va a permitir guardar un screenshot del estado de la pantalla cuando se hace el llamado de la instrucción. Retome su taller 2 y modifique 3 de las pruebas con tal de tomar screenshots al inicio y final de cada prueba. Revise la [documentación](https://docs.cypress.io/api/commands/screenshot.html#Syntax) para mayor información.
+Instale las dependencias y el navegador desde `talleres/vrt/`:
 
-**Reflexión:** Ve usted algún problema con los screenshots tomados por Cypress al intentar hacer _Visual Regression Testing_ ? Agregue su respuesta al documento de la entrega.
+```bash
+npm install
+npm run setup
+```
 
-## Usar ResembleJS para comparar los _screenshots_ tomados
+`npm install` genera `package-lock.json`; inclúyalo en el repositorio.
 
-ResembleJS es una herramienta que nos permite analizar y comparar imagenes haciendo uso de HTML y JS. Su objetivo en esta parte del taller es revisar con detenimiento la documentación y responder las siguientes preguntas:
+## 2. Implementación base
 
-- ¿Qué información puedo obtener de una imagen al usar resembleJS y que significado tiene cada uno de los componentes de la respuesta?.
-- ¿Qué información puedo obtener al comparar dos imagenes?
-- ¿Qué opciones se pueden seleccionar al realizar la comparación ?
+La configuración define las páginas, los tamaños de pantalla (_viewports_), el umbral y las opciones
+de comparación de ResembleJS:
 
-Ahora que conoce las funcionalidades de ResembleJS haremos nuestras primeras pruebas del uso de esta. Cree un proyecto NodeJS y compare las imagenes que obtuvo del punto anterior para cada prueba. Es decir, compare la imagen de antes de ejecutar la prueba con la posterior a la prueba y muestre los resultados obtenidos para las 3 pruebas. Use el filtro ```ignoreLess``` para las pruebas.
+**`talleres/vrt/vrt.config.js`**
 
-## Herramienta de automatización de Visual Regression Testing.
+```javascript
+export default {
+  baseUrl: process.env.BASE_URL ?? "http://localhost:3000",
+  releaseUrl: process.env.RELEASE_URL ?? "http://localhost:3001",
+  pages: [{ name: "producto", path: "/accessories/stainless-steel-thermos-yellow" }],
+  viewports: [{ name: "escritorio", width: 1280, height: 800 }],
+  // Mismatch percentage above which a comparison is reported as a difference.
+  threshold: 0.1,
+  resemble: {
+    ignore: "antialiasing",
+    scaleToSameSize: true,
+    output: { errorColor: { red: 255, green: 0, blue: 255 }, errorType: "movement", outputDiff: true },
+  },
+};
+```
 
-En este parte del taller usted debera crear una solución en el lenguaje que desee en la cual proporcione un mecanismo de ejecución de pruebas de regresión visual automaticamente para la aplicación que hizo en la primera fase. Se espera que su solución presente un resultado similar a la siguiente imagen:
+El script captura cada página en las dos versiones, las compara y guarda la imagen de diferencias:
 
-![Diagrama](../assets/images/diagrama_vrt.png)
+**`talleres/vrt/src/vrt.js`**
 
-En la cual cada vez que el usuario haga click en el boton, su solución ingrese al sitio que desplego en la primer fase, genere una paleta de colores, tome un screenshot, genere una segunda paleta de colores, tome otro screenshot, realice una comparación haciendo uso de ResembleJS y genere una nueva fila al principio donde se muestren los resultados de la prueba junto con información adicional que usted crea útil.
+```javascript
+import { mkdir, writeFile } from "node:fs/promises";
+import { chromium } from "playwright";
+import compareImages from "resemblejs/compareImages.js";
+import config from "../vrt.config.js";
+import { writeReport } from "./report.js";
 
-## Reporte de funcionamiento
+const versions = { base: config.baseUrl, release: config.releaseUrl };
+await mkdir("results/screenshots", { recursive: true });
 
-Realice una bitacora del funcionamieto de su herramienta, se espera que presente screenshots de su herramienta y un gif de la aplicación en funcionamiento. Este reporte puede ser entregado por medio de una wiki/gitpages/gitbook o plataforma que le permita presentar contenido multimedia como el gif.
+const browser = await chromium.launch();
+const comparisons = [];
 
+for (const viewport of config.viewports) {
+  const page = await browser.newPage({ viewport: { width: viewport.width, height: viewport.height } });
+  for (const { name, path } of config.pages) {
+    const id = `${name}-${viewport.name}`;
+    const images = {};
+    for (const [version, url] of Object.entries(versions)) {
+      await page.goto(new URL(path, url).href, { waitUntil: "load" });
+      images[version] = await page.screenshot({
+        path: `results/screenshots/${id}-${version}.png`,
+        fullPage: true,
+      });
+    }
+    const result = await compareImages(images.base, images.release, config.resemble);
+    await writeFile(`results/screenshots/${id}-diff.png`, result.getBuffer());
+    const mismatch = Number(result.misMatchPercentage);
+    comparisons.push({
+      id,
+      page: name,
+      path,
+      viewport: viewport.name,
+      mismatch,
+      different: mismatch > config.threshold,
+      sameDimensions: result.isSameDimensions,
+    });
+    console.log(`${id}: ${mismatch}%`);
+  }
+  await page.close();
+}
 
-### Detalles de la entrega
+await browser.close();
 
-Se debe entregar un archivo .zip con los archivos creados. El zip debe incluir un archivo README  con los detalles requeridos para la ejecución del código. La entrega se debe realizar a través de Coursera en las fechas indicadas.
+const summary = {
+  threshold: config.threshold,
+  comparisons: comparisons.length,
+  different: comparisons.filter((comparison) => comparison.different).length,
+  results: comparisons,
+};
+await writeFile("results/summary.json", `${JSON.stringify(summary, null, 2)}\n`);
+await writeReport(summary, "results/report.html");
+console.log(`Reporte: results/report.html (${summary.different} de ${summary.comparisons} con diferencias)`);
+```
 
-### Criterios de evaluación:
+`misMatchPercentage` es el porcentaje de píxeles distintos. Una comparación con un porcentaje mayor
+que `threshold` se reporta como diferencia.
 
-- El zip tiene un archivo README detallando la forma de ejecutar el código, y el zip  tiene el código solicitado. **[5 puntos]**
+El reporte HTML muestra, por comparación, las capturas de las dos versiones y la imagen de
+diferencias:
 
-- El escenario es funcional, sigue la especificación dada, y no hay errores en el código. **[95 puntos]**
+**`talleres/vrt/src/report.js`**
 
- **La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y la calidad de cada uno de acuerdo con la rúbrica establecida.**
+```javascript
+import { writeFile } from "node:fs/promises";
+
+const row = (comparison) => `
+  <section class="${comparison.different ? "different" : "same"}">
+    <h2>${comparison.page} · ${comparison.viewport} · ${comparison.mismatch}%</h2>
+    <p><code>${comparison.path}</code></p>
+    <div class="images">
+      ${["base", "release", "diff"]
+        .map((kind) => `<figure><img src="screenshots/${comparison.id}-${kind}.png" alt="${kind}"><figcaption>${kind}</figcaption></figure>`)
+        .join("")}
+    </div>
+  </section>`;
+
+export async function writeReport(summary, file) {
+  const html = `<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Reporte VRT</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 24px; }
+    section { border-left: 6px solid #16a34a; padding: 0 16px; margin-bottom: 32px; }
+    section.different { border-color: #dc2626; }
+    .images { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    img { width: 100%; border: 1px solid #ddd; }
+  </style>
+</head>
+<body>
+  <h1>Reporte VRT</h1>
+  <p>${summary.different} de ${summary.comparisons} comparaciones superan el umbral de ${summary.threshold}%.</p>
+  ${summary.results.map(row).join("")}
+</body>
+</html>
+`;
+  await writeFile(file, html);
+}
+```
+
+Ejecútelo con la tienda en ejecución:
+
+```bash
+npm run evaluate
+```
+
+Abra `results/report.html`. Ejecute la comparación varias veces: ¿el porcentaje es siempre el mismo?
+
+## 3. Actividad
+
+### 3.1 Cobertura
+
+Extienda la configuración y el script para capturar:
+
+- al menos 8 páginas de la tienda, incluidas páginas de categoría, de producto, búsqueda,
+  inicio de sesión y registro;
+- tres _viewports_: escritorio (1280 × 800), tableta (768 × 1024) y móvil (375 × 812);
+- al menos 3 estados que requieren interacción antes de la captura, por ejemplo el carrito con un
+  producto, un formulario con errores de validación o un menú abierto.
+
+### 3.2 Estabilidad
+
+Una comparación entre una versión y sí misma debería dar 0 %. Agregue `npm run stability`, que
+compara cada versión consigo misma (dos capturas de la base y dos de la release) para todas sus
+páginas, _viewports_ y estados.
+
+Identifique cada fuente de ruido que haga que esas comparaciones no den 0 % (contenido que cambia
+con el tiempo, imágenes que cargan a destiempo, animaciones, etc.) y elimínela: esperas
+deterministas, desactivar animaciones, ocultar o enmascarar regiones. En el README, documente cada
+fuente con el porcentaje antes y después de corregirla.
+
+### 3.3 Cambios intencionales que desplazan el contenido
+
+Un cambio intencional puede mover todo el contenido de la página y ocultar las demás diferencias.
+Encuentre en sus resultados si alguno de los cambios de las notas de versión lo hace, y ajuste su
+proceso para seguir detectando el resto de diferencias sin dejar de verificar ese cambio. Explique su
+solución en el README.
+
+### 3.4 Clasificación de diferencias
+
+En el README, construya una tabla con cada diferencia encontrada entre las versiones: página,
+_viewport_, estado, región afectada, descripción, clasificación (cambio de las notas de versión,
+regresión o ruido) y la ruta a la imagen de diferencias que la evidencia. Indique también si algún
+cambio de las notas de versión no fue detectado y por qué.
+
+### 3.5 Umbral
+
+Elija el umbral (global o por página) a partir de sus datos: los porcentajes de las comparaciones de
+estabilidad frente a los de las comparaciones entre versiones. Justifique la elección en el README.
+
+## 4. Entrega
+
+Entregue el enlace a su repositorio de talleres y un _tag_ `taller-vrt` sobre el _commit_ que se debe
+evaluar. El repositorio debe contener en `talleres/vrt/`:
+
+- El código fuente, `package.json` y `package-lock.json`.
+- `npm run evaluate`: compara las dos versiones con toda su cobertura, genera `results/report.html` y
+  escribe `results/summary.json` con el formato de la implementación base.
+- `npm run stability`.
+- `README.md` con:
+  - cómo ejecutar cada script;
+  - las secciones 3.2 a 3.5;
+  - **Uso de IA**: qué partes generó o sugirió un asistente de IA, qué errores tenía lo generado y
+    cómo verificó el resultado.
+
+El equipo docente ejecutará `npm run evaluate -- vrt` desde la raíz del repositorio y evaluará su
+proceso contra otra versión release con regresiones que ustedes no conocen: su `summary.json` debe
+marcar las páginas y _viewports_ afectados.
+
+## 5. Criterios de evaluación
+
+| Criterio | Puntos |
+|---|---|
+| `npm run evaluate -- vrt` termina sin intervención y `npm run stability` da 0 % (o un valor justificado) en todas las comparaciones. | 10 |
+| La cobertura incluye las páginas, _viewports_ y estados pedidos, capturados de forma estable. | 15 |
+| Las fuentes de ruido están identificadas, eliminadas y documentadas con datos. | 15 |
+| El cambio intencional que desplaza el contenido se maneja sin ocultar las demás diferencias. | 10 |
+| La tabla de clasificación es completa, correcta y cada fila tiene evidencia. | 20 |
+| El umbral está justificado con los datos de estabilidad y de comparación. | 5 |
+| Regresiones de la versión release del equipo docente que su proceso detecta (proporcional). | 15 |
+| El README permite ejecutar todo sin ambigüedad y la sección de uso de IA es concreta. | 10 |
