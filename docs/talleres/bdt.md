@@ -16,9 +16,16 @@ A través de este taller:
 
 ## 1. Preparación
 
-Requisito: el [Taller 0](evershop) (repositorio de talleres y EverShop en ejecución).
+Requisito: el [Taller 0](evershop) (repositorio de talleres instalado y EverShop en ejecución).
 
-El taller vive en `talleres/bdt/` de su repositorio de talleres. Cree estos archivos:
+El taller está en `talleres/bdt/` de su repositorio:
+
+| Archivo | Contenido |
+|---|---|
+| `package.json` | Dependencias (Cucumber y Playwright) y scripts del taller |
+| `cucumber.js` | Configuración de Cucumber: features, código de soporte y reportes |
+| `features/` | Feature base, _World_ y pasos (sección 2) |
+| `README.md` | Secciones que debe completar |
 
 **`talleres/bdt/package.json`**
 
@@ -52,18 +59,9 @@ export default {
 };
 ```
 
-Instale las dependencias y el navegador desde `talleres/bdt/`:
-
-```bash
-npm install
-npm run setup
-```
-
-`npm install` genera `package-lock.json`; inclúyalo en el repositorio.
-
 ## 2. Implementación base
 
-La base especifica el inicio de sesión en la administración de EverShop.
+La base, en `features/`, especifica el inicio de sesión en la administración de EverShop.
 
 **`talleres/bdt/features/admin-sign-in.feature`**
 
@@ -188,7 +186,7 @@ Then("I stay on the sign in page", async function () {
 });
 ```
 
-Ejecute las pruebas con la tienda en ejecución:
+Ejecute las pruebas desde `talleres/bdt/` con la tienda en ejecución:
 
 ```bash
 npm test
@@ -244,13 +242,13 @@ escenarios débiles.
 
 ## 4. Entrega
 
-Entregue el enlace a su repositorio de talleres y un _tag_ `taller-bdt` sobre el _commit_ que se
-debe evaluar. El repositorio debe contener en `talleres/bdt/`:
+Cree el _tag_ `taller-bdt` sobre el _commit_ que se debe evaluar y súbalo a su repositorio
+(`git push origin taller-bdt`). En ese _commit_, `talleres/bdt/` debe contener:
 
 - Las features, los pasos, el _World_, `package.json` y `package-lock.json`.
 - `npm run evaluate`: ejecuta todas las features y escribe `results/summary.json` (el formato de la
   implementación base). Todos los escenarios deben pasar contra la tienda recién iniciada.
-- `README.md` con:
+- `README.md` con sus secciones completas:
   - cómo ejecutar las pruebas;
   - la tabla de reglas de negocio con su evidencia y los escenarios que las verifican;
   - el resultado de la sección 3.4;

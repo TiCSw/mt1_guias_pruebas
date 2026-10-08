@@ -12,7 +12,7 @@ A través de esta actividad:
 
 # 1. Preparación del Entorno
 
-Requisito: el [Taller 0](../evershop) (repositorio de talleres y EverShop en ejecución). EverShop
+Requisito: el [Taller 0](../evershop) (repositorio de talleres instalado y EverShop en ejecución). EverShop
 queda disponible en `http://localhost:3000` y su administración en `http://localhost:3000/admin`,
 con el usuario `admin@test.com` y la contraseña `admin123`.
 
@@ -22,8 +22,17 @@ con el usuario `admin@test.com` y la contraseña `admin123`.
 
 # 2. Configuración del Proyecto Cypress
 
-El taller vive en `talleres/e2e-cypress/` de su repositorio de talleres. Cypress se instala como
-dependencia del proyecto, no de forma global. Cree estos archivos:
+El taller está en `talleres/e2e-cypress/` de su repositorio. Cypress es una dependencia del
+proyecto, no una instalación global.
+
+| Archivo | Contenido |
+|---|---|
+| `package.json` | Dependencia de Cypress y scripts del taller |
+| `cypress.config.js` | Configuración de Cypress |
+| `scripts/evaluate.js` | Ejecución de las pruebas para la evaluación |
+| `cypress/e2e/admin-setup.cy.js`, `cypress/e2e/admin-product.cy.js` | Pruebas base (secciones 3 y 4) |
+| `cypress/e2e/customer-checkout.cy.js` | Prueba de la actividad, por implementar (sección 5) |
+| `README.md` | Secciones que debe completar |
 
 **`talleres/e2e-cypress/package.json`**
 
@@ -89,7 +98,13 @@ for (const spec of specs) {
   if (run.status === "failed") {
     results.push({ spec, error: run.message });
   } else {
-    results.push({ spec, tests: run.totalTests, passed: run.totalPassed, failed: run.totalFailed });
+    results.push({
+      spec,
+      tests: run.totalTests,
+      passed: run.totalPassed,
+      failed: run.totalFailed,
+      pending: run.totalPending,
+    });
   }
 }
 
@@ -100,15 +115,6 @@ console.log(results);
 process.exit(failed.length === 0 ? 0 : 1);
 ```
 
-Instale las dependencias y el binario de Cypress desde `talleres/e2e-cypress/`:
-
-```bash
-npm install
-npm run setup
-```
-
-`npm install` genera `package-lock.json`; inclúyalo en el repositorio.
-
 ---
 
 # 3. Configuración Inicial del Sistema
@@ -117,7 +123,7 @@ Antes de crear productos y realizar pruebas de checkout, es necesario configurar
 
 ## 3.1 Crear el Archivo de Configuración
 
-Cree el archivo `cypress/e2e/admin-setup.cy.js` con el siguiente código:
+El archivo `cypress/e2e/admin-setup.cy.js` contiene el siguiente código:
 
 **`talleres/e2e-cypress/cypress/e2e/admin-setup.cy.js`**
 
@@ -231,7 +237,7 @@ Este test configura automáticamente:
 
 Ahora cree el archivo base del taller que contiene el login del administrador y la creación de un producto.
 
-Cree el archivo `cypress/e2e/admin-product.cy.js` con el siguiente código:
+El archivo `cypress/e2e/admin-product.cy.js` contiene el siguiente código:
 
 **`talleres/e2e-cypress/cypress/e2e/admin-product.cy.js`**
 
@@ -336,7 +342,7 @@ repositorio) antes de correr las pruebas.
 
 # 5. Actividad
 
-Ahora deberá crear un nuevo archivo llamado `customer-checkout.cy.js` dentro de la carpeta `cypress/e2e/` que implemente el **flujo completo de compra desde la perspectiva del cliente**.
+Ahora deberá implementar en `cypress/e2e/customer-checkout.cy.js` (que hoy contiene una prueba pendiente) el **flujo completo de compra desde la perspectiva del cliente**.
 
 ## 5.1 Especificación del Test
 
@@ -365,14 +371,14 @@ Su archivo debe incluir:
 
 # 6. Detalles de la Entrega
 
-Entregue el enlace a su repositorio de talleres y un _tag_ `taller-e2e-cypress` sobre el _commit_ que
-se debe evaluar. El repositorio debe contener en `talleres/e2e-cypress/`:
+Cree el _tag_ `taller-e2e-cypress` sobre el _commit_ que se debe evaluar y súbalo a su repositorio
+(`git push origin taller-e2e-cypress`). En ese _commit_, `talleres/e2e-cypress/` debe contener:
 
 - La carpeta `cypress/e2e/` con los archivos de prueba:
   - `admin-setup.cy.js` y `admin-product.cy.js` (sin modificaciones)
   - `customer-checkout.cy.js` (su implementación)
 - `package.json`, `package-lock.json`, `cypress.config.js` y `scripts/evaluate.js`.
-- Un archivo `README.md` con:
+- El archivo `README.md` con sus secciones completas:
   - Las instrucciones para ejecutar las pruebas
   - Cualquier consideración adicional sobre su implementación
   - Capturas de pantalla o descripción de las pruebas ejecutándose exitosamente

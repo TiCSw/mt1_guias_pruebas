@@ -14,9 +14,17 @@ A través de este taller:
 
 ## 1. Preparación
 
-Requisito: el [Taller 0](evershop) (repositorio de talleres y EverShop en ejecución).
+Requisito: el [Taller 0](evershop) (repositorio de talleres instalado y EverShop en ejecución).
 
-El taller vive en `talleres/monkey/` de su repositorio de talleres. Cree estos archivos:
+El taller está en `talleres/monkey/` de su repositorio:
+
+| Archivo | Contenido |
+|---|---|
+| `package.json` | Dependencias (Playwright y Faker) y scripts del taller |
+| `src/monkey.js` | Monkey base (sección 2) |
+| `src/experiment.js`, `src/replay.js`, `src/minimize.js` | Scripts de la actividad, por implementar (secciones 3.3 y 3.4) |
+| `minimized/` | Secuencias mínimas (sección 3.4) |
+| `README.md` | Secciones que debe completar |
 
 **`talleres/monkey/package.json`**
 
@@ -31,7 +39,10 @@ El taller vive en `talleres/monkey/` de su repositorio de talleres. Cree estos a
   "scripts": {
     "setup": "playwright install chromium",
     "monkey": "node src/monkey.js",
-    "evaluate": "node src/monkey.js --seed 4103 --events 30"
+    "evaluate": "node src/monkey.js --seed 4103 --events 30",
+    "experiment": "node src/experiment.js",
+    "replay": "node src/replay.js",
+    "minimize": "node src/minimize.js"
   },
   "devDependencies": {
     "@faker-js/faker": "~10.6.0",
@@ -40,19 +51,10 @@ El taller vive en `talleres/monkey/` de su repositorio de talleres. Cree estos a
 }
 ```
 
-Instale las dependencias y el navegador desde `talleres/monkey/`:
-
-```bash
-npm install
-npm run setup
-```
-
-`npm install` genera `package-lock.json`; inclúyalo en el repositorio.
-
 ## 2. Implementación base
 
-El monkey base solo hace clic en enlaces visibles de la tienda, elegidos al azar con
-[Faker](https://fakerjs.dev) inicializado con una semilla.
+El monkey base, en `src/monkey.js`, solo hace clic en enlaces visibles de la tienda, elegidos al
+azar con [Faker](https://fakerjs.dev) inicializado con una semilla.
 
 **`talleres/monkey/src/monkey.js`**
 
@@ -155,7 +157,7 @@ Puntos clave:
 - El único oráculo es `pageerror`: una excepción de JavaScript no capturada en la página.
 - Al terminar escribe `results/events.json` (la secuencia de eventos) y `results/summary.json`.
 
-Ejecútelo con la tienda en ejecución:
+Ejecútelo desde `talleres/monkey/` con la tienda en ejecución:
 
 ```bash
 npm run monkey -- --seed 7 --events 20 --headed
@@ -194,8 +196,8 @@ que el mismo defecto encontrado varias veces cuente una sola vez.
 
 Compare dos estrategias: la base (solo `clickLink`) y su configuración de pesos. Ejecute cada una con
 10 semillas y 100 eventos por ejecución, reiniciando la tienda entre ejecuciones
-(`npm run app:reset`). Agregue `npm run experiment`, que ejecuta el experimento y guarda los datos en
-`results/experiment.json`.
+(`npm run app:reset`). Implemente `npm run experiment` (`src/experiment.js`), que ejecuta el
+experimento y guarda los datos en `results/experiment.json`.
 
 En el README presente una tabla por estrategia con URL distintas visitadas, firmas de fallo
 distintas y tiempo de ejecución (media y rango), y responda con sus datos:
@@ -209,9 +211,9 @@ distintas y tiempo de ejecución (media y rango), y responda con sus datos:
 Para cada firma de fallo encontrada, obtenga la **secuencia mínima** de eventos que lo reproduce a
 partir del `events.json` de la ejecución que lo encontró. Implemente:
 
-- `npm run replay -- <archivo>`: reproduce una secuencia de eventos guardada (no una semilla) y
+- `npm run replay -- <archivo>` (`src/replay.js`): reproduce una secuencia de eventos guardada (no una semilla) y
   reporta los fallos.
-- `npm run minimize -- <archivo> <firma>`: reduce la secuencia, por ejemplo con _delta debugging_
+- `npm run minimize -- <archivo> <firma>` (`src/minimize.js`): reduce la secuencia, por ejemplo con _delta debugging_
   (ddmin) o eliminando eventos uno por uno, verificando con `replay` que el fallo se mantiene.
 
 Guarde las secuencias mínimas en `talleres/monkey/minimized/` (versionadas) e indique en el README la
@@ -226,8 +228,8 @@ escrita a mano y cuáles no.
 
 ## 4. Entrega
 
-Entregue el enlace a su repositorio de talleres y un _tag_ `taller-monkey` sobre el _commit_ que se
-debe evaluar. El repositorio debe contener en `talleres/monkey/`:
+Cree el _tag_ `taller-monkey` sobre el _commit_ que se debe evaluar y súbalo a su repositorio
+(`git push origin taller-monkey`). En ese _commit_, `talleres/monkey/` debe contener:
 
 - El código fuente del monkey, `package.json` y `package-lock.json`.
 - `npm run evaluate`: ejecuta su monkey con su configuración de pesos, una semilla fija y al menos 100
@@ -245,8 +247,9 @@ debe evaluar. El repositorio debe contener en `talleres/monkey/`:
   }
   ```
 
-- `npm run experiment`, `npm run replay` y `npm run minimize`, y la carpeta `minimized/`.
-- `README.md` con:
+- `npm run experiment`, `npm run replay` y `npm run minimize` implementados, y la carpeta
+  `minimized/`.
+- `README.md` con sus secciones completas:
   - cómo ejecutar cada script y qué parámetros acepta;
   - los resultados del experimento y las respuestas de las secciones 3.3 y 3.5;
   - **Uso de IA**: qué partes generó o sugirió un asistente de IA, qué errores tenía lo generado y

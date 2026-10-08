@@ -15,7 +15,7 @@ A través de este taller:
 
 ## 1. Preparación
 
-Requisito: el [Taller 0](evershop) (repositorio de talleres y EverShop en ejecución).
+Requisito: el [Taller 0](evershop) (repositorio de talleres instalado y EverShop en ejecución).
 
 Comparará dos versiones de la tienda:
 
@@ -31,7 +31,15 @@ Notas de la versión release:
 3. Nuevo color de fondo del pie de página.
 4. Nuevo banner de promoción con cuenta regresiva en la parte superior de todas las páginas.
 
-El taller vive en `talleres/vrt/` de su repositorio de talleres. Cree estos archivos:
+El taller está en `talleres/vrt/` de su repositorio:
+
+| Archivo | Contenido |
+|---|---|
+| `package.json` | Dependencias (Playwright, ResembleJS y `canvas`) y scripts del taller |
+| `vrt.config.js` | Páginas, _viewports_, umbral y opciones de comparación (sección 2) |
+| `src/vrt.js`, `src/report.js` | Comparación y reporte base (sección 2) |
+| `src/stability.js` | Comparación de estabilidad, por implementar (sección 3.2) |
+| `README.md` | Secciones que debe completar |
 
 **`talleres/vrt/package.json`**
 
@@ -45,7 +53,8 @@ El taller vive en `talleres/vrt/` de su repositorio de talleres. Cree estos arch
   },
   "scripts": {
     "setup": "playwright install chromium",
-    "evaluate": "node src/vrt.js"
+    "evaluate": "node src/vrt.js",
+    "stability": "node src/stability.js"
   },
   "devDependencies": {
     "canvas": "~3.2.3",
@@ -61,15 +70,6 @@ El taller vive en `talleres/vrt/` de su repositorio de talleres. Cree estos arch
 `allowScripts` autoriza el script de instalación de `canvas`, la librería de imágenes que usa
 ResembleJS. ResembleJS pide además una versión antigua de `canvas` que npm intenta compilar; si su
 equipo no tiene herramientas de compilación, npm la omite y ResembleJS usa la incluida aquí.
-
-Instale las dependencias y el navegador desde `talleres/vrt/`:
-
-```bash
-npm install
-npm run setup
-```
-
-`npm install` genera `package-lock.json`; inclúyalo en el repositorio.
 
 ## 2. Implementación base
 
@@ -200,7 +200,7 @@ export async function writeReport(summary, file) {
 }
 ```
 
-Ejecútelo con la tienda en ejecución:
+Ejecútelo desde `talleres/vrt/` con la tienda en ejecución:
 
 ```bash
 npm run evaluate
@@ -222,8 +222,8 @@ Extienda la configuración y el script para capturar:
 
 ### 3.2 Estabilidad
 
-Una comparación entre una versión y sí misma debería dar 0 %. Agregue `npm run stability`, que
-compara cada versión consigo misma (dos capturas de la base y dos de la release) para todas sus
+Una comparación entre una versión y sí misma debería dar 0 %. Implemente `npm run stability`
+(`src/stability.js`), que compara cada versión consigo misma (dos capturas de la base y dos de la release) para todas sus
 páginas, _viewports_ y estados.
 
 Identifique cada fuente de ruido que haga que esas comparaciones no den 0 % (contenido que cambia
@@ -252,14 +252,14 @@ estabilidad frente a los de las comparaciones entre versiones. Justifique la ele
 
 ## 4. Entrega
 
-Entregue el enlace a su repositorio de talleres y un _tag_ `taller-vrt` sobre el _commit_ que se debe
-evaluar. El repositorio debe contener en `talleres/vrt/`:
+Cree el _tag_ `taller-vrt` sobre el _commit_ que se debe evaluar y súbalo a su repositorio
+(`git push origin taller-vrt`). En ese _commit_, `talleres/vrt/` debe contener:
 
 - El código fuente, `package.json` y `package-lock.json`.
 - `npm run evaluate`: compara las dos versiones con toda su cobertura, genera `results/report.html` y
   escribe `results/summary.json` con el formato de la implementación base.
-- `npm run stability`.
-- `README.md` con:
+- `npm run stability` implementado.
+- `README.md` con sus secciones completas:
   - cómo ejecutar cada script;
   - las secciones 3.2 a 3.5;
   - **Uso de IA**: qué partes generó o sugirió un asistente de IA, qué errores tenía lo generado y
