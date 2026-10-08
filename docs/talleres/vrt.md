@@ -56,7 +56,8 @@ export default {
 ```
 
 Los pasos (`steps`) se ejecutan en orden después de abrir `path`: `{ click: selector }`,
-`{ fill: [selector, valor] }`, `{ goto: ruta }` y `{ waitFor: selector }`, con
+`{ fill: [selector, valor] }`, `{ goto: ruta }`, `{ waitFor: selector }` (espera un elemento) y
+`{ waitForUrl: patrón }` (espera a que la URL coincida, por ejemplo `"**?color=*"`), con
 [selectores de Playwright](https://playwright.dev/docs/other-locators).
 
 Para cada comparación, `src/vrt.js` abre la página en las dos versiones con el _viewport_ indicado,
