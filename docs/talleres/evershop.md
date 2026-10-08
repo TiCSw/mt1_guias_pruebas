@@ -37,14 +37,19 @@ proyecto.
 │   ├── behavior-driven-development/
 │   ├── visual-regression-testing/
 │   └── end-to-end-testing/
+├── asignacion.json      # su tipo (A, B, C o D), asignado por el equipo docente
 ├── compose.yml          # EverShop 2.1.1, PostgreSQL 16 y el proxy de la versión release
 ├── evershop/            # configuración del proxy y archivos de la versión release
-├── scripts/             # instalación, app:up, app:down, app:reset y evaluate
+├── scripts/             # instalación, app:up, app:down, app:reset, evaluate y verificaciones
 └── .github/             # CODEOWNERS y el flujo que evalúa los talleres
 ```
 
 Solo modifique archivos dentro de `talleres/<taller>/`. El resto del repositorio pertenece al equipo
 docente (`.github/CODEOWNERS`), y la evaluación usa su propia copia de esos archivos.
+
+`asignacion.json` contiene su **tipo** (A, B, C o D). Cada taller tiene una sola actividad; en los
+talleres con variantes, el tipo indica la que le corresponde (por ejemplo, qué regla de negocio
+especificar o qué página comparar).
 
 ## 3. Instalar e iniciar EverShop
 
@@ -83,30 +88,32 @@ Las pruebas de los talleres crean y modifican datos (productos, carritos, config
 ## 4. Cómo se ejecuta y se evalúa un taller
 
 Cada taller es un proyecto npm independiente en `talleres/<taller>/`, con su implementación base,
-los scripts que pide su enunciado y un `README.md` con las secciones que deben completar. El equipo
-docente evalúa cada taller con un único comando desde la raíz del repositorio:
+sus scripts y un `README.md` para documentar su trabajo. Los talleres se califican de forma
+automática con un único comando desde la raíz del repositorio:
 
 ```bash
 npm run evaluate -- <taller>
 ```
 
 Este comando reinicia EverShop desde cero, ejecuta en la carpeta del taller `npm ci`,
-`npm run setup` (si existe) y `npm run evaluate`, y detiene EverShop. Además, en cada _push_ que
-modifica un taller, el flujo de GitHub Actions del repositorio ejecuta lo mismo en Linux para ese
-taller: si falla allí, también fallará cuando lo evaluemos.
+`npm run setup` (si existe) y `npm run evaluate`, luego las verificaciones automáticas del taller
+según su tipo, y detiene EverShop. El resultado de cada verificación queda en
+`talleres/<taller>/results/grade.json`. Un taller cuenta si se entregó a tiempo (con el _tag_ que
+indica su enunciado) y pasa todas las verificaciones; el `README.md` no se califica.
+
+Además, en cada _push_ que modifica un taller, el flujo de GitHub Actions del repositorio ejecuta lo
+mismo en Linux para ese taller: si falla allí, también fallará cuando lo evaluemos.
 
 Para que un taller siga siendo evaluable:
 
 - Mantengan `package.json` y `package-lock.json` (si agregan dependencias con `npm install`, ambos
   cambian y se versionan).
-- No cambien los nombres de los scripts del `package.json`; en particular, `evaluate` ejecuta el
-  taller completo sin intervención.
+- No cambien los nombres de los scripts ni de los archivos que menciona cada enunciado; en
+  particular, `evaluate` ejecuta el taller completo sin intervención.
 - Tomen la URL de la tienda de la variable de entorno `BASE_URL` (y `RELEASE_URL` para la versión
   release), como hace la implementación base.
-- `evaluate` debe generar `results/summary.json` con el formato que indica cada enunciado. La carpeta
+- `evaluate` debe generar `results/summary.json`, como hace la implementación base. La carpeta
   `results/` no se versiona.
-
-Cada enunciado indica el _tag_ con el que se entrega el taller.
 
 ## 5. Solución de problemas
 
