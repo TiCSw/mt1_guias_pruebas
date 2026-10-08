@@ -12,142 +12,102 @@ A través de esta actividad:
 
 # 1. Preparación del Entorno
 
-En esta parte prepararemos el entorno para poder realizar pruebas E2E sobre EverShop. Esta es una aplicación de E-commerce open source construida sobre TypeScript que permite diseñar y construir de manera sencilla tiendas online. Puede encontrar la documentación aquí: https://evershop.io/documentation
-
-## 1.1 Levantar EverShop con Docker
-
-Para poder hacer uso de EverShop, utilizaremos docker-compose el cual permite crear contenedores para ejecutar aplicaciones de manera sencilla.
-
-Para empezar, cree un directorio para EverShop
-```bash
-mkdir evershop-app
-cd evershop-app
-```
-
-Cree el archivo `docker-compose.yml` con el siguiente contenido:
-
-> **Nota:** Se utiliza la versión `2.1.1` de la imagen en lugar de `latest`.
-
-```yaml
-version: '3.8'
-
-services:
-  app:
-    image: evershop/evershop:2.1.1
-    restart: always
-    environment:
-      DB_HOST: database
-      DB_PORT: 5432
-      DB_PASSWORD: postgres
-      DB_USER: postgres
-      DB_NAME: postgres
-    networks:
-      - myevershop
-    depends_on:
-      - database
-    ports:
-      - 3000:3000
-
-  database:
-    image: postgres:16
-    restart: unless-stopped
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_DB: postgres
-    ports:
-      - "5432:5432"
-    networks:
-      - myevershop
-
-networks:
-  myevershop:
-    driver: bridge
-
-volumes:
-  postgres-data:
-```
-
-Una vez creado el archivo, levante los contenedores:
-
-```bash
-docker compose up
-```
-
-Al finalizar la inicialización, debería observar algo como lo siguiente:
-
-![alt text](img/Resultado_EverShop.jpg)
-
-Como se puede apreciar en la imagen, la aplicación se levanta por defecto en el puerto 3000, y su base de datos en el puerto 5432. La aplicación estará disponible en:
-
-```
-http://localhost:3000
-```
-
-El panel del administrador en:
-
-```
-http://localhost:3000/admin
-```
-
----
-
-## 1.2 Crear usuario administrador
-
-Para poder hacer uso de la aplicación es necesario crear un usuario administrador, para ello entre al contenedor:
-
-```bash
-docker exec -it evershop-app-1 sh
-```
-
-Ejecute el siguiente comando para crear un usuario:
-
-```bash
-npm run user:create -- --email admin@test.com --password admin123 --name "Admin"
-```
----
-
-Una vez creado el usuario administrador, ingrese a http://localhost:3000/admin e inicie sesión con el usuario y contraseña creado, es decir, admin@test.com - admin123
+Requisito: el [Taller 0](../evershop) (repositorio de talleres y EverShop en ejecución). EverShop
+queda disponible en `http://localhost:3000` y su administración en `http://localhost:3000/admin`,
+con el usuario `admin@test.com` y la contraseña `admin123`.
 
 ![alt text](img/image-1.png)
+
 ---
 
 # 2. Configuración del Proyecto Cypress
 
-Ahora crearemos un proyecto de Cypress desde cero para realizar las pruebas E2E sobre EverShop.
+El taller vive en `talleres/e2e-cypress/` de su repositorio de talleres. Cypress se instala como
+dependencia del proyecto, no de forma global. Cree estos archivos:
 
-## 2.1 Crear el Proyecto
+**`talleres/e2e-cypress/package.json`**
 
-Cree un nuevo directorio para el proyecto de pruebas e inicialice un proyecto Node.js:
-
-```bash
-mkdir taller-cypress
-cd taller-cypress
-npm init -y
+```json
+{
+  "name": "taller-e2e-cypress",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "setup": "cypress install",
+    "cypress": "cypress open",
+    "evaluate": "node scripts/evaluate.js"
+  },
+  "devDependencies": {
+    "cypress": "~16.1.1"
+  },
+  "allowScripts": {
+    "cypress": true
+  }
+}
 ```
 
-## 2.2 Inicialización de Cypress
+`baseUrl` toma la URL de la tienda de la variable `BASE_URL`, por lo que las pruebas usan rutas
+relativas (`cy.visit("/admin/login")`):
 
-Si ya cuenta con la instalación de Cypress global, puede iniciarlo directamente con
+**`talleres/e2e-cypress/cypress.config.js`**
 
-```bash
-cypress open
+```javascript
+import { defineConfig } from "cypress";
+
+export default defineConfig({
+  e2e: {
+    baseUrl: process.env.BASE_URL ?? "http://localhost:3000",
+    screenshotsFolder: "results/screenshots",
+    supportFile: false,
+    video: false,
+  },
+});
 ```
 
-Si no es así, puede instalar Cypress como dependencia de desarrollo:
+`npm run evaluate` ejecuta las pruebas una por una, en el orden en que dependen entre sí, y escribe
+`results/summary.json`:
+
+**`talleres/e2e-cypress/scripts/evaluate.js`**
+
+```javascript
+// Runs the specs one at a time, in this order, against a store reset by `npm run app:reset`:
+// customer-checkout needs the product and the store settings that the admin specs create.
+import { existsSync } from "node:fs";
+import { mkdir, writeFile } from "node:fs/promises";
+import cypress from "cypress";
+
+const specs = ["admin-setup", "admin-product", "customer-checkout"]
+  .map((name) => `cypress/e2e/${name}.cy.js`)
+  .filter((spec) => existsSync(spec));
+
+const results = [];
+for (const spec of specs) {
+  const run = await cypress.run({ spec, quiet: true });
+  if (run.status === "failed") {
+    results.push({ spec, error: run.message });
+  } else {
+    results.push({ spec, tests: run.totalTests, passed: run.totalPassed, failed: run.totalFailed });
+  }
+}
+
+const failed = results.filter((result) => result.error || result.failed > 0);
+await mkdir("results", { recursive: true });
+await writeFile("results/summary.json", `${JSON.stringify({ specs: results }, null, 2)}\n`);
+console.log(results);
+process.exit(failed.length === 0 ? 0 : 1);
+```
+
+Instale las dependencias y el binario de Cypress desde `talleres/e2e-cypress/`:
 
 ```bash
-npm install cypress --save-dev
-```
-He inicializarlo de la siguiente manera:
-
-```bash
-npx cypress open
+npm install
+npm run setup
 ```
 
-Esto abrirá la interfaz gráfica de Cypress. Seleccione **E2E Testing** y luego elija un navegador para continuar. Cypress creará automáticamente la estructura de carpetas necesaria.
+`npm install` genera `package-lock.json`; inclúyalo en el repositorio.
 
 ---
 
@@ -157,13 +117,15 @@ Antes de crear productos y realizar pruebas de checkout, es necesario configurar
 
 ## 3.1 Crear el Archivo de Configuración
 
-Cree el archivo `cypress/e2e/admin-setup.cy.js` y copie el siguiente código:
+Cree el archivo `cypress/e2e/admin-setup.cy.js` con el siguiente código:
+
+**`talleres/e2e-cypress/cypress/e2e/admin-setup.cy.js`**
 
 ```javascript
 describe("Admin Panel - Initial Setup", () => {
   beforeEach(() => {
     // Login del administrador
-    cy.visit("http://localhost:3000/admin/login");
+    cy.visit("/admin/login");
     cy.get('input[name="email"]').type("admin@test.com");
     cy.get('input[name="password"]').type("admin123");
     cy.get('button[type="submit"]').click();
@@ -259,7 +221,7 @@ Este test configura automáticamente:
 2. Crea una zona de envío para Estados Unidos (New York)
 3. Crea un método de envío "Standard Shipping" con un costo de $10
 
-**Importante:** Ejecute este test **UNA SOLA VEZ** antes de ejecutar los demás tests.
+**Importante:** este test modifica la configuración de la tienda, por lo que se ejecuta **una sola vez** sobre una tienda recién reiniciada (`npm run app:reset`) y antes que los demás. `npm run evaluate` lo hace en ese orden.
 
 ---
 
@@ -269,7 +231,9 @@ Este test configura automáticamente:
 
 Ahora cree el archivo base del taller que contiene el login del administrador y la creación de un producto.
 
-Cree el archivo `cypress/e2e/admin-product.cy.js` y copie el siguiente código:
+Cree el archivo `cypress/e2e/admin-product.cy.js` con el siguiente código:
+
+**`talleres/e2e-cypress/cypress/e2e/admin-product.cy.js`**
 
 ```javascript
 describe("Admin Panel - Product Management", () => {
@@ -279,7 +243,7 @@ describe("Admin Panel - Product Management", () => {
    */
   beforeEach(() => {
     // Visitar la página de login del admin
-    cy.visit("http://localhost:3000/admin/login");
+    cy.visit("/admin/login");
 
     // Llenar el formulario de login
     cy.get('input[name="email"]').type("admin@test.com");
@@ -356,22 +320,17 @@ Este archivo sirve como **referencia** para entender cómo estructurar sus prueb
 
 ## 4.2 Ejecución del Código Base
 
-Para ejecutar el test, abra Cypress:
+Abra la interfaz de Cypress desde `talleres/e2e-cypress/`:
 
 ```bash
-npx cypress open
+npm run cypress
 ```
 
-o si lo tiene instalado de manera global
+Seleccione **E2E Testing**, un navegador y luego el archivo `admin-product.cy.js`. Debería ver cómo se
+ejecuta automáticamente el login y la creación del producto.
 
-
-```bash
-cypress open
-```
-
-Luego seleccione el archivo `admin-product.cy.js` en la interfaz de Cypress. Debería ver cómo se ejecuta automáticamente el login y la creación del producto.
-
-**Importante:** Asegúrese de que EverShop esté ejecutándose en `http://localhost:3000` antes de correr las pruebas.
+**Importante:** Asegúrese de que EverShop esté ejecutándose (`npm run app:up` desde la raíz del
+repositorio) antes de correr las pruebas.
 
 ---
 
@@ -384,7 +343,7 @@ Ahora deberá crear un nuevo archivo llamado `customer-checkout.cy.js` dentro de
 Su archivo debe incluir:
 
 1. **Un `beforeEach()`** que:
-   - Visite el storefront (homepage) en `http://localhost:3000`
+   - Visite la página de inicio de la tienda (`cy.visit("/")`)
    - Espere a que la página cargue correctamente
 
 2. **Un test que ejecute los siguientes pasos secuencialmente**:
@@ -406,23 +365,25 @@ Su archivo debe incluir:
 
 # 6. Detalles de la Entrega
 
-Se debe entregar un archivo **.zip** con los siguientes archivos:
+Entregue el enlace a su repositorio de talleres y un _tag_ `taller-e2e-cypress` sobre el _commit_ que
+se debe evaluar. El repositorio debe contener en `talleres/e2e-cypress/`:
 
-- La carpeta `cypress/e2e/` con ambos archivos de prueba:
-  - `admin-product.cy.js` (sin modificaciones)
+- La carpeta `cypress/e2e/` con los archivos de prueba:
+  - `admin-setup.cy.js` y `admin-product.cy.js` (sin modificaciones)
   - `customer-checkout.cy.js` (su implementación)
-- El archivo `package.json` (generado automáticamente al hacer `npm init -y`). **NO** incluya el `package-lock.json` ni el directorio `node_modules`
+- `package.json`, `package-lock.json`, `cypress.config.js` y `scripts/evaluate.js`.
 - Un archivo `README.md` con:
-  - Los pasos para instalar Cypress
   - Las instrucciones para ejecutar las pruebas
   - Cualquier consideración adicional sobre su implementación
   - Capturas de pantalla o descripción de las pruebas ejecutándose exitosamente
+
+El equipo docente ejecutará `npm run evaluate -- e2e-cypress` desde la raíz del repositorio.
 
 ---
 
 # 7. Criterios de Evaluación
 
-- El zip tiene un archivo README completo y el código está correctamente estructurado. **[10 puntos]**
+- La entrega tiene un archivo README completo y el código está correctamente estructurado. **[10 puntos]**
 - El archivo `customer-checkout.cy.js` implementa correctamente el flujo especificado usando la API de Cypress. **[40 puntos]**
 - Las pruebas son funcionales, manejan errores apropiadamente y siguen las mejores prácticas de Cypress. **[30 puntos]**
 - El test es independiente y no depende de ejecuciones previas. **[20 puntos]**
