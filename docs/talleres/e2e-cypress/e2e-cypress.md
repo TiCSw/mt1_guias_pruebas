@@ -21,15 +21,15 @@ EverShop queda disponible en `http://localhost:3000` y su administración en
 El taller está en `talleres/end-to-end-testing/` de su repositorio. Cypress es una dependencia del
 proyecto, no una instalación global.
 
-| Archivo | Contenido |
-|---|---|
-| `package.json` | Dependencia de Cypress y scripts del taller |
-| `cypress.config.js` | Configuración de Cypress; `baseUrl` toma la URL de la tienda de `BASE_URL` |
-| `scripts/evaluate.js` | Ejecuta las pruebas en orden y escribe `results/summary.json` |
-| `cypress/e2e/admin-setup.cy.js` | Configuración inicial de la tienda (sección 2) |
-| `cypress/e2e/admin-product.cy.js` | Prueba base: creación de un producto (sección 3) |
-| `cypress/e2e/customer-checkout.cy.js` | Prueba de la actividad, por implementar (sección 4) |
-| `README.md` | Secciones para documentar su trabajo |
+| Archivo | Contenido | ¿Se edita? |
+|---|---|---|
+| `cypress/e2e/customer-checkout.cy.js` | Prueba de la actividad, por implementar (sección 4) | Sí |
+| `README.md` | Documentación de su trabajo | Sí |
+| `cypress/e2e/admin-setup.cy.js` | Configuración inicial de la tienda (sección 2) | No |
+| `cypress/e2e/admin-product.cy.js` | Prueba base: creación de un producto (sección 3) | No |
+| `runner/run.js` | Runner: ejecuta las pruebas en orden y escribe `results/summary.json` | No |
+| `cypress.config.js` | Configuración de Cypress | No |
+| `package.json`, `package-lock.json` | Dependencia de Cypress y scripts | No |
 
 ---
 
@@ -51,7 +51,7 @@ describe("Admin Panel - Initial Setup", () => {
 });
 ```
 
-**Importante:** este test modifica la configuración de la tienda, por lo que se ejecuta **una sola vez** sobre una tienda recién reiniciada (`npm run app:reset`) y antes que los demás. `npm run evaluate` lo hace en ese orden.
+**Importante:** este test modifica la configuración de la tienda, por lo que se ejecuta **una sola vez** sobre una tienda recién reiniciada (`npm run app:reset`) y antes que los demás. El runner (`npm run e2e`) lo hace en ese orden.
 
 ---
 
@@ -87,6 +87,14 @@ npm run cypress
 
 Seleccione **E2E Testing**, un navegador y luego el archivo `admin-product.cy.js`. Asegúrese de que EverShop esté ejecutándose (`npm run app:up` desde la raíz del repositorio).
 
+Para ejecutar todas las pruebas como en la evaluación, reinicie la tienda (`npm run app:reset` desde la raíz) y, desde `talleres/end-to-end-testing/`:
+
+```bash
+npm run e2e
+```
+
+El runner ejecuta `admin-setup`, `admin-product` y `customer-checkout` en ese orden y escribe el resultado de cada prueba en `results/summary.json`.
+
 ---
 
 # 4. Actividad
@@ -121,17 +129,16 @@ Su archivo debe incluir:
 # 5. Detalles de la Entrega
 
 Cree el _tag_ `taller-end-to-end-testing` sobre el _commit_ que se debe evaluar y súbalo a su
-repositorio (`git push origin taller-end-to-end-testing`) antes de la fecha límite. Describa su
+repositorio (`git push origin taller-end-to-end-testing`) a más tardar el día de la fecha límite. Describa su
 implementación en el `README.md` del taller.
 
 ---
 
 # 6. Evaluación
 
-La evaluación es automática. El taller cuenta si el _tag_ se entregó a tiempo y pasa todas las
-verificaciones de `npm run evaluate -- end-to-end-testing`, que puede ejecutar desde la raíz de su
-repositorio. El resultado queda en `talleres/end-to-end-testing/results/grade.json`.
+La evaluación es automática (ver el [Taller 0](../evershop)). Además de las condiciones generales de
+entrega, el equipo docente ejecuta el runner sobre una tienda recién iniciada y verifica en el resumen
+que:
 
-1. `npm run evaluate` del taller termina sin errores y genera `results/summary.json`.
-2. `admin-setup.cy.js` y `admin-product.cy.js` pasan.
-3. `customer-checkout.cy.js` tiene al menos una prueba, todas pasan y ninguna queda pendiente.
+1. `admin-setup.cy.js` y `admin-product.cy.js` pasan.
+2. `customer-checkout.cy.js` tiene al menos una prueba, todas pasan y ninguna queda pendiente.

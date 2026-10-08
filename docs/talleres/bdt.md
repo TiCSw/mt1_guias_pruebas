@@ -19,18 +19,18 @@ Requisito: el [Taller 0](evershop) (repositorio de talleres instalado y EverShop
 
 El taller está en `talleres/behavior-driven-development/` de su repositorio:
 
-| Archivo | Contenido |
-|---|---|
-| `package.json` | Dependencias (Cucumber y Playwright) y scripts del taller |
-| `cucumber.js` | Configuración de Cucumber: features, código de soporte y reportes |
-| `features/admin-sign-in.feature` | Feature base (sección 2) |
-| `features/support/world.js` | Contexto de cada escenario (_World_) y _hooks_ |
-| `features/step_definitions/` | Pasos de la feature base |
-| `README.md` | Secciones para documentar su trabajo |
+| Archivo | Contenido | ¿Se edita? |
+|---|---|---|
+| `features/` | Features (`.feature`) y _step definitions_ (`.js`), incluida la base (sección 2) | Sí |
+| `README.md` | Documentación de su trabajo | Sí |
+| `runner/world.js` | Runner: _World_, navegador por escenario y resumen | No |
+| `cucumber.js` | Configuración de Cucumber | No |
+| `package.json`, `package-lock.json` | Dependencias (Cucumber y Playwright) y scripts | No |
 
 ## 2. Implementación base
 
-La feature base especifica el inicio de sesión en la administración de EverShop:
+La feature base (`features/admin-sign-in.feature`) especifica el inicio de sesión en la
+administración de EverShop:
 
 ```gherkin
 Feature: Admin sign in
@@ -51,7 +51,7 @@ Feature: Admin sign in
       # …otras filas
 ```
 
-Cada paso se implementa con Playwright:
+Cada paso se implementa con Playwright (`features/step_definitions/`):
 
 ```javascript
 When("I sign in as {string} with password {string}", async function (email, password) {
@@ -64,10 +64,11 @@ Then("I see the message {string}", async function (message) {
 });
 ```
 
-El _World_ (`features/support/world.js`) crea un contexto de navegador nuevo para cada escenario
-(sin cookies, carrito ni sesión de otros escenarios), adjunta una captura al reporte cuando un
-escenario falla y escribe `results/summary.json` con el estado, los _tags_ y las páginas visitadas
-de cada escenario.
+El runner (`runner/world.js`) crea para cada escenario un contexto de navegador nuevo (sin cookies,
+carrito ni sesión de otros escenarios) con `this.context`, `this.page` y `this.url(ruta)`, adjunta
+una captura al reporte cuando un escenario falla y escribe `results/summary.json` con el resultado,
+los _tags_ y las páginas visitadas de cada escenario. Cucumber carga todos los `.feature` y `.js` de
+`features/`.
 
 Con la tienda en ejecución, desde `talleres/behavior-driven-development/`:
 
@@ -76,12 +77,12 @@ npm test
 HEADED=1 npm test
 ```
 
-El reporte queda en `results/report.html`.
+El reporte HTML queda en `results/report.html`.
 
 ## 3. Actividad
 
-El equipo docente le asignó un tipo (A, B, C o D) en el archivo `asignacion.json` de la raíz de su
-repositorio. Escriba **una feature con al menos 5 escenarios** sobre la regla de negocio de su tipo:
+Escriba en `features/` **al menos 5 escenarios** sobre la regla de negocio de su tipo (`type` en
+`asignacion.json`):
 
 | Tipo | Regla de negocio | Páginas que cada escenario debe visitar |
 |---|---|---|
@@ -92,11 +93,12 @@ repositorio. Escriba **una feature con al menos 5 escenarios** sobre la regla de
 
 Explore primero la regla en la tienda para saber qué comportamiento especificar. Condiciones:
 
-- La feature está en `features/actividad.feature` y tiene el _tag_ `@tipo-<su tipo>` (por ejemplo,
-  `@tipo-B`).
-- Tiene al menos 5 escenarios, incluido al menos un `Scenario Outline` con `Examples` (cada fila de
-  `Examples` cuenta como un escenario).
-- Los pasos nuevos van en `features/step_definitions/` y pueden reutilizar los de la base.
+- Los escenarios de la actividad tienen el _tag_ `@tipo-<su tipo>` (por ejemplo, `@tipo-B`); puede
+  ponerlo en la `Feature` para que lo hereden todos.
+- Al menos uno viene de un `Scenario Outline` con `Examples` (cada fila de `Examples` cuenta como un
+  escenario).
+- Puede escribir los escenarios en inglés o en español (`# language: es`) y organizarlos en los
+  archivos que prefiera dentro de `features/`.
 - Los escenarios son declarativos (en términos del negocio, no de la interfaz), independientes entre
   sí y verifican resultados observables con aserciones de Playwright.
 
@@ -105,18 +107,16 @@ Describa en el `README.md` del taller la regla y cómo la observó en la tienda.
 ## 4. Entrega
 
 Cree el _tag_ `taller-behavior-driven-development` sobre el _commit_ que se debe evaluar y súbalo a
-su repositorio (`git push origin taller-behavior-driven-development`) antes de la fecha límite.
+su repositorio (`git push origin taller-behavior-driven-development`) a más tardar el día de la fecha
+límite.
 
 ## 5. Evaluación
 
-La evaluación es automática. El taller cuenta si el _tag_ se entregó a tiempo y pasa todas las
-verificaciones de `npm run evaluate -- behavior-driven-development`, que puede ejecutar desde la raíz
-de su repositorio. El resultado queda en
-`talleres/behavior-driven-development/results/grade.json`.
+La evaluación es automática (ver el [Taller 0](evershop)). Además de las condiciones generales de
+entrega, el equipo docente ejecuta todas las features con el runner sobre una tienda recién iniciada
+y verifica en el resumen que:
 
-1. `npm run evaluate` del taller termina sin errores (todos los escenarios pasan) y genera
-   `results/summary.json`.
-2. Existe `features/actividad.feature` con el _tag_ de su tipo.
-3. La feature tiene al menos un `Scenario Outline` con `Examples`.
-4. La feature tiene al menos 5 escenarios y todos pasan.
-5. Cada escenario de la feature visita las páginas de su tipo.
+1. Todos los escenarios pasan, incluidos los de la feature base.
+2. Hay al menos 5 escenarios con el _tag_ de su tipo.
+3. Al menos uno de ellos viene de un `Scenario Outline`.
+4. Cada escenario de su tipo visita las páginas de su tipo.

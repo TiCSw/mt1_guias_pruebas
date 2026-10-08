@@ -17,43 +17,47 @@ Requisito: el [Taller 0](evershop) (repositorio de talleres instalado y EverShop
 
 El taller está en `talleres/monkey-testing/` de su repositorio:
 
-| Archivo | Contenido |
-|---|---|
-| `package.json` | Dependencias (Playwright y Faker) y scripts del taller |
-| `src/monkey.js` | Monkey base (sección 2), donde agregará sus acciones |
-| `README.md` | Secciones para documentar su trabajo |
+| Archivo | Contenido | ¿Se edita? |
+|---|---|---|
+| `src/actions.js` | Acciones del monkey (sección 2), donde agregará las suyas | Sí |
+| `README.md` | Documentación de su trabajo | Sí |
+| `runner/monkey.js` | Runner: navegador, semilla, pesos, ciclo de eventos y resumen | No |
+| `package.json`, `package-lock.json` | Dependencias (Playwright y Faker) y scripts | No |
 
 ## 2. Implementación base
 
-`src/monkey.js` tiene esta estructura:
+`src/actions.js` exporta las acciones del monkey. Cada acción recibe la página de Playwright y un
+contexto con `faker` (ya inicializado con la semilla) y `origin` (el origen de la tienda), ejecuta una
+interacción y devuelve qué hizo, o `{ skipped: "motivo" }` si no encontró sobre qué actuar:
 
 ```javascript
-faker.seed(seed); // todas las decisiones aleatorias dependen solo de la semilla
-
-// Cada acción ejecuta una interacción y devuelve qué hizo, o { skipped } si no pudo actuar.
-const actions = {
-  async clickLink(page) {
-    // elige con faker un enlace visible de la tienda y hace clic
+export const actions = {
+  async clickLink(page, { faker, origin }) {
+    // elige con faker un enlace visible de la tienda (mismo origen) y hace clic
     return { target: href };
   },
 };
-
-// --weights clickLink=2,otraAccion=1: probabilidad relativa de cada acción (1 si no se indica)
-const choices = parseWeights(options.weights);
-
-for (let event = 1; event <= totalEvents; event++) {
-  const action = faker.helpers.weightedArrayElement(choices);
-  const detail = await actions[action](page);
-  events.push({ event, action, from, ...detail, to: page.url() });
-}
-// escribe results/events.json y results/summary.json
 ```
 
-- Opciones: `--seed`, `--events`, `--weights`, `--delay` (espera entre eventos, en ms) y `--headed`
-  (muestra el navegador).
-- `page.route` cancela las navegaciones hacia otros sitios: el monkey solo explora EverShop.
-- El oráculo es `pageerror`: una excepción de JavaScript no capturada en la página.
-- `results/events.json` guarda la secuencia de eventos y `results/summary.json`, el resumen.
+El runner (`runner/monkey.js`) abre el navegador, inicializa `faker` con la semilla y, en cada
+evento, elige una acción según los pesos y la ejecuta:
+
+```javascript
+faker.seed(seed);
+for (let event = 1; event <= events; event++) {
+  const action = faker.helpers.weightedArrayElement(choices); // según --weights
+  const detail = await actions[action](page, { faker, origin });
+  // registra el evento: acción, URL antes y después, resultado (ok, skipped o error) y detalle
+}
+// escribe results/summary.json
+```
+
+- Opciones: `--seed`, `--events`, `--weights` (por ejemplo `clickLink=2,otraAccion=1`; 1 si no se
+  indica), `--delay` (espera entre eventos, en ms) y `--headed` (muestra el navegador).
+- El runner cancela las navegaciones hacia otros sitios y registra como fallo cualquier excepción de
+  JavaScript no capturada en la página (`pageerror`).
+- `results/summary.json` contiene los parámetros de la ejecución, las acciones disponibles, la
+  secuencia de eventos y los fallos.
 
 Con la tienda en ejecución, desde `talleres/monkey-testing/`:
 
@@ -61,12 +65,13 @@ Con la tienda en ejecución, desde `talleres/monkey-testing/`:
 npm run monkey -- --seed 7 --events 20 --headed
 ```
 
-Ejecute dos veces la misma semilla y compare los `events.json`: deben ser idénticos.
+Ejecute dos veces la misma semilla sobre la tienda recién reiniciada (`npm run app:reset`) y compare
+las secuencias de eventos de los resúmenes: deben ser iguales.
 
 ## 3. Actividad
 
-El equipo docente le asignó un tipo (A, B, C o D) en el archivo `asignacion.json` de la raíz de su
-repositorio. Agregue a `actions` las dos acciones de su tipo, con exactamente estos nombres:
+Agregue en `src/actions.js` las dos acciones de su tipo (`type` en `asignacion.json`), con
+exactamente estos nombres:
 
 | Tipo | Acciones | Qué hace cada una |
 |---|---|---|
@@ -77,11 +82,12 @@ repositorio. Agregue a `actions` las dos acciones de su tipo, con exactamente es
 
 Condiciones:
 
-- Toda decisión aleatoria (qué elemento, qué valor, qué tecla) usa `faker`, nunca `Math.random()`.
+- Toda decisión aleatoria (qué elemento, qué valor, qué tecla) usa el `faker` que recibe la acción,
+  nunca `Math.random()`.
 - Si una acción no tiene sobre qué actuar (por ejemplo, no hay campos de texto visibles), devuelve
   `{ skipped: "motivo" }` en lugar de fallar.
-- El monkey sigue siendo reproducible: con la misma semilla y los mismos pesos produce la misma
-  secuencia de eventos.
+- El monkey sigue siendo reproducible: con la misma semilla, los mismos pesos y la misma tienda
+  produce la misma secuencia de eventos.
 
 Pruebe sus acciones con pesos que las incluyan, por ejemplo para el tipo A:
 
@@ -94,17 +100,14 @@ Describa sus acciones en el `README.md` del taller.
 ## 4. Entrega
 
 Cree el _tag_ `taller-monkey-testing` sobre el _commit_ que se debe evaluar y súbalo a su
-repositorio (`git push origin taller-monkey-testing`) antes de la fecha límite.
+repositorio (`git push origin taller-monkey-testing`) a más tardar el día de la fecha límite.
 
 ## 5. Evaluación
 
-La evaluación es automática. El taller cuenta si el _tag_ se entregó a tiempo y pasa todas las
-verificaciones de `npm run evaluate -- monkey-testing`, que puede ejecutar desde la raíz de su
-repositorio. El resultado queda en `talleres/monkey-testing/results/grade.json`.
+La evaluación es automática (ver el [Taller 0](evershop)). Además de las condiciones generales de
+entrega, el equipo docente ejecuta el runner con la semilla 4103, 60 eventos y los pesos
+`clickLink=2` y `1` para cada acción de su tipo, y verifica en el resumen que:
 
-1. `npm run evaluate` del taller termina sin errores y genera `results/summary.json`.
-2. El monkey se ejecuta con la semilla 4103, 60 eventos y los pesos `clickLink=2` y `1` para cada
-   acción de su tipo.
-3. Dos ejecuciones con esa configuración, cada una sobre la tienda reiniciada, producen exactamente
-   la misma secuencia de eventos.
-4. Cada una de las dos acciones de su tipo se ejecuta al menos una vez sin error y sin `skipped`.
+1. Las dos acciones de su tipo existen y cada una se ejecuta al menos una vez con resultado `ok`.
+2. Dos ejecuciones con esa configuración sobre la misma tienda producen la misma secuencia de eventos
+   (acción, URL antes y después, y resultado de cada evento).

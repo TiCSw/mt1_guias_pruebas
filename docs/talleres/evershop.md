@@ -32,24 +32,25 @@ de sus _workspaces_ y sus dependencias pueden entrar en conflicto con las de los
 proyecto.
 
 ```plaintext
-├── talleres/            # su trabajo: un proyecto npm por taller, con su implementación base
+├── talleres/            # un proyecto npm por taller, con su runner y su implementación base
 │   ├── monkey-testing/
 │   ├── behavior-driven-development/
 │   ├── visual-regression-testing/
 │   └── end-to-end-testing/
-├── asignacion.json      # su tipo (A, B, C o D), asignado por el equipo docente
+├── asignacion.json      # su nombre, su correo y su tipo; lo escribe el equipo docente
 ├── compose.yml          # EverShop 2.1.1, PostgreSQL 16 y el proxy de la versión release
 ├── evershop/            # configuración del proxy y archivos de la versión release
-├── scripts/             # instalación, app:up, app:down, app:reset, evaluate y verificaciones
-└── .github/             # CODEOWNERS y el flujo que evalúa los talleres
+└── scripts/             # instalación de los talleres y app:up, app:down, app:reset
 ```
 
-Solo modifique archivos dentro de `talleres/<taller>/`. El resto del repositorio pertenece al equipo
-docente (`.github/CODEOWNERS`), y la evaluación usa su propia copia de esos archivos.
+`asignacion.json` contiene su nombre (`name`), su correo (`email`) y su **tipo** (`type`: A, B, C o
+D). Cada taller tiene una sola actividad; en los talleres con variantes, el tipo indica la que le
+corresponde (por ejemplo, qué regla de negocio especificar o qué página comparar). No lo modifique.
 
-`asignacion.json` contiene su **tipo** (A, B, C o D). Cada taller tiene una sola actividad; en los
-talleres con variantes, el tipo indica la que le corresponde (por ejemplo, qué regla de negocio
-especificar o qué página comparar).
+Cada taller tiene un **runner** (`runner/`) que ejecuta su trabajo y escribe el resumen de la
+ejecución en `results/summary.json`. Solo puede editar los archivos que indica cada enunciado; el
+runner, la configuración, las dependencias y el resto del repositorio pertenecen al equipo docente
+(`.github/CODEOWNERS`).
 
 ## 3. Instalar e iniciar EverShop
 
@@ -85,35 +86,29 @@ de envío ni de pago; se configuran en **Settings** de la administración.
 Las pruebas de los talleres crean y modifican datos (productos, carritos, configuración). Ejecuten
 `npm run app:reset` cuando necesiten partir del estado inicial.
 
-## 4. Cómo se ejecuta y se evalúa un taller
+## 4. Cómo se ejecuta, se entrega y se evalúa un taller
 
-Cada taller es un proyecto npm independiente en `talleres/<taller>/`, con su implementación base,
-sus scripts y un `README.md` para documentar su trabajo. Los talleres se califican de forma
-automática con un único comando desde la raíz del repositorio:
+Cada taller indica en su enunciado el comando que ejecuta su runner (por ejemplo,
+`npm run monkey` desde `talleres/monkey-testing/`). El runner escribe `results/summary.json` con los
+parámetros de la ejecución y sus resultados; ese archivo es una salida: no se edita ni se versiona.
+
+Cada taller se entrega con un _tag_ `taller-<taller>` (por ejemplo, `taller-monkey-testing`) sobre el
+_commit_ que se debe evaluar:
 
 ```bash
-npm run evaluate -- <taller>
+git tag taller-monkey-testing
+git push origin taller-monkey-testing
 ```
 
-Este comando reinicia EverShop desde cero, ejecuta en la carpeta del taller `npm ci`,
-`npm run setup` (si existe) y `npm run evaluate`, luego las verificaciones automáticas del taller
-según su tipo, y detiene EverShop. El resultado de cada verificación queda en
-`talleres/<taller>/results/grade.json`. Un taller cuenta si se entregó a tiempo (con el _tag_ que
-indica su enunciado) y pasa todas las verificaciones; el `README.md` no se califica.
+La evaluación es automática y la ejecuta el equipo docente: descarga el _commit_ del _tag_, ejecuta el
+runner del taller con sus propios parámetros sobre una tienda recién iniciada y revisa el resumen.
+Una entrega cuenta si se cumple todo lo siguiente; en otro caso, su nota es 0:
 
-Además, en cada _push_ que modifica un taller, el flujo de GitHub Actions del repositorio ejecuta lo
-mismo en Linux para ese taller: si falla allí, también fallará cuando lo evaluemos.
-
-Para que un taller siga siendo evaluable:
-
-- Mantengan `package.json` y `package-lock.json` (si agregan dependencias con `npm install`, ambos
-  cambian y se versionan).
-- No cambien los nombres de los scripts ni de los archivos que menciona cada enunciado; en
-  particular, `evaluate` ejecuta el taller completo sin intervención.
-- Tomen la URL de la tienda de la variable de entorno `BASE_URL` (y `RELEASE_URL` para la versión
-  release), como hace la implementación base.
-- `evaluate` debe generar `results/summary.json`, como hace la implementación base. La carpeta
-  `results/` no se versiona.
+- El _tag_ se subió a más tardar el día de la fecha límite (hora de Colombia).
+- El repositorio solo contiene archivos de texto: ningún resultado (`results/`), captura, imagen ni
+  otro archivo binario. El `.gitignore` los excluye; no los agregue a la fuerza.
+- Los archivos que no se pueden editar, incluido `asignacion.json`, son iguales a los que recibió.
+- El resumen cumple los criterios de la sección «Evaluación» del enunciado.
 
 ## 5. Solución de problemas
 
