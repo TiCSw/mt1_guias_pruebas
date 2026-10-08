@@ -16,7 +16,7 @@ A través de este taller:
 
 Requisito: el [Taller 0](evershop) (repositorio de talleres instalado y EverShop en ejecución).
 
-El taller está en `talleres/monkey/` de su repositorio:
+El taller está en `talleres/monkey-testing/` de su repositorio:
 
 | Archivo | Contenido |
 |---|---|
@@ -26,11 +26,11 @@ El taller está en `talleres/monkey/` de su repositorio:
 | `minimized/` | Secuencias mínimas (sección 3.4) |
 | `README.md` | Secciones que debe completar |
 
-**`talleres/monkey/package.json`**
+**`talleres/monkey-testing/package.json`**
 
 ```json
 {
-  "name": "taller-monkey",
+  "name": "taller-monkey-testing",
   "private": true,
   "type": "module",
   "engines": {
@@ -56,7 +56,7 @@ El taller está en `talleres/monkey/` de su repositorio:
 El monkey base, en `src/monkey.js`, solo hace clic en enlaces visibles de la tienda, elegidos al
 azar con [Faker](https://fakerjs.dev) inicializado con una semilla.
 
-**`talleres/monkey/src/monkey.js`**
+**`talleres/monkey-testing/src/monkey.js`**
 
 ```javascript
 import { mkdir, writeFile } from "node:fs/promises";
@@ -157,7 +157,7 @@ Puntos clave:
 - El único oráculo es `pageerror`: una excepción de JavaScript no capturada en la página.
 - Al terminar escribe `results/events.json` (la secuencia de eventos) y `results/summary.json`.
 
-Ejecútelo desde `talleres/monkey/` con la tienda en ejecución:
+Ejecútelo desde `talleres/monkey-testing/` con la tienda en ejecución:
 
 ```bash
 npm run monkey -- --seed 7 --events 20 --headed
@@ -216,7 +216,7 @@ partir del `events.json` de la ejecución que lo encontró. Implemente:
 - `npm run minimize -- <archivo> <firma>` (`src/minimize.js`): reduce la secuencia, por ejemplo con _delta debugging_
   (ddmin) o eliminando eventos uno por uno, verificando con `replay` que el fallo se mantiene.
 
-Guarde las secuencias mínimas en `talleres/monkey/minimized/` (versionadas) e indique en el README la
+Guarde las secuencias mínimas en `talleres/monkey-testing/minimized/` (versionadas) e indique en el README la
 longitud original y la mínima de cada una.
 
 ### 3.5 Análisis
@@ -228,8 +228,8 @@ escrita a mano y cuáles no.
 
 ## 4. Entrega
 
-Cree el _tag_ `taller-monkey` sobre el _commit_ que se debe evaluar y súbalo a su repositorio
-(`git push origin taller-monkey`). En ese _commit_, `talleres/monkey/` debe contener:
+Cree el _tag_ `taller-monkey-testing` sobre el _commit_ que se debe evaluar y súbalo a su repositorio
+(`git push origin taller-monkey-testing`). En ese _commit_, `talleres/monkey-testing/` debe contener:
 
 - El código fuente del monkey, `package.json` y `package-lock.json`.
 - `npm run evaluate`: ejecuta su monkey con su configuración de pesos, una semilla fija y al menos 100
@@ -255,7 +255,7 @@ Cree el _tag_ `taller-monkey` sobre el _commit_ que se debe evaluar y súbalo a 
   - **Uso de IA**: qué partes generó o sugirió un asistente de IA, qué errores tenía lo generado y
     cómo verificó el resultado.
 
-El equipo docente ejecutará `npm run evaluate -- monkey` desde la raíz del repositorio, ejecutará
+El equipo docente ejecutará `npm run evaluate -- monkey-testing` desde la raíz del repositorio, ejecutará
 `replay` sobre sus secuencias mínimas y evaluará su monkey contra una versión de EverShop con fallos
 inyectados que ustedes no conocen.
 
@@ -263,7 +263,7 @@ inyectados que ustedes no conocen.
 
 | Criterio | Puntos |
 |---|---|
-| `npm run evaluate -- monkey` termina sin intervención y dos ejecuciones con la misma semilla producen la misma secuencia de eventos. | 10 |
+| `npm run evaluate -- monkey-testing` termina sin intervención y dos ejecuciones con la misma semilla producen la misma secuencia de eventos. | 10 |
 | Las acciones nuevas son correctas, usan datos acordes con cada elemento y respetan los pesos configurados. | 15 |
 | Los oráculos detectan los fallos pedidos y las firmas agrupan correctamente los fallos repetidos. | 15 |
 | Fallos inyectados por el equipo docente que su monkey detecta (proporcional). | 15 |

@@ -31,7 +31,7 @@ Notas de la versión release:
 3. Nuevo color de fondo del pie de página.
 4. Nuevo banner de promoción con cuenta regresiva en la parte superior de todas las páginas.
 
-El taller está en `talleres/vrt/` de su repositorio:
+El taller está en `talleres/visual-regression-testing/` de su repositorio:
 
 | Archivo | Contenido |
 |---|---|
@@ -41,11 +41,11 @@ El taller está en `talleres/vrt/` de su repositorio:
 | `src/stability.js` | Comparación de estabilidad, por implementar (sección 3.2) |
 | `README.md` | Secciones que debe completar |
 
-**`talleres/vrt/package.json`**
+**`talleres/visual-regression-testing/package.json`**
 
 ```json
 {
-  "name": "taller-vrt",
+  "name": "taller-visual-regression-testing",
   "private": true,
   "type": "module",
   "engines": {
@@ -76,7 +76,7 @@ equipo no tiene herramientas de compilación, npm la omite y ResembleJS usa la i
 La configuración define las páginas, los tamaños de pantalla (_viewports_), el umbral y las opciones
 de comparación de ResembleJS:
 
-**`talleres/vrt/vrt.config.js`**
+**`talleres/visual-regression-testing/vrt.config.js`**
 
 ```javascript
 export default {
@@ -96,7 +96,7 @@ export default {
 
 El script captura cada página en las dos versiones, las compara y guarda la imagen de diferencias:
 
-**`talleres/vrt/src/vrt.js`**
+**`talleres/visual-regression-testing/src/vrt.js`**
 
 ```javascript
 import { mkdir, writeFile } from "node:fs/promises";
@@ -159,7 +159,7 @@ que `threshold` se reporta como diferencia.
 El reporte HTML muestra, por comparación, las capturas de las dos versiones y la imagen de
 diferencias:
 
-**`talleres/vrt/src/report.js`**
+**`talleres/visual-regression-testing/src/report.js`**
 
 ```javascript
 import { writeFile } from "node:fs/promises";
@@ -200,7 +200,7 @@ export async function writeReport(summary, file) {
 }
 ```
 
-Ejecútelo desde `talleres/vrt/` con la tienda en ejecución:
+Ejecútelo desde `talleres/visual-regression-testing/` con la tienda en ejecución:
 
 ```bash
 npm run evaluate
@@ -252,8 +252,8 @@ estabilidad frente a los de las comparaciones entre versiones. Justifique la ele
 
 ## 4. Entrega
 
-Cree el _tag_ `taller-vrt` sobre el _commit_ que se debe evaluar y súbalo a su repositorio
-(`git push origin taller-vrt`). En ese _commit_, `talleres/vrt/` debe contener:
+Cree el _tag_ `taller-visual-regression-testing` sobre el _commit_ que se debe evaluar y súbalo a su repositorio
+(`git push origin taller-visual-regression-testing`). En ese _commit_, `talleres/visual-regression-testing/` debe contener:
 
 - El código fuente, `package.json` y `package-lock.json`.
 - `npm run evaluate`: compara las dos versiones con toda su cobertura, genera `results/report.html` y
@@ -265,7 +265,7 @@ Cree el _tag_ `taller-vrt` sobre el _commit_ que se debe evaluar y súbalo a su 
   - **Uso de IA**: qué partes generó o sugirió un asistente de IA, qué errores tenía lo generado y
     cómo verificó el resultado.
 
-El equipo docente ejecutará `npm run evaluate -- vrt` desde la raíz del repositorio y evaluará su
+El equipo docente ejecutará `npm run evaluate -- visual-regression-testing` desde la raíz del repositorio y evaluará su
 proceso contra otra versión release con regresiones que ustedes no conocen: su `summary.json` debe
 marcar las páginas y _viewports_ afectados.
 
@@ -273,7 +273,7 @@ marcar las páginas y _viewports_ afectados.
 
 | Criterio | Puntos |
 |---|---|
-| `npm run evaluate -- vrt` termina sin intervención y `npm run stability` da 0 % (o un valor justificado) en todas las comparaciones. | 10 |
+| `npm run evaluate -- visual-regression-testing` termina sin intervención y `npm run stability` da 0 % (o un valor justificado) en todas las comparaciones. | 10 |
 | La cobertura incluye las páginas, _viewports_ y estados pedidos, capturados de forma estable. | 15 |
 | Las fuentes de ruido están identificadas, eliminadas y documentadas con datos. | 15 |
 | El cambio intencional que desplaza el contenido se maneja sin ocultar las demás diferencias. | 10 |

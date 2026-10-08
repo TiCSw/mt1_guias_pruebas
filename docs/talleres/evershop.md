@@ -33,10 +33,10 @@ proyecto.
 
 ```plaintext
 ├── talleres/            # su trabajo: un proyecto npm por taller, con su implementación base
-│   ├── monkey/
-│   ├── bdt/
-│   ├── vrt/
-│   └── e2e-cypress/
+│   ├── monkey-testing/
+│   ├── behavior-driven-development/
+│   ├── visual-regression-testing/
+│   └── end-to-end-testing/
 ├── compose.yml          # EverShop 2.1.1, PostgreSQL 16 y el proxy de la versión release
 ├── evershop/            # configuración del proxy y archivos de la versión release
 ├── scripts/             # instalación, app:up, app:down, app:reset y evaluate

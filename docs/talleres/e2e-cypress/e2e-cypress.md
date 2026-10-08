@@ -22,7 +22,7 @@ con el usuario `admin@test.com` y la contraseña `admin123`.
 
 # 2. Configuración del Proyecto Cypress
 
-El taller está en `talleres/e2e-cypress/` de su repositorio. Cypress es una dependencia del
+El taller está en `talleres/end-to-end-testing/` de su repositorio. Cypress es una dependencia del
 proyecto, no una instalación global.
 
 | Archivo | Contenido |
@@ -34,11 +34,11 @@ proyecto, no una instalación global.
 | `cypress/e2e/customer-checkout.cy.js` | Prueba de la actividad, por implementar (sección 5) |
 | `README.md` | Secciones que debe completar |
 
-**`talleres/e2e-cypress/package.json`**
+**`talleres/end-to-end-testing/package.json`**
 
 ```json
 {
-  "name": "taller-e2e-cypress",
+  "name": "taller-end-to-end-testing",
   "private": true,
   "type": "module",
   "engines": {
@@ -61,7 +61,7 @@ proyecto, no una instalación global.
 `baseUrl` toma la URL de la tienda de la variable `BASE_URL`, por lo que las pruebas usan rutas
 relativas (`cy.visit("/admin/login")`):
 
-**`talleres/e2e-cypress/cypress.config.js`**
+**`talleres/end-to-end-testing/cypress.config.js`**
 
 ```javascript
 import { defineConfig } from "cypress";
@@ -79,7 +79,7 @@ export default defineConfig({
 `npm run evaluate` ejecuta las pruebas una por una, en el orden en que dependen entre sí, y escribe
 `results/summary.json`:
 
-**`talleres/e2e-cypress/scripts/evaluate.js`**
+**`talleres/end-to-end-testing/scripts/evaluate.js`**
 
 ```javascript
 // Runs the specs one at a time, in this order, against a store reset by `npm run app:reset`:
@@ -125,7 +125,7 @@ Antes de crear productos y realizar pruebas de checkout, es necesario configurar
 
 El archivo `cypress/e2e/admin-setup.cy.js` contiene el siguiente código:
 
-**`talleres/e2e-cypress/cypress/e2e/admin-setup.cy.js`**
+**`talleres/end-to-end-testing/cypress/e2e/admin-setup.cy.js`**
 
 ```javascript
 describe("Admin Panel - Initial Setup", () => {
@@ -239,7 +239,7 @@ Ahora cree el archivo base del taller que contiene el login del administrador y 
 
 El archivo `cypress/e2e/admin-product.cy.js` contiene el siguiente código:
 
-**`talleres/e2e-cypress/cypress/e2e/admin-product.cy.js`**
+**`talleres/end-to-end-testing/cypress/e2e/admin-product.cy.js`**
 
 ```javascript
 describe("Admin Panel - Product Management", () => {
@@ -326,7 +326,7 @@ Este archivo sirve como **referencia** para entender cómo estructurar sus prueb
 
 ## 4.2 Ejecución del Código Base
 
-Abra la interfaz de Cypress desde `talleres/e2e-cypress/`:
+Abra la interfaz de Cypress desde `talleres/end-to-end-testing/`:
 
 ```bash
 npm run cypress
@@ -371,8 +371,8 @@ Su archivo debe incluir:
 
 # 6. Detalles de la Entrega
 
-Cree el _tag_ `taller-e2e-cypress` sobre el _commit_ que se debe evaluar y súbalo a su repositorio
-(`git push origin taller-e2e-cypress`). En ese _commit_, `talleres/e2e-cypress/` debe contener:
+Cree el _tag_ `taller-end-to-end-testing` sobre el _commit_ que se debe evaluar y súbalo a su repositorio
+(`git push origin taller-end-to-end-testing`). En ese _commit_, `talleres/end-to-end-testing/` debe contener:
 
 - La carpeta `cypress/e2e/` con los archivos de prueba:
   - `admin-setup.cy.js` y `admin-product.cy.js` (sin modificaciones)
@@ -383,7 +383,7 @@ Cree el _tag_ `taller-e2e-cypress` sobre el _commit_ que se debe evaluar y súba
   - Cualquier consideración adicional sobre su implementación
   - Capturas de pantalla o descripción de las pruebas ejecutándose exitosamente
 
-El equipo docente ejecutará `npm run evaluate -- e2e-cypress` desde la raíz del repositorio.
+El equipo docente ejecutará `npm run evaluate -- end-to-end-testing` desde la raíz del repositorio.
 
 ---
 

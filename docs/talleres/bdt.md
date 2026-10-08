@@ -18,7 +18,7 @@ A través de este taller:
 
 Requisito: el [Taller 0](evershop) (repositorio de talleres instalado y EverShop en ejecución).
 
-El taller está en `talleres/bdt/` de su repositorio:
+El taller está en `talleres/behavior-driven-development/` de su repositorio:
 
 | Archivo | Contenido |
 |---|---|
@@ -27,11 +27,11 @@ El taller está en `talleres/bdt/` de su repositorio:
 | `features/` | Feature base, _World_ y pasos (sección 2) |
 | `README.md` | Secciones que debe completar |
 
-**`talleres/bdt/package.json`**
+**`talleres/behavior-driven-development/package.json`**
 
 ```json
 {
-  "name": "taller-bdt",
+  "name": "taller-behavior-driven-development",
   "private": true,
   "type": "module",
   "engines": {
@@ -49,7 +49,7 @@ El taller está en `talleres/bdt/` de su repositorio:
 }
 ```
 
-**`talleres/bdt/cucumber.js`**
+**`talleres/behavior-driven-development/cucumber.js`**
 
 ```javascript
 export default {
@@ -63,7 +63,7 @@ export default {
 
 La base, en `features/`, especifica el inicio de sesión en la administración de EverShop.
 
-**`talleres/bdt/features/admin-sign-in.feature`**
+**`talleres/behavior-driven-development/features/admin-sign-in.feature`**
 
 ```gherkin
 Feature: Admin sign in
@@ -95,7 +95,7 @@ El _World_ es el contexto de cada escenario. Aquí abre un navegador para toda l
 contexto nuevo (sin cookies ni sesión) para cada escenario, adjunta una captura de pantalla al
 reporte cuando un escenario falla y escribe el resumen de la ejecución.
 
-**`talleres/bdt/features/support/world.js`**
+**`talleres/behavior-driven-development/features/support/world.js`**
 
 ```javascript
 import { mkdirSync, writeFileSync } from "node:fs";
@@ -156,7 +156,7 @@ Los pasos traducen cada frase de Gherkin en acciones y aserciones de Playwright.
 `expect` de Playwright esperan a que la condición se cumpla, por lo que no hacen falta esperas
 fijas.
 
-**`talleres/bdt/features/step_definitions/admin.steps.js`**
+**`talleres/behavior-driven-development/features/step_definitions/admin.steps.js`**
 
 ```javascript
 import { Given, Then, When } from "@cucumber/cucumber";
@@ -186,7 +186,7 @@ Then("I stay on the sign in page", async function () {
 });
 ```
 
-Ejecute las pruebas desde `talleres/bdt/` con la tienda en ejecución:
+Ejecute las pruebas desde `talleres/behavior-driven-development/` con la tienda en ejecución:
 
 ```bash
 npm test
@@ -242,8 +242,8 @@ escenarios débiles.
 
 ## 4. Entrega
 
-Cree el _tag_ `taller-bdt` sobre el _commit_ que se debe evaluar y súbalo a su repositorio
-(`git push origin taller-bdt`). En ese _commit_, `talleres/bdt/` debe contener:
+Cree el _tag_ `taller-behavior-driven-development` sobre el _commit_ que se debe evaluar y súbalo a su repositorio
+(`git push origin taller-behavior-driven-development`). En ese _commit_, `talleres/behavior-driven-development/` debe contener:
 
 - Las features, los pasos, el _World_, `package.json` y `package-lock.json`.
 - `npm run evaluate`: ejecuta todas las features y escribe `results/summary.json` (el formato de la
@@ -255,7 +255,7 @@ Cree el _tag_ `taller-bdt` sobre el _commit_ que se debe evaluar y súbalo a su 
   - **Uso de IA**: qué partes generó o sugirió un asistente de IA, qué errores tenía lo generado y
     cómo verificó el resultado.
 
-El equipo docente ejecutará `npm run evaluate -- bdt` desde la raíz del repositorio y, además,
+El equipo docente ejecutará `npm run evaluate -- behavior-driven-development` desde la raíz del repositorio y, además,
 ejecutará sus features contra versiones de EverShop con cambios de comportamiento que ustedes no
 conocen. Un escenario bien escrito falla cuando la regla que verifica deja de cumplirse.
 
@@ -263,7 +263,7 @@ conocen. Un escenario bien escrito falla cuando la regla que verifica deja de cu
 
 | Criterio | Puntos |
 |---|---|
-| `npm run evaluate -- bdt` termina sin intervención y todos los escenarios pasan contra la tienda recién iniciada. | 10 |
+| `npm run evaluate -- behavior-driven-development` termina sin intervención y todos los escenarios pasan contra la tienda recién iniciada. | 10 |
 | Las reglas de negocio son correctas para EverShop y su evidencia permite observarlas. | 15 |
 | Las features usan Gherkin de forma correcta y declarativa, con `Background`, `Scenario Outline`, tablas de datos y _tags_ por regla. | 20 |
 | Los pasos son reutilizables, verifican resultados observables y no usan esperas fijas. | 15 |
