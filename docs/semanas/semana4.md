@@ -37,27 +37,30 @@ una e incorporará los resultados a la estrategia de pruebas.
 
 1. **_Monkey_.** Configure el _monkey_ para que explore la versión base de la ABP: que inicie sesión
    con el administrador del archivo `.env` antes de la primera acción y explore el panel de
-   administración (`/ghost/`). Defina la semilla y los parámetros de la ejecución (cantidad de
-   eventos de cada tipo y espera entre eventos).
+   administración (`/ghost/`). Defina los parámetros de la ejecución (cantidad de eventos de cada
+   tipo y espera entre eventos).
 2. **_Ripper_.** Configure el _ripper_ de la misma forma: que inicie sesión con el administrador del
-   archivo `.env` antes de explorar y recorra el panel de administración. Defina la semilla, la
-   profundidad de la exploración y los demás parámetros.
+   archivo `.env` antes de explorar y recorra el panel de administración. Defina la profundidad de la
+   exploración y los demás parámetros.
 3. **Cambios al código base.** Documente en el `README.md` de cada módulo todo cambio que haga a su
    código base (por ejemplo, el inicio de sesión): qué se cambió y para qué. Las URL y las
    credenciales de la ABP se obtienen solo del archivo `.env`.
-4. **Ejecución y reproducibilidad.** Ejecute cada herramienta con `npm run monkey:test` y
-   `npm run ripper:test`. Ejecute cada una dos veces con la misma semilla y confirme que recorre la
-   misma secuencia de eventos. Documente en el `README.md` de cada módulo la semilla y los parámetros
-   con los que se reproduce la ejecución reportada.
+4. **Ejecuciones con varias semillas.** Ejecute cada herramienta con al menos tres semillas
+   distintas (`npm run monkey:test` y `npm run ripper:test`). Cada semilla reportada debe ser
+   reproducible: dos ejecuciones con la misma semilla y los mismos parámetros recorren la misma
+   secuencia de eventos. Elija como **semilla principal** de cada herramienta la de la ejecución más
+   relevante (por ejemplo, la que encontró un defecto) y déjela configurada y documentada, con sus
+   parámetros, en el `README.md` del módulo.
 5. **Defectos.** Analice los reportes, capturas y videos que generan las herramientas. Reporte cada
    defecto de la ABP en los _issues_ del repositorio con la plantilla **Reporte Incidencia**,
    indicando la herramienta y la semilla que lo reproducen. Si una herramienta no encuentra defectos,
    justifique por qué con base en lo que exploró.
 6. **Análisis comparativo.** Compare el _monkey_ y el _ripper_: ventajas y desventajas de cada uno,
    observadas en sus ejecuciones sobre la ABP.
-7. **Estrategia.** Actualice la estrategia de pruebas de la semana 3: incorpore las pruebas de
-   reconocimiento, aplique la retroalimentación recibida y ajuste las decisiones con base en los
-   resultados de esta semana.
+7. **Estrategia.** Actualice la estrategia de pruebas de la semana 3: aplique la retroalimentación
+   recibida, incorpore las pruebas de reconocimiento y ajuste las decisiones con base en los
+   resultados de esta semana. El documento que se entrega es la estrategia completa, con esas
+   mejoras incluidas, y no solo la lista de cambios.
 8. **Video.** Grabe un video de máximo 15 minutos que presente los cambios a la estrategia y el
    análisis comparativo de las dos herramientas.
 9. **Entrega.** Publique un
@@ -71,7 +74,7 @@ una e incorporará los resultados a la estrategia de pruebas.
 | Código de las herramientas | _Release_ `semana-4` del repositorio del equipo | Los dos módulos agregados por el _workflow_, con el inicio de sesión, su configuración y sus `README.md` actualizados |
 | Reporte del _monkey_ | PDF | Ver [Contenido de los reportes](#contenido-de-los-reportes) |
 | Reporte del _ripper_ | PDF | Ver [Contenido de los reportes](#contenido-de-los-reportes) |
-| Estrategia de pruebas actualizada | PDF, elaborado en la plantilla de la semana 3 | La estrategia con los cambios de la actividad 7 y la lista de cambios |
+| Estrategia de pruebas actualizada | PDF, elaborado en la plantilla de la semana 3 | La estrategia completa, con la retroalimentación de la semana 3 aplicada, las mejoras de esta semana y la lista de cambios |
 | Video | Enlace, máximo 15 minutos | Los cambios a la estrategia y el análisis comparativo |
 
 El repositorio contiene solo el código necesario para ejecutar las pruebas, en archivos de texto
@@ -84,8 +87,9 @@ contenido del video posterior al minuto 15 no se evalúa.
 Cada herramienta tiene su propio reporte con:
 
 1. Integrantes del equipo.
-2. Ejecuciones: semilla y parámetros de cada ejecución, y enlace a la evidencia que genera la
-   herramienta (reporte, capturas o video).
+2. Ejecuciones: semilla y parámetros de cada una de las ejecuciones (al menos tres semillas), con
+   enlace a la evidencia que genera la herramienta (reporte, capturas o video), y la semilla principal
+   con el motivo de su elección.
 3. Defectos: enlace a la incidencia de cada defecto encontrado, o la justificación de por qué la
    herramienta no encontró defectos.
 4. Ventajas y desventajas de la herramienta observadas en sus ejecuciones.
@@ -102,27 +106,29 @@ La evaluación sigue las [reglas de juego](reglas) del proyecto, incluidas sus _
 
 ### 1. _Monkey_ [30 puntos]
 
-- **1.1 Ejecución [10 puntos].** El _monkey_ inicia sesión con el administrador del archivo `.env`,
-  explora el panel de administración de la versión base y, con la semilla documentada en su
-  `README.md`, dos ejecuciones recorren la misma secuencia de eventos.
-- **1.2 `README.md` [5 puntos].** El `README.md` del módulo indica la semilla, los parámetros de la
-  ejecución, los comandos para ejecutarla y cada cambio al código base con su propósito.
-- **1.3 Ejecuciones y defectos [10 puntos].** El reporte presenta la semilla, los parámetros y la
-  evidencia de cada ejecución, y enlaza la incidencia de cada defecto encontrado o justifica por qué
-  la herramienta no encontró defectos.
+- **1.1 Ejecución [10 puntos].** El _monkey_ inicia sesión con el administrador del archivo `.env` y
+  explora el panel de administración de la versión base. Con cada semilla del reporte, dos ejecuciones
+  con los mismos parámetros recorren la misma secuencia de eventos.
+- **1.2 `README.md` [5 puntos].** El `README.md` del módulo indica la semilla principal, los
+  parámetros de la ejecución, los comandos para ejecutarla y cada cambio al código base con su
+  propósito.
+- **1.3 Ejecuciones y defectos [10 puntos].** El reporte presenta al menos tres semillas, cada una
+  con sus parámetros y su evidencia, e indica la semilla principal y el motivo de su elección. Enlaza
+  la incidencia de cada defecto encontrado o justifica por qué la herramienta no encontró defectos.
 - **1.4 Ventajas y desventajas [5 puntos].** El reporte presenta dos ventajas y dos desventajas del
   _monkey_ observadas en sus ejecuciones sobre la ABP.
 
 ### 2. _Ripper_ [30 puntos]
 
-- **2.1 Ejecución [10 puntos].** El _ripper_ inicia sesión con el administrador del archivo `.env`,
-  recorre el panel de administración de la versión base y, con la semilla documentada en su
-  `README.md`, dos ejecuciones recorren la misma secuencia de eventos.
-- **2.2 `README.md` [5 puntos].** El `README.md` del módulo indica la semilla, los parámetros de la
-  ejecución, los comandos para ejecutarla y cada cambio al código base con su propósito.
-- **2.3 Ejecuciones y defectos [10 puntos].** El reporte presenta la semilla, los parámetros y la
-  evidencia de cada ejecución, y enlaza la incidencia de cada defecto encontrado o justifica por qué
-  la herramienta no encontró defectos.
+- **2.1 Ejecución [10 puntos].** El _ripper_ inicia sesión con el administrador del archivo `.env` y
+  recorre el panel de administración de la versión base. Con cada semilla del reporte, dos ejecuciones
+  con los mismos parámetros recorren la misma secuencia de eventos.
+- **2.2 `README.md` [5 puntos].** El `README.md` del módulo indica la semilla principal, los
+  parámetros de la ejecución, los comandos para ejecutarla y cada cambio al código base con su
+  propósito.
+- **2.3 Ejecuciones y defectos [10 puntos].** El reporte presenta al menos tres semillas, cada una
+  con sus parámetros y su evidencia, e indica la semilla principal y el motivo de su elección. Enlaza
+  la incidencia de cada defecto encontrado o justifica por qué la herramienta no encontró defectos.
 - **2.4 Ventajas y desventajas [5 puntos].** El reporte presenta dos ventajas y dos desventajas del
   _ripper_ observadas en sus ejecuciones sobre la ABP.
 
@@ -131,8 +137,9 @@ La evaluación sigue las [reglas de juego](reglas) del proyecto, incluidas sus _
 - **3.1 Pruebas de reconocimiento [10 puntos].** La tabla TNT y la distribución del esfuerzo incluyen
   las pruebas de reconocimiento, con su propósito, los objetivos que apoyan y las funcionalidades que
   cubren.
-- **3.2 Retroalimentación [10 puntos].** La lista de cambios relaciona cada comentario de la
-  retroalimentación de la semana 3 con el cambio que lo atiende y la sección modificada.
+- **3.2 Retroalimentación [10 puntos].** La estrategia entregada incluye la retroalimentación de la
+  semana 3 aplicada, y la lista de cambios relaciona cada comentario con el cambio que lo atiende y la
+  sección modificada.
 - **3.3 Decisiones basadas en resultados [10 puntos].** Los cambios de la estrategia motivados por
   esta semana citan el resultado del _monkey_ o del _ripper_ que los justifica (por ejemplo, un
   defecto encontrado o una parte de la ABP que no se exploró).
