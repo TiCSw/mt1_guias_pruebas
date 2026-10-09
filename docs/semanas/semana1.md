@@ -1,73 +1,116 @@
-# Proyecto Pruebas automatizadas
+# Proyecto · Semana 1: Exploración de la aplicación bajo pruebas
 
-## Semana 1: Necesitamos ayuda para automatizar pruebas
+> **Resumen.** El equipo instala la **versión base** de la ABP, la explora, ejecuta y documenta
+> treinta pruebas exploratorias sobre quince funcionalidades, reporta los defectos que encuentra y
+> modela la interfaz y el dominio de la ABP. Entrega el listado de funcionalidades, el inventario de
+> pruebas, los dos modelos y las incidencias en el repositorio. Las [reglas de juego](reglas) del
+> proyecto aplican a esta semana.
 
-Hola. Bienvenido a su primera semana de trabajo en *TSDC*. Para iniciar el proceso de automatización de las pruebas, el primer paso natural es conocer la aplicación, no solo desde el punto de vista funcional y sus atributos de calidad esperados, sino también desde el punto de vista de la arquitectura y tecnologías usadas para construir la aplicación.
+## Contexto
 
-Desafortunadamente, en *TSDC* no tenemos dentro de nuestro flujo de trabajo la práctica de actualización continua de la documentación. Por lo tanto, usted debe adquirir conocimiento de la aplicación bajo pruebas (ABP) por su propia cuenta, es decir, explorando la ABP. Hemos visto en algunos blogs de expertos en el área que, en estos casos, el conocimiento se puede adquirir mediante:
+Bienvenido a su primera semana en _TSDC_. Para automatizar las pruebas de la ABP, el primer paso es
+conocerla: sus funcionalidades, los atributos de calidad que se esperan de ella, su arquitectura y
+las tecnologías con las que está construida. _TSDC_ no mantiene documentación actualizada de la ABP,
+así que su equipo adquirirá ese conocimiento explorándola: ejecutando pruebas exploratorias y
+analizando su código. Las pruebas exploratorias también buscan defectos, que el equipo reportará en
+el repositorio que le asigna el equipo docente.
 
-- la ejecución de pruebas exploratorias
-- el análisis del código de la ABP para entender su arquitectura
+## Objetivos de aprendizaje
 
-Recuerde que durante las pruebas exploratorias es de vital importancia documentar el inventario de pruebas ejecutadas y crear modelos/diagramas que describan el conocimiento adquirido. **Este entregable debe ser realizado con su equipo de trabajo.** Adicionalmente, las pruebas exploratorias también tienen como objetivo encontrar defectos en la ABP. Para ello, el equipo docente proporcionará un **repositorio en GitHub** donde usted deberá registrar las incidencias encontradas.
+1. Desplegar la ABP en un ambiente local de pruebas.
+2. Identificar las funcionalidades de la ABP mediante exploración.
+3. Diseñar, ejecutar y documentar pruebas exploratorias.
+4. Reportar defectos de forma reproducible y trazable.
+5. Modelar la interfaz gráfica y el dominio de la ABP.
 
+## Preparación
 
-## Resumen de las actividades
+Esta semana se usa la **versión base** de la ABP. Instale
+[Docker](https://www.docker.com/products/docker-desktop/) (Docker Desktop en macOS o Windows, Docker
+Engine en Linux) en su versión más reciente, y despliegue la ABP de una de estas dos formas:
 
-1. Instalar la aplicación bajo prueba (ABP) en su ambiente local y verificar su correcto funcionamiento.
+- **Antes de recibir el repositorio del equipo.** El equipo docente crea el repositorio de cada
+  equipo cuando se confirman los equipos, durante la semana. Mientras tanto, despliegue la versión
+  base con Docker siguiendo la guía de despliegue de Ghost de los contenidos del curso, y cree el
+  administrador al abrir la ABP por primera vez.
+- **Con el repositorio del equipo.** Cuando el repositorio esté listo en la organización
+  [Uniandes-MISW4103](https://github.com/orgs/Uniandes-MISW4103/), clónelo, lea su `README.md`
+  (requiere también Node.js 24) y levante la ABP desde su raíz con `npm run abp:up`. La versión base
+  queda publicada en la URL `ABP_URL` del archivo `.env`, y su administrador es el del mismo archivo
+  (`ABP_ADMIN_EMAIL` y `ABP_ADMIN_PASSWORD`).
 
-2. Revisar el código fuente de la aplicación con el objetivo de identificar los lenguajes usados, la estructura de directorios, y los patrones arquitectónicos y de diseño presentes en la ABP.
+Las actividades se pueden hacer con cualquiera de los dos despliegues. Las incidencias se reportan en
+el repositorio del equipo cuando esté disponible.
 
-3. Explorar rápidamente la aplicación (no más de 10 minutos) para identificar la estrategia de navegación (menús, pestañas, botones, enlaces, etc.) y reconocer las principales funcionalidades del sistema.
+## Actividades
 
-4. Ejecutar y documentar pruebas exploratorias sobre las funcionalidades identificadas. Como resultado, el equipo debe construir un inventario con mínimo 30 pruebas exploratorias (2 por cada funcionalidad), utilizando el formato proporcionado en el siguiente enlace: [Inventario de pruebas exploratorias](https://thesoftwaredesignlab.github.io/AutTestingCourseraBook/templates/inventario-pruebas-exploratorias.xlsx). Cada prueba debe incluir obligatoriamente: identificador, fecha, autor, ID de la funcionalidad, tipo de requerimiento (funcional o no funcional), tipo de prueba (positiva, negativa o mixta), título y una descripción corta.
+1. **Instalación.** Verifique que la ABP funciona: abra su URL, abra el panel de administración
+   (`/ghost/`) e inicie sesión con el administrador.
+2. **Código fuente.** Revise el [código fuente de Ghost](https://github.com/TryGhost/Ghost) para
+   identificar los lenguajes, la estructura de directorios y los patrones de arquitectura y de diseño
+   de la ABP.
+3. **Exploración rápida.** Explore la ABP durante máximo diez minutos para identificar su estrategia
+   de navegación (menús, pestañas, botones y enlaces) y sus funcionalidades principales.
+4. **Funcionalidades.** Liste quince funcionalidades de la ABP, identificadas como `FEXP-01` a
+   `FEXP-15`, cada una con nombre y una descripción que indica qué hace el usuario y qué resultado
+   observable obtiene.
+5. **Pruebas exploratorias.** Ejecute y documente treinta pruebas exploratorias, dos por cada
+   funcionalidad, en la
+   [plantilla del inventario de pruebas exploratorias](https://thesoftwaredesignlab.github.io/AutTestingCourseraBook/templates/inventario-pruebas-exploratorias.xlsx).
+   Cada prueba tiene identificador (`EXP-01` a `EXP-30`), fecha, autor, identificador de la
+   funcionalidad, tipo de requerimiento (funcional o no funcional), tipo de prueba (positiva, negativa
+   o mixta), título, descripción y el enlace a un video de su ejecución, alojado fuera del
+   repositorio.
+6. **Defectos.** Reporte cada defecto encontrado en los _issues_ del repositorio con la plantilla
+   **Reporte Incidencia** (ver la guía de
+   [reporte de incidencias](https://www.coursera.org/learn/pruebas-automatizadas-software/supplement/pguOv/reporte-de-incidencias)),
+   indicando el identificador de la prueba exploratoria que lo detectó. Registre en el inventario el
+   enlace a la incidencia de cada prueba que encontró un defecto. Las pruebas deben detectar al menos
+   diez defectos.
+7. **Modelos.** Elabore el modelo de GUI (pantallas y transiciones) y el modelo de dominio (entidades
+   y relaciones) de la ABP, con base en lo explorado. Puede apoyarse en los
+   [consejos de la semana](https://www.coursera.org/learn/pruebas-automatizadas-software/supplement/xjgTI/para-tener-en-cuenta-esta-semana).
 
-5. Para cada prueba exploratoria registrada, se debe incluir un video que evidencie su ejecución. El video debe estar alojado en una plataforma externa (por ejemplo, OneDrive Uniandes, o  YouTube) y el enlace debe estar incluido en el inventario de pruebas.
+## Entregables
 
-6. Reportar los defectos encontrados durante la ejecución de las pruebas exploratorias en el repositorio de GitHub proporcionado. Cada defecto debe seguir los lineamientos establecidos y puede consultar el siguiente recurso de apoyo: [Reporte de incidencias](https://www.coursera.org/learn/pruebas-automatizadas-software/supplement/pguOv/reporte-de-incidencias). Cada defecto debe estar asociado explícitamente a la prueba exploratoria que lo detectó mediante su identificador. Se espera un mínimo de 10 defectos reportados.
+| Entregable | Formato | Contenido |
+|---|---|---|
+| Listado de funcionalidades | PDF | Las quince funcionalidades con identificador, nombre y descripción |
+| Inventario de pruebas exploratorias | PDF, exportado de la plantilla | Las treinta pruebas con sus campos, el enlace a su video y, cuando corresponde, el enlace a su incidencia |
+| Modelo de GUI | PDF o imagen | Las pantallas de la ABP y las transiciones entre ellas |
+| Modelo de dominio | PDF o imagen | Las entidades de la ABP con sus atributos y relaciones |
+| Incidencias | _Issues_ del repositorio del equipo | Un _issue_ por defecto, con la plantilla **Reporte Incidencia** |
 
-7. A medida que se explora la aplicación, el equipo debe documentar el conocimiento adquirido mediante un listado de funcionalidades, un modelo de GUI (interfaces y transiciones) y un modelo de dominio (entidades y relaciones). Puede apoyarse en los siguientes recursos:  
-[Tips de la semana](https://www.coursera.org/learn/pruebas-automatizadas-software/supplement/xjgTI/para-tener-en-cuenta-esta-semana)
-
-
-## Detalles de la entrega
-
-> [!NOTE]  
-> Los videos y documentos que incluyan en su entrega deben estar alojado en algún gestor de contenido (OneDrive Uniandes, Youtube), deben ser públicos o deben permitir el acceso a cuentas de la Universidad de Los Andes (`@uniandes.edu.co`). Para el caso de documentos, estos deben estar en formato `.pdf`.
-
-La entrega se debe realizar a través de Coursera en las fechas indicadas. El objetivo es consolidar la evidencia del proceso de exploración, pruebas y modelado realizado por el equipo durante la semana. Se deben entregar los siguientes archivos:
-
-- **1 PDF** con el listado de funcionalidades identificadas.  
-- **1 PDF** con el inventario de pruebas exploratorias (incluyendo los enlaces a los videos de cada prueba).  
-- **1 archivo (PDF o imagen)** con el modelo de GUI.  
-- **1 archivo (PDF o imagen)** con el modelo de dominio.  
-
-Adicionalmente, el inventario de pruebas debe permitir identificar claramente la relación entre pruebas exploratorias y los defectos reportados en el repositorio de GitHub.
-
----
+Los enlaces de los videos deben abrirse sin solicitar permisos: públicos o con acceso para cuentas
+`@uniandes.edu.co` (por ejemplo, OneDrive Uniandes o YouTube).
 
 ## Criterios de evaluación
 
-> [!NOTE]
-> La evaluación se realizará con base en la completitud, coherencia interna, trazabilidad explícita y evidencia verificable de cada uno de los criterios definidos en esta rúbrica.
-> Entregas por fuera del horario establecido puede incurrir en una penalización sobre la calificación final de la actividad.
+La evaluación sigue las [reglas de juego](reglas) del proyecto, incluidas sus _fatalities_.
 
-### 1. Listado de funcionalidades [15 puntos]
+### 1. Funcionalidades [15 puntos]
 
-- Se evaluarán máximo 15 funcionalidades. Cada funcionalidad equivale a 1 punto y debe incluir: una descripción clara en lenguaje natural, ser distinguible de otras funcionalidades, y corresponder a una capacidad observable de la aplicación. **[15 puntos]**
+- **1.1 Funcionalidades [15 puntos, 1 por funcionalidad].** Las quince funcionalidades tienen
+  identificador (`FEXP-##`), nombre y una descripción que indica qué hace el usuario y qué resultado
+  observable obtiene, y cada una es distinta de las demás.
 
 ### 2. Inventario de pruebas exploratorias [65 puntos]
 
-- Registro de pruebas (30 pruebas): Se evaluarán 30 pruebas exploratorias (2 por funcionalidad). Cada prueba debe incluir todos los campos requeridos (identificador, fecha, autor, ID de la funcionalidad, tipo de requerimiento, tipo de prueba, título y descripción). Cada prueba correctamente registrada equivale a 1 punto. **[30 puntos]**
+- **2.1 Registro de las pruebas [30 puntos, 1 por prueba].** Las treinta pruebas del inventario tienen
+  todos los campos de la actividad 5 y corresponden a dos pruebas por funcionalidad.
+- **2.2 Videos [15 puntos, 0,5 por prueba].** El video de cada una de las treinta pruebas se abre sin
+  solicitar permisos y muestra la ejecución de la prueba sobre la ABP.
+- **2.3 Ejecución de las pruebas [10 puntos].** Las pruebas validan la funcionalidad a la que están
+  asociadas y se ejecutaron sobre la ABP en funcionamiento: ninguna falla por una instalación
+  incompleta, un error del ambiente o una mala preparación del escenario.
+- **2.4 Defectos [10 puntos, 1 por defecto].** El inventario presenta diez defectos de la ABP. Cada
+  defecto está reportado como incidencia en el repositorio con la plantilla **Reporte Incidencia**,
+  indica el identificador de la prueba exploratoria que lo detectó, y el inventario enlaza esa
+  incidencia.
 
-- Evidencia en video: Cada una de las 30 pruebas debe contar con un enlace funcional a un video que evidencie su ejecución. Cada video correctamente enlazado equivale a 0.33 puntos. **[10 puntos]**
+### 3. Modelos [20 puntos]
 
-- Defectos e incidencias: Se evaluarán hasta 10 defectos. Cada defecto equivale a 1 punto y debe: estar correctamente reportado en el repositorio de GitHub, seguir los lineamientos establecidos, y estar asociado explícitamente a una prueba exploratoria mediante su identificador. **[10 puntos]**
-
-- Calidad de la ejecución de las pruebas: Cada prueba exploratoria debe estar correctamente ejecutada en un ambiente de pruebas funcional. Si una prueba falla debido a configuraciones incompletas, errores del entorno o mala preparación del escenario (y no por un defecto real de la aplicación), se considerará incorrecta. Se evaluará que cada prueba esté correctamente orientada a validar la funcionalidad correspondiente. **[15 puntos]**
-
-### 3. Modelos del sistema [20 puntos]
-
-- Modelo de GUI: Debe representar correctamente las interfaces principales del sistema y sus transiciones. Se evaluará completitud y coherencia. **[10 puntos]**
-
-- Modelo de dominio: Debe identificar correctamente las entidades principales del sistema y sus relaciones. Se evaluará completitud y coherencia. **[10 puntos]**
+- **3.1 Modelo de GUI [10 puntos].** El modelo muestra las pantallas que recorren las quince
+  funcionalidades y las transiciones entre ellas, cada una etiquetada con la acción del usuario.
+- **3.2 Modelo de dominio [10 puntos].** El modelo muestra las entidades de la ABP con sus atributos y
+  las relaciones entre ellas con su cardinalidad.
