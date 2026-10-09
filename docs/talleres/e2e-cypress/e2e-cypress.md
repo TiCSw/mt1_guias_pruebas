@@ -12,379 +12,101 @@ A través de esta actividad:
 
 # 1. Preparación del Entorno
 
-En esta parte prepararemos el entorno para poder realizar pruebas E2E sobre EverShop. Esta es una aplicación de E-commerce open source construida sobre TypeScript que permite diseñar y construir de manera sencilla tiendas online. Puede encontrar la documentación aquí: https://evershop.io/documentation
-
-## 1.1 Levantar EverShop con Docker
-
-Para poder hacer uso de EverShop, utilizaremos docker-compose el cual permite crear contenedores para ejecutar aplicaciones de manera sencilla.
-
-Para empezar, cree un directorio para EverShop
-```bash
-mkdir evershop-app
-cd evershop-app
-```
-
-Cree el archivo `docker-compose.yml` con el siguiente contenido:
-
-> **Nota:** Se utiliza la versión `2.1.1` de la imagen en lugar de `latest`.
-
-```yaml
-version: '3.8'
-
-services:
-  app:
-    image: evershop/evershop:2.1.1
-    restart: always
-    environment:
-      DB_HOST: database
-      DB_PORT: 5432
-      DB_PASSWORD: postgres
-      DB_USER: postgres
-      DB_NAME: postgres
-    networks:
-      - myevershop
-    depends_on:
-      - database
-    ports:
-      - 3000:3000
-
-  database:
-    image: postgres:16
-    restart: unless-stopped
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_DB: postgres
-    ports:
-      - "5432:5432"
-    networks:
-      - myevershop
-
-networks:
-  myevershop:
-    driver: bridge
-
-volumes:
-  postgres-data:
-```
-
-Una vez creado el archivo, levante los contenedores:
-
-```bash
-docker compose up
-```
-
-Al finalizar la inicialización, debería observar algo como lo siguiente:
-
-![alt text](img/Resultado_EverShop.jpg)
-
-Como se puede apreciar en la imagen, la aplicación se levanta por defecto en el puerto 3000, y su base de datos en el puerto 5432. La aplicación estará disponible en:
-
-```
-http://localhost:3000
-```
-
-El panel del administrador en:
-
-```
-http://localhost:3000/admin
-```
-
----
-
-## 1.2 Crear usuario administrador
-
-Para poder hacer uso de la aplicación es necesario crear un usuario administrador, para ello entre al contenedor:
-
-```bash
-docker exec -it evershop-app-1 sh
-```
-
-Ejecute el siguiente comando para crear un usuario:
-
-```bash
-npm run user:create -- --email admin@test.com --password admin123 --name "Admin"
-```
----
-
-Una vez creado el usuario administrador, ingrese a http://localhost:3000/admin e inicie sesión con el usuario y contraseña creado, es decir, admin@test.com - admin123
+Requisito: el [Taller 0](../evershop) (repositorio de talleres instalado y EverShop en ejecución).
+EverShop queda disponible en `http://localhost:3000` y su administración en
+`http://localhost:3000/admin`, con el usuario `admin@test.com` y la contraseña `admin123`.
 
 ![alt text](img/image-1.png)
----
 
-# 2. Configuración del Proyecto Cypress
+El taller está en `talleres/end-to-end-testing/` de su repositorio. Cypress es una dependencia del
+proyecto, no una instalación global.
 
-Ahora crearemos un proyecto de Cypress desde cero para realizar las pruebas E2E sobre EverShop.
-
-## 2.1 Crear el Proyecto
-
-Cree un nuevo directorio para el proyecto de pruebas e inicialice un proyecto Node.js:
-
-```bash
-mkdir taller-cypress
-cd taller-cypress
-npm init -y
-```
-
-## 2.2 Inicialización de Cypress
-
-Si ya cuenta con la instalación de Cypress global, puede iniciarlo directamente con
-
-```bash
-cypress open
-```
-
-Si no es así, puede instalar Cypress como dependencia de desarrollo:
-
-```bash
-npm install cypress --save-dev
-```
-He inicializarlo de la siguiente manera:
-
-```bash
-npx cypress open
-```
-
-Esto abrirá la interfaz gráfica de Cypress. Seleccione **E2E Testing** y luego elija un navegador para continuar. Cypress creará automáticamente la estructura de carpetas necesaria.
+| Archivo | Contenido | ¿Se edita? |
+|---|---|---|
+| `cypress/e2e/customer-checkout.cy.js` | Prueba de la actividad, por implementar (sección 4) | Sí |
+| `README.md` | Documentación de su trabajo | Sí |
+| `cypress/e2e/admin-setup.cy.js` | Configuración inicial de la tienda (sección 2) | No |
+| `cypress/e2e/admin-product.cy.js` | Prueba base: creación de un producto (sección 3) | No |
+| `runner/run.js` | Runner: ejecuta las pruebas en orden y escribe `results/summary.json` | No |
+| `cypress.config.js` | Configuración de Cypress | No |
+| `package.json`, `package-lock.json` | Dependencia de Cypress y scripts | No |
 
 ---
 
-# 3. Configuración Inicial del Sistema
+# 2. Configuración Inicial del Sistema
 
-Antes de crear productos y realizar pruebas de checkout, es necesario configurar los métodos de pago y envío en EverShop.
-
-## 3.1 Crear el Archivo de Configuración
-
-Cree el archivo `cypress/e2e/admin-setup.cy.js` y copie el siguiente código:
+Antes de crear productos y realizar pruebas de checkout, es necesario configurar los métodos de pago y envío en EverShop. `cypress/e2e/admin-setup.cy.js` lo hace desde la administración:
 
 ```javascript
 describe("Admin Panel - Initial Setup", () => {
   beforeEach(() => {
-    // Login del administrador
-    cy.visit("http://localhost:3000/admin/login");
-    cy.get('input[name="email"]').type("admin@test.com");
-    cy.get('input[name="password"]').type("admin123");
-    cy.get('button[type="submit"]').click();
-    cy.url().should("include", "/admin");
-    cy.contains("Dashboard", { timeout: 10000 }).should("be.visible");
+    // inicia sesión como administrador y espera el Dashboard
   });
 
-  /**
-   * Configurar métodos de pago y envío
-   */
   it("configures store settings for checkout", () => {
-
-    // Paso 1: Ir a Setting
-    cy.contains("Setting").click();
-    cy.contains("Store").click();
-    cy.url().should("include", "/admin/setting/store");
-
-    // Paso 2: Activar Cash on Delivery
-    cy.contains("Payment").click();
-    cy.url().should("include", "/admin/setting/payments");
-    
-    // Buscar Cash On Delivery y hacer click en el botón de settings
-    cy.contains("Cash On Delivery", { timeout: 5000 }).should("be.visible");
-
-    // Activar el switch de Cash on Delivery
-    cy.get('span[role="switch"][aria-checked="false"]').eq(2).click();
-
-    // Guardar
-    cy.contains("button", "Save").click();
-    cy.contains("Payment setting saved", { timeout: 10000 }).should("be.visible");
-
-    // Paso 3: Configurar Shipping Zones y Methods
-    cy.contains("Shipping").click();
-    cy.url().should("include", "/admin/setting/shipping");
-
-    // Click en "Create New Zone"
-    cy.contains("button", "Create New Zone", { timeout: 5000 }).click();
-
-    // Llenar el formulario del dialog de zona
-    // Nombre de la zona
-    cy.get('input[name="name"]').type("United States Zone");
-
-    // Seleccionar país (United States)
-    cy.get('input[id="field-country"]').click();
-    cy.contains("United States", { timeout: 5000 }).click();
-
-    // Seleccionar provincia (New York)
-    cy.get('input[id="field-provinces"]').click();
-    cy.contains("New York", { timeout: 5000 }).click();
-    // Click fuera del dropdown para cerrarlo
-    cy.get('input[name="name"]').click();
-
-    // Guardar la zona
-    cy.get('form[id="createShippingZone"]').within(() => {
-      cy.contains("button", "Save").click();
-    });
-
-    // Paso 4: Agregar método de envío
-    cy.contains("button", "+ Add Method", { timeout: 5000 }).click();
-
-    // En el dialog de shipping method
-    // Escribir nombre del método de envío (esto crea uno nuevo)
-    cy.get('input[id="field-method_id"]').type("Standard Shipping{enter}");
-
-    // Habilitar el método (activar switch de status)
-    cy.get('form[id="shippingMethodForm"]').within(() => {
-      cy.get('span[role="switch"][aria-checked="false"]').click();
-    });
-
-    // El radio "Flat rate" ya está seleccionado por defecto
-
-    // Llenar el costo del envío
-    cy.get('input[name="cost"]').clear().type("10.00");
-
-    // Guardar el método de envío
-    cy.get('form[id="shippingMethodForm"]').within(() => {
-      cy.contains("button", "Save").click();
-    });
-
-    cy.contains("successfully", { timeout: 10000 }).should("be.visible");
-
-    // Regresar al dashboard
-    cy.contains("Dashboard").click();
-    cy.url().should("include", "/admin");
+    // Settings > Payment: activa "Cash On Delivery"
+    // Settings > Shipping: crea la zona "United States Zone" (New York)
+    //   y el método "Standard Shipping" con costo de $10
   });
 });
 ```
 
-**¿Qué hace este test?**
-
-Este test configura automáticamente:
-1. Activa el método de pago "Cash on Delivery"
-2. Crea una zona de envío para Estados Unidos (New York)
-3. Crea un método de envío "Standard Shipping" con un costo de $10
-
-**Importante:** Ejecute este test **UNA SOLA VEZ** antes de ejecutar los demás tests.
+**Importante:** este test modifica la configuración de la tienda, por lo que se ejecuta **una sola vez** sobre una tienda recién reiniciada (`npm run app:reset`) y antes que los demás. El runner (`npm run e2e`) lo hace en ese orden.
 
 ---
 
-# 4. Implementación Base de la Prueba E2E
+# 3. Implementación Base de la Prueba E2E
 
-## 4.1 Crear el Archivo de Prueba Base
-
-Ahora cree el archivo base del taller que contiene el login del administrador y la creación de un producto.
-
-Cree el archivo `cypress/e2e/admin-product.cy.js` y copie el siguiente código:
+`cypress/e2e/admin-product.cy.js` contiene el login del administrador y la creación de un producto, como referencia de cómo estructurar sus pruebas:
 
 ```javascript
 describe("Admin Panel - Product Management", () => {
-  /**
-   * Este beforeEach se ejecuta antes de cada test
-   * Automatiza el login del administrador para que no tenga que repetir este código
-   */
   beforeEach(() => {
-    // Visitar la página de login del admin
-    cy.visit("http://localhost:3000/admin/login");
-
-    // Llenar el formulario de login
+    cy.visit("/admin/login");
     cy.get('input[name="email"]').type("admin@test.com");
-    cy.get('input[name="password"]').type("admin123");
-
-    // Hacer click en el botón de login
-    cy.get('button[type="submit"]').click();
-
-    // Esperar a que la navegación al dashboard del admin sea exitosa
-    cy.url().should("include", "/admin");
-    cy.contains("Dashboard", { timeout: 10000 }).should("be.visible");
+    // … contraseña, clic en el botón y espera del Dashboard
   });
 
-  /**
-   * Test completo: Crear un nuevo producto
-   * Este test está implementado como referencia
-   */
   it("creates a new product successfully", () => {
-    // Navegar a la sección de productos
-    cy.contains("Catalog").click();
-    cy.contains("Products").click();
-    cy.url().should("include", "/admin/products");
-
-    // Click en crear nuevo producto
-    cy.contains("button", "New Product", { timeout: 5000 }).click();
-
-    // Llenar información básica del producto
-    cy.get('input[name="name"]').type("Cypress Test Product");
-
-    // Establecer precio
-    cy.get('input[name="price"]').clear().type("99.99");
-
-    // Establecer SKU (código único del producto)
-    const uniqueSKU = `TEST-${Date.now()}`;
-    cy.get('input[name="sku"]').type(uniqueSKU);
-
-    // Establecer cantidad en stock
-    cy.get('input[name="qty"]').clear().type("10");
-
-    // Establecer Tax Class (combobox personalizado)
-    cy.get('button[id="field-tax_class"]').click();
-    cy.contains("Taxable Goods").click();
-
-    // Establecer URL Key
-    cy.get('input[name="url_key"]').type("cypress-test-product");
-
-    // Establecer Meta Title
-    cy.get('input[name="meta_title"]').type("Cypress Test Product");
-
-    // Establecer Weight
-    cy.get('input[name="weight"]').type("1.5");
-
-    // Guardar el producto
+    // Catalog > Products > New Product
+    // llena nombre ("Cypress Test Product"), precio, SKU único, inventario, Tax Class, URL Key…
     cy.contains("button", "Save").click();
-
-    // Verificar que el producto fue creado exitosamente
-    cy.contains("Product created successfully", { timeout: 10000 }).should(
-      "be.visible"
-    );
-
-    // Hacer click en el botón de regresar a la lista de productos (breadcrumb)
-    cy.get('a[href*="/admin/products"]').eq(2).click();
-
-    // Verificar que estamos de vuelta en la lista de productos
-    cy.url().should("include", "/admin/products");
-
-    // Verificar que el producto aparece en la lista
-    cy.contains("Cypress Test Product").should("be.visible");
+    cy.contains("Product created successfully", { timeout: 10000 }).should("be.visible");
+    // vuelve a la lista y verifica que el producto aparece
   });
 });
 ```
 
-Este archivo sirve como **referencia** para entender cómo estructurar sus pruebas en Cypress. Adicional a ello puede consultar ejemplos de pruebas E2E con Cypress en el siguiente link: [Cypress Ghost Examples](https://github.com/TheSoftwareDesignLab/Software-engineering-examples/tree/main/Cypress-ghost-examples)
+Puede consultar más ejemplos de pruebas E2E con Cypress en [Cypress Ghost Examples](https://github.com/TheSoftwareDesignLab/Software-engineering-examples/tree/main/Cypress-ghost-examples).
 
-## 4.2 Ejecución del Código Base
-
-Para ejecutar el test, abra Cypress:
+Para ejecutar las pruebas con la interfaz de Cypress, desde `talleres/end-to-end-testing/`:
 
 ```bash
-npx cypress open
+npm run cypress
 ```
 
-o si lo tiene instalado de manera global
+Seleccione **E2E Testing**, un navegador y luego el archivo `admin-product.cy.js`. Asegúrese de que EverShop esté ejecutándose (`npm run app:up` desde la raíz del repositorio).
 
+Para ejecutar todas las pruebas como en la evaluación, reinicie la tienda (`npm run app:reset` desde la raíz) y, desde `talleres/end-to-end-testing/`:
 
 ```bash
-cypress open
+npm run e2e
 ```
 
-Luego seleccione el archivo `admin-product.cy.js` en la interfaz de Cypress. Debería ver cómo se ejecuta automáticamente el login y la creación del producto.
-
-**Importante:** Asegúrese de que EverShop esté ejecutándose en `http://localhost:3000` antes de correr las pruebas.
+El runner ejecuta `admin-setup`, `admin-product` y `customer-checkout` en ese orden y escribe el resultado de cada prueba en `results/summary.json`.
 
 ---
 
-# 5. Actividad
+# 4. Actividad
 
-Ahora deberá crear un nuevo archivo llamado `customer-checkout.cy.js` dentro de la carpeta `cypress/e2e/` que implemente el **flujo completo de compra desde la perspectiva del cliente**.
+Ahora deberá implementar en `cypress/e2e/customer-checkout.cy.js` (que hoy contiene una prueba pendiente) el **flujo completo de compra desde la perspectiva del cliente**.
 
-## 5.1 Especificación del Test
+## 4.1 Especificación del Test
 
 Su archivo debe incluir:
 
 1. **Un `beforeEach()`** que:
-   - Visite el storefront (homepage) en `http://localhost:3000`
+   - Visite la página de inicio de la tienda (`cy.visit("/")`)
    - Espere a que la página cargue correctamente
 
 2. **Un test que ejecute los siguientes pasos secuencialmente**:
@@ -404,29 +126,19 @@ Su archivo debe incluir:
    - Verificar que se llegó a la página de confirmación o pago
 
 
-# 6. Detalles de la Entrega
+# 5. Detalles de la Entrega
 
-Se debe entregar un archivo **.zip** con los siguientes archivos:
-
-- La carpeta `cypress/e2e/` con ambos archivos de prueba:
-  - `admin-product.cy.js` (sin modificaciones)
-  - `customer-checkout.cy.js` (su implementación)
-- El archivo `package.json` (generado automáticamente al hacer `npm init -y`). **NO** incluya el `package-lock.json` ni el directorio `node_modules`
-- Un archivo `README.md` con:
-  - Los pasos para instalar Cypress
-  - Las instrucciones para ejecutar las pruebas
-  - Cualquier consideración adicional sobre su implementación
-  - Capturas de pantalla o descripción de las pruebas ejecutándose exitosamente
+Cree el _tag_ `taller-end-to-end-testing` sobre el _commit_ que se debe evaluar y súbalo a su
+repositorio (`git push origin taller-end-to-end-testing`) a más tardar el día de la fecha límite. Describa su
+implementación en el `README.md` del taller.
 
 ---
 
-# 7. Criterios de Evaluación
+# 6. Evaluación
 
-- El zip tiene un archivo README completo y el código está correctamente estructurado. **[10 puntos]**
-- El archivo `customer-checkout.cy.js` implementa correctamente el flujo especificado usando la API de Cypress. **[40 puntos]**
-- Las pruebas son funcionales, manejan errores apropiadamente y siguen las mejores prácticas de Cypress. **[30 puntos]**
-- El test es independiente y no depende de ejecuciones previas. **[20 puntos]**
+La evaluación es automática (ver el [Taller 0](../evershop)). Además de las condiciones generales de
+entrega, el equipo docente ejecuta el runner sobre una tienda recién iniciada y verifica en el resumen
+que:
 
-**La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y la calidad de cada uno de acuerdo con la rúbrica establecida.**
-
----
+1. `admin-setup.cy.js` y `admin-product.cy.js` pasan.
+2. `customer-checkout.cy.js` tiene al menos una prueba, todas pasan y ninguna queda pendiente.

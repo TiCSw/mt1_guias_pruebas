@@ -1,78 +1,105 @@
-# Taller: Visual Regression Testing utilizando Resemble JS
+# Taller: Pruebas de regresión visual con ResembleJS
 
-_Visual Regression Testing_ es una rama de pruebas de regresión en la cual el sujeto de estudio es la interfaz grafica. Esto permite realizar estudios de los efectos que tienen los cambios en interfaz con respecto a versiones anteriores. En este taller exploraremos este tipo de pruebas haciendo uso de [ResembleJS](http://rsmbl.github.io/Resemble.js/).
+Las pruebas de regresión visual (VRT) comparan capturas de pantalla de dos versiones de una interfaz
+para detectar cambios visuales. En este taller usarán [Playwright](https://playwright.dev) y
+[ResembleJS](https://github.com/rsmbl/Resemble.js) para comparar dos versiones de la tienda
+EverShop.
 
-Para este taller usted debe:
+A través de este taller:
 
-1. Crear la aplicación a probar.
-2. Manejar Cypress para tomar _screenshots_
-3. Usar [ResembleJS](https://github.com/rsmbl/Resemble.js) para comparar los _screenshots_ tomados.
-4. Generar un script que automaticamente realice el proceso realizado en los puntos 2 y 3, con tal de generar un reporte.
+- Capturarán de forma automática páginas de una aplicación en distintos tamaños de pantalla y
+  estados.
+- Compararán capturas con ResembleJS e interpretarán sus resultados.
+- Configurarán interacciones previas a la captura.
 
-## Entregable
+## 1. Preparación
 
-Este taller se divide en 4 fases que le llevaran a poder completar una solución de pruebas automaticas que le podría ser util para su proyecto. Al finalizar el taller usted debe entregar un documento donde se evidencie:
+Requisito: el [Taller 0](evershop) (repositorio de talleres instalado y EverShop en ejecución).
 
-1. Link al repositorio del código de la primera fase del taller
-2. Link a la página publicada de su aplicación de la primera fase funcionando. Esto lo puede hacer en github pages o gitlab pages ya que la aplicación solo tiene HTML, CSS y JS.
-3. Los pantallazos obtenidos haciendo uso de Cypress.
-4. Las respuestas a las preguntas planteadas en la tercer fase del taller.
-5. Link al repositorio de su aplicación de automatización.
-6. Reporte del funcionamiento de su aplicación desplegada.
+Comparará dos versiones de la tienda:
 
-## Crear la aplicación a probar.
+| Versión | URL |
+|---|---|
+| Base | <http://localhost:3000> |
+| Release | <http://localhost:3001> |
 
-Usted debe implementar una página HTML que genere paletas de colores aleatorias usando una armonía con 5 colores complementarios/equidistantes. Una estrategia para generar N colores complementarios es cambiar la tonalidad (hue) en la escala HSB/HSV de tal forma que la totalidad de la escala se divide en las mismas proporciones. Es decir, la tonalidad en HSB/HSV varía de 0 a 359 grados (escala entera), con 0 = rojo, 120 = verde, 240 = azul. Por ejemplo, una armonía equidistante con 20 colores tendrá una diferencia de tono de 360/20 entre cada color, manteniendo la misma saturación (S) y brillo (B); **Para este taller usted no debe modificar la saturación y el brillo salvo que tenga tiempo y quiera implementar un segundo esquema de generación de paleta (BONO)**. Ahora, para generación aleatoria de paletas se puede escoger un punto de inicio (e.j., 40 grados) y seleccionar los colores usando la diferencia tonal a partir de ese punto de inicio.
+La versión release tiene cambios visuales en varias páginas, entre ellos un banner de promoción en
+la parte superior de todas las páginas.
 
-**Nota:** Tenga cuidado por que la escala de tonalidad va de 0 a 359.
+El taller está en `talleres/visual-regression-testing/` de su repositorio:
 
-Para efectos del taller se le proporcionara un [proyecto base](https://gitlab.com/miso-4208-labs/VRT_colorPallete) con lo siguiente:
-- palette.html: página HTML que sirve como vista. Puede cambiar la apariencia visual si tiene tiempo. Note que el archivo ya tiene enlazado el archivo JS remoto de JQuery
-- styles.css: hoja de estilos de palette.html
-- color.js: librería JS para transformación entre escala de colores. Para generar armonías en HSB/HSV, es necesario contar con métodos de transformación en las esclas de RGB y hacia RGB. Estos le son proporcionados en este archivo.
-- Script.js: archivo JS en el cual usted debe agregar sus funciones para generación de las paletas y manipulación de palette.html
+| Archivo | Contenido | ¿Se edita? |
+|---|---|---|
+| `vrt.config.js` | Comparaciones, umbral y opciones de ResembleJS (sección 2) | Sí |
+| `README.md` | Documentación de su trabajo | Sí |
+| `runner/vrt.js`, `runner/report.js` | Runner: captura, comparación, reporte y resumen | No |
+| `package.json`, `package-lock.json` | Dependencias (Playwright, ResembleJS y `canvas`) y scripts | No |
 
-En resumen, usted debe tener una página HTML que genera paletas aleatorias con 5 colores. Los colores se deben ver visualmente en la página, y se deben generar las reglas css para los colores ( se deben mostrar en el textarea ). Adicionalmente, el usuarió podrá limpiar la paleta cuando desee.
+## 2. Implementación base
 
-Una vez finalizada, suba su resultado a un repositorio y publique el resultado en la solución propuesta por su herramienta de trabajo colaborativo (Github Pages, Gitlab Pages, Bitbucket Pages)
+`vrt.config.js` define las comparaciones:
 
-## Manejar Cypress para tomar _screenshots_
+```javascript
+export default {
+  threshold: 0.1, // porcentaje de diferencia a partir del cual se reporta una diferencia
+  resemble: { /* opciones de compareImages de ResembleJS */ },
+  comparisons: [
+    {
+      name: "producto", // nombre de las imágenes en results/screenshots/
+      path: "/accessories/stainless-steel-thermos-yellow",
+      viewport: { width: 1280, height: 800 },
+      steps: [], // interacciones antes de capturar
+    },
+  ],
+};
+```
 
-Como parte de las amplias posibilidades de interacción con las que cuenta Cypress, podemos encontrar el comando ```cy.screenshot()``` este comando nos va a permitir guardar un screenshot del estado de la pantalla cuando se hace el llamado de la instrucción. Retome su taller 2 y modifique 3 de las pruebas con tal de tomar screenshots al inicio y final de cada prueba. Revise la [documentación](https://docs.cypress.io/api/commands/screenshot.html#Syntax) para mayor información.
+Los pasos (`steps`) se ejecutan en orden después de abrir `path`: `{ click: selector }`,
+`{ fill: [selector, valor] }`, `{ goto: ruta }`, `{ waitFor: selector }` (espera un elemento) y
+`{ waitForUrl: patrón }` (espera a que la URL coincida, por ejemplo `"**?color=*"`), con
+[selectores de Playwright](https://playwright.dev/docs/other-locators).
 
-**Reflexión:** Ve usted algún problema con los screenshots tomados por Cypress al intentar hacer _Visual Regression Testing_ ? Agregue su respuesta al documento de la entrega.
+Para cada comparación, el runner (`runner/vrt.js`) abre la página en las dos versiones con el
+_viewport_ indicado, toma una captura, ejecuta los pasos, toma la captura final, compara las capturas
+finales de las dos versiones con ResembleJS y guarda la imagen de diferencias. `misMatchPercentage`
+es el porcentaje de píxeles distintos. Las imágenes quedan en `results/screenshots/`, el reporte en
+`results/report.html` y el resumen (con la ruta capturada y el _hash_ de cada imagen) en
+`results/summary.json`.
 
-## Usar ResembleJS para comparar los _screenshots_ tomados
+Con la tienda en ejecución, desde `talleres/visual-regression-testing/`:
 
-ResembleJS es una herramienta que nos permite analizar y comparar imagenes haciendo uso de HTML y JS. Su objetivo en esta parte del taller es revisar con detenimiento la documentación y responder las siguientes preguntas:
+```bash
+npm run vrt
+```
 
-- ¿Qué información puedo obtener de una imagen al usar resembleJS y que significado tiene cada uno de los componentes de la respuesta?.
-- ¿Qué información puedo obtener al comparar dos imagenes?
-- ¿Qué opciones se pueden seleccionar al realizar la comparación ?
+## 3. Actividad
 
-Ahora que conoce las funcionalidades de ResembleJS haremos nuestras primeras pruebas del uso de esta. Cree un proyecto NodeJS y compare las imagenes que obtuvo del punto anterior para cada prueba. Es decir, compare la imagen de antes de ejecutar la prueba con la posterior a la prueba y muestre los resultados obtenidos para las 3 pruebas. Use el filtro ```ignoreLess``` para las pruebas.
+Agregue a `comparisons` una comparación de la página de su tipo (`type` en `asignacion.json`) con
+su acción:
 
-## Herramienta de automatización de Visual Regression Testing.
+| Tipo | Página | Acción |
+|---|---|---|
+| A | Categoría Accessories (`/accessories`) | _Viewport_ móvil de 375 × 812. |
+| B | Búsqueda de "thermos" (`/search?keyword=thermos`) | _Viewport_ de tableta de 768 × 1024. |
+| C | Inicio de sesión de clientes (`/account/login`) | Interacción: enviar el formulario vacío para que se muestren los mensajes de validación. |
+| D | Carrito con un producto (`/cart`) | Interacción: elegir una variante de un producto y agregarlo al carrito antes de abrir el carrito. |
 
-En este parte del taller usted debera crear una solución en el lenguaje que desee en la cual proporcione un mecanismo de ejecución de pruebas de regresión visual automaticamente para la aplicación que hizo en la primera fase. Se espera que su solución presente un resultado similar a la siguiente imagen:
+La comparación debe terminar en la página de su tipo (la que se captura). Revise el reporte y
+describa en el `README.md` del taller las diferencias que encontró entre las dos versiones.
 
-![Diagrama](../assets/images/diagrama_vrt.png)
+## 4. Entrega
 
-En la cual cada vez que el usuario haga click en el boton, su solución ingrese al sitio que desplego en la primer fase, genere una paleta de colores, tome un screenshot, genere una segunda paleta de colores, tome otro screenshot, realice una comparación haciendo uso de ResembleJS y genere una nueva fila al principio donde se muestren los resultados de la prueba junto con información adicional que usted crea útil.
+Cree el _tag_ `taller-visual-regression-testing` sobre el _commit_ que se debe evaluar y súbalo a su
+repositorio (`git push origin taller-visual-regression-testing`) a más tardar el día de la fecha
+límite.
 
-## Reporte de funcionamiento
+## 5. Evaluación
 
-Realice una bitacora del funcionamieto de su herramienta, se espera que presente screenshots de su herramienta y un gif de la aplicación en funcionamiento. Este reporte puede ser entregado por medio de una wiki/gitpages/gitbook o plataforma que le permita presentar contenido multimedia como el gif.
+La evaluación es automática (ver el [Taller 0](evershop)). Además de las condiciones generales de
+entrega, el equipo docente ejecuta el runner sobre una tienda recién iniciada y verifica en el
+resumen que una de las comparaciones:
 
-
-### Detalles de la entrega
-
-Se debe entregar un archivo .zip con los archivos creados. El zip debe incluir un archivo README  con los detalles requeridos para la ejecución del código. La entrega se debe realizar a través de Coursera en las fechas indicadas.
-
-### Criterios de evaluación:
-
-- El zip tiene un archivo README detallando la forma de ejecutar el código, y el zip  tiene el código solicitado. **[5 puntos]**
-
-- El escenario es funcional, sigue la especificación dada, y no hay errores en el código. **[95 puntos]**
-
- **La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y la calidad de cada uno de acuerdo con la rúbrica establecida.**
+1. Se captura en la página de su tipo en las dos versiones.
+2. Usa el _viewport_ de su tipo (A y B), o ejecuta pasos que cambian la página antes de la captura
+   (C y D: la captura final es distinta de la captura inicial).
+3. Tiene sus capturas de las dos versiones, su imagen de diferencias y su porcentaje de diferencia.

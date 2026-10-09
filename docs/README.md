@@ -23,8 +23,12 @@ Bienvenidos a la página con las guías para talleres y el desarrollo del proyec
 
 ## Talleres
 
-1. [Random testing](https://ticsw.github.io/mt1_guias_pruebas/talleres/monkey)
+Requisito de todos los talleres: [Taller 0: Entorno de los talleres con EverShop](https://ticsw.github.io/mt1_guias_pruebas/talleres/evershop).
 
-2. [BDD con Gherkin y Cucumber](https://ticsw.github.io/mt1_guias_pruebas/talleres/bdt)
+1. [Monkey testing con Playwright](https://ticsw.github.io/mt1_guias_pruebas/talleres/monkey)
 
-3. [Visual Regression Testing](https://ticsw.github.io/mt1_guias_pruebas/talleres/vrt)
+2. [Pruebas E2E con Cypress](https://ticsw.github.io/mt1_guias_pruebas/talleres/e2e-cypress/e2e-cypress)
+
+3. [BDD con Gherkin y Cucumber](https://ticsw.github.io/mt1_guias_pruebas/talleres/bdt)
+
+4. [Pruebas de regresión visual con ResembleJS](https://ticsw.github.io/mt1_guias_pruebas/talleres/vrt)

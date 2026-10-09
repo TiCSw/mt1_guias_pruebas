@@ -1,126 +1,113 @@
-# Monkey Testing para Aplicaciones Web
+# Taller: Monkey testing con Playwright
 
-Este taller está diseñada para explorar técnicas avanzadas de pruebas automatizadas. El objetivo es desarrollar un _monkey tester_ que simule interacciones aleatorias de usuarios en una aplicación web, lo cual es una técnica valiosa para descubrir errores inesperados y problemas de robustez en las interfaces de usuario.
+Un _monkey_ ejecuta eventos aleatorios sobre una aplicación (clics, texto, teclas, navegación) para
+encontrar fallos que las pruebas guiadas por casos no encuentran. En este taller extenderán un
+monkey construido sobre [Playwright](https://playwright.dev) para la tienda EverShop.
 
-A través de esta actividad:
+A través de este taller:
 
-- Aprenderás a implementar pruebas de tipo _monkey testing_ utilizando Playwright
-- Desarrollarás un bot que realiza acciones aleatorias pero controladas en una interfaz web
-- Practicarás el manejo de eventos asíncronos y errores en pruebas automatizadas
-- Explorarás diferentes tipos de interacciones con elementos web (clicks, inputs, selects)
+- Entenderán cómo un monkey reproducible usa una semilla: la misma semilla genera la misma
+  secuencia de eventos.
+- Diseñarán eventos sobre distintos tipos de elementos e interacciones.
+- Controlarán la exploración con pesos por tipo de evento.
 
-## 1. (Base) Monkey con Playwright
+## 1. Preparación
 
-En esta parte desarrollaremos nuestro propio _Monkey_ que visitará la página de [losestudiantes](https://losestudiantes.co), buscará todos los links y hará click en uno de ellos al azar. Esto se repetirá hasta que un cierto número de links hayan sido clickeados.
+Requisito: el [Taller 0](evershop) (repositorio de talleres instalado y EverShop en ejecución).
 
-### 1.1 Implementación inicial del Monkey
+El taller está en `talleres/monkey-testing/` de su repositorio:
 
-Comencemos por crear nuestro archivo de pruebas con Playwright. Primero, cree un nuevo directorio vacío e inicialice un proyecto de Node.js:
+| Archivo | Contenido | ¿Se edita? |
+|---|---|---|
+| `src/actions.js` | Acciones del monkey (sección 2), donde agregará las suyas | Sí |
+| `README.md` | Documentación de su trabajo | Sí |
+| `runner/monkey.js` | Runner: navegador, semilla, pesos, ciclo de eventos y resumen | No |
+| `package.json`, `package-lock.json` | Dependencias (Playwright y Faker) y scripts | No |
 
-```bash
-mkdir monkey-testing
-cd monkey-testing
-npm init -y
-```
+## 2. Implementación base
 
-Luego, instale Playwright y sus dependencias:
-
-```bash
-npm init playwright@latest
-```
-
-Durante la instalación, seleccione Javascript como el lenguaje de programación, y para las demás opciones pueden utilizar los valoes por defecto cuando se le pregunte. Una vez instalado, cree un nuevo archivo llamado `monkey.spec.js` en la carpeta `./tests` del proyecto. El contenido del archivo es el siguiente:
+`src/actions.js` exporta las acciones del monkey. Cada acción recibe la página de Playwright y un
+contexto con `faker` (ya inicializado con la semilla) y `origin` (el origen de la tienda), ejecuta una
+interacción y devuelve qué hizo, o `{ skipped: "motivo" }` si no encontró sobre qué actuar:
 
 ```javascript
-const { test, expect } = require("@playwright/test");
+export const actions = {
+  async clickLink(page, { faker, origin }) {
+    // elige con faker un enlace visible de la tienda (mismo origen) y hace clic
+    return { target: href };
+  },
+};
+```
 
-test.describe("Los estudiantes under monkeys", () => {
-  test("visits los estudiantes and survives monkeys", async ({ page }) => {
-    await page.goto("https://losestudiantes.com");
-    await page.waitForTimeout(1000);
-    await randomClick(page, 10);
-  });
-});
+El runner (`runner/monkey.js`) abre el navegador, inicializa `faker` con la semilla y, en cada
+evento, elige una acción según los pesos y la ejecuta:
 
-async function randomClick(page, monkeysLeft) {
-  function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
-  }
-
-  if (monkeysLeft > 0) {
-    const links = await page.$$("a");
-    if (links.length > 0) {
-      const randomLink = links[getRandomInt(0, links.length)];
-      const isVisible = await randomLink.isVisible();
-
-      if (isVisible) {
-        try {
-          await randomLink.click();
-          monkeysLeft = monkeysLeft - 1;
-        } catch (error) {
-          console.log("Could not click on element:", error);
-        }
-      }
-
-      await page.waitForTimeout(1000);
-      await randomClick(page, monkeysLeft);
-    }
-  }
+```javascript
+faker.seed(seed);
+for (let event = 1; event <= events; event++) {
+  const action = faker.helpers.weightedArrayElement(choices); // según --weights
+  const detail = await actions[action](page, { faker, origin });
+  // registra el evento: acción, URL antes y después, resultado (ok, skipped o error) y detalle
 }
+// escribe results/summary.json
 ```
 
-En el método `randomClick` es donde hacemos click en un link al azar. Comenzamos por buscar todos los links de la página actual usando el método [`page.$$`](https://playwright.dev/docs/api/class-page#page-locator) de Playwright, que nos devuelve un array con todos los elementos que coinciden con el selector 'a'. Con este array de elementos, seleccionamos uno al azar usando `getRandomInt`. Luego, verificamos si el elemento está visible usando el método [`isVisible()`](https://playwright.dev/docs/api/class-locator#locator-is-visible) del ElementHandle. Si el elemento está visible, intentamos hacer click en él usando el método [`click()`](https://playwright.dev/docs/api/class-locator#locator-click). Utilizamos un bloque try-catch para manejar posibles errores durante el click, ya que el elemento podría volverse no interactuable entre la verificación de visibilidad y el intento de click. Después de cada intento de click (exitoso o no), esperamos 1 segundo usando [`page.waitForTimeout()`](https://playwright.dev/docs/api/class-page#page-wait-for-timeout) y luego hacemos un llamado recursivo a la misma función con el número de monkeys actualizado.
+- Opciones: `--seed`, `--events`, `--weights` (por ejemplo `clickLink=2,otraAccion=1`; 1 si no se
+  indica), `--delay` (espera entre eventos, en ms) y `--headed` (muestra el navegador).
+- El runner cancela las navegaciones hacia otros sitios y registra como fallo cualquier excepción de
+  JavaScript no capturada en la página (`pageerror`).
+- `results/summary.json` contiene los parámetros de la ejecución, las acciones disponibles, la
+  secuencia de eventos y los fallos.
 
-En el bloque `describe` al inicio del archivo es donde definimos nuestra prueba. Lo que hacemos es quitar el modal inicial haciendo click en el botón Cerrar y luego llamamos a nuestro método `randomClick` con 10 monkeys.
-
-### 1.2 Ejecución de la Prueba
-
-Para ejecutar la prueba, abra una terminal en el directorio del proyecto y ejecute el siguiente comando:
+Con la tienda en ejecución, desde `talleres/monkey-testing/`:
 
 ```bash
-npx playwright test monkey.spec.js
+npm run monkey -- --seed 7 --events 20 --headed
 ```
 
-Playwright ejecutará la prueba en un navegador Chromium por defecto. Si desea ver la ejecución de la prueba en tiempo real, puede agregar la bandera `--headed`:
+Ejecute dos veces la misma semilla sobre la tienda recién reiniciada (`npm run app:reset`) y compare
+las secuencias de eventos de los resúmenes: deben ser iguales.
+
+## 3. Actividad
+
+Agregue en `src/actions.js` las dos acciones de su tipo (`type` en `asignacion.json`), con
+exactamente estos nombres:
+
+| Tipo | Acciones | Qué hace cada una |
+|---|---|---|
+| A | `fillInput`, `pressKey` | Escribe en un campo de texto visible un valor de Faker acorde con su tipo (correo, número, contraseña, teléfono o texto). Presiona `Enter`, `Tab` o `Escape`. |
+| B | `clickButton`, `hover` | Hace clic en un botón visible. Pasa el puntero sobre un enlace o botón visible. |
+| C | `scroll`, `reload` | Desplaza la página una distancia aleatoria hacia arriba o hacia abajo. Recarga la página. |
+| D | `goBack`, `resizeViewport` | Vuelve a la página anterior. Cambia el tamaño de la ventana a móvil, tableta o escritorio. |
+
+Condiciones:
+
+- Toda decisión aleatoria (qué elemento, qué valor, qué tecla) usa el `faker` que recibe la acción,
+  nunca `Math.random()`.
+- Si una acción no tiene sobre qué actuar (por ejemplo, no hay campos de texto visibles), devuelve
+  `{ skipped: "motivo" }` en lugar de fallar.
+- El monkey sigue siendo reproducible: con la misma semilla, los mismos pesos y la misma tienda
+  produce la misma secuencia de eventos.
+
+Pruebe sus acciones con pesos que las incluyan, por ejemplo para el tipo A:
 
 ```bash
-npx playwright test monkey.spec.js --headed
+npm run monkey -- --seed 4103 --weights clickLink=2,fillInput=1,pressKey=1 --headed
 ```
 
-Si hay un error al ejecutar la prueba, no se alarme. Habrá veces en las que Playwright no logrará hacer click en un elemento seleccionado al azar. Esto es normal, ya que el elemento pudo haber desaparecido de la página o estar en un estado no interactuable. El código incluye manejo de errores para estos casos.
+Describa sus acciones en el `README.md` del taller.
 
-## 2. Actividad
+## 4. Entrega
 
-Ahora usted deberá crear una nueva función `randomEvent()` que toma por parámetro la cantidad de eventos que se desean lanzar secuencialmente al igual que en el método `randomClick`. Para cada evento, la función `randomEvent()` deberá ejecutar los siguientes pasos:
+Cree el _tag_ `taller-monkey-testing` sobre el _commit_ que se debe evaluar y súbalo a su
+repositorio (`git push origin taller-monkey-testing`) a más tardar el día de la fecha límite.
 
-1. Seleccionar aleatoriamente uno de los eventos indicados a continuación:
-   - Hacer click en un link al azar
-   - Llenar un campo de texto al azar
-   - Seleccionar un combo al azar
-   - Hacer click en un botón al azar
-2. Ejecutar el evento. En caso de que se genere algún error, este no debe detener la prueba
-3. Hacer un llamado recursivo a esta misma función hasta que no queden más eventos por realizar.
+## 5. Evaluación
 
-**Aclaración:** El evento al azar es seleccionado por la **función**, no por usted.
+La evaluación es automática (ver el [Taller 0](evershop)). Además de las condiciones generales de
+entrega, el equipo docente ejecuta el runner con la semilla 4103, 60 eventos y los pesos
+`clickLink=2` y `1` para cada acción de su tipo, y verifica en el resumen que:
 
-### 3. Detalles de la entrega
-
-Se debe entregar un archivo **.zip** con los siguientes archivos.
-
-- La carpeta `./test` con el archivo de prueba `monkey.spec.js`
-- El archivo de configuración `playwright.config.js`
-- El archivo `package.json` con las dependencias necesarias. NO deben incluir el `package-lock.json` ni el directorio `./node_modules`
-- Un archivo `README.md` con:
-  - Los pasos de instalación de Playwright y sus dependencias
-  - Las instrucciones para ejecutar las pruebas
-  - Cualquier consideración adicional necesaria
-
-### 4. Criterios de evaluación:
-
-- El zip tiene un archivo README completo y el código solicitado está correctamente estructurado. **[5 puntos]**
-- El método `randomEvent()` funciona de acuerdo con la especificación dada y utiliza correctamente la API de Playwright. **[45 puntos]**
-- El monkey es funcional, maneja los errores apropiadamente y sigue las mejores prácticas de Playwright. **[50 puntos]**
-
-**La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y la calidad de cada uno de acuerdo con la rúbrica establecida.**
+1. Las dos acciones de su tipo existen y cada una se ejecuta al menos una vez con resultado `ok`.
+2. Dos ejecuciones con esa configuración sobre la misma tienda producen la misma secuencia de eventos
+   (acción, URL antes y después, y resultado de cada evento).
