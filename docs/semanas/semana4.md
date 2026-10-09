@@ -1,93 +1,152 @@
-# Proyecto Pruebas automatizadas
+# Proyecto · Semana 4: Pruebas de reconocimiento
 
-## Semana 4: Pruebas de reconocimiento con Monkeys y Rippers
+> **Resumen.** El equipo explora de forma automática el panel de administración de la **versión
+> base** de la ABP con dos herramientas de reconocimiento, un _monkey_ y un _ripper_, con ejecuciones
+> reproducibles mediante semillas. Entrega un _release_ del repositorio (`semana-4`), un reporte por
+> herramienta, la estrategia de pruebas actualizada y un video. Las [reglas de juego](reglas) del
+> proyecto aplican a esta semana.
 
-## Descripción de la semana
+## Contexto
 
-En esta semana del proyecto *TSDC*, el equipo aplicará técnicas de **pruebas de reconocimiento (exploración automática)** utilizando herramientas basadas en _Monkeys_ y _Rippers_ sobre la Aplicación Bajo Pruebas (ABP).
+Las pruebas exploratorias de la semana 1 dependieron del criterio y del tiempo de cada persona.
+_TSDC_ quiere saber cuánto puede aportar la exploración automática, sin intervención humana: una
+herramienta que genera eventos aleatorios (_monkey_) y otra que recorre la interfaz de forma
+sistemática (_ripper_). Su equipo ejecutará las dos sobre la ABP, comparará lo que encuentra cada
+una e incorporará los resultados a la estrategia de pruebas.
 
-El propósito es que el equipo:
+## Objetivos de aprendizaje
 
-- Ejecute pruebas automatizadas sin intervención humana para identificar comportamientos inesperados.
-- Compare dos enfoques de exploración automática: generación aleatoria de eventos (_Monkey_) y exploración estructurada del DOM (_Ripper_).
-- Analice el valor práctico de estas herramientas dentro de una estrategia de pruebas.
-- Integre los hallazgos obtenidos en la actualización de la estrategia de pruebas.
+1. Configurar y ejecutar pruebas de reconocimiento con un _monkey_ y un _ripper_ sobre la ABP.
+2. Garantizar la reproducibilidad de las ejecuciones mediante semillas.
+3. Comparar la exploración aleatoria y la exploración sistemática con base en sus resultados.
+4. Actualizar la estrategia de pruebas con base en la retroalimentación y en los resultados.
 
+## Preparación
 
-## Resumen de las actividades
+1. Levante la ABP desde la raíz del repositorio con `npm run abp:up`. Esta semana se usa la
+   **versión base**, publicada en la URL `ABP_URL` del archivo `.env`.
+2. Agregue los dos módulos con el _workflow_ **Setup Herramientas Reconocimiento** del repositorio
+   (_Actions → Run workflow_): `monkey` y `ripper`.
+3. Instale y prepare cada módulo desde la raíz del repositorio: `npm run <módulo>:install` y
+   `npm run <módulo>:prepare`.
+4. Lea el `README.md` de cada módulo, en particular la sección **Explorar la ABP**: indica cómo
+   apuntar la herramienta a la ABP, dónde iniciar sesión y cómo obtener las credenciales del archivo
+   `.env`.
 
-1. Configure y ejecute pruebas de reconocimiento utilizando la herramienta [monkey-cypress](https://github.com/Uniandes-MISW4103/proyecto-monkey-base). Debe seguir las instrucciones del repositorio, garantizar la reproducibilidad mediante el uso de semillas y documentar la configuración y parámetros utilizados en cada ejecución. En caso de realizar modificaciones al código base, estas deben quedar registradas.
+## Actividades
 
-2. Configure y ejecute pruebas de reconocimiento utilizando la herramienta [RIPuppet](https://github.com/Uniandes-MISW4103/proyecto-ripper-base). Debe garantizar la correcta configuración, ejecución reproducible mediante semillas y la documentación de cualquier modificación realizada sobre el código base.
+1. **_Monkey_.** Configure el _monkey_ para que explore la versión base de la ABP: que inicie sesión
+   con el administrador del archivo `.env` antes de la primera acción y explore el panel de
+   administración (`/ghost/`). Defina los parámetros de la ejecución (cantidad de eventos de cada
+   tipo y espera entre eventos).
+2. **_Ripper_.** Configure el _ripper_ de la misma forma: que inicie sesión con el administrador del
+   archivo `.env` antes de explorar y recorra el panel de administración. Defina la profundidad de la
+   exploración y los demás parámetros.
+3. **Cambios al código base.** Documente en el `README.md` de cada módulo todo cambio que haga a su
+   código base (por ejemplo, el inicio de sesión): qué se cambió y para qué. Las URL y las
+   credenciales de la ABP se obtienen solo del archivo `.env`.
+4. **Ejecuciones con varias semillas.** Ejecute cada herramienta con al menos tres semillas
+   distintas (`npm run monkey:test` y `npm run ripper:test`). Cada semilla reportada debe ser
+   reproducible: dos ejecuciones con la misma semilla y los mismos parámetros recorren la misma
+   secuencia de eventos. Elija como **semilla principal** de cada herramienta la de la ejecución más
+   relevante (por ejemplo, la que encontró un defecto) y déjela configurada y documentada, con sus
+   parámetros, en el `README.md` del módulo.
+5. **Defectos.** Analice los reportes, capturas y videos que generan las herramientas. Reporte cada
+   defecto de la ABP en los _issues_ del repositorio con la plantilla **Reporte Incidencia**,
+   indicando la herramienta y la semilla que lo reproducen. Si una herramienta no encuentra defectos,
+   justifique por qué con base en lo que exploró.
+6. **Análisis comparativo.** Compare el _monkey_ y el _ripper_: ventajas y desventajas de cada uno,
+   observadas en sus ejecuciones sobre la ABP.
+7. **Estrategia.** Actualice la estrategia de pruebas de la semana 3: aplique la retroalimentación
+   recibida, incorpore las pruebas de reconocimiento y ajuste las decisiones con base en los
+   resultados de esta semana. El documento que se entrega es la estrategia completa, con esas
+   mejoras incluidas, y no solo la lista de cambios.
+8. **Video.** Grabe un video de máximo 15 minutos que presente los cambios a la estrategia y el
+   análisis comparativo de las dos herramientas.
+9. **Entrega.** Publique un
+   [_release_](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release)
+   del repositorio con el _tag_ `semana-4`.
 
-3. Recolecte y documente los resultados de ejecución de ambas herramientas. Para cada herramienta, registre las semillas utilizadas, evidencias de ejecución (videos o reportes) y las incidencias nuevas identificadas o, en su defecto, una justificación argumentada de su ausencia.
+## Entregables
 
-4. Realice un análisis comparativo entre _Monkey_ y _Ripper_, identificando ventajas y desventajas de cada herramienta con base en la experiencia obtenida durante la ejecución y en los resultados observados.
+| Entregable | Formato | Contenido |
+|---|---|---|
+| Código de las herramientas | _Release_ `semana-4` del repositorio del equipo | Los dos módulos agregados por el _workflow_, con el inicio de sesión, su configuración y sus `README.md` actualizados |
+| Reporte del _monkey_ | PDF | Ver [Contenido de los reportes](#contenido-de-los-reportes) |
+| Reporte del _ripper_ | PDF | Ver [Contenido de los reportes](#contenido-de-los-reportes) |
+| Estrategia de pruebas actualizada | PDF, elaborado en la plantilla de la semana 3 | La estrategia completa, con la retroalimentación de la semana 3 aplicada, las mejoras de esta semana y la lista de cambios |
+| Video | Enlace, máximo 15 minutos | Los cambios a la estrategia y el análisis comparativo |
 
-5. Actualice la estrategia de pruebas definida en la semana anterior, incorporando el uso de pruebas de reconocimiento, los ajustes derivados de la retroalimentación recibida y decisiones explícitas sustentadas en los resultados obtenidos durante la ejecución.
+El repositorio contiene solo el código necesario para ejecutar las pruebas, en archivos de texto
+plano: ni documentos, ni imágenes, ni videos, ni dependencias, ni resultados de ejecución. Los enlaces
+deben abrirse sin solicitar permisos: públicos o con acceso para cuentas `@uniandes.edu.co`. El
+contenido del video posterior al minuto 15 no se evalúa.
 
-6. Elabore un video en el que se expliquen los cambios realizados a la estrategia de pruebas y el análisis comparativo entre las herramientas utilizadas. El video debe tener una duración máxima de **15 minutos**.
+### Contenido de los reportes
 
+Cada herramienta tiene su propio reporte con:
 
-## Detalles de la entrega
+1. Integrantes del equipo.
+2. Ejecuciones: semilla y parámetros de cada una de las ejecuciones (al menos tres semillas), con
+   enlace a la evidencia que genera la herramienta (reporte, capturas o video), y la semilla principal
+   con el motivo de su elección.
+3. Defectos: enlace a la incidencia de cada defecto encontrado, o la justificación de por qué la
+   herramienta no encontró defectos.
+4. Ventajas y desventajas de la herramienta observadas en sus ejecuciones.
 
-> [!NOTE]  
-> Los videos y documentos que incluyan en su entrega deben estar alojado en algún gestor de contenido (OneDrive Uniandes, Youtube), deben ser públicos o deben permitir el acceso a cuentas de la Universidad de Los Andes (`@uniandes.edu.co`). Para el caso de documentos, estos deben estar en formato `.pdf`.
+### Lista de cambios de la estrategia
 
-La entrega debe realizarse mediante un _release_ en el repositorio asignado por el equipo docente en la organización [Uniandes-MISW4103](https://github.com/orgs/Uniandes-MISW4103/), siguiendo la guía [Crear un release en GitHub](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release).
-
-El _release_ debe incluir la carpeta `./reconocimiento` con el código fuente funcional de las herramientas _Monkey_ y _Ripper_, asegurando que las ejecuciones sean reproducibles mediante el uso de semillas, así como los archivos `README.md` actualizados cuando se hayan realizado modificaciones, incluyendo instrucciones claras de instalación, configuración y ejecución.
-
-Adicionalmente, el _release_ debe incluir **dos documentos en formato `.pdf`**, uno para cada herramienta (`reporte-monkey.pdf` y `reporte-ripper.pdf`). Cada uno de estos documentos debe incluir la siguiente información:
-
-- Resultados de ejecución de la herramienta correspondiente, incluyendo semillas utilizadas
-- Enlaces a evidencias y enlaces a incidencias nuevas identificadas o su respectiva justificación.
-- Análisis de ventajas y desventajas de la herramienta, basado en la experiencia obtenida durante la ejecución.
-
-Por otra parte, en la plataforma del curso se debe entregar la estrategia de pruebas actualizada en formato `.pdf`, la cual debe reflejar la incorporación de pruebas de reconocimiento, los ajustes derivados de la retroalimentación previa y la coherencia con los objetivos, el presupuesto, el TNT y la distribución de esfuerzo. También se debe entregar el enlace al video, el cual debe estar alojado en una plataforma externa y ser accesible públicamente o mediante cuentas institucionales.
-
----
+La estrategia actualizada termina con una lista de cambios. Cada cambio indica la sección modificada,
+qué cambió y su motivo: un comentario de la retroalimentación de la semana 3 o un resultado de esta
+semana.
 
 ## Criterios de evaluación
 
-> [!NOTE]
-> La evaluación se realizará con base en la completitud, coherencia interna, trazabilidad explícita y evidencia verificable de cada uno de los criterios definidos en esta rúbrica.
-> Entregas por fuera del horario establecido puede incurrir en una penalización sobre la calificación final de la actividad.
+La evaluación sigue las [reglas de juego](reglas) del proyecto, incluidas sus _fatalities_.
 
-### 0. Fatalities
+### 1. _Monkey_ [30 puntos]
 
-- No se crea un _release_ en el repositorio dentro del plazo establecido con todos los entregables requeridos. **[-15 puntos]**
-- La implementación de _Monkey_ no utiliza el código base indicado en `./reconocimiento/README.md`. **[-30 puntos]**
-- La implementación de _Ripper_ no utiliza el código base indicado en `./reconocimiento/README.md`. **[-30 puntos]**
-- Se incluyen archivos multimedia, dependencias o documentos no permitidos dentro del repositorio. **[-20 puntos]**
-- Algún documento entregado no está en formato `.pdf`. **[-10 puntos]**
-- El video no es accesible públicamente o no permite acceso institucional. **[-10 puntos]**
+- **1.1 Ejecución [10 puntos].** El _monkey_ inicia sesión con el administrador del archivo `.env` y
+  explora el panel de administración de la versión base. Con cada semilla del reporte, dos ejecuciones
+  con los mismos parámetros recorren la misma secuencia de eventos.
+- **1.2 `README.md` [5 puntos].** El `README.md` del módulo indica la semilla principal, los
+  parámetros de la ejecución, los comandos para ejecutarla y cada cambio al código base con su
+  propósito.
+- **1.3 Ejecuciones y defectos [10 puntos].** El reporte presenta al menos tres semillas, cada una
+  con sus parámetros y su evidencia, e indica la semilla principal y el motivo de su elección. Enlaza
+  la incidencia de cada defecto encontrado o justifica por qué la herramienta no encontró defectos.
+- **1.4 Ventajas y desventajas [5 puntos].** El reporte presenta dos ventajas y dos desventajas del
+  _monkey_ observadas en sus ejecuciones sobre la ABP.
 
+### 2. _Ripper_ [30 puntos]
 
-### 1. Pruebas de reconocimiento con Monkey **[30 puntos]**
+- **2.1 Ejecución [10 puntos].** El _ripper_ inicia sesión con el administrador del archivo `.env` y
+  recorre el panel de administración de la versión base. Con cada semilla del reporte, dos ejecuciones
+  con los mismos parámetros recorren la misma secuencia de eventos.
+- **2.2 `README.md` [5 puntos].** El `README.md` del módulo indica la semilla principal, los
+  parámetros de la ejecución, los comandos para ejecutarla y cada cambio al código base con su
+  propósito.
+- **2.3 Ejecuciones y defectos [10 puntos].** El reporte presenta al menos tres semillas, cada una
+  con sus parámetros y su evidencia, e indica la semilla principal y el motivo de su elección. Enlaza
+  la incidencia de cada defecto encontrado o justifica por qué la herramienta no encontró defectos.
+- **2.4 Ventajas y desventajas [5 puntos].** El reporte presenta dos ventajas y dos desventajas del
+  _ripper_ observadas en sus ejecuciones sobre la ABP.
 
-- El código en `./reconocimiento/misw-4103-monkey` permite la ejecución correcta y la reproducción de resultados mediante semillas documentadas. **[10 puntos]**
-- El archivo `README.md` describe de forma completa los pasos de instalación, configuración, ejecución y los parámetros utilizados. **[5 puntos]**
-- El documento `reporte-monkey.pdf` incluye resultados de ejecución con semillas, evidencias y enlaces a incidencias o su justificación. **[10 puntos]**
-- El análisis de ventajas y desventajas en `reporte-monkey.pdf` es coherente con los resultados obtenidos durante la ejecución. **[5 puntos]**
+### 3. Estrategia de pruebas [30 puntos]
 
+- **3.1 Pruebas de reconocimiento [10 puntos].** La tabla TNT y la distribución del esfuerzo incluyen
+  las pruebas de reconocimiento, con su propósito, los objetivos que apoyan y las funcionalidades que
+  cubren.
+- **3.2 Retroalimentación [10 puntos].** La estrategia entregada incluye la retroalimentación de la
+  semana 3 aplicada, y la lista de cambios relaciona cada comentario con el cambio que lo atiende y la
+  sección modificada.
+- **3.3 Decisiones basadas en resultados [10 puntos].** Los cambios de la estrategia motivados por
+  esta semana citan el resultado del _monkey_ o del _ripper_ que los justifica (por ejemplo, un
+  defecto encontrado o una parte de la ABP que no se exploró).
 
-### 2. Pruebas de reconocimiento con Ripper **[30 puntos]**
+### 4. Video [10 puntos]
 
-- El código en `./reconocimiento/misw-4103-ripper` permite la ejecución correcta y la reproducción de resultados mediante semillas documentadas. **[10 puntos]**
-- El archivo `README.md` describe de forma completa los pasos de instalación, configuración, ejecución y los parámetros utilizados. **[5 puntos]**
-- El documento `reporte-ripper.pdf` incluye resultados de ejecución con semillas, evidencias y enlaces a incidencias o su justificación. **[10 puntos]**
-- El análisis de ventajas y desventajas en `reporte-ripper.pdf` es coherente con los resultados obtenidos durante la ejecución. **[5 puntos]**
-
-
-### 3. Estrategia de pruebas **[30 puntos]**
-
-- La estrategia incorpora pruebas de reconocimiento indicando su propósito, alcance y relación con los objetivos del proyecto. **[10 puntos]**
-- Se evidencia la incorporación de la retroalimentación de la semana anterior mediante cambios explícitos y trazables. **[10 puntos]**
-- Las decisiones incluidas en la estrategia están justificadas con base en los resultados obtenidos durante la ejecución. **[10 puntos]**
-
-
-### 4. Video **[10 puntos]**
-
-- El video presenta de forma estructurada los cambios realizados a la estrategia de pruebas. **[5 puntos]**
-- El video incluye el análisis comparativo entre _Monkey_ y _Ripper_ alineado con los resultados obtenidos. **[5 puntos]**
+- **4.1 Cambios a la estrategia [5 puntos].** El video presenta los cambios de la estrategia, cada
+  uno con su motivo.
+- **4.2 Análisis comparativo [5 puntos].** El video compara el _monkey_ y el _ripper_ con base en los
+  resultados de sus ejecuciones y concluye para qué le sirve cada uno a _TSDC_.

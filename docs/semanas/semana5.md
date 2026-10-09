@@ -1,94 +1,144 @@
-# Proyecto Pruebas automatizadas
+# Proyecto · Semana 5: Pruebas de extremo a extremo (E2E)
 
-## Semana 5: Pruebas E2E
+> **Resumen.** El equipo automatiza cuarenta escenarios E2E distintos sobre la **versión base** de la
+> ABP: veinte en una herramienta basada en scripts y veinte en Kraken, con los patrones _Page Object_
+> y _Given-When-Then_. Entrega un _release_ del repositorio (`semana-5`) y un reporte de resultados.
+> Las [reglas de juego](reglas) del proyecto aplican a esta semana.
 
-### Descripción de la semana
+## Contexto
 
-En esta semana del proyecto de *TSDC*, el objetivo es automatizar pruebas funcionales de extremo a extremo (E2E) sobre la Aplicación Bajo Prueba (ABP), con el fin de mejorar la confiabilidad, repetibilidad y trazabilidad de los escenarios definidos.
+Las pruebas exploratorias y de reconocimiento de las semanas anteriores dejaron un conocimiento de
+la ABP y una estrategia de pruebas, pero su ejecución depende de las personas: cambia de una
+ejecución a otra y no deja un registro sistemático de resultados. _TSDC_ necesita escenarios
+funcionales que se ejecuten de forma repetible y quiere comparar dos enfoques de automatización E2E
+antes de adoptar uno.
 
-Las pruebas manuales E2E presentan limitaciones como la variabilidad en la ejecución y la falta de registro sistemático de resultados. Por ello, se espera que el equipo implemente pruebas automatizadas que repliquen escenarios funcionales definidos, sean ejecutables de forma consistente sobre la ABP, y permitan comparar herramientas modernas de automatización E2E. Para ello, se trabajará con dos enfoques:
+## Objetivos de aprendizaje
 
-- Herramientas basadas en scripts: [Cypress](https://www.cypress.io), [Puppeteer](https://pptr.dev) o [Playwright](https://playwright.dev).
-- Enfoque BDT utilizando [Kraken](https://thesoftwaredesignlab.github.io/Kraken/).
+1. Diseñar escenarios E2E con un resultado esperado verificable a partir de las funcionalidades de
+   la estrategia de pruebas.
+2. Implementar escenarios en una herramienta basada en scripts y en una herramienta de
+   _Behavior-Driven Testing_ (Kraken).
+3. Aplicar los patrones _Page Object_ y _Given-When-Then_.
+4. Comparar las dos herramientas con base en los resultados de ejecución.
 
-El resultado esperado es un conjunto de escenarios E2E implementados de forma equivalente en ambas herramientas, junto con un reporte estructurado de resultados que permita analizar su ejecución.
+## Preparación
 
+1. Levante la ABP desde la raíz del repositorio con `npm run abp:up`. Esta semana se usa la
+   **versión base**, publicada en la URL `ABP_URL` del archivo `.env`.
+2. Agregue los dos módulos con el _workflow_ **Setup Frameworks Automatización** del repositorio
+   (_Actions → Run workflow_):
+   - una herramienta basada en scripts: `cypress`, `playwright` o `puppeteer`;
+   - `kraken`.
+3. Instale y prepare cada módulo desde la raíz del repositorio: `npm run <módulo>:install` y
+   `npm run <módulo>:prepare`.
+4. Lea el `README.md` de cada módulo: explica cómo las pruebas obtienen la URL y las credenciales de
+   la ABP del archivo `.env` y cómo se ejecutan.
 
-### Resumen de las actividades
+## Actividades
 
-> [!NOTE]
-> Los valores de configuración (por ejemplo: URL base, puertos, credenciales de prueba) deben estar centralizados en un único punto de configuración (variables de entorno, archivos `.env`, `.yml` o configuración propia de las herramientas). No se permite la duplicación de estos valores en múltiples archivos.
+1. **Funcionalidades.** Seleccione cinco funcionalidades de su estrategia de pruebas e identifíquelas
+   como `FUN-01` a `FUN-05`.
+2. **Escenarios.** Defina cuarenta escenarios distintos, cada uno asociado a una de las cinco
+   funcionalidades y con un resultado esperado verificable. Identifíquelos como `ESC-01` a `ESC-20`
+   (herramienta basada en scripts) y `ESC-21` a `ESC-40` (Kraken). El inicio de sesión no es un
+   escenario cuando su único propósito es habilitar otro: es una precondición.
+3. **Herramienta basada en scripts.** Implemente los escenarios `ESC-01` a `ESC-20`. El nombre de
+   cada prueba empieza con su identificador (por ejemplo, `ESC-07 Crear una publicación con
+   etiqueta`).
+4. **Kraken.** Implemente los escenarios `ESC-21` a `ESC-40`. El nombre de cada escenario empieza con
+   su identificador.
+5. **Patrones.** En las dos herramientas:
+   - **_Page Object_**: las pruebas no usan selectores. Toda interacción con la interfaz se hace a
+     través de clases ubicadas en la carpeta `pages/` del módulo.
+   - **_Given-When-Then_**: cada escenario tiene exactamente un bloque _Given_ (precondiciones), uno
+     _When_ (acciones) y uno _Then_ (validaciones), en ese orden. En la herramienta basada en scripts,
+     el cuerpo de la prueba se divide con los comentarios `// Given`, `// When` y `// Then`. En Kraken
+     son los pasos del escenario; `And` y `But` continúan el bloque anterior.
+6. **Configuración.** Las pruebas obtienen la URL y las credenciales de la ABP del archivo `.env` del
+   repositorio, como indica el `README.md` de cada módulo. Ningún otro archivo contiene esos valores.
+7. **Ejecución.** Ejecute los cuarenta escenarios sobre la versión base. Cada prueba debe terminar
+   como **exitosa** (el oráculo confirmó el resultado esperado) o **fallida** (el oráculo detectó un
+   resultado distinto del esperado). Una prueba que no puede ejecutarse completa (error de sintaxis,
+   selector inexistente, tiempo de espera agotado) está mal implementada: corríjala antes de
+   entregar. Cada prueba fallida señala un posible defecto de la ABP: confírmelo y repórtelo en los
+   _issues_ del repositorio con la plantilla **Reporte Incidencia**, indicando el identificador del
+   escenario. Los escenarios deben detectar al menos cinco defectos de la ABP.
+8. **Documentación.** Actualice el `README.md` de cada módulo con los comandos que ejecutan sus
+   escenarios. No es necesario describir cómo se despliega la ABP.
+9. **Entrega.** Publique un
+   [_release_](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release)
+   del repositorio con el _tag_ `semana-5` y elabore el reporte de resultados.
 
-1. Seleccione un mínimo de cinco (5) funcionalidades y defina al menos veinte (20) escenarios de prueba E2E. Cada escenario debe tener identificador único, estar asociado a una funcionalidad y describir claramente el comportamiento esperado mediante un resultado verificable.
+## Entregables
 
-2. Implemente los veinte (20) escenarios utilizando una herramienta basada en scripts ([Cypress](https://www.cypress.io), [Puppeteer](https://pptr.dev) o [Playwright](https://playwright.dev)), asegurando su ejecución automatizada completa sobre la ABP. Un escenario se considera correctamente implementado cuando se ejecuta sin errores y valida el resultado esperado.
+| Entregable | Formato | Contenido |
+|---|---|---|
+| Código de las pruebas | _Release_ `semana-5` del repositorio del equipo | Los dos módulos agregados por el _workflow_, con sus escenarios y sus `README.md` actualizados |
+| Reporte de resultados | PDF | Ver [Contenido del reporte](#contenido-del-reporte) |
 
-3. Implemente los mismos veinte (20) escenarios utilizando [Kraken](https://thesoftwaredesignlab.github.io/Kraken/), garantizando equivalencia funcional con la otra herramienta (mismo flujo, validaciones y resultado esperado).
+El repositorio contiene solo el código necesario para ejecutar las pruebas, en archivos de texto
+plano: ni documentos, ni imágenes, ni videos, ni dependencias, ni resultados de ejecución.
 
-4. Aplique en ambas herramientas los patrones _Page Object_ y _Given-When-Then_. El patrón _Page Object_ debe evidenciar separación entre lógica de interacción con la interfaz y lógica de prueba, y _Given-When-Then_ debe reflejar explícitamente precondiciones, acciones y validaciones.
+### Contenido del reporte
 
-5. Configure las herramientas en el repositorio del equipo en la organización [Uniandes-MISW4103](https://github.com/orgs/Uniandes-MISW4103/) y verifique la ejecución exitosa de todos los escenarios sobre la ABP.
+1. Integrantes del equipo.
+2. Funcionalidades: identificador (`FUN-##`), nombre y descripción de cada una de las cinco.
+3. Tabla de escenarios, con una fila por cada uno de los cuarenta: identificador (`ESC-##`),
+   herramienta, funcionalidad, descripción, resultado esperado y resultado obtenido (exitoso o
+   fallido).
+4. Evidencia de ejecución de cada herramienta: una captura de la salida de la ejecución (terminal o
+   reporte de la herramienta) en la que se ven sus veinte escenarios y su resultado.
+5. Defectos: los defectos de la ABP encontrados (al menos cinco), cada uno con el identificador del
+   escenario que lo detectó y el enlace a su incidencia.
+6. Análisis comparativo de las dos herramientas: ventajas, desventajas y conclusión.
 
-6. Documente en los archivos `README.md` de cada herramienta los pasos necesarios para configurar el despliegue de la ABP (por ejemplo, uso de contenedores, puertos y variables de entorno) y ejecutar los escenarios de prueba. No es necesario incluir pasos de instalación de la ABP.
+## Criterios de evaluación
 
+La evaluación sigue las [reglas de juego](reglas) del proyecto, incluidas sus _fatalities_.
 
-### Detalles de la entrega
+### 1. Herramienta basada en scripts [40 puntos]
 
-> [!NOTE]  
-> Los videos y documentos que incluyan en su entrega deben estar alojado en algún gestor de contenido (OneDrive Uniandes, Youtube), deben ser públicos o deben permitir el acceso a cuentas de la Universidad de Los Andes (`@uniandes.edu.co`). Para el caso de documentos, estos deben estar en formato `.pdf`.
+- **1.1 Escenarios [20 puntos, 1 por escenario].** El nombre de cada uno de los veinte escenarios
+  (`ESC-01` a `ESC-20`) empieza con su identificador, por ejemplo `ESC-07 Crear una publicación con
+  etiqueta`. Cada escenario valida su resultado esperado con al menos una aserción y termina como
+  exitoso, o como fallido con su defecto reportado como incidencia.
+- **1.2 _Page Object_ [10 puntos, 0,5 por escenario].** Los veinte escenarios interactúan con la
+  interfaz solo a través de clases de la carpeta `pages/`: los archivos de las pruebas no contienen
+  selectores.
+- **1.3 _Given-When-Then_ [10 puntos, 0,5 por escenario].** El cuerpo de cada uno de los veinte
+  escenarios tiene exactamente un bloque `// Given`, uno `// When` y uno `// Then`, en ese orden.
 
-La entrega debe realizarse mediante un _release_ en el repositorio del equipo (ver [cómo crear un release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release)), el cual debe permitir la ejecución completa de los escenarios y la validación de todos los artefactos sin requerir modificaciones manuales adicionales.
+### 2. Kraken [40 puntos]
 
-En la carpeta `./e2e` se debe incluir la implementación de los escenarios de prueba en dos herramientas: una herramienta basada en scripts (Cypress, Playwright o Puppeteer) y Kraken. En ambas implementaciones, los escenarios deben ser equivalentes, compartir el mismo identificador y validar el mismo comportamiento funcional. Todos los escenarios definidos deben estar implementados y deben poder ejecutarse directamente usando la configuración documentada.
+- **2.1 Escenarios [20 puntos, 1 por escenario].** El nombre de cada uno de los veinte escenarios
+  (`ESC-21` a `ESC-40`) empieza con su identificador. Cada escenario valida su resultado esperado en
+  un paso _Then_ y termina como exitoso, o como fallido con su defecto reportado como incidencia.
+- **2.2 _Page Object_ [10 puntos, 0,5 por escenario].** Las definiciones de los pasos de los veinte
+  escenarios interactúan con la interfaz solo a través de clases de la carpeta `pages/`: no contienen
+  selectores.
+- **2.3 _Given-When-Then_ [10 puntos, 0,5 por escenario].** Los pasos de cada uno de los veinte
+  escenarios forman exactamente un bloque _Given_, uno _When_ y uno _Then_, en ese orden.
 
-Cada herramienta debe incluir un archivo `README.md` que permita a un tercero ejecutar las pruebas sin ambigüedad. Este archivo debe documentar claramente:
+### 3. Reporte de resultados [20 puntos]
 
-- La configuración necesaria para el despliegue de la ABP (por ejemplo: puertos, variables de entorno, uso de contenedores).
-- Los comandos necesarios para ejecutar los escenarios de prueba.
-
-Adicionalmente, debe incluir un reporte de resultados en formato `.pdf` (por ejemplo, `reporte-semana-5.pdf`), el cual consolide la información necesaria para evaluar la actividad. Este reporte debe contener:
-
-- Información de los integrantes del equipo.
-- Listado de funcionalidades, cada una con identificador, nombre y descripción.
-- Una tabla con los veinte (20) escenarios de prueba, donde cada escenario incluya: Identificador del escenario, identificador de la funcionalidad asociada, tipo de prueba (E2E), descripción del escenario, resultado esperado, resultado obtenido en cada herramienta, y estado final (éxito o fallo).
-- Resultados de ejecución, incluyendo evidencia verificable (logs, capturas o enlaces externos) y un resumen cuantitativo (número de escenarios exitosos y fallidos por herramienta).
-- Un análisis comparativo entre la herramienta seleccionada y Kraken, incluyendo ventajas, desventajas y conclusiones basadas en los resultados obtenidos.
-
----
-
-### Criterios de evaluación
-
-> [!NOTE]
-> La evaluación se realizará con base en la completitud, coherencia interna, trazabilidad explícita y evidencia verificable de cada uno de los criterios definidos en esta rúbrica.
-> Entregas por fuera del horario establecido puede incurrir en una penalización sobre la calificación final de la actividad.
-
-
-#### 0. Fatalities
-
-- No se crea un _release_ en el repositorio dentro del plazo establecido con todos los entregables requeridos. **[-15 puntos]**
-- Alguna herramienta no ejecuta las pruebas sobre la configuración indicada en su `README.md`. **[-20 puntos por herramienta]**
-- Los archivos `README.md` no permiten configurar la ABP ni ejecutar las pruebas. **[-20 puntos por herramienta]**
-- Los valores de configuración (URL, puertos, credenciales) no están centralizados y requieren modificaciones manuales en múltiples archivos para ejecutar las pruebas. **[-20 puntos]**
-- Se incluyen archivos innecesarios en el repositorio (por ejemplo: `node_modules`, binarios, documentos distintos al `.pdf`). **[-20 puntos]**
-
-
-#### 1. Implementación en herramienta basada en scripts **[40 puntos]**
-
-- Se implementan y ejecutan correctamente veinte (20) escenarios E2E, cada uno sin errores y validando su resultado esperado. Cada escenario tiene identificador único y consistente con el reporte (1 punto por escenario) **[20 puntos]**
-- Uso correcto del patrón _Page Object_, evidenciado en la separación entre lógica de interfaz y lógica de prueba. **[10 puntos]**
-- Uso correcto del patrón _Given-When-Then_, evidenciado en la estructura de los escenarios. **[10 puntos]**
-
-
-#### 2. Implementación en Kraken **[40 puntos]**
-
-- Se implementan y ejecutan correctamente veinte (20) escenarios equivalentes a los de la otra herramienta. Cada escenario tiene identificador único y consistente con el reporte (1 punto por escenario) **[20 puntos]**
-- Uso correcto del patrón _Page Object_, evidenciado en la separación entre lógica de interfaz y lógica de prueba. **[10 puntos]**
-- Uso correcto del patrón _Given-When-Then_, evidenciado en la estructura de los escenarios. **[10 puntos]**
-
-
-#### 3. Reporte de resultados **[20 puntos]**
-
-- Lista de mínimo cinco (5) funcionalidades completas. (1 punto por funcionalidad) **[5 puntos]**
-- Tabla de veinte (20) escenarios completa y consistente con las implementaciones. (0.25 puntos por escenario) **[5 puntos]**
-- Resultados de ejecución documentados para cada escenario en ambas herramientas, con evidencia verificable. **[5 puntos]**
-- Análisis comparativo de ambas herramientas (pros y contras) basado en los resultados obtenidos. **[5 puntos]**
+- **3.1 Funcionalidades [5 puntos, 1 por funcionalidad].** Las cinco funcionalidades tienen
+  identificador (`FUN-##`), nombre y descripción.
+- **3.2 Tabla de escenarios [5 puntos].** La tabla contiene los cuarenta escenarios con todos sus
+  campos diligenciados y con los mismos identificadores del código.
+- **3.3 Evidencia de ejecución [2 puntos].**
+  - **[1 punto]** El reporte incluye una captura de la salida de la ejecución de la herramienta
+    basada en scripts (terminal o reporte de la herramienta) en la que se ven los veinte escenarios y
+    su resultado.
+  - **[1 punto]** El reporte incluye una captura de la salida de la ejecución de Kraken (terminal o
+    reporte de la herramienta) en la que se ven los veinte escenarios y su resultado.
+- **3.4 Defectos [5 puntos, 1 por defecto].** El reporte presenta cinco defectos de la ABP detectados
+  por escenarios fallidos. Cada defecto indica el identificador del escenario que lo detectó y enlaza
+  su incidencia en el repositorio, reportada con la plantilla **Reporte Incidencia**.
+- **3.5 Análisis comparativo [3 puntos].**
+  - **[1 punto]** El análisis presenta dos ventajas de cada herramienta, observadas al implementar o
+    ejecutar sus escenarios.
+  - **[1 punto]** El análisis presenta dos desventajas de cada herramienta, observadas al implementar
+    o ejecutar sus escenarios.
+  - **[1 punto]** La conclusión recomienda una de las dos herramientas para _TSDC_ y la justifica con
+    los resultados del reporte.

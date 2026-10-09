@@ -1,97 +1,300 @@
-# Proyecto Pruebas automatizadas
+# Proyecto · Semana 7: Generación de datos
 
-## Semana 7: Llegó la hora
+> **Resumen.** El equipo extiende los escenarios E2E de la **versión rc** con tres estrategias de
+> generación de datos (_data pool a-priori_, _data pool_ dinámico y pseudo-aleatoria) hasta obtener
+> ciento veinte escenarios generados que validan el manejo de datos válidos e inválidos. Entrega un
+> _release_ del repositorio (`semana-7`), un reporte de resultados y un video. Las
+> [reglas de juego](reglas) del proyecto aplican a esta semana.
 
-### Descripción de la Semana
+## Contexto
 
-En esta semana del proyecto *TSDC*, el equipo continúa fortaleciendo la automatización de pruebas de la ABP utilizando la versión `rc`. A partir de los resultados obtenidos previamente, el enfoque se centra en evaluar los mecanismos de validación de datos en formularios y el manejo de entradas inválidas.
+Los escenarios E2E de _TSDC_ ya se ejecutan sobre la versión rc, pero cada uno prueba un solo
+conjunto de datos. Los formularios de la ABP reciben entradas de todo tipo y _TSDC_ necesita saber
+cómo se comportan ante datos válidos, inválidos y en sus límites. Su equipo multiplicará los
+escenarios existentes con estrategias de generación de datos para encontrar defectos en la validación
+de entradas.
 
-El objetivo principal es ampliar los escenarios de prueba existentes mediante el uso de estrategias de generación de datos, de manera que se logre una mayor cobertura sobre posibles combinaciones de entrada, incluyendo casos inválidos. Se espera que al finalizar la actividad el equipo haya construido un conjunto robusto de escenarios automatizados que incorporen distintas estrategias de generación de datos y permitan identificar defectos relacionados con validación.
+## Objetivos de aprendizaje
 
----
+1. Diseñar esquemas de generación de datos a partir del modelo de dominio de la estrategia de
+   pruebas, con particiones de equivalencia y límites.
+2. Implementar las estrategias _data pool a-priori_, _data pool_ dinámico y pseudo-aleatoria en
+   escenarios E2E existentes.
+3. Definir oráculos de prueba para los datos generados.
+4. Identificar defectos de validación de datos en la ABP.
 
-### Resumen de las actividades
+## Conceptos clave
 
-> [!NOTE]  
-> El equipo cuenta actualmente con 20 escenarios E2E únicos, implementados en dos herramientas, una basada en scripts ([Cypress](https://www.cypress.io/), [Puppeteer](https://pptr.dev/) o [Playwright](https://playwright.dev/)) y [Kraken](https://thesoftwaredesignlab.github.io/Kraken/), para un total de 40 pruebas automatizadas. En esta actividad no se crean escenarios nuevos. Se deben reutilizar y adaptar los escenarios existentes para soportar regresión visual. Estos deben ser extendidos hasta alcanzar un total de 120 escenarios mediante estrategias de generación de datos.
+- **Estrategias y herramientas.**
 
-1. El equipo debe construir un total de 120 escenarios de validación a partir de los escenarios existentes. Estos nuevos escenarios deben generarse utilizando estrategias de generación de datos, asegurando que cada escenario representa una variación válida o inválida de entrada sobre las funcionalidades previamente automatizadas.
+  | Estrategia | Cuándo se generan los datos | Herramienta recomendada | Código |
+  |---|---|---|---|
+  | _Data pool a-priori_ | Antes de la ejecución; quedan en un archivo de texto (por ejemplo, JSON o CSV) en el repositorio | [Mockaroo](https://www.mockaroo.com/) o un modelo de IA | `APR` |
+  | _Data pool_ dinámico | Durante la ejecución, en cada corrida | La API de Mockaroo o un modelo de IA | `DIN` |
+  | Pseudo-aleatoria | Durante la ejecución, a partir de una semilla fija | [Faker](https://fakerjs.dev/) | `ALE` |
 
-2. Para la generación de datos, se deben utilizar las siguientes estrategias: _Data pool a-priori_, _Data pool dinámico (online)_ y _Pseudo-aleatoria (independiente)_. Cada una debe integrarse en los escenarios de prueba de forma explícita.
+  El equipo puede usar otras herramientas siempre que la generación de datos sea reproducible, se
+  ejecute con los scripts de la raíz del repositorio y respete las reglas del proyecto.
+- **Partición.** Cada partición de equivalencia o límite de los datos de un escenario tiene un
+  identificador `<código>-###`: el código de la estrategia y un consecutivo dentro del escenario (por
+  ejemplo, `APR-003`). El identificador se declara en los datos (en el registro del _data pool_, en la
+  tabla de ejemplos o en la definición del generador), y todos los datos de la misma partición
+  comparten el mismo identificador.
+- **Escenario generado.** Es la pareja de un escenario existente y una partición de sus datos, y se
+  escribe `ESC-## / <código>-###`. El identificador del escenario (`ESC-##`) es el de las semanas
+  anteriores y no cambia. Por ejemplo, el escenario `ESC-01` usa un _data pool a-priori_ con estos
+  cinco registros:
 
-3. Se debe utilizar el modelo de dominio definido en su estrategia de pruebas para diseñar los esquemas de generación de datos. En el caso de los _data pools_, los esquemas generadores deben soportar un oráculo de prueba que permita validar automáticamente los resultados esperados.
+  | Registro | Título | Partición |
+  |---|---|---|
+  | 1 | "Lanzamiento" (válido) | `APR-001` |
+  | 2 | "Agenda 2026" (válido) | `APR-001` |
+  | 3 | "" (vacío) | `APR-002` |
+  | 4 | 255 caracteres (límite válido) | `APR-003` |
+  | 5 | 256 caracteres (límite inválido) | `APR-004` |
 
-4. Los escenarios existentes deben ser reutilizados siempre que sea posible, adaptándolos para incorporar las estrategias de generación de datos. No se deben crear escenarios completamente independientes si pueden derivarse de los ya existentes.
+  Los registros 1 y 2 pertenecen a la misma partición, así que los cinco registros producen cuatro
+  escenarios generados: `ESC-01 / APR-001` a `ESC-01 / APR-004`. Varios datos de la misma partición
+  cuentan como un solo escenario generado.
+- **Identificadores en la salida de la ejecución.** Cada vez que una prueba usa un dato, la salida de
+  la ejecución (terminal o reporte de la herramienta) muestra juntos el identificador del escenario y
+  el de la partición. Si cada dato se ejecuta como una prueba propia, el nombre de la prueba empieza
+  con el identificador del escenario y agrega la partición, por ejemplo
+  `ESC-07 Crear una publicación (APR-003)`. Si una prueba recorre varios datos, imprime una línea como
+  `ESC-07 APR-003` al usar cada uno. Ver las [preguntas frecuentes](#preguntas-frecuentes).
+- **Oráculo de los datos generados.** Cada dato generado indica su partición y el resultado esperado
+  (por ejemplo, "se guarda" o "muestra el error del campo título"). La prueba valida ese resultado
+  esperado.
+- **Llaves de servicios externos.** Si una estrategia usa un servicio que requiere una llave (por
+  ejemplo, la API de Mockaroo o de un modelo de IA), el equipo decide cómo la configura y lo documenta
+  en el `README.md` del módulo. Si la ejecución la necesita, el equipo entrega la llave al equipo
+  docente. Se recomienda no subir llaves al repositorio.
 
-5. El equipo puede utilizar cualquier herramienta de generación de datos que considere adecuada, siempre que implemente las tres estrategias requeridas.
+## Preparación
 
-6. La distribución de los escenarios entre estrategias de generación de datos y herramientas de automatización E2E queda a discreción del equipo, pero debe documentarse claramente en el listado de escenarios.
+1. Levante la ABP desde la raíz del repositorio con `npm run abp:up`. Esta semana se usa la
+   **versión rc**, publicada en la URL `ABP_RC_URL` del archivo `.env`.
+2. Parta de los escenarios de la versión rc entregados en la semana 6, en las dos herramientas.
 
-El uso de las estrategias de generación de datos debe aplicarse sobre los datos propios del escenario bajo prueba y sus aserciones, no sobre precondiciones. En particular, funcionalidades como registro o login no se consideran escenarios válidos para esta actividad si su único propósito es habilitar la ejecución de otras pruebas.
+## Actividades
 
+1. **Esquemas de datos.** Con el modelo de dominio de su estrategia de pruebas, diseñe los esquemas
+   de los datos que reciben los escenarios: campos, tipos, restricciones, particiones de equivalencia
+   y límites.
+2. **_Data pool a-priori_.** Genere antes de la ejecución los datos, guardados en el repositorio (un
+   archivo de datos o una tabla de ejemplos), con el identificador de la partición y el resultado
+   esperado de cada uno.
+3. **_Data pool_ dinámico.** Implemente la generación de datos durante la ejecución para particiones
+   declaradas, de modo que cada dato generado indique el identificador de su partición y su resultado
+   esperado.
+4. **Pseudo-aleatoria.** Implemente la generación de datos a partir de una semilla fija, documentada
+   en el `README.md` del módulo, para particiones declaradas, de modo que cada dato generado indique
+   el identificador de su partición y su resultado esperado.
+5. **Escenarios generados.** Extienda los escenarios existentes con las tres estrategias hasta obtener
+   ciento veinte escenarios generados, repartidos entre estrategias y herramientas según el criterio
+   del equipo. Los escenarios conservan su identificador y sus patrones _Page Object_ y
+   _Given-When-Then_, y la salida de la ejecución muestra el identificador del escenario y el de la
+   partición de cada dato usado. Reutilice los escenarios existentes: no cree escenarios independientes si se pueden
+   derivar de uno existente. Los datos generados alimentan las entradas y las validaciones del
+   escenario, no sus precondiciones: un inicio de sesión o un registro cuyo único propósito es
+   habilitar otro escenario no cuenta como escenario generado.
+6. **Ejecución.** Ejecute los escenarios generados sobre la versión rc. Cada prueba termina como
+   exitosa o fallida; una prueba que no puede ejecutarse completa está mal implementada y se corrige.
+   Reporte cada defecto de la ABP en los _issues_ del repositorio con la plantilla **Reporte
+   Incidencia**, indicando el identificador del escenario generado. Los escenarios deben detectar al
+   menos diez defectos en el manejo de datos inválidos.
+7. **Documentación.** Actualice el `README.md` de cada módulo con la configuración de cada estrategia
+   (archivos de datos, llaves de servicios y semilla) y los comandos que ejecutan los escenarios
+   generados.
+8. **Video.** Grabe un video de máximo 15 minutos que muestre la ejecución de los escenarios generados
+   y explique el oráculo de cada estrategia en relación con sus pruebas.
+9. **Entrega.** Publique un
+   [_release_](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release)
+   del repositorio con el _tag_ `semana-7` y elabore el reporte de resultados.
 
-### Detalles de la entrega
+## Entregables
 
-> [!NOTE]  
-> Los videos y documentos que incluyan en su entrega deben estar alojado en algún gestor de contenido (OneDrive Uniandes, Youtube), deben ser públicos o deben permitir el acceso a cuentas de la Universidad de Los Andes (`@uniandes.edu.co`). Para el caso de documentos, estos deben estar en formato `.pdf`.
+| Entregable | Formato | Contenido |
+|---|---|---|
+| Código de las pruebas | _Release_ `semana-7` del repositorio del equipo | Los escenarios generados en las dos herramientas, los archivos del _data pool a-priori_ y los `README.md` actualizados |
+| Reporte de resultados | PDF | Ver [Contenido del reporte](#contenido-del-reporte) |
+| Video | Enlace, máximo 15 minutos | Ver [Contenido del video](#contenido-del-video) |
 
-La entrega debe realizarse mediante un _release_ en el repositorio del equipo (ver [cómo crear un release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release)), el cual debe contener los artefactos asociados a la generación y ejecución de los escenarios de prueba con estrategias de datos.
+El repositorio contiene solo el código y los datos necesarios para ejecutar las pruebas, en archivos
+de texto plano: ni documentos, ni imágenes, ni videos, ni dependencias, ni resultados de ejecución.
+Los enlaces deben abrirse sin solicitar permisos: públicos o con acceso para cuentas
+`@uniandes.edu.co`. El contenido del video posterior al minuto 15 no se evalúa.
 
-El repositorio debe contener la carpeta `./e2e`, en la cual se encuentren los escenarios de prueba automatizados que implementan las estrategias de generación de datos en la(s) herramienta(s) seleccionada(s). Cada escenario debe estar correctamente identificado y asociado a su correspondiente identificador. Además, las implementaciones deben aplicar los patrones vistos en el curso para pruebas E2E, específicamente _Page Object_ y _Given-When-Then_.
+### Contenido del reporte
 
-Los archivos README de cada herramienta deben ser actualizados para permitir la instalación, configuración y ejecución de las pruebas, incluyendo la configuración necesaria para las herramientas de generación de datos. Las instrucciones proporcionadas deben ser suficientes para ejecutar los escenarios sin ambigüedades.
+1. Integrantes del equipo.
+2. Funcionalidades: identificador (`FUN-##`), nombre y descripción de cada una de las cinco.
+3. Tabla de escenarios generados, con una fila por cada uno de los ciento veinte: escenario
+   (`ESC-##`), partición (`<código>-###`), herramienta, funcionalidad, estrategia, descripción de la
+   partición o el límite, resultado esperado y resultado obtenido (exitoso o fallido).
+4. Evidencia de ejecución de cada herramienta: una captura de la salida de la ejecución (terminal o
+   reporte de la herramienta) en la que se ven sus escenarios generados y su resultado.
+5. Estrategias: cómo se integró cada estrategia en los escenarios, la herramienta usada, el esquema
+   de los datos con sus particiones y límites, y el oráculo que valida el resultado esperado.
+6. Defectos: los defectos de la ABP encontrados (al menos diez), cada uno con el identificador del
+   escenario generado que lo detectó y el enlace a su incidencia.
 
-Adicionalmente, se debe incluir un reporte de resultados en formato PDF, el cual debe contener como mínimo:
+### Contenido del video
 
-- Información de los integrantes del equipo.
-- Listado de funcionalidades, cada una con identificador, nombre y descripción.
-- Una tabla con los veinte (20) escenarios de prueba, donde cada escenario incluya: identificador base del escenario, identificador de la funcionalidad asociada, tipo de prueba (E2E), descripción del escenario, estrategia de generación de datos utilizada, identificadores específicos de cada sub-escenario generado, resultado esperado, resultado obtenido y estado final (éxito o fallo).
-- Resultados de ejecución, incluyendo evidencia verificable (logs, capturas o enlaces externos) y un resumen cuantitativo con el número de escenarios exitosos y fallidos por herramienta.
-- Análisis de la implementación de las estrategias de generación de datos utilizadas, describiendo a alto nivel cómo se integró cada estrategia. Para los casos de _data pools_, se debe indicar explícitamente el oráculo de prueba que soporta el esquema de generación.
+1. Ejecución de los escenarios generados de cada herramienta, con sus resultados.
+2. Para cada estrategia, su oráculo: cómo se define el resultado esperado de cada partición y cómo
+   lo valida la prueba, con un ejemplo de un escenario generado.
 
-Finalmente, todos los errores identificados mediante las pruebas de generación de datos deben ser reportados en el sistema de registro de incidencias (_Issues_) del repositorio.
+## Criterios de evaluación
 
----
+La evaluación sigue las [reglas de juego](reglas) del proyecto, incluidas sus _fatalities_.
 
-### Criterios de evaluación
+### 1. Escenarios generados [55 puntos]
 
-> [!NOTE]
-> La evaluación se realizará con base en la completitud, coherencia interna, trazabilidad explícita y evidencia verificable de cada uno de los criterios definidos en esta rúbrica.
-> Entregas por fuera del horario establecido puede incurrir en una penalización sobre la calificación final de la actividad.
+- **1.1 Escenarios generados [10 puntos].** La ejecución sobre la versión rc, con los scripts de la
+  raíz del repositorio, muestra ciento veinte escenarios generados distintos (parejas de escenario
+  `ESC-##` y partición `<código>-###`), cada partición declarada en los datos con una clase de
+  equivalencia o un límite distinto de las demás particiones del mismo escenario. Los escenarios
+  terminan como exitosos, o como fallidos con su defecto reportado como incidencia.
+- **1.2 _Data pool a-priori_ [15 puntos].** Los escenarios generados `APR` toman sus datos de un
+  archivo o una tabla de ejemplos generados antes de la ejecución y guardados en el repositorio. Cada
+  dato indica el identificador de su partición y su resultado esperado, y la prueba valida ese
+  resultado.
+- **1.3 _Data pool_ dinámico [15 puntos].** Los escenarios generados `DIN` generan sus datos durante
+  la ejecución. Cada dato generado indica el identificador de su partición y su resultado esperado, y
+  la prueba valida ese resultado.
+- **1.4 Pseudo-aleatoria [15 puntos].** Los escenarios generados `ALE` generan sus datos a partir de
+  la semilla documentada en el `README.md` del módulo. Cada dato indica el identificador de su
+  partición y su resultado esperado, y dos ejecuciones con esa semilla usan los mismos datos.
 
+### 2. Reporte de resultados [35 puntos]
 
-#### 0. Fatalities
+- **2.1 Funcionalidades [5 puntos, 1 por funcionalidad].** Las cinco funcionalidades tienen
+  identificador (`FUN-##`), nombre y descripción.
+- **2.2 Tabla de escenarios generados [5 puntos].** La tabla contiene los ciento veinte escenarios
+  generados con todos sus campos diligenciados y con los mismos identificadores de escenario y de
+  partición que la ejecución.
+- **2.3 Evidencia de ejecución [5 puntos].** El reporte incluye, para cada herramienta, una captura de
+  la salida de su ejecución en la que se ven sus escenarios generados y su resultado.
+- **2.4 Estrategias y oráculos [10 puntos].** El reporte explica, para cada estrategia, cómo se
+  integró en los escenarios, la herramienta usada, el esquema de los datos con sus particiones y
+  límites, y el oráculo que valida el resultado esperado.
+- **2.5 Defectos [10 puntos, 1 por defecto].** El reporte presenta diez defectos de la ABP en el
+  manejo de datos inválidos, detectados por escenarios generados fallidos. Cada defecto indica el
+  identificador del escenario generado que lo detectó y enlaza su incidencia en el repositorio,
+  reportada con la plantilla **Reporte Incidencia**.
 
-El incumplimiento de cualquiera de los siguientes aspectos genera penalizaciones directas sobre la calificación:
+### 3. Video [10 puntos]
 
-- El repositorio del equipo no cuenta con un _release_ creado dentro del plazo establecido que incluya todos los entregables de la actividad. **[-15 puntos]**
-- Las herramientas de automatización no utilizan el código fuente indicado en el archivo `./e2e/README.md`. **[-20 puntos por herramienta]**
-- Los archivos README de las herramientas no describen los pasos necesarios para la instalación y ejecución de los escenarios. **[-20 puntos por herramienta]**
-- Los archivos README de las herramientas no describen los pasos de configuración de las herramientas de generación de datos. **[-20 puntos por herramienta]**
-- El repositorio incluye archivos multimedia, documentos no planos (.pdf, .xlsx) o dependencias/librerías (por ejemplo, `node_modules`). **[-20 puntos]**
+- **3.1 Ejecución [4 puntos, 2 por herramienta].** El video muestra la ejecución de los escenarios
+  generados de la herramienta y sus resultados.
+- **3.2 Oráculos [6 puntos, 2 por estrategia].** El video explica el oráculo de la estrategia: cómo se
+  define el resultado esperado de cada partición y cómo lo valida la prueba, con un ejemplo de un
+  escenario generado.
 
+## Preguntas frecuentes
 
-#### 1. Pruebas con las herramientas de generación de datos [60 puntos]
+### ¿Cómo se ve un escenario generado en Cypress?
 
-- El repositorio contiene el código fuente en `./e2e/*` que permite generar 120 escenarios distintos mediante estrategias de generación de datos. Las instrucciones del README permiten ejecutar efectivamente los escenarios. **[15 puntos]**
+Una opción es ejecutar cada dato como una prueba propia. El _data pool a-priori_ es un archivo JSON
+en el que cada registro declara su partición y su resultado esperado; la prueba recorre los registros
+y crea una prueba por registro, cuyo nombre agrega la partición:
 
-- Los escenarios implementan la estrategia _Data pool a-priori_, y el esquema generador del _data pool_ soporta el oráculo de prueba definido por el equipo. **[15 puntos]**
+```javascript
+// cypress/data/esc-07.json
+// [{ "particion": "APR-001", "titulo": "Lanzamiento", "esperado": "se guarda" },
+//  { "particion": "APR-002", "titulo": "",            "esperado": "error en el título" }, …]
+import registros from "../data/esc-07.json";
 
-- Los escenarios implementan la estrategia _Data pool dinámico (online)_, y el esquema generador del _data pool_ soporta el oráculo de prueba definido por el equipo. **[15 puntos]**
+registros.forEach(({ particion, titulo, esperado }) => {
+  it(`ESC-07 Crear una publicación (${particion})`, () => {
+    // Given: el administrador está en el editor de publicaciones (Page Object)
+    // When: escribe el título del registro y guarda
+    // Then: el editor muestra el resultado esperado del registro
+  });
+});
+```
 
-- Los escenarios implementan la estrategia _Pseudo-aleatoria (independiente)_. **[15 puntos]**
+La salida muestra `ESC-07 Crear una publicación (APR-001)`, `… (APR-002)`, etc. Si en cambio una
+sola prueba recorre todos los registros, la prueba imprime la pareja al usar cada uno, con una tarea
+que escribe en la terminal (`cy.log` no aparece en ella):
 
+```javascript
+// cypress.config.js: setupNodeEvents(on) { on("task", { log(mensaje) { console.log(mensaje); return null; } }); }
+cy.task("log", `ESC-07 ${particion}`);
+```
 
-#### 2. Reporte de la actividad [40 puntos]
+### ¿Cómo se genera una partición pseudo-aleatoria con Faker en Playwright?
 
-- El reporte incluye la información de los integrantes del equipo. **[5 puntos]**
+El equipo declara las particiones en el código y, dentro de cada prueba, fija la semilla documentada
+en el `README.md` antes de generar el dato. Fijar la semilla en cada prueba hace que el dato no dependa
+del orden en que Playwright reparte las pruebas entre sus procesos:
 
-- El reporte lista las funcionalidades bajo prueba, cada una con identificador único, nombre y descripción. **[5 puntos]**
+```javascript
+import { test } from "@playwright/test";
+import { faker } from "@faker-js/faker";
 
-- El reporte presenta la tabla de escenarios con los campos requeridos: identificador base, funcionalidad asociada, tipo de prueba, descripción, estrategia de generación, sub-escenarios generados, resultados esperados y obtenidos, y estado final. **[10 puntos]**
+const SEMILLA = 4103; // documentada en el README.md del módulo
+const particiones = [
+  { particion: "ALE-001", nombre: () => faker.person.fullName(), esperado: "el perfil se guarda" },
+  { particion: "ALE-002", nombre: () => faker.string.alpha(300), esperado: "error de longitud del nombre" },
+];
 
-- El reporte incluye resultados de ejecución con evidencia verificable y un resumen cuantitativo de escenarios exitosos y fallidos por herramienta. **[10 puntos]**
+for (const { particion, nombre, esperado } of particiones) {
+  test(`ESC-12 Editar el perfil (${particion})`, async ({ page }) => {
+    faker.seed(SEMILLA);
+    // Given: el administrador está en su perfil (Page Object)
+    // When: escribe nombre() y guarda
+    // Then: la página muestra el resultado esperado de la partición
+  });
+}
+```
 
-- El reporte describe la implementación de las estrategias _Data pool a-priori_, _Data pool dinámico (online)_ y _Pseudo-aleatoria (independiente)_, incluyendo para los _data pools_ el oráculo de prueba que soporta el esquema generador. **[5 puntos]**
+### ¿Cómo se usa un _data pool_ dinámico de Mockaroo en Puppeteer?
 
-- Se reportan en el sistema de incidencias al menos 10 defectos relacionados con el manejo de datos inválidos, identificados mediante las pruebas generadas. **[5 puntos]**
+Las particiones se declaran en el código, cada una con un esquema guardado en Mockaroo que genera
+datos de esa partición. Cada prueba pide sus datos a la API de Mockaroo durante la ejecución, así que
+los datos cambian en cada corrida pero la partición y el resultado esperado no:
+
+```javascript
+const particiones = [
+  { particion: "DIN-001", esquema: "etiqueta-valida", esperado: "la etiqueta se guarda" },
+  { particion: "DIN-002", esquema: "etiqueta-sin-nombre", esperado: "error en el nombre" },
+];
+
+// La llave se configura como lo documente el equipo en el README.md (aquí, una variable de entorno).
+const generar = async (esquema) =>
+  (await fetch(`https://api.mockaroo.com/api/generate.json?schema=${esquema}&count=1&key=${process.env.MOCKAROO_API_KEY}`)).json();
+
+test.each(particiones)("ESC-33 Crear una etiqueta ($particion)", async ({ esquema, esperado }) => {
+  const dato = await generar(esquema);
+  // Given: el administrador está en la lista de etiquetas (Page Object)
+  // When: crea una etiqueta con los datos de `dato`
+  // Then: la página muestra el resultado esperado de la partición
+});
+```
+
+La salida de Jest muestra `ESC-33 Crear una etiqueta (DIN-001)`, `… (DIN-002)`.
+
+### ¿Y en Kraken?
+
+Un `Scenario Outline` con una tabla de ejemplos ejecuta cada fila como un escenario propio. La tabla
+es el _data pool a-priori_ (queda en el repositorio, en el archivo `.feature`), y el nombre del
+escenario incluye la columna de la partición:
+
+```gherkin
+@user1 @web
+Scenario Outline: ESC-27 Crear una etiqueta (<particion>)
+  Given I am logged in as the administrator
+  When I create a tag named "<nombre>"
+  Then I should see "<esperado>"
+
+  Examples:
+    | particion | nombre    | esperado                     |
+    | APR-001   | Noticias  | la etiqueta se guarda        |
+    | APR-002   |           | error en el nombre           |
+```
+
+Cada fila aparece en la salida como `ESC-27 Crear una etiqueta (APR-001)`, `… (APR-002)`. Para los
+datos generados durante la ejecución (dinámico o pseudo-aleatorio), el paso que genera el dato puede
+imprimir la pareja con `console.log`, por ejemplo `ESC-27 DIN-004`.

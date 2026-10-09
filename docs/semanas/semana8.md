@@ -1,69 +1,154 @@
+# Proyecto · Semana 8: Estrategia de pruebas final
 
-# Proyecto Pruebas automatizadas
+> **Resumen.** El equipo entrega la versión final de su estrategia de pruebas (EP1) con el reporte de
+> sus resultados y el código que la ejecuta, y diseña una segunda estrategia (EP2) para nuevas
+> funcionalidades de la ABP. Entrega un _release_ del repositorio (`semana-8`), tres documentos y un
+> video. Las [reglas de juego](reglas) del proyecto aplican a esta semana.
 
-## Semana 8: Versión final de la estrategia de pruebas
+## Contexto
 
-Estimado equipo de pruebas, nos encontramos en la recta final de este proyecto! El CTO de TSDC ha visto sus avances semanales y, al observar los beneficios la automatización de pruebas dentro de la compañía, ha pedido recibir la versión final de su estrategia de pruebas (EP1) junto con sus resultados y hallazgos. Adiciónalmente, debido a los resultados prometedores de su equipo, el CTO ha decidido crear una nueva división dentro de la compañia para los procesos de automatización y los ha nombrado a ustedes como los nuevos automatizadores _senior_!
+El CTO de _TSDC_ ha seguido los avances semanales del equipo y, al ver los beneficios de la
+automatización de pruebas, pide la versión final de la estrategia de pruebas (EP1) con sus resultados
+y hallazgos. Además, crea una nueva división de automatización de pruebas y nombra a los integrantes
+del equipo como sus automatizadores _senior_. La primera tarea de la división es diseñar una segunda
+estrategia de pruebas (EP2) que aumente la cobertura de la ABP.
 
-Con el objetivo de continuar con los esfuerzos de automatización sobre la ABP, la primera tarea de su nueva división será crear una segunda estrategia de pruebas (EP2) para aumentar continuar incrementanto la cobertura del sistema. Para ello, se presentan las siguientes restricciones:
+## Objetivos de aprendizaje
 
-- Dado que se busca aumentar la cobertura, deberán enfocarse en funciónalidades distintas a las de la primera estrategia (EP1).
-- Tendrán 1 semana para diseñar la estrategia y 2 meses (8 semanas) para su implementación y ejecución.
-- Respecto a los recursos humanos, su división necesita contratar 2 _automatizadores junior_ por _automatizador senior_ (e.g. si su equipo es de 4 personas, su estrategia debe incluir 8 _automatizadores junior_).
-- Su equipo no tiene ninguna restricción monetaria para la contratacion del personal y tiene la libertad de definir el perfil de los nuevos empleados. Asuma que cada empleado de la división trabaja 8 horas/día.
-- Respecto a los recursos computacionales, todas las pruebas deben ser ejecutadas utilizando algun proveedor de servicios en la nube. Cuentan con un presupuesto de 1000 USD.
-- **No** es posible contratar servicios de outsourcing para la definición, implementación, ni ejecución de pruebas. En otras palabras, la estrategia de pruebas no puede apalancarse en servicios de pruebas de terceros.
-- Debido a que en TSDC cuenta con otras divisiones de ingeniería con mayor conocimiento técnico sobre los sistemas y componentes de la ABP, su estrategia debe contemplar únicamente la implementacion y ejecución de pruebas funcionales. Del mismo modo, se espera que la estrategia se enfoque solamente en los niveles de prueba de sistema y aceptación.
+1. Consolidar una estrategia de pruebas con las técnicas aplicadas durante el proyecto.
+2. Reportar los resultados de una estrategia de pruebas con evidencia trazable.
+3. Diseñar una estrategia de pruebas bajo nuevas restricciones de alcance, personal y presupuesto.
+4. Comunicar los resultados y las decisiones de las estrategias.
 
+## Conceptos clave
 
-## Resumen de las actividades
+- **EP1 y EP2.** EP1 es la estrategia que el equipo construyó y ejecutó entre las semanas 3 y 7. EP2
+  es una estrategia nueva, para funcionalidades de la ABP distintas de las de EP1.
 
-1. Su equipo deberá entregar la version final de la estrategia de pruebas (EP1) que han diseñado durante las últimas semanas. Particularmente, su estrategia debe incluir todas las actividades realizadas (pruebas de exploración, reconocimiento, extremo a extremo, regresión visual, y generación de datos), al igual que la correcciónes y mejoras a partir de la retroalimentacion recibida en entregas pasadas.
-2. Escriban un reporte con resultados de ejecución de la estrategia (EP1), los cuales deben estar respaldados con el código fuente que implementaron para ejecutar las pruebas. Como mínimo, se espera que este documento liste los escenarios de la estrategia (ID, nombre, descripción, tipo, nivel, y técnica), incluya enlaces con las evidencias de ejecución de **todas** las técnicas utilizadas, y la relación entre los escenario y las incidencias identificadas.
-4. Elaboren una nueva estrategia de pruebas (EP2) utilizando las restricciones mencionadas anteriormente. Para esto deben utilizar la plantilla de estrategia ([enlace](https://thesoftwaredesignlab.github.io/AutTestingCourseraBook/templates/estrategia-pruebas.docx))
-5. Adicionalmente, graben un video para presentar los resultados obtenidos de la estrategia de pruebas EP1, y en donde expliquen las decisiones tomadas para la nueva estrategia de pruebas EP2.
+## Actividades
 
+1. **EP1 final.** Entregue la versión final de EP1: aplique la retroalimentación de las entregas
+   anteriores e incluya todas las técnicas del proyecto (pruebas exploratorias, de reconocimiento,
+   E2E, de regresión visual y de generación de datos) en la tabla TNT y en la distribución del
+   esfuerzo. El documento que se entrega es la estrategia completa, con esas mejoras incluidas y su
+   lista de cambios.
+2. **Reporte de EP1.** Elabore el reporte de resultados de EP1, respaldado por el código del
+   repositorio: los escenarios de la estrategia, la evidencia de ejecución de cada técnica y las
+   incidencias encontradas, con el escenario que detectó cada una.
+3. **Código de EP1.** Verifique que los módulos de `reconocimiento/`, `e2e/` y `vrt/` ejecutan todos
+   sus escenarios como lo documenta su `README.md`, y publique un
+   [_release_](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release)
+   del repositorio con el _tag_ `semana-8`.
+4. **EP2.** Diseñe EP2 en la
+   [plantilla de estrategia de pruebas](https://thesoftwaredesignlab.github.io/AutTestingCourseraBook/templates/estrategia-pruebas.docx),
+   respetando las [restricciones de EP2](#restricciones-de-ep2). Sus funcionalidades se identifican a
+   partir de `FUN-06`, a continuación de las de EP1.
+5. **Video.** Grabe un video de máximo 15 minutos que presente los resultados de EP1 y justifique las
+   decisiones de EP2.
 
-## Detalles de la entrega
+### Restricciones de EP2
 
-Su equipo debe entregar un archivo `.pdf` distinto para cada estrategia de pruebas y el reporte de resultado, y un video con los resutados y decisiones de las estrategias.
+- **Alcance**: funcionalidades de la ABP distintas de las de EP1; solo pruebas funcionales, en los
+  niveles de sistema y aceptación.
+- **Duración**: 1 semana de diseño y 8 semanas de implementación y ejecución.
+- **Recursos humanos**: los integrantes del equipo son automatizadores _senior_, y la división
+  contrata 2 automatizadores _junior_ por cada _senior_ (por ejemplo, un equipo de 4 personas contrata
+  8 _junior_). No hay límite de presupuesto para la contratación; el equipo define el perfil de cada
+  cargo. Cada persona trabaja 8 horas al día.
+- **Recursos computacionales**: todas las pruebas se ejecutan en un proveedor de servicios en la nube,
+  con un presupuesto de 1000 USD.
+- **_Outsourcing_**: no se permite contratar servicios externos para definir, implementar ni ejecutar
+  pruebas.
 
-Respecto al código fuente desarrollado para la primera estrategia de pruebas (EP1), la entrega debe ser realizada utilizando el repositorio de trabajo dado por el equipo docente (en caso de no poder acceder a la organización del curso, [Uniandes-MISW4103](https://github.com/orgs/Uniandes-MISW4103/), contacten al equipo docente). Su equipo debe crear un _release_ en el repositorio (ver [cómo crear un release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release)).
+## Entregables
 
-> _(*)_ Los videos y documentos que incluyan en su entrega deben estar alojado en algún gestor de contenido (Google drive, OneDrive, Youtube, etc), deben ser públicos o deben permitir el acceso a cuentas de la Universidad de Los Andes (`@uniandes.edu.co`). Para el caso de documentos, estos deben estar en formato `.pdf`.
+| Entregable | Formato | Contenido |
+|---|---|---|
+| Código de EP1 | _Release_ `semana-8` del repositorio del equipo | Los módulos de `reconocimiento/`, `e2e/` y `vrt/` con sus `README.md` actualizados |
+| EP1 final | PDF, elaborado en la plantilla de la semana 3 | La estrategia completa, con la retroalimentación aplicada, todas las técnicas del proyecto y la lista de cambios |
+| Reporte de resultados de EP1 | PDF | Ver [Contenido del reporte](#contenido-del-reporte) |
+| EP2 | PDF, elaborado en la plantilla | La estrategia completa para las nuevas funcionalidades |
+| Video | Enlace, máximo 15 minutos | Ver [Contenido del video](#contenido-del-video) |
 
+El repositorio contiene solo el código necesario para ejecutar las pruebas, en archivos de texto
+plano: ni documentos, ni imágenes, ni videos, ni dependencias, ni resultados de ejecución. Los enlaces
+deben abrirse sin solicitar permisos: públicos o con acceso para cuentas `@uniandes.edu.co`. El
+contenido del video posterior al minuto 15 no se evalúa.
 
-### Criterios de evaluación:
+### Lista de cambios de EP1
 
-0. _"Fatalities"_.
+EP1 final termina con una lista de cambios. Cada cambio indica la sección modificada, qué cambió y su
+motivo: un comentario de la retroalimentación de las entregas anteriores o un resultado del proyecto.
 
-    _Nota: el incumplimiento de cualquiera de los aspectos mencionados a continuación puede incurrir en una penalización sobre la calificación de la actividad_.
-    
-    - El repositorio del equipo (org [Uniandes-MISW4103](https://github.com/orgs/Uniandes-MISW4103/)) **NO** cuenta con un release, creado dentro del plazo establecido, en donde se incluyen todos los entregables de la actividad. **[-15 puntos]**
-    - Los archivos README de las herramientas de automatización **NO** describen los pasos para la instalación y ejecución de los escenarios de prueba. **[-20 puntos x herramienta]**
-    - Se incluyen archivos multimedia (videos, logs, imágenes, etc.), documentos no-planos (.pdf, .xlsx, etc.) o dependencias/librerías (node_modules) dentro del repositorio. **[-20 puntos]**
-    - Se entregan documentos realizados por el equipo con formatos distintos a `.pdf`. **[-5 puntos x documento]**
+### Contenido del reporte
 
-1. Estrategia de Pruebas (EP1). **[20 puntos]**
-    - El TNT especifica y describe la relación entre las pruebas, y es coherente con los objetivos de la estrategia. El TNT incluye el uso de pruebas de exploración, reconocimiento, extremo a extremo, regresión visual, y generación de datos. **[10 puntos]**
-    - La distribución describe la asignación de recursos (humanos, computaciónales, outsourcing), y es coherente con el TNT y la duracion de la estrategia. **[10 puntos]**
+1. Integrantes del equipo.
+2. Escenarios de EP1: identificador, nombre, descripción y combinación de la tabla TNT (técnica,
+   nivel y tipo) de cada uno.
+3. Evidencia de ejecución de cada técnica: enlace a la evidencia de las pruebas exploratorias, de
+   reconocimiento, E2E, de regresión visual y de generación de datos.
+4. Incidencias: enlace a cada incidencia encontrada y el identificador del escenario que la detectó.
 
-2. Reporte de Resultados de la Estrategia (EP1). **[15 puntos]**
-    - El documento lista todos los escenarios de prueba de la estrategia. Cada escenario tiene, como mínimo, un identificador, un nombre, una descripción, y el TNT (tipo, nivel, y técnica utilizada). **[5 puntos]**
-    - El documento incluye los enlaces a las evidencias de ejecución de todas las técnicas (`./e2e/*`, `./reconocimiento/*`, `./vrt/*`). **[5 puntos]**
-    - El documento incluye las incidencias identificadas como resultado de la ejecución de la estrategia. Se indican los escenarios asociados a cada incidencia. **[5 puntos]**
+### Contenido del video
 
-3. Código Fuente de la Estrategia (EP1). **[15 puntos]**
-    - El código de prueba se encuentra en el repositorio del equipo (`./e2e/*`, `./reconocimiento/*`, `./vrt/*`) y permite la ejecución de todos los escenarios de la estrategia de pruebas. **[15 puntos]**
+1. Resultados de EP1: escenarios ejecutados y defectos encontrados por técnica, y qué técnicas
+   aportaron más hallazgos.
+2. Decisiones de EP2: funcionalidades elegidas, objetivos, tabla TNT, presupuesto y distribución del
+   esfuerzo, justificados con los resultados de EP1 y las restricciones de EP2.
 
-4. Estrategia de Pruebas (EP2). **[40 puntos]**
-    - Se establecen los objetivos que se esperan alcanzar durante el periodo de pruebas. Cada objetivo debe ser _SMART_ (especifico, medible, y realizable, relevante, y acotado en el tiempo). **[10 puntos]**
-    - El presupuesto de pruebas describe los recursos humanos, computacionales, y de contrataciones de servicios requeridos para la estrategia. Los costos costos y consumos de cada tipo de recurso coherentes con la estrategia y están soportados con datos adicionales que deben estar descritos o referenciados. **[10 puntos]**
-    - El TNT especifica las técnicas, niveles y tipos (TNT) de cada prueba a utilizar. La relación entre las pruebas y los objetivos es coherente con la estrategia. **[10 puntos]**
-    - Se presenta la distribución de esfuerzo para la ejecución de la estrategia. Se debe describir la asignación de recursos del presupuesto, al igual que su relación con las actividades del TNT, durante el transcurso de la duración de la estrategia. **[10 puntos]**
+## Criterios de evaluación
 
-5. Video. **[10 puntos]**
-    - El video presenta los resultados obtenidos de la estrategia de pruebas EP1. **[5 puntos]**
-    - El video presenta las decisiones tomadas para la nueva estrategia de pruebas EP2. **[5 puntos]**
+La evaluación sigue las [reglas de juego](reglas) del proyecto, incluidas sus _fatalities_.
 
-**La evaluación tendrá en cuenta la inclusión de la totalidad de componentes solicitados y la calidad de cada uno de acuerdo con la rúbrica establecida.**
+### 1. EP1 final [20 puntos]
+
+- **1.1 TNT [8 puntos].** La tabla TNT de EP1 incluye las pruebas exploratorias, de reconocimiento,
+  E2E, de regresión visual y de generación de datos, cada combinación con su propósito, los objetivos
+  que apoya y las funcionalidades que cubre.
+- **1.2 Distribución del esfuerzo [7 puntos].** La distribución del esfuerzo de EP1 asigna, para cada
+  una de las 8 semanas, las pruebas de la tabla TNT que se ejecutan y los recursos asignados, y sus
+  totales coinciden con el presupuesto.
+- **1.3 Retroalimentación [5 puntos].** EP1 final incluye la retroalimentación de las entregas
+  anteriores aplicada, y la lista de cambios relaciona cada comentario con el cambio que lo atiende y
+  la sección modificada.
+
+### 2. Reporte de resultados de EP1 [15 puntos]
+
+- **2.1 Escenarios [5 puntos].** El reporte lista todos los escenarios de EP1 con identificador,
+  nombre, descripción y combinación de la tabla TNT.
+- **2.2 Evidencia [5 puntos, 1 por técnica].** El reporte enlaza la evidencia de ejecución de las
+  pruebas exploratorias, de reconocimiento, E2E, de regresión visual y de generación de datos.
+- **2.3 Incidencias [5 puntos].** El reporte enlaza cada incidencia encontrada en el proyecto con el
+  identificador del escenario que la detectó.
+
+### 3. Código de EP1 [15 puntos]
+
+- **3.1 Ejecución [15 puntos, 5 por grupo de módulos].** Los módulos de `reconocimiento/`, `e2e/` y
+  `vrt/` del _release_ `semana-8` ejecutan todos sus escenarios con los scripts de la raíz del
+  repositorio, como lo documenta su `README.md`, y cada prueba termina como exitosa o fallida.
+
+### 4. EP2 [40 puntos]
+
+- **4.1 Objetivos [10 puntos].** Los objetivos de EP2 (`OBJ-##`) cumplen los cinco atributos SMART y se
+  refieren a funcionalidades distintas de las de EP1.
+- **4.2 Presupuesto [10 puntos].**
+  - **[5 puntos]** Los recursos humanos incluyen a los integrantes del equipo como _senior_ y 2
+    _junior_ por cada _senior_, cada cargo con su perfil, su costo por hora y su referencia de
+    mercado, a 8 horas al día, y el costo total.
+  - **[5 puntos]** Los recursos computacionales son servicios de un proveedor en la nube, cada uno con
+    unidad de medida, costo por unidad, consumo estimado y costo total, y el total no supera
+    1000 USD.
+- **4.3 TNT [10 puntos].** Cada fila de la tabla TNT de EP2 combina una técnica, un nivel de sistema o
+  de aceptación y un tipo de prueba funcional, sin combinaciones repetidas, e indica su propósito, los
+  objetivos que apoya y las funcionalidades que cubre. La tabla cubre todos los objetivos.
+- **4.4 Distribución del esfuerzo [10 puntos].** La distribución del esfuerzo de EP2 cubre la semana de
+  diseño y las 8 semanas de implementación y ejecución, asigna para cada semana las pruebas de la
+  tabla TNT y los recursos asignados, y sus totales coinciden con el presupuesto.
+
+### 5. Video [10 puntos]
+
+- **5.1 Resultados de EP1 [5 puntos].** El video presenta los escenarios ejecutados y los defectos
+  encontrados por técnica, e identifica qué técnicas aportaron más hallazgos.
+- **5.2 Decisiones de EP2 [5 puntos].** El video justifica las funcionalidades, los objetivos, la tabla
+  TNT, el presupuesto y la distribución del esfuerzo de EP2 con los resultados de EP1 y las
+  restricciones de EP2.

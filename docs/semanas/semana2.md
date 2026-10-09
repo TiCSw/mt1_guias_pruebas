@@ -1,90 +1,130 @@
-# Proyecto Pruebas automatizadas
+# Proyecto · Semana 2: Investigación de prácticas de automatización en el sector
 
-## Semana 2: Investigación de prácticas de automatización en el sector
+> **Resumen.** El equipo diseña y aplica una encuesta o entrevista a treinta o más profesionales del
+> desarrollo de software sobre sus prácticas de automatización de pruebas, analiza los resultados de
+> forma cuantitativa y cualitativa, y los presenta en un video. Entrega el instrumento, un reporte y
+> el video. Las [reglas de juego](reglas) del proyecto aplican a esta semana.
 
-## Descripción de la semana
+## Contexto
 
-En esta semana del proyecto de *TSDC*, el objetivo es comprender cómo se están implementando actualmente las prácticas de automatización de pruebas en la industria del software. Para ello, el equipo realizará un ejercicio estructurado de recolección y análisis de información a partir de profesionales del sector.
+Antes de definir cómo automatizar las pruebas de la ABP, _TSDC_ quiere saber cómo lo hace la
+industria: qué estrategia de automatización prefieren los profesionales, por qué, y qué proporción
+de sus pruebas es manual o automatizada. Su equipo recolectará esa información directamente de
+profesionales del sector y la analizará para extraer conclusiones basadas en evidencia.
 
-Se espera que los estudiantes:
+## Objetivos de aprendizaje
 
-- Diseñen y apliquen un instrumento de recolección de información (encuesta o entrevista).
-- Obtengan datos reales de al menos 30 profesionales del sector.
-- Realicen un análisis cuantitativo y cualitativo de los resultados recolectados.
-- Generen conclusiones basadas en evidencia sobre tendencias en automatización de pruebas.
+1. Diseñar un instrumento de recolección de información (encuesta o entrevista) con consentimiento
+   informado.
+2. Aplicar el instrumento a una muestra de profesionales del desarrollo de software.
+3. Analizar los resultados de forma cuantitativa y cualitativa.
+4. Comunicar los resultados y sus conclusiones sobre las estrategias de automatización de pruebas.
 
-Este ejercicio busca desarrollar habilidades de investigación aplicada, análisis de datos y comunicación de resultados, alineadas con el contexto real de la automatización de pruebas.
+## Actividades
 
+1. **Instrumento.** Diseñe una encuesta o un guion de entrevista. El instrumento:
+   - empieza con un consentimiento informado sobre el uso de los datos y con una explicación de la
+     **pirámide de automatización** y del **cono de helado**, para que los participantes entiendan
+     las preguntas;
+   - pregunta el país, el rol y los años de experiencia del participante;
+   - incluye las tres preguntas principales del estudio:
+     - **P1**: ¿qué estrategia prefiere, la pirámide de automatización o el cono de helado? (solo
+       esas dos opciones);
+     - **P2**: ¿por qué prefiere esa estrategia? (respuesta abierta);
+     - **P3**: ¿qué proporción de las pruebas de su equipo es manual y qué proporción es automatizada?
+       (opciones de porcentaje mutuamente excluyentes, por ejemplo rangos de 20 %).
+2. **Aplicación.** Aplique el instrumento a treinta o más profesionales vinculados al desarrollo de
+   software (_testers_, desarrolladores, líderes técnicos, arquitectos o analistas). Defina por qué
+   canales y a qué perfiles los contactará, y registre cuántas personas contactó y cuántas
+   respondieron.
+3. **Análisis.** Consolide las respuestas y analícelas:
+   - **cuantitativo**: cantidades y proporciones de las respuestas de P1, P3 y de la información
+     demográfica, y de las categorías de justificación de P2;
+   - **cualitativo**: patrones o tendencias en las justificaciones de P2.
 
-## Resumen de las actividades
+   Con ambos análisis, responda P1, P2 y P3.
+4. **Video.** Grabe un video que presente los resultados, su interpretación respecto a la pirámide de
+   automatización y el cono de helado, y una reflexión sobre cómo mejorar el estudio.
 
-> [!NOTE]  
-> Antes de aplicar la encuesta o entrevista, es obligatorio explicar a los participantes las diferencias entre las estrategias de pirámide de automatización y cono de helado, asegurando que comprendan las preguntas.
+## Entregables
 
-1. Diseñar un instrumento de recolección de información (encuesta o guion de entrevista) que incluya preguntas sobre: preferencia entre pirámide de automatización y cono de helado, justificación de dicha preferencia, proporción de pruebas manuales y automatizadas utilizadas, e información demográfica relevante (por ejemplo, país, rol y años de experiencia). El instrumento debe incluir un consentimiento informado claro sobre el uso de los datos.
+| Entregable | Formato | Contenido |
+|---|---|---|
+| Instrumento | Enlace al formulario (por ejemplo, Google Forms) o guion de entrevista en PDF | Todas las preguntas aplicadas |
+| Reporte | PDF | Ver [Contenido del reporte](#contenido-del-reporte) |
+| Video | Enlace | Ver [Contenido del video](#contenido-del-video) |
 
-2. Aplicar el instrumento a mínimo 30 profesionales vinculados al desarrollo de software, tales como testers, desarrolladores, líderes técnicos, arquitectos o analistas. El equipo debe definir y ejecutar estrategias concretas para contactar y obtener respuestas de los participantes.
+Los enlaces deben abrirse sin solicitar permisos: públicos o con acceso para cuentas
+`@uniandes.edu.co`.
 
-3. Consolidar los datos recolectados y realizar un análisis cuantitativo y cualitativo de los resultados. El análisis cuantitativo debe permitir describir y comparar las respuestas obtenidas mediante métricas como conteos o proporciones. El análisis cualitativo debe permitir interpretar las justificaciones de los participantes mediante la identificación de patrones, tendencias o categorías de respuesta. Ambos análisis deben ser suficientes para responder las tres preguntas definidas en el instrumento.
+### Contenido del reporte
 
-4. Elaborar un video en el que se presenten de forma estructurada los resultados del análisis cuantitativo y cualitativo, la interpretación de dichos resultados en relación con las estrategias de automatización evaluadas, y una reflexión sobre posibles mejoras en el diseño y ejecución de la actividad.
+1. Integrantes del equipo.
+2. Respuestas individuales (sin procesar) de todos los participantes, en el documento o en un enlace
+   a OneDrive Uniandes con acceso para la organización.
+3. Diseño del instrumento: tipo de instrumento y por qué se eligió, estructura (secciones, orden y
+   tipo de respuesta de cada pregunta) y la información que busca obtener cada pregunta.
+4. Contacto de los participantes: canales, perfiles, cantidad de personas contactadas y de
+   respuestas obtenidas, y fechas de aplicación.
 
+### Contenido del video
 
-## Detalles de la entrega
-
-> [!NOTE]  
-> Los videos y documentos que incluyan en su entrega deben estar alojado en algún gestor de contenido (OneDrive Uniandes, Youtube), deben ser públicos o deben permitir el acceso a cuentas de la Universidad de Los Andes (`@uniandes.edu.co`). Para el caso de documentos, estos deben estar en formato `.pdf`.
-
-El equipo debe entregar un conjunto completo de artefactos que evidencien el diseño, ejecución y análisis del proceso de investigación realizado.Particularmente, los entregables de esta actividad son:
-
-- **Instrumento de recolección**: enlace a la encuesta (por ejemplo, Google Forms) o documento con el guion de entrevista utilizado. Debe incluir todas las preguntas aplicadas.
-
-- **Reporte de resultados (`.pdf`)**: documento que incluya los resultados crudos recolectados de al menos 30 participantes (ya sea directamente en el documento o mediante un enlace funcional a OneDrive Uniandes con acceso habilitado a toda la organización), así como la descripción del proceso de diseño del instrumento y las estrategias utilizadas para contactar a los participantes.
-
-- **Video de presentación**: enlace a un video alojado en OneDrive Uniandes (preferible, compartido con acceso a toda la organización) o en YouTube (acceso público o mediante enlace). El video debe permitir evidenciar claramente el análisis cuantitativo y cualitativo de los resultados, así como la reflexión final.
-
----
+1. Resultados cuantitativos de P1, P2, P3 y de la información demográfica, con tablas o gráficos.
+2. Análisis cualitativo de las justificaciones (P2).
+3. Respuesta a P1, P2 y P3 con base en los análisis.
+4. Interpretación de los resultados respecto a la pirámide de automatización y el cono de helado.
+5. Reflexión sobre cómo mejorar el estudio.
 
 ## Criterios de evaluación
 
-> [!NOTE]
-> La evaluación se realizará con base en la completitud, coherencia interna, trazabilidad explícita y evidencia verificable de cada uno de los criterios definidos en esta rúbrica.
-> Entregas por fuera del horario establecido puede incurrir en una penalización sobre la calificación final de la actividad.
+La evaluación sigue las [reglas de juego](reglas) del proyecto, incluidas sus _fatalities_.
 
-### 0. Fatalities
+### 1. Instrumento [10 puntos]
 
-El incumplimiento de cualquiera de las siguientes condiciones genera la penalización indicada:
+- **1.1 Consentimiento y contexto [2 puntos].** El instrumento empieza con un consentimiento informado
+  sobre el uso de los datos y con una explicación de la pirámide de automatización y del cono de
+  helado.
+- **1.2 Información demográfica [2 puntos].** El instrumento pregunta el país, el rol y los años de
+  experiencia del participante.
+- **1.3 Pregunta P1 [2 puntos].** El instrumento obliga a elegir entre la pirámide de automatización
+  y el cono de helado, sin otras opciones.
+- **1.4 Pregunta P2 [2 puntos].** El instrumento pide, con una pregunta abierta, la justificación de la
+  estrategia elegida.
+- **1.5 Pregunta P3 [2 puntos].** El instrumento pregunta la proporción de pruebas manuales y
+  automatizadas con opciones de porcentaje mutuamente excluyentes.
 
-- El enlace al instrumento de recolección no es accesible sin solicitud de permisos, no abre correctamente o restringe el acceso a usuarios institucionales. **[-5 puntos]**
-- El reporte no se entrega en formato `.pdf` o el archivo entregado no puede abrirse correctamente. **[-5 puntos]**
-- Los resultados crudos no están incluidos en el reporte ni existe un enlace funcional a OneDrive Uniandes con acceso habilitado para toda la organización. **[-10 puntos]**
-- El enlace al video no es accesible sin solicitud de permisos, no abre correctamente o no está alojado en OneDrive Uniandes (con acceso organizacional) o YouTube (acceso público o mediante enlace). **[-60 puntos]**
+### 2. Reporte [40 puntos]
 
+- **2.1 Respuestas [10 puntos].** El reporte incluye las respuestas individuales de al menos treinta
+  participantes, en el documento o en un enlace a OneDrive Uniandes con acceso para la organización.
+- **2.2 Diseño del instrumento [15 puntos].**
+  - **[5 puntos]** El reporte indica el tipo de instrumento (encuesta o entrevista) y por qué se
+    eligió.
+  - **[5 puntos]** El reporte describe la estructura del instrumento: secciones, orden de las
+    preguntas y tipo de respuesta de cada una.
+  - **[5 puntos]** El reporte indica, para cada pregunta, la información que busca obtener (P1, P2,
+    P3 o información demográfica).
+- **2.3 Contacto de los participantes [15 puntos].**
+  - **[5 puntos]** El reporte indica los canales usados para contactar a los participantes (por
+    ejemplo, LinkedIn, correo, comunidades) y cuántas personas se contactaron por cada canal.
+  - **[5 puntos]** El reporte indica los perfiles buscados (roles) y por qué se eligieron.
+  - **[5 puntos]** El reporte indica las fechas de aplicación y la tasa de respuesta (respuestas
+    obtenidas sobre personas contactadas).
 
-### 1. Instrumento de recolección (Encuesta/Entrevista) **[10 puntos]**
+### 3. Video [50 puntos]
 
-- ¿Incluye preguntas demográficas que permitan identificar al menos país, rol y años de experiencia del participante? **[2 puntos]**
-- ¿Incluye una pregunta explícita que obligue a seleccionar entre pirámide de automatización y cono de helado como estrategia preferida? **[2 puntos]**
-- ¿Incluye una pregunta que solicite la justificación de la estrategia seleccionada por el participante? **[2 puntos]**
-- ¿Incluye una pregunta que permita identificar la proporción o distribución de pruebas manuales y automatizadas utilizadas? **[2 puntos]**
-- ¿Las preguntas están formuladas de manera que permiten respuestas claras, sin ambigüedad en su interpretación o en las opciones disponibles? **[2 puntos]**
-
-
-### 2. Reporte de resultados **[40 puntos]**
-
-- Se presentan resultados crudos verificables correspondientes a al menos 30 participantes, ya sea en el documento o mediante enlace funcional. **[10 puntos]**
-- Se describe el proceso de diseño del instrumento, incluyendo el tipo de instrumento utilizado, la estructura de las preguntas y la justificación de estas decisiones. **[15 puntos]**
-- Se describen las estrategias utilizadas para contactar a los participantes, incluyendo los canales empleados, el tipo de perfiles contactados y la forma en que se obtuvieron las respuestas. **[15 puntos]**
-
-
-### 3. Video de análisis **[50 puntos]**
-
-- Se presentan resultados cuantitativos para cada una de las tres preguntas principales, incluyendo el número total de respuestas y una forma de comparación entre opciones (por ejemplo, conteos o proporciones). **[10 puntos]**
-- Se utilizan representaciones (como tablas, gráficos u otras) que permiten comprender los resultados cuantitativos presentados. **[10 puntos]**
-- Se presenta un análisis cualitativo que identifica y describe al menos tres patrones o tendencias en las justificaciones de los participantes. **[10 puntos]**
-- El análisis cuantitativo y cualitativo se utilizan explícitamente para responder cada una de las tres preguntas planteadas en el instrumento. **[10 puntos]**
-- Se presenta una interpretación de los resultados que conecta los hallazgos con las estrategias de automatización evaluadas, basada en los datos recolectados. **[5 puntos]**
-- Se incluye una reflexión sobre posibles mejoras en la actividad, indicando al menos dos acciones concretas. **[5 puntos]**
-
-
-**La evaluación se realizará con base en la evidencia entregada y el cumplimiento verificable de cada criterio definido.**
+- **3.1 Resultados cuantitativos [20 puntos].**
+  - **[18 puntos, 6 por pregunta]** El video presenta, para P1, P2 y P3, la cantidad y la proporción
+    de respuestas de cada opción o categoría (en P2, las categorías de justificación), en una tabla o
+    un gráfico que indica la pregunta, las opciones o categorías y sus valores.
+  - **[2 puntos]** El video presenta el número total de respuestas y la información demográfica
+    (país, rol y años de experiencia) en una tabla o un gráfico.
+- **3.2 Análisis cualitativo [9 puntos, 3 por patrón].** El video describe tres patrones o tendencias
+  en las justificaciones (P2). Cada patrón tiene un nombre, una descripción y al menos una cita
+  textual de un participante.
+- **3.3 Respuestas e interpretación [15 puntos, 5 por pregunta].** El video responde P1, P2 y P3.
+  Cada respuesta cita el resultado cuantitativo o cualitativo que la sustenta y lo interpreta
+  respecto a la pirámide de automatización y el cono de helado.
+- **3.4 Reflexión [6 puntos, 3 por acción].** El video propone dos acciones concretas para mejorar el
+  estudio. Cada acción indica qué cambiar en el instrumento o en su aplicación y qué problema
+  observado resuelve.

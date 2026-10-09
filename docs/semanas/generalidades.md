@@ -1,12 +1,30 @@
-# Proyecto Pruebas automatizadas
+# Proyecto · Generalidades
 
 ## Bienvenido a The Software Design Company
 
-Usted ha sido contratado por la empresa **The Software Design Company (_TSDC_)** para iniciar el proceso de automatización de pruebas para la **Aplicación Bajo Pruebas (_ABP_)**. Para esto, recibirá una serie de capacitaciones en pruebas automatizadas de software; nuestro interés en _TSDC_ es ayudar a formar su perfil como ingeniero automatizador junior. La _ABP_ es el producto abanderado de la compañía para el cual tienen prevista la liberación de dos versiones diferentes de la app. Sin embargo, hay varios retos que usted deberá enfrentar:
+Usted ha sido contratado por **The Software Design Company (_TSDC_)** para iniciar el proceso de
+automatización de pruebas de su producto abanderado, la **aplicación bajo pruebas (ABP)**. _TSDC_
+prepara la liberación de una nueva versión de la ABP y enfrenta varios retos:
 
-- Esta es la primera vez que se realizará un proceso de automatización de pruebas en TSDC.
-- No existe inventario de pruebas manuales realizadas previamente para la _ABP_ ni reportes de defectos encontrados.
-- _TSDC_ no cuenta con artefactos/documentación de diseño sobre la _ABP_.
+- Es la primera vez que la compañía automatiza pruebas.
+- No existe un inventario de pruebas manuales ni reportes de defectos anteriores.
+- No hay documentación de diseño de la ABP.
 - El proceso de pruebas debe realizarse en 8 semanas.
 
-Como parte del coaching que _TSDC_ ha preparado para usted, cada semana se le entregará el detalle de las actividades a seguir para el proceso de pruebas. Adicionalmente, usted formará parte del selecto grupo de estudiantes del maravilloso curso de Pruebas Automatizadas de MISO. Este curso es vital para el desarrollo de los conocimientos y habilidades, y para que su carrera como ingeniero automatizador junior sea exitosa.
+Cada semana recibirá una guía con las actividades del proceso de pruebas. Las guías se apoyan en los
+contenidos del curso _Pruebas Automatizadas de Software_ de la Maestría en Ingeniería de Software
+(MISO), que explican los conceptos y las herramientas; las guías definen qué debe hacer y entregar su
+equipo y cómo se evalúa.
+
+## Organización del proyecto
+
+| Semana | Actividad | Uso del repositorio | Entregables |
+|---|---|---|---|
+| 1 | Exploración de la ABP | Incidencias | Documentos (PDF) e incidencias |
+| 2 | Investigación sobre prácticas de automatización | — | Instrumento, reporte (PDF) y video |
+| 3 | Estrategia de pruebas | — | Estrategia (PDF) y video |
+| 4 | Pruebas de reconocimiento | `reconocimiento/` e incidencias | _Release_, reportes (PDF), estrategia (PDF) y video |
+| 5 | Pruebas de extremo a extremo (E2E) | `e2e/` | _Release_ y reporte (PDF) |
+| 6 | Pruebas de regresión visual (VRT) | `e2e/`, `vrt/` e incidencias | Dos _releases_, reporte (PDF) y estrategia (PDF) |
+| 7 | Generación de datos | `e2e/` e incidencias | _Release_ y reporte (PDF) |
+| 8 | Estrategia de pruebas final | Todo el repositorio | _Release_, documentos (PDF) y video |
