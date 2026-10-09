@@ -24,20 +24,14 @@ estrategia de pruebas (EP2) que aumente la cobertura de la ABP.
 
 - **EP1 y EP2.** EP1 es la estrategia que el equipo construyó y ejecutó entre las semanas 3 y 7. EP2
   es una estrategia nueva, para funcionalidades de la ABP distintas de las de EP1.
-- **Tabla TNT.** Cada fila combina una técnica, un nivel y un tipo de prueba, sin combinaciones
-  repetidas, e indica su propósito, los objetivos que apoya (`OBJ-##`) y las funcionalidades que cubre
-  (`FUN-##`). Los niveles de prueba son unitario, integración, sistema o aceptación; los tipos se
-  agrupan en positivo, negativo o mixto; funcional o no funcional (solo usabilidad); y regresión.
-- **Presupuesto.** Se compone de recursos computacionales (equipos y servicios tecnológicos, como los
-  servicios en la nube), recursos humanos (el personal propio de _TSDC_) y _outsourcing_ (empresas
-  externas de pruebas).
 
 ## Actividades
 
 1. **EP1 final.** Entregue la versión final de EP1: aplique la retroalimentación de las entregas
    anteriores e incluya todas las técnicas del proyecto (pruebas exploratorias, de reconocimiento,
    E2E, de regresión visual y de generación de datos) en la tabla TNT y en la distribución del
-   esfuerzo.
+   esfuerzo. El documento que se entrega es la estrategia completa, con esas mejoras incluidas y su
+   lista de cambios.
 2. **Reporte de EP1.** Elabore el reporte de resultados de EP1, respaldado por el código del
    repositorio: los escenarios de la estrategia, la evidencia de ejecución de cada técnica y las
    incidencias encontradas, con el escenario que detectó cada una.
@@ -71,7 +65,7 @@ estrategia de pruebas (EP2) que aumente la cobertura de la ABP.
 | Entregable | Formato | Contenido |
 |---|---|---|
 | Código de EP1 | _Release_ `semana-8` del repositorio del equipo | Los módulos de `reconocimiento/`, `e2e/` y `vrt/` con sus `README.md` actualizados |
-| EP1 final | PDF, elaborado en la plantilla de la semana 3 | La estrategia completa, con la retroalimentación aplicada y todas las técnicas del proyecto |
+| EP1 final | PDF, elaborado en la plantilla de la semana 3 | La estrategia completa, con la retroalimentación aplicada, todas las técnicas del proyecto y la lista de cambios |
 | Reporte de resultados de EP1 | PDF | Ver [Contenido del reporte](#contenido-del-reporte) |
 | EP2 | PDF, elaborado en la plantilla | La estrategia completa para las nuevas funcionalidades |
 | Video | Enlace, máximo 15 minutos | Ver [Contenido del video](#contenido-del-video) |
@@ -80,6 +74,11 @@ El repositorio contiene solo el código necesario para ejecutar las pruebas, en 
 plano: ni documentos, ni imágenes, ni videos, ni dependencias, ni resultados de ejecución. Los enlaces
 deben abrirse sin solicitar permisos: públicos o con acceso para cuentas `@uniandes.edu.co`. El
 contenido del video posterior al minuto 15 no se evalúa.
+
+### Lista de cambios de EP1
+
+EP1 final termina con una lista de cambios. Cada cambio indica la sección modificada, qué cambió y su
+motivo: un comentario de la retroalimentación de las entregas anteriores o un resultado del proyecto.
 
 ### Contenido del reporte
 
@@ -103,12 +102,15 @@ La evaluación sigue las [reglas de juego](reglas) del proyecto, incluidas sus _
 
 ### 1. EP1 final [20 puntos]
 
-- **1.1 TNT [10 puntos].** La tabla TNT de EP1 incluye las pruebas exploratorias, de reconocimiento,
+- **1.1 TNT [8 puntos].** La tabla TNT de EP1 incluye las pruebas exploratorias, de reconocimiento,
   E2E, de regresión visual y de generación de datos, cada combinación con su propósito, los objetivos
   que apoya y las funcionalidades que cubre.
-- **1.2 Distribución del esfuerzo [10 puntos].** La distribución del esfuerzo de EP1 asigna, para cada
+- **1.2 Distribución del esfuerzo [7 puntos].** La distribución del esfuerzo de EP1 asigna, para cada
   una de las 8 semanas, las pruebas de la tabla TNT que se ejecutan y los recursos asignados, y sus
   totales coinciden con el presupuesto.
+- **1.3 Retroalimentación [5 puntos].** EP1 final incluye la retroalimentación de las entregas
+  anteriores aplicada, y la lista de cambios relaciona cada comentario con el cambio que lo atiende y
+  la sección modificada.
 
 ### 2. Reporte de resultados de EP1 [15 puntos]
 
