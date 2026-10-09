@@ -26,14 +26,16 @@ versiones, los migrará a la versión rc y comparará las capturas de forma auto
 - **Versiones de la ABP.** La versión base, publicada en la URL `ABP_URL` del archivo `.env`, es la
   que se probó en las semanas anteriores. La versión rc, publicada en `ABP_RC_URL`, es la nueva
   versión que _TSDC_ va a liberar. `npm run abp:up` levanta las dos al mismo tiempo.
-- **Dos _releases_ de la misma semana.** La rama de la versión base parte del _release_ `semana-5` y
-  solo agrega las capturas por paso. La rama `main` conserva la historia completa: la suite de la
-  semana 5, las capturas por paso y la migración a la versión rc.
+- **Dos _releases_ de la misma semana.** El trabajo se hace en la rama `main`. Cuando los escenarios
+  ya toman capturas en la versión base, se crea una rama para la versión base y se publica desde ella
+  el _release_ `semana-6-base`. Luego, en `main`, se migran los escenarios a la versión rc y se publica
+  el _release_ `semana-6-rc`. Así, `main` conserva la historia completa de la suite.
 - **Capturas por paso.** Cada escenario guarda, después de cada paso, una captura en
   `screenshots/<versión>/<herramienta>/<escenario>/<paso>.png` en la raíz del repositorio. Por
   ejemplo, `screenshots/rc/kraken/ESC-27/03.png` es la captura del tercer paso del escenario `ESC-27`
-  en Kraken sobre la versión rc. La carpeta `screenshots/` no se versiona, así que conserva las
-  capturas de la versión base al cambiar de rama.
+  en Kraken sobre la versión rc. Las capturas no se suben al repositorio: la carpeta `screenshots/`
+  está en el `.gitignore`. Por eso git no las borra al cambiar de rama, y las capturas de la versión
+  base siguen disponibles para compararlas con las de la versión rc.
 
 ## Preparación
 
@@ -46,14 +48,15 @@ versiones, los migrará a la versión rc y comparará las capturas de forma auto
 
 ## Actividades
 
-1. **Rama de la versión base.** Cree una rama a partir del _release_ `semana-5`.
-2. **Capturas en la versión base.** En esa rama, haga que los cuarenta escenarios de las dos
-   herramientas tomen una captura después de cada paso en `screenshots/base/…`. Ejecute los
-   escenarios sobre la versión base y publique desde esa rama el _release_ `semana-6-base`.
-3. **Migración a la versión rc.** Lleve las capturas por paso a la rama `main` y migre los cuarenta
-   escenarios a la versión rc: las pruebas usan la URL `ABP_RC_URL` del archivo `.env` y se adaptan a
-   los cambios de la interfaz, conservando los patrones _Page Object_ y _Given-When-Then_ y los
-   identificadores de la semana 5. Las capturas se guardan en `screenshots/rc/…`.
+1. **Capturas en la versión base.** En la rama `main`, que al empezar la semana coincide con el
+   _release_ `semana-5`, haga que los cuarenta escenarios de las dos herramientas tomen una captura
+   después de cada paso en `screenshots/base/…`. Ejecute los escenarios sobre la versión base.
+2. **_Release_ de la versión base.** Cuando los cuarenta escenarios tomen sus capturas, cree desde
+   `main` una rama para la versión base y publique desde ella el _release_ `semana-6-base`.
+3. **Migración a la versión rc.** De vuelta en `main`, migre los cuarenta escenarios a la versión rc:
+   las pruebas usan la URL `ABP_RC_URL` del archivo `.env` y se adaptan a los cambios de la interfaz,
+   conservando los patrones _Page Object_ y _Given-When-Then_ y los identificadores de la semana 5.
+   Las capturas se guardan en `screenshots/rc/…`.
 4. **Ejecución en la versión rc.** Ejecute los cuarenta escenarios sobre la versión rc. Cada prueba
    termina como exitosa o fallida; una prueba que no puede ejecutarse completa está mal implementada
    y se corrige.
@@ -77,7 +80,7 @@ versiones, los migrará a la versión rc y comparará las capturas de forma auto
 
 | Entregable | Formato | Contenido |
 |---|---|---|
-| Código de la versión base | _Release_ `semana-6-base` del repositorio del equipo | La suite de la semana 5 con capturas por paso en `screenshots/base/` |
+| Código de la versión base | _Release_ `semana-6-base` del repositorio del equipo (rama de la versión base) | La suite de la semana 5 con capturas por paso en `screenshots/base/` |
 | Código de la versión rc | _Release_ `semana-6-rc` del repositorio del equipo (rama `main`) | La suite migrada a la versión rc con capturas por paso en `screenshots/rc/`, y el módulo de regresión visual con su `README.md` |
 | Reporte de resultados | PDF | Ver [Contenido del reporte](#contenido-del-reporte) |
 | Estrategia de pruebas actualizada | PDF, elaborado en la plantilla de la semana 3 | La estrategia completa, con la retroalimentación de la semana 4 aplicada, las mejoras de esta semana y la lista de cambios |
@@ -134,9 +137,7 @@ La evaluación sigue las [reglas de juego](reglas) del proyecto, incluidas sus _
 - **3.1 Funcionalidades [5 puntos, 1 por funcionalidad].** Las cinco funcionalidades tienen
   identificador (`FUN-##`), nombre y descripción.
 - **3.2 Tabla de escenarios [10 puntos].** La tabla contiene los cuarenta escenarios con todos sus
-  campos diligenciados y con los mismos identificadores del código. Cada escenario ausente,
-  incompleto o con un identificador distinto al del código resta 1 punto de este criterio, sin bajar
-  de 0.
+  campos diligenciados y con los mismos identificadores del código.
 - **3.3 Evidencia de ejecución [2 puntos, 1 por herramienta].** El reporte incluye, para cada
   herramienta, una captura de la salida de su ejecución en la versión rc en la que se ven sus veinte
   escenarios y su resultado.

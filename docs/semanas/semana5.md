@@ -125,9 +125,7 @@ La evaluación sigue las [reglas de juego](reglas) del proyecto, incluidas sus _
 - **3.1 Funcionalidades [5 puntos, 1 por funcionalidad].** Las cinco funcionalidades tienen
   identificador (`FUN-##`), nombre y descripción.
 - **3.2 Tabla de escenarios [5 puntos].** La tabla contiene los cuarenta escenarios con todos sus
-  campos diligenciados y con los mismos identificadores del código. Cada escenario ausente,
-  incompleto o con un identificador distinto al del código resta 1 punto de este criterio, sin bajar
-  de 0.
+  campos diligenciados y con los mismos identificadores del código.
 - **3.3 Evidencia de ejecución [2 puntos].**
   - **[1 punto]** El reporte incluye una captura de la salida de la ejecución de la herramienta
     basada en scripts (terminal o reporte de la herramienta) en la que se ven los veinte escenarios y
