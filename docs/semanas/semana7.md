@@ -42,9 +42,18 @@ de entradas.
   comparten el mismo identificador.
 - **Escenario generado.** Es la pareja de un escenario existente y una partición de sus datos, y se
   escribe `ESC-## / <código>-###`. El identificador del escenario (`ESC-##`) es el de las semanas
-  anteriores y no cambia. Por ejemplo, si el escenario `ESC-01` usa un _data pool a-priori_ con cinco
-  registros de las particiones `APR-001` (dos registros de título válido), `APR-002` (título vacío),
-  `APR-003` (título de 255 caracteres) y `APR-004` (título de 256 caracteres), produce cuatro
+  anteriores y no cambia. Por ejemplo, el escenario `ESC-01` usa un _data pool a-priori_ con estos
+  cinco registros:
+
+  | Registro | Título | Partición |
+  |---|---|---|
+  | 1 | "Lanzamiento" (válido) | `APR-001` |
+  | 2 | "Agenda 2026" (válido) | `APR-001` |
+  | 3 | "" (vacío) | `APR-002` |
+  | 4 | 255 caracteres (límite válido) | `APR-003` |
+  | 5 | 256 caracteres (límite inválido) | `APR-004` |
+
+  Los registros 1 y 2 pertenecen a la misma partición, así que los cinco registros producen cuatro
   escenarios generados: `ESC-01 / APR-001` a `ESC-01 / APR-004`. Varios datos de la misma partición
   cuentan como un solo escenario generado.
 - **Identificadores en la salida de la ejecución.** Cada vez que una prueba usa un dato, la salida de
@@ -214,6 +223,58 @@ que escribe en la terminal (`cy.log` no aparece en ella):
 // cypress.config.js: setupNodeEvents(on) { on("task", { log(mensaje) { console.log(mensaje); return null; } }); }
 cy.task("log", `ESC-07 ${particion}`);
 ```
+
+### ¿Cómo se genera una partición pseudo-aleatoria con Faker en Playwright?
+
+El equipo declara las particiones en el código y, dentro de cada prueba, fija la semilla documentada
+en el `README.md` antes de generar el dato. Fijar la semilla en cada prueba hace que el dato no dependa
+del orden en que Playwright reparte las pruebas entre sus procesos:
+
+```javascript
+import { test } from "@playwright/test";
+import { faker } from "@faker-js/faker";
+
+const SEMILLA = 4103; // documentada en el README.md del módulo
+const particiones = [
+  { particion: "ALE-001", nombre: () => faker.person.fullName(), esperado: "el perfil se guarda" },
+  { particion: "ALE-002", nombre: () => faker.string.alpha(300), esperado: "error de longitud del nombre" },
+];
+
+for (const { particion, nombre, esperado } of particiones) {
+  test(`ESC-12 Editar el perfil (${particion})`, async ({ page }) => {
+    faker.seed(SEMILLA);
+    // Given: el administrador está en su perfil (Page Object)
+    // When: escribe nombre() y guarda
+    // Then: la página muestra el resultado esperado de la partición
+  });
+}
+```
+
+### ¿Cómo se usa un _data pool_ dinámico de Mockaroo en Puppeteer?
+
+Las particiones se declaran en el código, cada una con un esquema guardado en Mockaroo que genera
+datos de esa partición. Cada prueba pide sus datos a la API de Mockaroo durante la ejecución, así que
+los datos cambian en cada corrida pero la partición y el resultado esperado no:
+
+```javascript
+const particiones = [
+  { particion: "DIN-001", esquema: "etiqueta-valida", esperado: "la etiqueta se guarda" },
+  { particion: "DIN-002", esquema: "etiqueta-sin-nombre", esperado: "error en el nombre" },
+];
+
+// La llave se configura como lo documente el equipo en el README.md (aquí, una variable de entorno).
+const generar = async (esquema) =>
+  (await fetch(`https://api.mockaroo.com/api/generate.json?schema=${esquema}&count=1&key=${process.env.MOCKAROO_API_KEY}`)).json();
+
+test.each(particiones)("ESC-33 Crear una etiqueta ($particion)", async ({ esquema, esperado }) => {
+  const dato = await generar(esquema);
+  // Given: el administrador está en la lista de etiquetas (Page Object)
+  // When: crea una etiqueta con los datos de `dato`
+  // Then: la página muestra el resultado esperado de la partición
+});
+```
+
+La salida de Jest muestra `ESC-33 Crear una etiqueta (DIN-001)`, `… (DIN-002)`.
 
 ### ¿Y en Kraken?
 
