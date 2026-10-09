@@ -3,8 +3,8 @@
 > **Resumen.** El equipo instrumenta los cuarenta escenarios E2E de la semana 5 para tomar una
 > captura después de cada paso, los ejecuta en la **versión base** y en la **versión rc** de la ABP, y
 > compara las capturas de ambas versiones con una herramienta de regresión visual (VRT). Entrega dos
-> _releases_ del repositorio (`semana-6-base` y `semana-6-rc`), un reporte de resultados y la
-> estrategia de pruebas actualizada. Las [reglas de juego](reglas) del proyecto aplican a esta
+> _releases_ del repositorio (`semana-6-base` y `semana-6-rc`), un reporte de resultados, la
+> estrategia de pruebas actualizada y un video. Las [reglas de juego](reglas) del proyecto aplican a esta
 > semana.
 
 ## Contexto
@@ -67,12 +67,15 @@ versiones, los migrará a la versión rc y comparará las capturas de forma auto
 6. **Diferencias.** Reporte cada diferencia visual en los _issues_ del repositorio con la plantilla
    **Reporte Incidencia**: una incidencia por diferencia, con las capturas de ambas versiones, la
    imagen de diferencias y el escenario y el paso en que aparece.
-7. **Análisis.** Analice el proceso de regresión visual: ventajas, desventajas y limitaciones
-   observadas.
+7. **Análisis.** Analice los resultados de la regresión visual: qué diferencias encontró, cuáles son
+   defectos y cuáles cambios intencionales de la versión rc, y qué ventajas, desventajas y
+   limitaciones tuvo el proceso.
 8. **Estrategia.** Actualice la estrategia de pruebas: aplique la retroalimentación de la semana 4,
    incorpore la regresión visual y ajuste las decisiones con base en los resultados. El documento que
    se entrega es la estrategia completa, con esas mejoras incluidas, y no solo la lista de cambios.
-9. **Entrega.** Publique desde `main` el
+9. **Video.** Grabe un video de máximo 15 minutos que presente el trabajo de regresión visual, sus
+   resultados y su análisis.
+10. **Entrega.** Publique desde `main` el
    [_release_](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release)
    `semana-6-rc`.
 
@@ -84,9 +87,12 @@ versiones, los migrará a la versión rc y comparará las capturas de forma auto
 | Código de la versión rc | _Release_ `semana-6-rc` del repositorio del equipo (rama `main`) | La suite migrada a la versión rc con capturas por paso en `screenshots/rc/`, y el módulo de regresión visual con su `README.md` |
 | Reporte de resultados | PDF | Ver [Contenido del reporte](#contenido-del-reporte) |
 | Estrategia de pruebas actualizada | PDF, elaborado en la plantilla de la semana 3 | La estrategia completa, con la retroalimentación de la semana 4 aplicada, las mejoras de esta semana y la lista de cambios |
+| Video | Enlace, máximo 15 minutos | Ver [Contenido del video](#contenido-del-video) |
 
 El repositorio contiene solo el código necesario para ejecutar las pruebas, en archivos de texto
-plano: ni capturas, ni reportes generados, ni documentos, ni dependencias.
+plano: ni capturas, ni reportes generados, ni documentos, ni dependencias. Los enlaces deben abrirse
+sin solicitar permisos: públicos o con acceso para cuentas `@uniandes.edu.co`. El contenido del video
+posterior al minuto 15 no se evalúa.
 
 ### Contenido del reporte
 
@@ -98,7 +104,15 @@ plano: ni capturas, ni reportes generados, ni documentos, ni dependencias.
 4. Evidencia de ejecución en la versión rc de cada herramienta: una captura de la salida de la
    ejecución (terminal o reporte de la herramienta) en la que se ven sus veinte escenarios y su
    resultado.
-5. Análisis del proceso de regresión visual: ventajas, desventajas y conclusión.
+
+### Contenido del video
+
+1. Cómo se capturan y se comparan las imágenes de las dos versiones.
+2. Resultados de la regresión visual: pasos comparados y pasos con diferencias, por herramienta, y
+   ejemplos de diferencias con las capturas de las dos versiones y la imagen de diferencias.
+3. Análisis: qué diferencias son defectos y cuáles cambios intencionales de la versión rc, y
+   ventajas, desventajas y limitaciones de la regresión visual.
+4. Conclusión: cuándo le conviene a _TSDC_ usar la regresión visual.
 
 ### Lista de cambios de la estrategia
 
@@ -110,7 +124,7 @@ semana.
 
 La evaluación sigue las [reglas de juego](reglas) del proyecto, incluidas sus _fatalities_.
 
-### 1. Escenarios E2E [40 puntos]
+### 1. Escenarios E2E [35 puntos]
 
 - **1.1 Escenarios en la versión rc [20 puntos, 0,5 por escenario].** Los cuarenta escenarios
   (`ESC-01` a `ESC-40`) conservan el identificador de la semana 5, se ejecutan sobre la versión rc y
@@ -118,10 +132,10 @@ La evaluación sigue las [reglas de juego](reglas) del proyecto, incluidas sus _
 - **1.2 Capturas por paso [10 puntos, 5 por herramienta].** Todos los escenarios de la herramienta
   guardan una captura después de cada paso, en la ruta definida, en el _release_ `semana-6-base`
   (versión base) y en el _release_ `semana-6-rc` (versión rc).
-- **1.3 _Page Object_ [5 puntos].** Los cuarenta escenarios migrados interactúan con la interfaz solo a
-  través de clases de la carpeta `pages/`: las pruebas no contienen selectores.
-- **1.4 _Given-When-Then_ [5 puntos].** Cada uno de los cuarenta escenarios migrados tiene exactamente
-  un bloque _Given_, uno _When_ y uno _Then_, en ese orden.
+- **1.3 Patrones [5 puntos].** Los cuarenta escenarios migrados conservan los patrones _Page Object_
+  (las pruebas no contienen selectores: interactúan con la interfaz solo a través de clases de la
+  carpeta `pages/`) y _Given-When-Then_ (exactamente un bloque _Given_, uno _When_ y uno _Then_, en
+  ese orden).
 
 ### 2. Regresión visual [30 puntos]
 
@@ -132,21 +146,15 @@ La evaluación sigue las [reglas de juego](reglas) del proyecto, incluidas sus _
   escenario, y para cada paso muestra la captura de la versión base, la de la versión rc, la imagen de
   diferencias y el porcentaje de diferencia.
 
-### 3. Reporte de resultados [20 puntos]
+### 3. Reporte de resultados [15 puntos]
 
 - **3.1 Funcionalidades [5 puntos, 1 por funcionalidad].** Las cinco funcionalidades tienen
   identificador (`FUN-##`), nombre y descripción.
-- **3.2 Tabla de escenarios [10 puntos].** La tabla contiene los cuarenta escenarios con todos sus
+- **3.2 Tabla de escenarios [8 puntos].** La tabla contiene los cuarenta escenarios con todos sus
   campos diligenciados y con los mismos identificadores del código.
 - **3.3 Evidencia de ejecución [2 puntos, 1 por herramienta].** El reporte incluye, para cada
   herramienta, una captura de la salida de su ejecución en la versión rc en la que se ven sus veinte
   escenarios y su resultado.
-- **3.4 Análisis de la regresión visual [3 puntos].**
-  - **[1 punto]** El análisis presenta dos ventajas de la regresión visual observadas en esta semana.
-  - **[1 punto]** El análisis presenta dos desventajas o limitaciones de la regresión visual
-    observadas en esta semana.
-  - **[1 punto]** La conclusión indica cuándo le conviene a _TSDC_ usar la regresión visual y la
-    justifica con los resultados del reporte.
 
 ### 4. Estrategia de pruebas [10 puntos]
 
@@ -156,3 +164,16 @@ La evaluación sigue las [reglas de juego](reglas) del proyecto, incluidas sus _
 - **4.2 Retroalimentación [5 puntos].** La estrategia entregada incluye la retroalimentación de la
   semana 4 aplicada, y la lista de cambios relaciona cada comentario con el cambio que lo atiende y la
   sección modificada.
+
+### 5. Video [10 puntos]
+
+- **5.1 Resultados de la regresión visual [5 puntos].** El video presenta, para cada herramienta, la
+  cantidad de pasos comparados y de pasos con diferencias, y muestra al menos tres diferencias con la
+  captura de la versión base, la de la versión rc y la imagen de diferencias.
+- **5.2 Análisis [5 puntos].**
+  - **[2 puntos]** El video clasifica las diferencias presentadas en defectos y cambios intencionales
+    de la versión rc, y justifica cada clasificación.
+  - **[2 puntos]** El video presenta dos ventajas y dos desventajas o limitaciones de la regresión
+    visual observadas en esta semana.
+  - **[1 punto]** El video concluye cuándo le conviene a _TSDC_ usar la regresión visual y lo
+    justifica con los resultados.
