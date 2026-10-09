@@ -20,24 +20,24 @@ La calificación de cada semana tiene dos partes:
 - **Criterios de evaluación**, en la guía de la semana: suman **100 puntos**. Cada criterio indica
   sus puntos y, cuando se cuenta por elementos (escenarios, pruebas, incidencias), cuántos puntos vale
   cada uno. Cada sección muestra su total.
-- **_Fatalities_**: incumplimientos que restan puntos de la calificación obtenida. Cada guía indica
-  cuáles aplican. En total restan como máximo **50 puntos**, y la calificación final no es menor
-  que 0.
+- **_Fatalities_**: incumplimientos que restan puntos de la calificación obtenida, en cualquier
+  semana en la que ocurran. En total restan como máximo **50 puntos**, y la calificación final no es
+  menor que 0.
 
 Un entregable que no se puede abrir, o que no existe, obtiene 0 puntos en los criterios que lo
 evalúan.
 
 ## _Fatalities_
 
-| Código | Incumplimiento | Puntos |
-|---|---|---|
-| F1 | El _release_ no existe o se publicó después del plazo, o los documentos se entregaron después del plazo. | −15 |
-| F2 | El repositorio contiene archivos no permitidos: binarios, multimedia, documentos, dependencias o resultados de ejecución. Por ejemplo: `.pdf`, `.docx`, `.xlsx`, `.png`, `.jpg`, `.gif`, `.mp4`, `.mov`, `.zip`, `node_modules/`, `screenshots/`, `cypress/videos/`, `test-results/`, `playwright-report/`, `backstop_data/bitmaps_*/`, `results/`. | −20 |
-| F3 | Se modificaron archivos protegidos del repositorio (los lista el `README.md` de la raíz del repositorio). | −20 |
-| F4 | Una URL o una credencial de la ABP está escrita en un archivo distinto del `.env` del repositorio. | −20 |
-| F5 | Un módulo no parte del código base que instalan los _workflows_ del repositorio. | −20 |
-| F6 | Las pruebas no se ejecutan con los scripts de la raíz y la ABP levantada, o requieren pasos manuales adicionales. | −20 |
-| F7 | Un documento no está en formato `.pdf`, o un enlace no se puede abrir sin solicitar permisos. | −10 |
+| Incumplimiento | Puntos |
+|---|---|
+| El _release_ no existe o se publicó después del plazo, o los documentos se entregaron después del plazo. | −15 |
+| El repositorio contiene archivos no permitidos: binarios, multimedia, documentos, dependencias o resultados de ejecución. Por ejemplo: `.pdf`, `.docx`, `.xlsx`, `.png`, `.jpg`, `.gif`, `.mp4`, `.mov`, `.zip`, `node_modules/`, `screenshots/`, `cypress/videos/`, `test-results/`, `playwright-report/`, `backstop_data/bitmaps_*/`, `results/`. | −20 |
+| Se modificaron archivos protegidos del repositorio (los lista el `README.md` de la raíz del repositorio). | −20 |
+| Una URL o una credencial de la ABP está escrita en un archivo distinto del `.env` del repositorio. | −20 |
+| Un módulo no parte del código base que instalan los _workflows_ del repositorio. | −20 |
+| Las pruebas no se ejecutan con los scripts de la raíz y la ABP levantada, o requieren pasos manuales adicionales. | −20 |
+| Un documento no está en formato `.pdf`, o un enlace no se puede abrir sin solicitar permisos. | −10 |
 
-Cada _fatality_ se aplica una vez por guía, aunque el incumplimiento aparezca en varios archivos o
-herramientas.
+Cada _fatality_ se aplica una vez por semana, aunque el incumplimiento aparezca en varios archivos
+o herramientas.

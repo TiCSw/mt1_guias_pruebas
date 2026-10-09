@@ -95,6 +95,8 @@ plano: ni documentos, ni imágenes, ni videos, ni dependencias, ni resultados de
 
 ## Criterios de evaluación
 
+La evaluación sigue las [reglas de juego](reglas) del proyecto, incluidas sus _fatalities_.
+
 ### 1. Herramienta basada en scripts [40 puntos]
 
 - **1.1 Escenarios [20 puntos, 1 por escenario].** El nombre de cada uno de los veinte escenarios
@@ -142,5 +144,3 @@ plano: ni documentos, ni imágenes, ni videos, ni dependencias, ni resultados de
     o ejecutar sus escenarios.
   - **[1 punto]** La conclusión recomienda una de las dos herramientas para _TSDC_ y la justifica con
     los resultados del reporte.
-
-Además, aplican las _fatalities_ F1 a F7 de las [reglas de juego](reglas#fatalities).

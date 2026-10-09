@@ -77,6 +77,8 @@ Los enlaces deben abrirse sin solicitar permisos: públicos o con acceso para cu
 
 ## Criterios de evaluación
 
+La evaluación sigue las [reglas de juego](reglas) del proyecto, incluidas sus _fatalities_.
+
 ### 1. Instrumento [10 puntos]
 
 - **1.1 Consentimiento y contexto [2 puntos].** El instrumento empieza con un consentimiento informado
@@ -111,36 +113,18 @@ Los enlaces deben abrirse sin solicitar permisos: públicos o con acceso para cu
 
 ### 3. Video [50 puntos]
 
-- **3.1 Resultados cuantitativos [10 puntos].**
-  - **[1 punto]** El video presenta el número total de respuestas.
-  - **[9 puntos, 3 por pregunta]** El video presenta, para P1, P2 y P3, la cantidad y la proporción
-    de respuestas de cada opción o categoría (en P2, las categorías de justificación).
-- **3.2 Representaciones [10 puntos].**
-  - **[9 puntos, 3 por pregunta]** Los resultados de P1, P2 y P3 se presentan con una tabla o un
-    gráfico que indica la pregunta, las opciones o categorías y sus valores.
-  - **[1 punto]** La información demográfica (país, rol y años de experiencia) se presenta con una
-    tabla o un gráfico.
-- **3.3 Análisis cualitativo [10 puntos].**
-  - **[9 puntos, 3 por patrón]** El video describe tres patrones o tendencias en las justificaciones
-    (P2). Cada patrón tiene un nombre, una descripción y al menos una cita textual de un participante.
-  - **[1 punto]** El video explica cómo se identificaron los patrones (por ejemplo, codificación de
-    las respuestas en categorías).
-- **3.4 Respuesta a las preguntas [10 puntos].**
-  - **[9 puntos, 3 por pregunta]** El video responde P1, P2 y P3, y cada respuesta cita el resultado
-    cuantitativo o cualitativo que la sustenta.
-  - **[1 punto]** El video presenta una conclusión general sobre la estrategia que prefiere la muestra.
-- **3.5 Interpretación [5 puntos].**
-  - **[2 puntos]** El video relaciona la preferencia de los participantes (P1) con las
-    características de la pirámide de automatización y del cono de helado.
-  - **[2 puntos]** El video relaciona la proporción de pruebas manuales y automatizadas (P3) con la
-    estrategia que esa proporción representa.
-  - **[1 punto]** El video compara los resultados entre grupos de participantes (por ejemplo, por
-    rol o por años de experiencia).
-- **3.6 Reflexión [5 puntos].**
-  - **[4 puntos, 2 por acción]** El video propone dos acciones concretas para mejorar el estudio.
-    Cada acción indica qué cambiar en el instrumento o en su aplicación y qué problema observado
-    resuelve.
-  - **[1 punto]** El video identifica una limitación de los resultados (por ejemplo, el tamaño o la
-    composición de la muestra).
-
-Además, aplican las _fatalities_ F1 y F7 de las [reglas de juego](reglas#fatalities).
+- **3.1 Resultados cuantitativos [20 puntos].**
+  - **[18 puntos, 6 por pregunta]** El video presenta, para P1, P2 y P3, la cantidad y la proporción
+    de respuestas de cada opción o categoría (en P2, las categorías de justificación), en una tabla o
+    un gráfico que indica la pregunta, las opciones o categorías y sus valores.
+  - **[2 puntos]** El video presenta el número total de respuestas y la información demográfica
+    (país, rol y años de experiencia) en una tabla o un gráfico.
+- **3.2 Análisis cualitativo [9 puntos, 3 por patrón].** El video describe tres patrones o tendencias
+  en las justificaciones (P2). Cada patrón tiene un nombre, una descripción y al menos una cita
+  textual de un participante.
+- **3.3 Respuestas e interpretación [15 puntos, 5 por pregunta].** El video responde P1, P2 y P3.
+  Cada respuesta cita el resultado cuantitativo o cualitativo que la sustenta y lo interpreta
+  respecto a la pirámide de automatización y el cono de helado.
+- **3.4 Reflexión [6 puntos, 3 por acción].** El video propone dos acciones concretas para mejorar el
+  estudio. Cada acción indica qué cambiar en el instrumento o en su aplicación y qué problema
+  observado resuelve.
