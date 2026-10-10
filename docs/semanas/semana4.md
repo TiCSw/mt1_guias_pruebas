@@ -41,7 +41,8 @@ una e incorporará los resultados a la estrategia de pruebas.
    tipo y espera entre eventos).
 2. **_Ripper_.** Configure el _ripper_ de la misma forma: que inicie sesión con el administrador del
    archivo `.env` antes de explorar y recorra el panel de administración. Defina la profundidad de la
-   exploración y los demás parámetros.
+   exploración, sus presupuestos y los demás parámetros. Una exploración que se detiene por su
+   presupuesto continúa desde el mismo punto con `npm run ripper:resume`.
 3. **Cambios al código base.** Documente en el `README.md` de cada módulo todo cambio que haga a su
    código base (por ejemplo, el inicio de sesión): qué se cambió y para qué. Las URL y las
    credenciales de la ABP se obtienen solo del archivo `.env`.
