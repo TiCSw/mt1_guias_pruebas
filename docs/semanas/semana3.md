@@ -49,7 +49,7 @@ ser realista frente a las restricciones de tiempo, personas y presupuesto de la 
 ## Actividades
 
 1. **Plantilla.** Elabore la estrategia en la
-   [plantilla de estrategia de pruebas](https://thesoftwaredesignlab.github.io/AutTestingCourseraBook/templates/estrategia-pruebas.docx),
+   [plantilla de estrategia de pruebas](https://www.coursera.org/learn/pruebas-automatizadas-software/resources/CY0RM) (Coursera > Recursos > Plantilla Estrategia de Prueba),
    respetando las [restricciones de la estrategia](#restricciones-de-la-estrategia).
 2. **Funcionalidades.** Defina cinco funcionalidades de la ABP, identificadas como `FUN-01` a
    `FUN-05`, con nombre y descripción. **Estas son las funcionalidades que el equipo prueba en las
